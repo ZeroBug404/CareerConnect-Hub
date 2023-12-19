@@ -30,8 +30,6 @@ const RegisterPage = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      // console.log(data);
-
       const registerData = {
         email: data.email,
         password: data.password,
@@ -41,8 +39,6 @@ const RegisterPage = () => {
         },
         phoneNumber: data.contactNo,
       };
-
-      // console.log(registerData);
 
       const res = await userSignup(registerData);
 
