@@ -9,13 +9,13 @@ const JobDetails = ({ params }) => {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
-        margin: "50px 0", 
+        margin: "0 20px", 
       }}
     >
       <Card
         title={`Details of the Job ${params.id}`}
         style={{
-          width: 500,
+          width: "100%",
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         }}
       >
