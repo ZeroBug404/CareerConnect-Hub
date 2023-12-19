@@ -1,0 +1,28 @@
+.footer_div_main {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.top_section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom_section {
+}
+
+.left_section {
+  width: 100%;
+}
+.right_section {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.outline_button {
+  border: 1px solid #6792f0;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #62557a;
+}
