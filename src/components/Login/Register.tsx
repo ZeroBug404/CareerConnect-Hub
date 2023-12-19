@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-// import { useUserLoginMutation } from "@/redux/api/authApi";
 // import { storeUserInfo } from "@/services/auth.service";
 import { Button, Col, Row, message } from "antd";
 import Image from "next/image";
@@ -11,43 +10,52 @@ import { SubmitHandler } from "react-hook-form";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
 
-import logo from "../../assets/1-removebg-preview.png";
 import { useState } from "react";
+import logo from "../../assets/1-removebg-preview.png";
 
+import { useUserSignupMutation } from "@/redux/api/authApi";
 type FormValues = {
-  name: {
-    firstName: string;
-    lastName: string;
-  };
+  firstName: string;
+  lastName: string;
   email: string;
   contactNo: string;
   password: string;
 };
 
 const RegisterPage = () => {
+  const [userSignup] = useUserSignupMutation();
   const router = useRouter();
 
   const [scale, setScale] = useState(1);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      const loginData = {
+      // console.log(data);
+
+      const registerData = {
         email: data.email,
         password: data.password,
+        name: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+        },
+        phoneNumber: data.contactNo,
       };
 
-      //   const res = await userLogin(loginData);
+      // console.log(registerData);
 
-      //@ts-ignore
-      if (res?.data?.accessToken) {
-        router.push("/home");
-        message.success("User logged in successfully!");
+      const res = await userSignup(registerData);
+
+      // @ts-ignore
+      if (res?.data?.success === true) {
+        // router.push("/home");
+        message.success("User registered successfully!");
       } else {
         return message.error("Wrong credential!");
       }
 
       //@ts-ignore
-      storeUserInfo({ accessToken: res?.data?.accessToken });
+      // storeUserInfo({ accessToken: res?.data?.accessToken });
     } catch (err: any) {
       console.error(err.message);
     }

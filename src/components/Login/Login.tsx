@@ -12,7 +12,9 @@ import { SubmitHandler } from "react-hook-form";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
 
+import { useUserLoginMutation } from "@/redux/api/authApi";
 import logo from "../../assets/1-removebg-preview.png";
+import { storeUserInfo } from "@/services/auth.service";
 
 type FormValues = {
   email: string;
@@ -20,7 +22,7 @@ type FormValues = {
 };
 
 const LoginPage = () => {
-  //   const [userLogin] = useUserLoginMutation();
+  const [userLogin] = useUserLoginMutation();
   const router = useRouter();
 
   const [scale, setScale] = useState(1);
@@ -31,11 +33,11 @@ const LoginPage = () => {
         password: data.password,
       };
 
-      //   const res = await userLogin(loginData);
+      const res = await userLogin(loginData);
 
       //@ts-ignore
       if (res?.data?.accessToken) {
-        router.push("/home");
+        // router.push("/home");
         message.success("User logged in successfully!");
       } else {
         return message.error("Wrong credential!");
@@ -118,7 +120,7 @@ const LoginPage = () => {
                 transition: "transform 0.3s ease-in-out",
                 transform: `scale(${scale})`,
               }}
-              onMouseEnter={() => setScale(1.03)} 
+              onMouseEnter={() => setScale(1.03)}
               onMouseLeave={() => setScale(1)}
             >
               Login
