@@ -32,6 +32,27 @@ const JobFeed = () => {
       type: "Remote Part-time",
       contract: "Freelance",
     },
+    {
+      _id: 4,
+      title: "UI/UX Designer",
+      location: "Creative Designs Ltd. Los Angeles",
+      type: "On-site",
+      contract: "Full-time",
+    },
+    {
+      _id: 5,
+      title: "Data Scientist",
+      location: "Data Insights Corp. Chicago",
+      type: "Remote",
+      contract: "Contract",
+    },
+    {
+      _id: 6,
+      title: "Mobile App Developer",
+      location: "Mobile Innovations Ltd. Seattle",
+      type: "On-site",
+      contract: "Full-time",
+    },
   ];
 
   const filteredJobs = jobData.filter((job) =>
@@ -76,11 +97,13 @@ const JobFeed = () => {
         <Paragraph>
           <Text strong>We are working on your personalized job feed.</Text>
         </Paragraph>
-        <Paragraph>In the meantime, run a search to find your next job</Paragraph>
+        <Paragraph>
+          In the meantime, run a search to find your next job
+        </Paragraph>
         {/* <Button style={{ borderColor: '#1890ff', color: '#1890ff' }}>Find Job</Button> */}
       </div>
 
-      <Row gutter={16}>
+      <Row gutter={[16, 24]}>
         {filteredJobs.map((job, index) => (
           <Col xs={24} sm={12} md={8} lg={8} key={index}>
             <Card
