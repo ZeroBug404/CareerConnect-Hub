@@ -1,0 +1,60 @@
+.overview {
+  padding: 20px;
+  margin: 2rem auto;
+  max-width: 90%;
+}
+
+.overviewTitle {
+  font-size: 2.9rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.overviewCol {
+  padding: 1rem;
+  margin: 0;
+}
+
+.overviewColTitle {
+  font-weight: 450;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+}
+
+.overviewColText {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .overview {
+    padding: 1.2rem;
+    margin: 1rem auto;
+  }
+
+  .overviewCol {
+    padding: 0.6rem 1rem;
+  }
+
+  .overviewTitle {
+    font-size: 2.3rem;
+  }
+
+  .overviewColTitle {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .overview {
+    max-width: 100%;
+    padding: 1rem;
+    margin: 0.5rem auto;
+  }
+  .overviewTitle {
+    font-size: 1.8rem;
+  }
+  .overviewCol {
+    padding: 0.6rem;
+  }
+}
