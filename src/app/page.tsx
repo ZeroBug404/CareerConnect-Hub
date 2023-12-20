@@ -1,3 +1,7 @@
+import HelpCenter from "@/components/ui/HelpCenter";
+
 export default function Home() {
-  return <main>Here The main body</main>;
+  return <main>
+    <HelpCenter />
+  </main>;
 }

@@ -15,7 +15,7 @@ const Footer = () => {
     <div className={styles.footer_div_main}>
       <div className={styles.top_section}>
         <div className={styles.left_section}>
-          <h2>We're here to help</h2>
+          <h3>We are here to help</h3>
           <p>
             Visit our Help Center for answers to common questions or contact us
             directly.
