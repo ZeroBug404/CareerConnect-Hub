@@ -1,0 +1,32 @@
+.helpCenter_main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 11vw;
+  margin-right: 11vw;
+  margin-bottom: 2vh;
+}
+
+.helpCenter_left {
+  padding-right: 7vw;
+}
+.helpCenter_left h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+.helpCenter_left p {
+  margin-top: 10px;
+  font-size: 20px;
+}
+.helpCenter_left_link {
+  display: flex;
+  align-items: center;
+  color: #2557a4;
+}
+.helpCenter_left_link span {
+  padding-right: 5px;
+}
+.helpCenter_left_link span:hover {
+ text-decoration: underline;
+ color: #2557a4;
+}
