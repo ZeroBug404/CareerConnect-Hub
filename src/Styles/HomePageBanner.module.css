@@ -1,0 +1,55 @@
+.bannerHeading {
+  background: #123770;
+  color: white;
+}
+
+.bannerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bannerFirstCol {
+  text-align: left;
+  padding: 1.5rem;
+}
+
+.bannerText {
+  font-size: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.bannerTitle {
+  font-size: 2.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.bannerButton {
+  background-color: #e0a961 !important;
+  width: 12rem !important;
+  height: 3.5rem !important;
+  font-weight: bold !important;
+  border: none !important;
+}
+
+.bannerImage {
+  width: 100%;
+  min-height: 38rem;
+}
+
+@media screen and (max-width: 768px) {
+  .bannerText {
+    font-size: 1rem;
+    margin-bottom: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .bannerTitle {
+    font-size: 2rem;
+  }
+  .bannerImage {
+    width: 100%;
+    min-height: 22rem;
+  }
+}
