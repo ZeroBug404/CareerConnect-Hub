@@ -10,10 +10,7 @@
 .helpCenter_left {
   padding-right: 7vw;
 }
-.helpCenter_left a{
-  text-decoration: none;
-  color: inherit;
-}
+
 .helpCenter_left h2 {
   font-size: 28px;
   font-weight: 600;

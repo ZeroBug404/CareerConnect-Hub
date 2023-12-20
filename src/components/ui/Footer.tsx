@@ -108,7 +108,7 @@ const Footer = () => {
       </div>
       <div className={styles.bottom_section}>
         <div className={styles.bottom_section_left}>
-          <Link href="/">CareerHub-Connect</Link>
+          <Link href="/">CareerConnect-Hub</Link>
           ©2023{" "}
         </div>
         <div className={styles.bottom_section_middle}>

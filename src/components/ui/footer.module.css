@@ -12,7 +12,6 @@
   width: 100%;
 }
 
-
 .right_section {
   width: 100%;
   display: flex;
@@ -29,8 +28,6 @@
 }
 .right_section_buttons ul li a {
   font-size: 12px;
-  text-decoration: none;
-  color: inherit;
 }
 .right_section_buttons ul li a:hover {
   text-decoration: underline;
@@ -46,11 +43,6 @@
 .bottom_section_middle {
   font-size: 12px;
 }
-.bottom_section_left a,
-.bottom_section_middle a {
-  text-decoration: none;
-  color: inherit;
-}
 
 .bottom_section_left:hover,
 .bottom_section_middle:hover {
@@ -59,9 +51,4 @@ color: darkslateblue;
 
 .bottom_section_right {
   width: auto;
-}
-
-.bottom_section_right a{
-  text-decoration: none;
-  color: inherit;
 }
