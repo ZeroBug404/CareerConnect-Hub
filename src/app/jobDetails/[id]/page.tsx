@@ -1,4 +1,5 @@
 import { Button, Card } from "antd";
+import Link from "next/link";
 
 const JobDetails = ({ params }: any) => {
   return (
@@ -37,7 +38,9 @@ const JobDetails = ({ params }: any) => {
           experience will be a plus. Qualifications – B.E. / B.Tech / MCA from a
           recognized university Job
         </p>
-        <Button type="primary">Apply Here</Button>
+        <Link href="/login">
+          <Button type="primary">Apply Here</Button>
+        </Link>
       </Card>
     </div>
   );
