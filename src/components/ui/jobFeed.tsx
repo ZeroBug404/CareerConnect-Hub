@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, Card, Col, Row, Typography, Tag } from "antd";
+import { RiseOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Row, Typography, Flex } from "antd";
 import Search from "antd/es/input/Search";
 import Title from "antd/es/typography/Title";
 import Link from "next/link";
@@ -14,44 +15,68 @@ const JobFeed = () => {
     {
       _id: 1,
       title: "Frontend Developer",
-      location: "VenU eLearning Solutions Smyrna",
+      company: "VenU eLearning Solutions",
+      location: "Smyrna",
       type: "Remote Full-time",
       contract: "Contract",
+      ctc: "$80,000 - $100,000",
+      experience: "2-5 years",
+      joiningDate: "Immediate",
     },
     {
       _id: 2,
       title: "Backend Developer",
-      location: "Tech Innovations Inc. San Francisco",
+      company: "Tech Innovations Inc.",
+      location: "San Francisco",
       type: "On-site",
       contract: "Full-time",
+      ctc: "$90,000 - $110,000",
+      experience: "3-7 years",
+      joiningDate: "2 weeks notice",
     },
     {
       _id: 3,
       title: "React Developer",
-      location: "Awesome Tech Co. New York, NY",
+      company: "Awesome Tech Co.",
+      location: "New York, NY",
       type: "Remote Part-time",
       contract: "Freelance",
+      ctc: "$70 - $90 per hour",
+      experience: "1-3 years",
+      joiningDate: "Flexible",
     },
     {
       _id: 4,
       title: "UI/UX Designer",
-      location: "Creative Designs Ltd. Los Angeles",
+      company: "Creative Designs Ltd.",
+      location: "Los Angeles",
       type: "On-site",
       contract: "Full-time",
+      ctc: "$85,000 - $110,000",
+      experience: "3-6 years",
+      joiningDate: "Immediate",
     },
     {
       _id: 5,
       title: "Data Scientist",
-      location: "Data Insights Corp. Chicago",
+      company: "Data Insights Corp.",
+      location: "Chicago",
       type: "Remote",
       contract: "Contract",
+      ctc: "$100,000 - $120,000",
+      experience: "4-8 years",
+      joiningDate: "1 month notice",
     },
     {
       _id: 6,
       title: "Mobile App Developer",
-      location: "Mobile Innovations Ltd. Seattle",
+      company: "Mobile Innovations Ltd.",
+      location: "Seattle",
       type: "On-site",
       contract: "Full-time",
+      ctc: "$95,000 - $115,000",
+      experience: "2-5 years",
+      joiningDate: "2 weeks notice",
     },
   ];
 
@@ -100,34 +125,56 @@ const JobFeed = () => {
         <Paragraph>
           In the meantime, run a search to find your next job
         </Paragraph>
-        {/* <Button style={{ borderColor: '#1890ff', color: '#1890ff' }}>Find Job</Button> */}
       </div>
 
       <Row gutter={[16, 24]}>
         {filteredJobs.map((job, index) => (
           <Col xs={24} sm={12} md={8} lg={8} key={index}>
-            <Card
-              title={<Title level={4}>{job.title}</Title>}
-              bordered={false}
+            <div
               style={{
                 width: "100%",
                 height: "100%",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
               }}
             >
-              <Text strong>Location: </Text>
-              <Text>{job.location}</Text>
-              <br />
-              <Text strong>Type: </Text>
-              <Text>{job.type}</Text>
-              <br />
-              <Text strong>Contract: </Text>
-              <Text>{job.contract}</Text>
-              <br />
-              <Button type="primary" style={{ marginTop: "16px" }}>
-                <Link href={`/jobDetails/${job._id}`}>Job Details</Link>
-              </Button>
-            </Card>
+              <div
+                style={{
+                  padding: "10px",
+                  color: "blue",
+                }}
+              >
+                <RiseOutlined /> <Text strong>Active Hiring</Text>
+              </div>
+              <Card
+                title={<Title level={4}>{job.title}</Title>}
+                bordered={false}
+              >
+                <Text strong>{job.company}</Text>
+                <br />
+                <Flex wrap="wrap" gap="small">
+                  <Text>Location: </Text>
+                  <Text>{job.location}</Text>
+                  <br />
+                  <Text>Type: </Text>
+                  <Text>{job.type}</Text>
+                  <Text> Start Date:</Text>
+                  <Text>{job.joiningDate}</Text>
+
+                  <Text>CTC: </Text>
+                  <Text>{job.ctc}</Text>
+
+                  <Text>Experience: </Text>
+                  <Text>{job.experience}</Text>
+                  <Text>Contract: </Text>
+                  <Text>{job.contract}</Text>
+                </Flex>
+                <br />
+                <Flex wrap="wrap" gap="small" justify="end" align="center">
+                  <Link href={`/jobDetails/${job._id}`}>View Details</Link>
+                  <Button type="primary">Apply Now</Button>
+                </Flex>
+              </Card>
+            </div>
           </Col>
         ))}
       </Row>
