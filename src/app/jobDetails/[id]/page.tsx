@@ -40,10 +40,10 @@ const JobDetails = async ({ params }: any) => {
           <h3>{data?.data?.company}</h3>
           <br />
           <Flex wrap="wrap" gap="small">
-            <p>Location: {data?.data?.location}</p>
-            <p>JobType: {data?.data?.jobType}</p>
-            <p>Joining Date: {data?.data?.joiningDate}</p>
-            <p>CTC: {data?.data?.salary}</p>
+            <p>Location: {data?.data?.location},</p>
+            <p>JobType: {data?.data?.jobType},</p>
+            <p>Joining Date: {data?.data?.joiningDate},</p>
+            <p>CTC: {data?.data?.salary},</p>
             <p>Experience: {data?.data?.experienceLevel}</p>
           </Flex>
           <br />
