@@ -16,13 +16,13 @@ const HomePageBanner = () => {
           xl={12}
           className={styles.bannerFirstCol}
         >
-          <p className={styles.bannerText} style={{ color: "#93aaec" }}>
+          <p className={styles.bannerText1} style={{ color: "#93aaec" }}>
             CareerConnect Hub FOR EMPLOYERS
           </p>
           <h1 className={styles.bannerTitle}>
             Find Your Next Job with CareerConnect Hub
           </h1>
-          <p className={styles.bannerText}>
+          <p className={styles.bannerText2}>
             No matter the skills, experience, or qualifications you’re looking
             for, you’ll find the right people on CareerConnect Hub’s matching
             and hiring platform.
