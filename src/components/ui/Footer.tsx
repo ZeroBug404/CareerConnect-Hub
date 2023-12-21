@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/components/ui/footer.module.css";
+import styles from "@/Styles/footer.module.css";
 import {
   FacebookFilled,
   LinkedinFilled,
