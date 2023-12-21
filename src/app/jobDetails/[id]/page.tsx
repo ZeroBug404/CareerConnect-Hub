@@ -11,6 +11,8 @@ const JobDetails = ({ params }: any) => {
           width: "100%",
           height: "100%",
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          border: "1px solid blue",
+          margin: " 20px"
         }}
       >
         <div
@@ -61,7 +63,15 @@ const JobDetails = ({ params }: any) => {
           <h4>Additional Information</h4>
           <h4>Number of openings</h4>
 
-          <Flex wrap="wrap" gap="small" justify="center" align="center">
+          <Flex
+            wrap="wrap"
+            gap="small"
+            justify="center"
+            align="center"
+            style={{
+              padding: "20px 0",
+            }}
+          >
             <Link href="/login">
               <Button type="primary">Apply Here</Button>
             </Link>
