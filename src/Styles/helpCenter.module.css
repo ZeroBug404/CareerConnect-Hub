@@ -31,3 +31,22 @@
  text-decoration: underline;
  color: #2557a4;
 }
+
+@media screen and (max-width: 768px) {
+  .helpCenter_main {
+    flex-direction: column;
+    
+  }
+  .helpCenter_right {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .helpCenter_main {
+    flex-direction: column;
+  }
+  .helpCenter_right {
+    width: 100vw;
+  }
+}

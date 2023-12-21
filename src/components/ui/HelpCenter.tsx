@@ -1,7 +1,7 @@
 "use client";
 
 import helpCenterImage from "@/assets/Help-Center.png";
-import styles from "@/components/ui/helpCenter.module.css";
+import styles from "@/Styles/helpCenter.module.css";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import Link from "next/link";
