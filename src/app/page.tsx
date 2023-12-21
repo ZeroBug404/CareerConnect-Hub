@@ -4,8 +4,7 @@ import HomeBlog from "@/components/ui/HomeBlog";
 import HomePageBanner from "@/components/ui/HomePageBanner";
 import Overview from "@/components/ui/Overview";
 
-
-export default function Home() {
+const HomePage = async() => {
   return (
     <main>
       <HomePageBanner></HomePageBanner>
@@ -15,6 +14,5 @@ export default function Home() {
       <HelpCenter />
     </main>
   );
-}
-
-
+};
+export default HomePage

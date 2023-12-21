@@ -1,93 +1,20 @@
-"use client";
-
 import { RiseOutlined } from "@ant-design/icons";
-import { Button, Card, Col, Row, Typography, Flex } from "antd";
+import { Button, Card, Col, Row, Flex } from "antd";
 import Search from "antd/es/input/Search";
 import Title from "antd/es/typography/Title";
 import Link from "next/link";
-import React, { useState } from "react";
-const { Text, Paragraph } = Typography;
 
-const JobFeed = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const jobData = [
+const JobFeed = async () => {
+  const res = await fetch(
+    "https://career-connect-hub-api.vercel.app/api/v1/jobs",
     {
-      _id: 1,
-      title: "Frontend Developer",
-      company: "VenU eLearning Solutions",
-      location: "Smyrna",
-      type: "Remote Full-time",
-      contract: "Contract",
-      ctc: "$80,000 - $100,000",
-      experience: "2-5 years",
-      joiningDate: "Immediate",
-    },
-    {
-      _id: 2,
-      title: "Backend Developer",
-      company: "Tech Innovations Inc.",
-      location: "San Francisco",
-      type: "On-site",
-      contract: "Full-time",
-      ctc: "$90,000 - $110,000",
-      experience: "3-7 years",
-      joiningDate: "2 weeks notice",
-    },
-    {
-      _id: 3,
-      title: "React Developer",
-      company: "Awesome Tech Co.",
-      location: "New York, NY",
-      type: "Remote Part-time",
-      contract: "Freelance",
-      ctc: "$70 - $90 per hour",
-      experience: "1-3 years",
-      joiningDate: "Flexible",
-    },
-    {
-      _id: 4,
-      title: "UI/UX Designer",
-      company: "Creative Designs Ltd.",
-      location: "Los Angeles",
-      type: "On-site",
-      contract: "Full-time",
-      ctc: "$85,000 - $110,000",
-      experience: "3-6 years",
-      joiningDate: "Immediate",
-    },
-    {
-      _id: 5,
-      title: "Data Scientist",
-      company: "Data Insights Corp.",
-      location: "Chicago",
-      type: "Remote",
-      contract: "Contract",
-      ctc: "$100,000 - $120,000",
-      experience: "4-8 years",
-      joiningDate: "1 month notice",
-    },
-    {
-      _id: 6,
-      title: "Mobile App Developer",
-      company: "Mobile Innovations Ltd.",
-      location: "Seattle",
-      type: "On-site",
-      contract: "Full-time",
-      ctc: "$95,000 - $115,000",
-      experience: "2-5 years",
-      joiningDate: "2 weeks notice",
-    },
-  ];
-
-  const filteredJobs = jobData.filter((job) =>
-    job.title.toLowerCase().includes(searchTerm.toLowerCase())
+      cache: "force-cache",
+      next: {
+        revalidate: 5,
+      },
+    }
   );
-
-  const handleSearch = (value: string) => {
-    setSearchTerm(value);
-    console.log("Search term:", value);
-  };
+  const data = await res.json();
 
   return (
     <div style={{ padding: "16px" }}>
@@ -105,7 +32,6 @@ const JobFeed = () => {
           placeholder="Search for jobs"
           enterButton="Search"
           size="large"
-          onSearch={handleSearch}
           style={{
             maxWidth: "500px",
             width: "100%",
@@ -119,17 +45,13 @@ const JobFeed = () => {
         }}
       >
         <h2>Job Feed</h2>
-        <Paragraph>
-          <Text strong>We are working on your personalized job feed.</Text>
-        </Paragraph>
-        <Paragraph>
-          In the meantime, run a search to find your next job
-        </Paragraph>
+        <h4>We are working on your personalized job feed.</h4>
+        <p>In the meantime, run a search to find your next job</p>
       </div>
 
       <Row gutter={[16, 24]}>
-        {filteredJobs.map((job, index) => (
-          <Col xs={24} sm={12} md={8} lg={8} key={index}>
+        {data?.data?.map((job: any) => (
+          <Col xs={24} sm={12} md={8} lg={8} key={job?._id}>
             <div
               style={{
                 width: "100%",
@@ -143,30 +65,22 @@ const JobFeed = () => {
                   color: "blue",
                 }}
               >
-                <RiseOutlined /> <Text strong>Active Hiring</Text>
+                <Flex wrap="wrap" gap="small">
+                  <RiseOutlined /> <p>Active Hiring</p>
+                </Flex>
               </div>
               <Card
                 title={<Title level={4}>{job.title}</Title>}
                 bordered={false}
               >
-                <Text strong>{job.company}</Text>
+                <h4>{job.company}</h4>
                 <br />
                 <Flex wrap="wrap" gap="small">
-                  <Text>Location: </Text>
-                  <Text>{job.location}</Text>
-                  <br />
-                  <Text>Type: </Text>
-                  <Text>{job.type}</Text>
-                  <Text> Start Date:</Text>
-                  <Text>{job.joiningDate}</Text>
-
-                  <Text>CTC: </Text>
-                  <Text>{job.ctc}</Text>
-
-                  <Text>Experience: </Text>
-                  <Text>{job.experience}</Text>
-                  <Text>Contract: </Text>
-                  <Text>{job.contract}</Text>
+                  <p>Location: {job.location},</p>
+                  <p>JobType: {job.jobType},</p>
+                  <p> Joining Date: {job.joiningDate},</p>
+                  <p>CTC: {job.salary},</p>
+                  <p>Experience: {job.experienceLevel}</p>
                 </Flex>
                 <br />
                 <Flex wrap="wrap" gap="small" justify="end" align="center">

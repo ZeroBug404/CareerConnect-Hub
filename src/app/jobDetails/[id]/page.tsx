@@ -3,7 +3,15 @@ import { Button, Card, Flex, List } from "antd";
 import Title from "antd/es/typography/Title";
 import Link from "next/link";
 
-const JobDetails = ({ params }: any) => {
+const JobDetails = async ({ params }: any) => {
+  const res = await fetch(
+    `https://career-connect-hub-api.vercel.app/api/v1/jobs/${params.id}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const data = await res.json();
+
   return (
     <Flex>
       <div
@@ -12,7 +20,7 @@ const JobDetails = ({ params }: any) => {
           height: "100%",
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           border: "1px solid blue",
-          margin: " 20px"
+          margin: " 20px",
         }}
       >
         <div
@@ -21,47 +29,52 @@ const JobDetails = ({ params }: any) => {
             color: "blue",
           }}
         >
-          <RiseOutlined />
+          <Flex wrap="wrap" gap="small">
+            <RiseOutlined /> <p>Active Hiring</p>
+          </Flex>
         </div>
-        <Card title={<Title level={4}>Developer</Title>} bordered={false}>
-          <p>Company Name: </p>
+        <Card
+          title={<Title level={4}>{data?.data?.title}</Title>}
+          bordered={false}
+        >
+          <h3>{data?.data?.company}</h3>
           <br />
           <Flex wrap="wrap" gap="small">
-            <p>Location: </p>
-            <p>Type: </p>
-            <p>Start Date: </p>
+            <p>Location: {data?.data?.location}</p>
+            <p>JobType: {data?.data?.jobType}</p>
+            <p>Joining Date: {data?.data?.joiningDate}</p>
+            <p>CTC: {data?.data?.salary}</p>
+            <p>Experience: {data?.data?.experienceLevel}</p>
           </Flex>
           <br />
-          <h4>About company name</h4>
-          <p>
-            Brilliance Academy has been founded by Amandeep. Amandeeps mission
-            is to empower experts, coaches, speakers, and trainers to
-            communicate their skills effectively. He is a speaker, an
-            international trainer, an author, and a public speaking coach.
-            A-Man-Deep manifests that Humans are born with Brilliance. In light
-            of this, he has created a unique system with his charm and proven
-            ability to train people to discover their brilliance and live their
-            lives to the fullest. He has touched more than 1,00,000+ lives by
-            designing the life of their dream.
-          </p>
-          <h4>About Job</h4>
-          <p>
-            The ideal candidate possesses a passion for social media management
-            & growth and an innovative ability to create successful marketing
-            campaigns and aid in creating company growth. You will be
-            responsible for generating exciting and compelling stories on
-            digital sources of media. <br /> <br /> Key responsibilities:
-          </p>
-
-          <List>Bachelors degree in marketing or relevant work experience</List>
-          <List>Bachelors degree in marketing or relevant work experience</List>
-          <List>Bachelors degree in marketing or relevant work experience</List>
-          <List>Bachelors degree in marketing or relevant work experience</List>
-
-          <h4>Skill(s) required</h4>
-          <h4>Salary</h4>
-          <h4>Additional Information</h4>
-          <h4>Number of openings</h4>
+          <div>
+            <h4>About {data?.data?.company}</h4>
+            <p>{data?.data?.companyDescription}</p>
+          </div>
+          <div>
+            <h4>About Job</h4>
+            <p>{data?.data?.jobDescription}</p>
+          </div>
+          <div>
+            <h4>Key responsibilities:</h4>
+            <List>{data?.data?.keyResponsibilities}</List>
+          </div>
+          <div>
+            <h4>Skill(s) required</h4>
+            <p>{data?.data?.skills}</p>
+          </div>
+          <div>
+            <h4>Salary</h4>
+            <p>{data?.data?.salary}</p>
+          </div>
+          <div>
+            <h4>Additional Information</h4>
+            <p>{data?.data?.benefits}</p>
+          </div>
+          <div>
+            <h4>Number of openings</h4>
+            <p>{data?.data?.numberOfOpenings}</p>
+          </div>
 
           <Flex
             wrap="wrap"
@@ -73,7 +86,7 @@ const JobDetails = ({ params }: any) => {
             }}
           >
             <Link href="/login">
-              <Button type="primary">Apply Here</Button>
+              <Button type="primary">Apply Now</Button>
             </Link>
           </Flex>
         </Card>
