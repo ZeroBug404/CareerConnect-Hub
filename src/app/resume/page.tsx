@@ -1,9 +1,10 @@
-import PersonalInfo from "@/components/Resume/PersonalInfo";
-import Training from "@/components/Resume/Training";
+
 import Education from "@/components/Resume/education";
 import JobResponsibilities from "@/components/Resume/jobResponsibilities";
+import PersonalInfo from "@/components/Resume/personalInfo";
 import Portfolio from "@/components/Resume/portfolio";
 import Projects from "@/components/Resume/projects";
+import Training from "@/components/Resume/training";
 import WorkExperience from "@/components/Resume/workExperience";
 
 const ResumePage = () => {

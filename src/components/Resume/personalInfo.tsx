@@ -1,3 +1,5 @@
+import { Button } from "antd";
+
 const PersonalInfo = () => {
   return (
     <div
@@ -14,7 +16,7 @@ const PersonalInfo = () => {
         <p>contact</p>
         <p>location</p>
       </div>
-      <div>Download</div>
+      <Button type="primary">Download</Button>
     </div>
   );
 };
