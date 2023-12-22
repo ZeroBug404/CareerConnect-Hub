@@ -1,26 +1,24 @@
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 
-const Projects = () => {
+const AdditionalDetails = () => {
   return (
     <Flex
       wrap="wrap"
       gap="small"
       justify="space-between"
       style={{
-        borderBottom: "1px solid black",
         padding: "10px 0",
       }}
     >
       <div>
-        <p>ACADEMICS / <br /> PERSONAL PROJECTS</p>
+        <p>ACCOMPLISHMENTS /<br /> ADDITIONAL DETAILS</p>
       </div>
       <div>
-        <h4>Project Name</h4>
-        <p>Link</p>
+        <p>Designing</p>
         <Button type="link">
           <PlusOutlined />
-          Add academic / personal projects
+          Add accomplishment/ additional detail
         </Button>
       </div>
       <Flex wrap="wrap" gap="middle" justify="end" align="start">
@@ -31,4 +29,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default AdditionalDetails;

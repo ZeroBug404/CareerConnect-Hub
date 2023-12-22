@@ -13,7 +13,7 @@ const JobResponsibilities = () => {
       }}
     >
       <div>
-        <p>POSITIONS OF RESPONSIBILITY</p>
+        <p>POSITIONS OF <br /> RESPONSIBILITY</p>
       </div>
       <div>
         <p>Designing</p>

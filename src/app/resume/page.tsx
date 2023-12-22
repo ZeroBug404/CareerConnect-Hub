@@ -1,9 +1,10 @@
-
+import AdditionalDetails from "@/components/Resume/additionalDetails";
 import Education from "@/components/Resume/education";
 import JobResponsibilities from "@/components/Resume/jobResponsibilities";
 import PersonalInfo from "@/components/Resume/personalInfo";
 import Portfolio from "@/components/Resume/portfolio";
 import Projects from "@/components/Resume/projects";
+import Skills from "@/components/Resume/skills";
 import Training from "@/components/Resume/training";
 import WorkExperience from "@/components/Resume/workExperience";
 
@@ -29,9 +30,11 @@ const ResumePage = () => {
         <Education />
         <WorkExperience />
         <JobResponsibilities />
-        <Training/>
-        <Projects/>
-        <Portfolio/>
+        <Training />
+        <Projects />
+        <Skills />
+        <Portfolio />
+        <AdditionalDetails />
       </div>
     </div>
   );

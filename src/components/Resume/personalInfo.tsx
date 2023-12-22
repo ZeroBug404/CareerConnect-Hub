@@ -1,3 +1,4 @@
+import { DownloadOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 
 const PersonalInfo = () => {
@@ -17,7 +18,7 @@ const PersonalInfo = () => {
         <p>contact</p>
         <p>location</p>
       </div>
-      <Button type="primary">Download</Button>
+      <Button type="link" icon={<DownloadOutlined />}>Download</Button>
     </Flex>
   );
 };
