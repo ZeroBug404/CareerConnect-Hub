@@ -19,4 +19,5 @@ export interface IJobData {
   numberOfOpenings: string;
   createdAt: string;
   updatedAt: string;
+  __v: number;
 }

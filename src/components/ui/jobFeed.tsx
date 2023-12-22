@@ -1,3 +1,4 @@
+import { IJobData } from "@/types";
 import { RiseOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Row, Flex } from "antd";
 import Search from "antd/es/input/Search";
@@ -48,7 +49,28 @@ const JobFeed = async () => {
         <h4>We are working on your personalized job feed.</h4>
         <p>In the meantime, run a search to find your next job</p>
       </div>
-
+      <div>
+        {data?.data?.map((job: IJobData) => (
+          <div
+            key={job?._id}
+            style={{
+              width: "100%",
+              height: "100%",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              padding: "20px",
+            }}
+          >
+            <h4>{job.title}</h4>
+            <br />
+            <h5>{job?.company}</h5>
+            <p>Location: {job?.location},</p>
+            <p>JobType: {job?.jobType},</p>
+            <p> Joining Date: {job?.joiningDate},</p>
+            <p>CTC: {job?.salary},</p>
+            <p>Experience: {job?.experienceLevel}</p>
+          </div>
+        ))}
+      </div>
       {/* <Row gutter={[16, 24]}>
         {data?.data?.map((job: any) => (
           <Col xs={24} sm={12} md={8} lg={8} key={job?._id}>
