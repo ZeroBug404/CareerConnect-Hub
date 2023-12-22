@@ -1,30 +1,33 @@
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Flex } from "antd";
 
 const Portfolio = () => {
   return (
-    <div
+    <Flex
+      wrap="wrap"
+      gap="small"
+      justify="space-between"
       style={{
-        display: "flex",
-        justifyContent: "space-between",
+        borderBottom: "1px solid black",
         padding: "10px 0",
       }}
     >
       <div>
-        <p>portfolio/ work sample</p>
+        <p>PORTFOLIO/ WORK SAMPLES</p>
       </div>
       <div>
-        <h4>Project Name</h4>
+        <h4>GitHub profile</h4>
         <p>Link</p>
-        <p>
+        <Button type="link">
           <PlusOutlined />
-          Add academic / personal projects
-        </p>
+          Add portfolio/ work sample
+        </Button>
       </div>
-      <div>
+      <Flex wrap="wrap" gap="middle" justify="end" align="start">
         <EditOutlined />
         <DeleteOutlined />
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 };
 

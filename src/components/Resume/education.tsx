@@ -1,29 +1,34 @@
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Flex } from "antd";
 
 const Education = () => {
   return (
-    <div
+    <Flex
+      wrap="wrap"
+      gap="small"
+      justify="space-between"
       style={{
-        display: "flex",
-        justifyContent: "space-between",
         borderBottom: "1px solid black",
         padding: "10px 0",
       }}
     >
+      <p>EDUCATION</p>
       <div>
-        <p>Education</p>
-      </div>
-      <div>
+        <div>
         <h4>Department</h4>
         <p>Institute</p>
         <p>year</p>
-        <p><PlusOutlined />Add Education</p>
+        <Button type="link">
+          <PlusOutlined />
+          Add Education
+        </Button>
+        </div>
       </div>
-      <div>
+      <Flex wrap="wrap" gap="middle" justify="end" align="start">
         <EditOutlined />
         <DeleteOutlined />
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 };
 

@@ -1,31 +1,32 @@
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import React from "react";
+import { Button, Flex } from "antd";
 
 const JobResponsibilities = () => {
   return (
-    <div
+    <Flex
+      wrap="wrap"
+      gap="small"
+      justify="space-between"
       style={{
-        display: "flex",
-        justifyContent: "space-between",
         borderBottom: "1px solid black",
         padding: "10px 0",
       }}
     >
       <div>
-        <p>position of responsibility</p>
+        <p>POSITIONS OF RESPONSIBILITY</p>
       </div>
       <div>
         <p>Designing</p>
-        <p>
+        <Button type="link">
           <PlusOutlined />
           Add position of responsibility
-        </p>
+        </Button>
       </div>
-      <div>
+      <Flex wrap="wrap" gap="middle" justify="end" align="start">
         <EditOutlined />
         <DeleteOutlined />
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 };
 

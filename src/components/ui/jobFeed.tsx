@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-async-client-component */
 "use client";
 
+import { IJobData } from "@/types";
 import { RiseOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Row, Flex } from "antd";
 import Search from "antd/es/input/Search";
@@ -52,7 +53,7 @@ const JobFeed = async () => {
       </div>
 
       <Row gutter={[16, 24]}>
-        {data?.map((job: any) => (
+        {data?.map((job: IJobData) => (
           <Col xs={24} sm={12} md={8} lg={8} key={job?._id}>
             <div
               style={{

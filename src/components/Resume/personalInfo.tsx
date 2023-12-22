@@ -1,11 +1,12 @@
-import { Button } from "antd";
+import { Button, Flex } from "antd";
 
 const PersonalInfo = () => {
   return (
-    <div
+    <Flex
+      wrap="wrap"
+      gap="small"
+      justify="space-between"
       style={{
-        display: "flex",
-        justifyContent: "space-between",
         borderBottom: "1px solid black",
         paddingBottom: "10px",
       }}
@@ -17,7 +18,7 @@ const PersonalInfo = () => {
         <p>location</p>
       </div>
       <Button type="primary">Download</Button>
-    </div>
+    </Flex>
   );
 };
 

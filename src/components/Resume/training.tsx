@@ -1,8 +1,9 @@
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Flex } from "antd";
 
 const Training = () => {
   return (
-    <div
+    <Flex
       style={{
         display: "flex",
         justifyContent: "space-between",
@@ -11,21 +12,21 @@ const Training = () => {
       }}
     >
       <div>
-        <p>Training/Courses</p>
+        <p>TRAININGS/ COURSES</p>
       </div>
       <div>
         <h4>Web dev</h4>
         <p>Dec 2022 - Dec 2023</p>
-        <p>
+        <Button type="link">
           <PlusOutlined />
-          Add training / courses
-        </p>
+          Add training/ course
+        </Button>
       </div>
-      <div>
+      <Flex wrap="wrap" gap="middle" justify="end" align="start">
         <EditOutlined />
         <DeleteOutlined />
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 };
 
