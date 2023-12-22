@@ -1,7 +1,6 @@
 import { RiseOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Row, Flex } from "antd";
 import Search from "antd/es/input/Search";
-import Title from "antd/es/typography/Title";
 import Link from "next/link";
 
 const JobFeed = async () => {
@@ -15,6 +14,7 @@ const JobFeed = async () => {
     }
   );
   const data = await res.json();
+  console.log(data?.data);
 
   return (
     <div style={{ padding: "16px" }}>
@@ -49,7 +49,7 @@ const JobFeed = async () => {
         <p>In the meantime, run a search to find your next job</p>
       </div>
 
-      <Row gutter={[16, 24]}>
+      {/* <Row gutter={[16, 24]}>
         {data?.data?.map((job: any) => (
           <Col xs={24} sm={12} md={8} lg={8} key={job?._id}>
             <div
@@ -87,7 +87,7 @@ const JobFeed = async () => {
             </div>
           </Col>
         ))}
-      </Row>
+      </Row> */}
     </div>
   );
 };
