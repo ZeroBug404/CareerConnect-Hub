@@ -26,7 +26,7 @@ const JobLists = async (props: any) => {
   };
 
   return (
-    <div style={{ padding: "16px" }} className={styles.JobDetailView_div_main}>
+    <div style={{ padding: "16px" }} className={styles.JobLists_div_main}>
       <Row gutter={[16, 24]}>
         {data?.map((job: any, index: number) => (
           <Col
