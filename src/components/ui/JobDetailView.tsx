@@ -1,11 +1,13 @@
+import styles from "@/Styles/JobList.module.css";
 import { RiseOutlined } from "@ant-design/icons";
 import { Button, Card, Flex, List } from "antd";
 import Title from "antd/es/typography/Title";
 import Link from "next/link";
 
-const JobDetails = async ({ params }: any) => {
+const JobDetailView = async (props: any) => {
+  const { selectedID } = props;
   const res = await fetch(
-    `https://career-connect-hub-api.vercel.app/api/v1/jobs/${params.id}`,
+    `https://career-connect-hub-api.vercel.app/api/v1/jobs/${selectedID}`,
     {
       cache: "no-store",
     }
@@ -13,20 +15,21 @@ const JobDetails = async ({ params }: any) => {
   const data = await res.json();
 
   return (
-    <Flex>
+    <Flex className={styles.JobDetailView_div_main}>
       <div
         style={{
           width: "100%",
           height: "100%",
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          border: "1px solid blue",
+          border: "1px solid #104278",
           margin: " 20px",
+          borderRadius: "10px",
         }}
       >
         <div
           style={{
             padding: "10px",
-            color: "blue",
+            color: "#104278",
           }}
         >
           <Flex wrap="wrap" gap="small">
@@ -95,4 +98,4 @@ const JobDetails = async ({ params }: any) => {
   );
 };
 
-export default JobDetails;
+export default JobDetailView;

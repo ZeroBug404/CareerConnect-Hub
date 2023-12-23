@@ -1,0 +1,14 @@
+.JobList_div_main {
+    display: flex;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding: 10px 0;
+    justify-content: space-between
+}
+
+.JobLists_div_main {
+    width: 100%;
+}
+.JobDetailView_div_main {
+    width: 100%;
+}
