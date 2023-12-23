@@ -15,26 +15,26 @@ const Skills = () => {
       <div>
         <p>Skills</p>
       </div>
-      <div>
-        <Flex wrap="wrap" gap="middle" justify="end" align="start">
-          <div>
-            <h4>Skills Name</h4>
-            <p>Intermediate</p>
-          </div>
-          <Flex wrap="wrap" gap="middle" justify="center" align="center">
-            <EditOutlined />
-            <DeleteOutlined />
+      <div style={{ width: "50%" }}>
+        <div>
+          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
+            <div>
+              <h4>React</h4>
+              <p>Intermediate</p>
+            </div>
+            <Flex wrap="wrap" gap="middle" justify="end" align="start">
+              <EditOutlined />
+              <DeleteOutlined />
+            </Flex>
           </Flex>
-        </Flex>
-        <Button type="link">
-          <PlusOutlined />
-          Add skill
-        </Button>
+        </div>
+        <div>
+          <Button type="link">
+            <PlusOutlined />
+            Add skill
+          </Button>
+        </div>
       </div>
-      <Flex wrap="wrap" gap="middle" justify="end" align="start">
-        <EditOutlined />
-        <DeleteOutlined />
-      </Flex>
     </Flex>
   );
 };

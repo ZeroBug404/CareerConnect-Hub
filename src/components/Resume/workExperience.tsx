@@ -17,25 +17,34 @@ const WorkExperience = () => {
           <p>WORK EXPERIENCE</p>
           <p>year</p>
         </div>
-        <div>
-          <h4>Frontend dev</h4>
-          <p>NY, Remote</p>
-          <p>
-            Job <span>Dec 2022 - Dec 2023</span>
-          </p>
-          <Button type="link">
-            <PlusOutlined />
-            Add Job
-          </Button>
-          <Button type="link">
-            <PlusOutlined />
-            Add Internship
-          </Button>
+        <div style={{ width: "50%" }}>
+          <div>
+            <Flex
+              wrap="wrap"
+              gap="middle"
+              justify="space-between"
+              align="start"
+            >
+              <div>
+                <h4>Frontend dev</h4>
+                <p>NY, Remote</p>
+                <p>
+                  Job <span>Dec 2022 - Dec 2023</span>
+                </p>
+              </div>
+              <Flex wrap="wrap" gap="middle" justify="end" align="start">
+                <EditOutlined />
+                <DeleteOutlined />
+              </Flex>
+            </Flex>
+          </div>
+          <div>
+            <Button type="link">
+              <PlusOutlined />
+              Add Job
+            </Button>
+          </div>
         </div>
-        <Flex wrap="wrap" gap="middle" justify="end" align="start">
-          <EditOutlined />
-          <DeleteOutlined />
-        </Flex>
       </Flex>
     </>
   );

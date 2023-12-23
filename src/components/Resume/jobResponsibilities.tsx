@@ -13,19 +13,25 @@ const JobResponsibilities = () => {
       }}
     >
       <div>
-        <p>POSITIONS OF <br /> RESPONSIBILITY</p>
+        <p>
+          POSITIONS OF <br /> RESPONSIBILITY
+        </p>
       </div>
-      <div>
-        <p>Designing</p>
+      <div style={{ width: "50%" }}>
+        <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
+          <div>
+            <p>Designing</p>
+          </div>
+          <Flex wrap="wrap" gap="middle" justify="end" align="start">
+            <EditOutlined />
+            <DeleteOutlined />
+          </Flex>
+        </Flex>
         <Button type="link">
           <PlusOutlined />
           Add position of responsibility
         </Button>
       </div>
-      <Flex wrap="wrap" gap="middle" justify="end" align="start">
-        <EditOutlined />
-        <DeleteOutlined />
-      </Flex>
     </Flex>
   );
 };

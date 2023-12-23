@@ -13,21 +13,27 @@ const Education = () => {
       }}
     >
       <p>EDUCATION</p>
-      <div>
+      <div style={{width: "50%"}}>
         <div>
-        <h4>Department</h4>
-        <p>Institute</p>
-        <p>year</p>
-        <Button type="link">
-          <PlusOutlined />
-          Add Education
-        </Button>
+          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
+            <div>
+              <h4>Department</h4>
+              <p>Institute</p>
+              <p>year</p>
+            </div>
+            <Flex wrap="wrap" gap="middle" justify="end" align="start">
+              <EditOutlined />
+              <DeleteOutlined />
+            </Flex>
+          </Flex>
+        </div>
+        <div>
+          <Button type="link">
+            <PlusOutlined />
+            Add Education
+          </Button>
         </div>
       </div>
-      <Flex wrap="wrap" gap="middle" justify="end" align="start">
-        <EditOutlined />
-        <DeleteOutlined />
-      </Flex>
     </Flex>
   );
 };

@@ -13,20 +13,30 @@ const Projects = () => {
       }}
     >
       <div>
-        <p>ACADEMICS / <br /> PERSONAL PROJECTS</p>
+        <p>
+          ACADEMICS / <br /> PERSONAL PROJECTS
+        </p>
       </div>
-      <div>
-        <h4>Project Name</h4>
-        <p>Link</p>
-        <Button type="link">
-          <PlusOutlined />
-          Add academic / personal projects
-        </Button>
+      <div style={{ width: "50%" }}>
+        <div>
+          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
+            <div>
+              <h4>Web dev</h4>
+              <p>Dec 2022 - Dec 2023</p>
+            </div>
+            <Flex wrap="wrap" gap="middle" justify="end" align="start">
+              <EditOutlined />
+              <DeleteOutlined />
+            </Flex>
+          </Flex>
+        </div>
+        <div>
+          <Button type="link">
+            <PlusOutlined />
+            Add training/ course
+          </Button>
+        </div>
       </div>
-      <Flex wrap="wrap" gap="middle" justify="end" align="start">
-        <EditOutlined />
-        <DeleteOutlined />
-      </Flex>
     </Flex>
   );
 };

@@ -15,18 +15,26 @@ const Portfolio = () => {
       <div>
         <p>PORTFOLIO/ WORK SAMPLES</p>
       </div>
-      <div>
-        <h4>GitHub profile</h4>
-        <p>Link</p>
-        <Button type="link">
-          <PlusOutlined />
-          Add portfolio/ work sample
-        </Button>
+      <div style={{ width: "50%" }}>
+        <div>
+          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
+            <div>
+              <h4>Github</h4>
+              <p>link</p>
+            </div>
+            <Flex wrap="wrap" gap="middle" justify="end" align="start">
+              <EditOutlined />
+              <DeleteOutlined />
+            </Flex>
+          </Flex>
+        </div>
+        <div>
+          <Button type="link">
+            <PlusOutlined />
+            Add Portfolio
+          </Button>
+        </div>
       </div>
-      <Flex wrap="wrap" gap="middle" justify="end" align="start">
-        <EditOutlined />
-        <DeleteOutlined />
-      </Flex>
     </Flex>
   );
 };

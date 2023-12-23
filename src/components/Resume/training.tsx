@@ -14,18 +14,26 @@ const Training = () => {
       <div>
         <p>TRAININGS/ COURSES</p>
       </div>
-      <div>
-        <h4>Web dev</h4>
-        <p>Dec 2022 - Dec 2023</p>
-        <Button type="link">
-          <PlusOutlined />
-          Add training/ course
-        </Button>
+      <div style={{ width: "50%" }}>
+        <div>
+          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
+            <div>
+              <h4>Web dev</h4>
+              <p>Dec 2022 - Dec 2023</p>
+            </div>
+            <Flex wrap="wrap" gap="middle" justify="end" align="start">
+              <EditOutlined />
+              <DeleteOutlined />
+            </Flex>
+          </Flex>
+        </div>
+        <div>
+          <Button type="link">
+            <PlusOutlined />
+            Add training/ course
+          </Button>
+        </div>
       </div>
-      <Flex wrap="wrap" gap="middle" justify="end" align="start">
-        <EditOutlined />
-        <DeleteOutlined />
-      </Flex>
     </Flex>
   );
 };

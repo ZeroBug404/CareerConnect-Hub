@@ -12,19 +12,29 @@ const AdditionalDetails = () => {
       }}
     >
       <div>
-        <p>ACCOMPLISHMENTS /<br /> ADDITIONAL DETAILS</p>
+        <p>
+          ACCOMPLISHMENTS /<br /> ADDITIONAL DETAILS
+        </p>
       </div>
-      <div>
-        <p>Designing</p>
-        <Button type="link">
-          <PlusOutlined />
-          Add accomplishment/ additional detail
-        </Button>
+      <div style={{ width: "50%" }}>
+        <div>
+          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
+            <div>
+              <p>Design</p>
+            </div>
+            <Flex wrap="wrap" gap="middle" justify="end" align="start">
+              <EditOutlined />
+              <DeleteOutlined />
+            </Flex>
+          </Flex>
+        </div>
+        <div>
+          <Button type="link">
+            <PlusOutlined />
+            Add accomplishment/ additional detail
+          </Button>
+        </div>
       </div>
-      <Flex wrap="wrap" gap="middle" justify="end" align="start">
-        <EditOutlined />
-        <DeleteOutlined />
-      </Flex>
     </Flex>
   );
 };
