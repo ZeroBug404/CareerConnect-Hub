@@ -10,7 +10,9 @@ import Search from "antd/es/input/Search";
 const JobList = () => {
   const [selectedID, setSelectedID] = useState(0);
   return (
-    <div>
+    <div style={{
+        marginBottom: "2vw",
+      }}>
         <div
         style={{
           display: "flex",
