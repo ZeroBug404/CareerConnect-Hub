@@ -4,9 +4,10 @@ import { Button, Flex } from "antd";
 const Training = () => {
   return (
     <Flex
+      wrap="wrap"
+      gap="small"
+      justify="space-between"
       style={{
-        display: "flex",
-        justifyContent: "space-between",
         borderBottom: "1px solid black",
         padding: "10px 0",
       }}

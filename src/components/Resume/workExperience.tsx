@@ -3,7 +3,6 @@ import { Button, Flex } from "antd";
 
 const WorkExperience = () => {
   return (
-    <>
       <Flex
         wrap="wrap"
         gap="small"
@@ -46,7 +45,6 @@ const WorkExperience = () => {
           </div>
         </div>
       </Flex>
-    </>
   );
 };
 

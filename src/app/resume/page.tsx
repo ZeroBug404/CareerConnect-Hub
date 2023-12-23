@@ -7,18 +7,45 @@ import Projects from "@/components/Resume/projects";
 import Skills from "@/components/Resume/skills";
 import Training from "@/components/Resume/training";
 import WorkExperience from "@/components/Resume/workExperience";
+import {
+  ArrowLeftOutlined,
+  ExclamationCircleOutlined,
+} from "@ant-design/icons";
+import Link from "next/link";
 
 const ResumePage = () => {
   return (
     <div>
-      <h1
+      <div
         style={{
-          textAlign: "center",
-          padding: "20px 0",
+          margin: "32px",
+          color: "blue"
         }}
       >
-        Resume
-      </h1>
+        <Link href="/">
+          <ArrowLeftOutlined /> Back
+        </Link>
+      </div>
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "50px",
+        }}
+      >
+        <h1>Resume</h1>
+        <p
+          style={{
+            padding: "20px 0",
+            backgroundColor: "#FFFAEB",
+            margin: "16px 32px",
+            color: "#975E12",
+          }}
+        >
+          <ExclamationCircleOutlined />
+          Whenever you apply to an internship or fresher job, this is the resume
+          that the employer will see. Always make sure it is up to date.
+        </p>
+      </div>
       <div
         style={{
           border: "1px solid black",
