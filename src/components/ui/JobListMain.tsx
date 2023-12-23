@@ -8,7 +8,7 @@ import { useState } from "react";
 import Search from "antd/es/input/Search";
 
 const JobListMain = async () => {
-  const [selectedID, setSelectedID] = useState(0);
+  const [selectedID, setSelectedID] = useState(null);
   return (
     <div style={{
         marginBottom: "2vw",
