@@ -5,14 +5,13 @@ import NavBar from "@/components/ui/NavBar";
 const Login = () => {
   return (
     <>
-    <NavBar />
       <div
-      style={{
-        backgroundColor: "#f3f2f1",
-      }}
-    >
-      <LoginPage />
-    </div>
+        style={{
+          backgroundColor: "#f3f2f1",
+        }}
+      >
+        <LoginPage />
+      </div>
     </>
   );
 };
