@@ -21,8 +21,8 @@ const Projects = () => {
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
             <div>
-              <h4>Web dev</h4>
-              <p>Dec 2022 - Dec 2023</p>
+              <h4>Project name</h4>
+              <p>Link</p>
             </div>
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
               <EditOutlined />
