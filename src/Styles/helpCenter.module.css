@@ -10,6 +10,7 @@
 .helpCenter_left {
   padding-right: 7vw;
 }
+
 .helpCenter_left h2 {
   font-size: 28px;
   font-weight: 600;
@@ -29,4 +30,23 @@
 .helpCenter_left_link span:hover {
  text-decoration: underline;
  color: #2557a4;
+}
+
+@media screen and (max-width: 768px) {
+  .helpCenter_main {
+    flex-direction: column;
+    
+  }
+  .helpCenter_right {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .helpCenter_main {
+    flex-direction: column;
+  }
+  .helpCenter_right {
+    width: 100vw;
+  }
 }
