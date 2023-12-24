@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Form, Input } from "antd";
 
 const HomePageModal = () => {

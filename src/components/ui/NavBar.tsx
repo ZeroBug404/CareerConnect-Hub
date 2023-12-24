@@ -82,6 +82,10 @@ const NavMenu = ({ isInline = false }) => {
           label: "Blog",
           key: "blog",
         },
+        {
+          label: "Career Services",
+          key: "career-services",
+        },
       ]}
     ></Menu>
   );
