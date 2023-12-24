@@ -1,6 +1,5 @@
 import { RiseOutlined } from "@ant-design/icons";
 import { Button, Card, Flex, List } from "antd";
-import Title from "antd/es/typography/Title";
 import Link from "next/link";
 
 const JobDetails = async ({ params }: any) => {
@@ -34,7 +33,7 @@ const JobDetails = async ({ params }: any) => {
           </Flex>
         </div>
         <Card
-          title={<Title level={4}>{data?.data?.title}</Title>}
+          title={data?.data?.title}
           bordered={false}
         >
           <h3>{data?.data?.company}</h3>
