@@ -5,7 +5,7 @@ import Form from "@/components/Forms/Form";
 import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import { Button, Flex } from "antd";
+import { Button, Col, Flex, Row } from "antd";
 
 const CreateJob = () => {
   const onSubmit = async (data: any) => {
@@ -26,162 +26,137 @@ const CreateJob = () => {
       }}
     >
       <Form submitHandler={onSubmit}>
-        <h2 style={{ textAlign: "center", margin: "20px 0", color: "#1677FF", padding: "20px 0" }}>Create a job</h2>
+        <h2
+          style={{
+            textAlign: "center",
+            margin: "20px 0",
+            color: "#1677FF",
+            padding: "20px 0",
+          }}
+        >
+          Create a job
+        </h2>
+
         <div style={{ width: "100%" }}>
-          <Flex
-            gap="small"
-            justify="center"
-            wrap="wrap"
-            style={{ margin: "10px 0" }}
-          >
-            <div>
+          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
               <FormInput name="title" type="text" size="large" label="Title" />
-            </div>
-            <div>
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
               <FormInput
                 name="company"
                 type="text"
                 size="large"
                 label="Company"
               />
-            </div>
-            <div>
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
               <FormInput
                 name="location"
                 type="text"
                 size="large"
                 label="Location"
               />
-            </div>
-          </Flex>
-          <Flex
-            gap="small"
-            justify="center"
-            wrap="wrap"
-            style={{ margin: "10px 0" }}
-          >
-            <div>
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
               <FormInput
                 name="category"
                 type="text"
                 size="large"
                 label="Category"
               />
-            </div>
-            <div>
-              <FormInput
-                name="jobType"
-                type="text"
-                size="large"
-                label="Job Type"
-              />
-            </div>
-            <div>
-              <FormInput
-                name="salary"
-                type="number"
-                size="large"
-                label="Salary"
-              />
-            </div>
-          </Flex>
-          <Flex
-            gap="small"
-            justify="center"
-            wrap="wrap"
-            style={{ margin: "10px 0" }}
-          >
-            <div>
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
               <FormInput
                 name="experienceLevel"
                 type="text"
                 size="large"
                 label="Experience Level"
               />
-            </div>
-            <div>
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
               <FormInput
                 name="skills"
                 type="text"
                 size="large"
                 label="Skills"
               />
-            </div>
-            <div>
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
               <FormInput
                 name="benefits"
                 type="text"
                 size="large"
                 label="Benefits"
               />
-            </div>
-          </Flex>
-          <Flex
-            gap="small"
-            justify="center"
-            wrap="wrap"
-            style={{ margin: "10px 0" }}
-          >
-            <div>
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+              <FormInput
+                name="jobType"
+                type="text"
+                size="large"
+                label="Job Type"
+              />
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+              <FormInput
+                name="salary"
+                type="number"
+                size="large"
+                label="Salary"
+              />
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
               <FormInput
                 name="contactEmail"
                 type="email"
                 size="large"
                 label="Contact Email"
               />
-            </div>
-            <div>
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+              <FormDatePicker name="joiningDate" label="Joining Date" />
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+              <FormDatePicker name="deadline" label="Deadline" />
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
               <FormInput
                 name="numberOfOpenings"
                 type="number"
                 size="large"
                 label="Number Of Openings"
               />
-            </div>
-          </Flex>
-          <Flex
-            gap="small"
-            justify="center"
-            wrap="wrap"
-            style={{ margin: "10px 0" }}
-          >
-            <FormDatePicker name="joiningDate" label="Joining Date" />
-            <FormDatePicker name="deadline" label="Deadline" />
-          </Flex>
-          <Flex
-            gap="small"
-            justify="center"
-            wrap="wrap"
-            style={{ margin: "10px 0" }}
-          >
-            <FormTextArea
-              name="companyDescription"
-              label="companyDescription"
-              rows={4}
-            />
-            <FormTextArea
-              name="jobDescription"
-              label="Job Description"
-              rows={4}
-            />
-          </Flex>
-          <Flex
-            gap="small"
-            justify="center"
-            wrap="wrap"
-            style={{ margin: "10px 0" }}
-          >
-            <FormTextArea name="requirements" label="requirements" rows={4} />
-            <FormTextArea
-              name="keyResponsibilities"
-              label="Key Responsibilities"
-              rows={4}
-            />
-          </Flex>
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+              <FormTextArea
+                name="companyDescription"
+                label="companyDescription"
+                rows={4}
+              />
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+              <FormTextArea
+                name="jobDescription"
+                label="Job Description"
+                rows={4}
+              />
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+              <FormTextArea name="requirements" label="requirements" rows={4} />
+            </Col>
+            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+              <FormTextArea
+                name="keyResponsibilities"
+                label="Key Responsibilities"
+                rows={4}
+              />
+            </Col>
+          </Row>
         </div>
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", margin: "20px 0" }}>
           <Button
-            style={{ width: "50%" }}
+            style={{ width: "100%" }}
             type="primary"
             htmlType="submit"
             size="large"
