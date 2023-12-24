@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CareerConnect Hub Project Overview
 
-## Getting Started
+## TechTitans Team
+- **Leader:** M. Rafiul Alam
+- **Co-Leader:** Shimu Mallick
+- **Members:** M. Rafiul Alam, Shimu Mallick, Md. Mariful Islam Maruf, Shapna Akter, S.M. Rabbi Reza
 
-First, run the development server:
+## Project Name: CareerConnect Hub
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technology Stack
+- **Frontend:** Next.js, Ant Design, Raw CSS, NextAuth
+- **Backend:** Express.js, MongoDB, Mongoose, Zod, JWT Token
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Goal
+Revolutionize the job and internship search experience, connecting talented individuals with meaningful opportunities. Create a dynamic and user-friendly platform simplifying the hiring process for employers and empowering job seekers to find the right career path.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### For Job Seekers:
 
-## Learn More
+- **Create and Manage Profiles:**
+  Job seekers can manage their profiles with personal information, work experience, education, and skills.
 
-To learn more about Next.js, take a look at the following resources:
+- **Search and Apply for Jobs:**
+  Users can search for jobs based on location, type, industry, and keywords, applying directly through the platform.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Upload Resumes:**
+  Job seekers can upload resumes, facilitating employers in reviewing qualifications.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Application Tracking:**
+  Track job application status, view interview invitations, and receive hiring process updates.
 
-## Deploy on Vercel
+### For Employers/Recruiters:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Create and Manage Company Profiles:**
+  Employers can create and manage profiles with information about their company, culture, and current job openings.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Post Job Openings:**
+  Employers can post job listings with detailed descriptions, requirements, and application instructions.
+
+- **Search and View Resumes:**
+  Employers can search resumes uploaded by job seekers to find suitable candidates.
+
+- **Communicate with Job Seekers:**
+  Employers can communicate, schedule interviews, and manage the hiring process through the platform.
+
+- **Application Management:**
+  Track and manage job applications, review candidate profiles, and make hiring decisions.
+
+### For Admin:
+
+- **Admin Operations:**
+  Admin can log in, log out, manage and update profiles, update certain fields, and manage user accounts.
