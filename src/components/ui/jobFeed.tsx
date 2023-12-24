@@ -1,20 +1,23 @@
+/* eslint-disable @next/next/no-async-client-component */
+"use client";
+
 import { RiseOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Row, Flex } from "antd";
 import Search from "antd/es/input/Search";
 import Title from "antd/es/typography/Title";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const JobFeed = async () => {
-  const res = await fetch(
-    "https://career-connect-hub-api.vercel.app/api/v1/jobs",
-    {
-      cache: "force-cache",
-      next: {
-        revalidate: 5,
-      },
-    }
-  );
-  const data = await res.json();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("https://career-connect-hub-api.vercel.app/api/v1/jobs")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      });
+  }, []);
 
   return (
     <div style={{ padding: "16px" }}>
@@ -50,7 +53,7 @@ const JobFeed = async () => {
       </div>
 
       <Row gutter={[16, 24]}>
-        {data?.data?.map((job: any) => (
+        {data?.map((job: any) => (
           <Col xs={24} sm={12} md={8} lg={8} key={job?._id}>
             <div
               style={{

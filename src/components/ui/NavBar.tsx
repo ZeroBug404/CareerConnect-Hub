@@ -4,6 +4,25 @@ import { MenuOutlined } from "@ant-design/icons";
 import { Drawer, Menu } from "antd";
 import { useState } from "react";
 
+const navItem = [
+  {
+    label: "Home",
+    key: "/home",
+  },
+  {
+    label: "Conatct Us",
+    key: "/contact",
+  },
+  {
+    label: "About Us",
+    key: "/about",
+  },
+  {
+    label: "Blog",
+    key: "/blog",
+  },
+];
+
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -65,28 +84,7 @@ const NavMenu = ({ isInline = false }) => {
         border: "none",
       }}
       mode={isInline ? "inline" : "horizontal"}
-      items={[
-        {
-          label: "Home",
-          key: "home",
-        },
-        {
-          label: "Conatct Us",
-          key: "contact",
-        },
-        {
-          label: "About Us",
-          key: "about",
-        },
-        {
-          label: "Blog",
-          key: "blog",
-        },
-        {
-          label: "Career Services",
-          key: "career-services",
-        },
-      ]}
+      items={navItem}
     ></Menu>
   );
 };
