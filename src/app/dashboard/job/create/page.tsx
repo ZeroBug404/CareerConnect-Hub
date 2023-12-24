@@ -4,7 +4,12 @@
 import Form from "@/components/Forms/Form";
 import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
+import FormSelectField from "@/components/Forms/FormSelectField";
 import FormTextArea from "@/components/Forms/FormTextArea";
+import {
+  experienceLevelOptions,
+  jobTypeOptions,
+} from "@/components/contants/global";
 import { Button, Col, Flex, Row } from "antd";
 
 const CreateJob = () => {
@@ -18,8 +23,7 @@ const CreateJob = () => {
   return (
     <div
       style={{
-        backgroundColor: "white",
-        padding: "20px 40px",
+        padding: "20px",
         borderRadius: "10px",
         boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.1)",
         width: "100%",
@@ -29,7 +33,6 @@ const CreateJob = () => {
         <h2
           style={{
             textAlign: "center",
-            margin: "20px 0",
             color: "#1677FF",
             padding: "20px 0",
           }}
@@ -39,10 +42,26 @@ const CreateJob = () => {
 
         <div style={{ width: "100%" }}>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormInput name="title" type="text" size="large" label="Title" />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormInput
                 name="company"
                 type="text"
@@ -50,7 +69,15 @@ const CreateJob = () => {
                 label="Company"
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormInput
                 name="location"
                 type="text"
@@ -58,7 +85,15 @@ const CreateJob = () => {
                 label="Location"
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormInput
                 name="category"
                 type="text"
@@ -66,15 +101,30 @@ const CreateJob = () => {
                 label="Category"
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
-              <FormInput
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
+              <FormSelectField
                 name="experienceLevel"
-                type="text"
-                size="large"
                 label="Experience Level"
+                options={experienceLevelOptions}
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormInput
                 name="skills"
                 type="text"
@@ -82,7 +132,15 @@ const CreateJob = () => {
                 label="Skills"
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormInput
                 name="benefits"
                 type="text"
@@ -90,15 +148,30 @@ const CreateJob = () => {
                 label="Benefits"
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
-              <FormInput
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
+              <FormSelectField
                 name="jobType"
-                type="text"
-                size="large"
                 label="Job Type"
+                options={jobTypeOptions}
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormInput
                 name="salary"
                 type="number"
@@ -106,7 +179,15 @@ const CreateJob = () => {
                 label="Salary"
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormInput
                 name="contactEmail"
                 type="email"
@@ -114,13 +195,37 @@ const CreateJob = () => {
                 label="Contact Email"
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormDatePicker name="joiningDate" label="Joining Date" />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormDatePicker name="deadline" label="Deadline" />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormInput
                 name="numberOfOpenings"
                 type="number"
@@ -128,24 +233,56 @@ const CreateJob = () => {
                 label="Number Of Openings"
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormTextArea
                 name="companyDescription"
                 label="companyDescription"
                 rows={4}
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormTextArea
                 name="jobDescription"
                 label="Job Description"
                 rows={4}
               />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormTextArea name="requirements" label="requirements" rows={4} />
             </Col>
-            <Col className="gutter-row" xs={24} sm={12} md={8} lg={8}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "10px 0",
+              }}
+            >
               <FormTextArea
                 name="keyResponsibilities"
                 label="Key Responsibilities"
@@ -154,7 +291,7 @@ const CreateJob = () => {
             </Col>
           </Row>
         </div>
-        <div style={{ textAlign: "center", margin: "20px 0" }}>
+        <div style={{ textAlign: "center", margin: "10px 0" }}>
           <Button
             style={{ width: "100%" }}
             type="primary"
