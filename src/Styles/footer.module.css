@@ -12,7 +12,6 @@
   width: 100%;
 }
 
-
 .right_section {
   width: 100%;
   display: flex;
@@ -52,4 +51,30 @@ color: darkslateblue;
 
 .bottom_section_right {
   width: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .top_section {
+    flex-direction: column;
+  }
+  .left_section {
+   margin-bottom: 20px;
+  }
+  .bottom_section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .bottom_section_left,
+  .bottom_section_middle,
+  .bottom_section_right{
+    margin-top: 7px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .top_section {
+    flex-direction: column;
+  }
+  .left_section {
+   margin-bottom: 20px;
+  }
 }

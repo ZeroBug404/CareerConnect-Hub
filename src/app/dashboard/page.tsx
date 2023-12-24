@@ -1,7 +1,14 @@
-import React from "react";
+/* eslint-disable @next/next/no-async-client-component */
+"use client";
 
-const page = () => {
-  return <div></div>;
+const Dashboard = async () => {
+
+
+  return (
+    <div>
+      
+    </div>
+  );
 };
 
-export default page;
+export default Dashboard;
