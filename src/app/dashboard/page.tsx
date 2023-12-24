@@ -16,8 +16,8 @@ const Dashboard = async () => {
     <div>
       {role == "user" ? (
         <>Job Seeker</>
-      ) : role == "user" ? (
-        <>Recruiter</>
+      ) : role == "admin" ? (
+        <>Admin</>
       ) : (
         <></>
       )}

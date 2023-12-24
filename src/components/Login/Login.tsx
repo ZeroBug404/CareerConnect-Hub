@@ -38,7 +38,7 @@ const LoginPage = () => {
       //@ts-ignore
       if (res?.data?.data?.accessToken) {
         message.success("User logged in successfully!");
-        // router.push("/dashboard");
+        router.push("/dashboard");
       } else {
         return message.error("Wrong credential!");
       }
