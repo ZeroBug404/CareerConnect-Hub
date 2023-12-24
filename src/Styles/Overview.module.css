@@ -1,12 +1,12 @@
 .overview {
   padding: 20px;
-  margin: 2rem auto;
+  margin: 4rem auto;
   max-width: 90%;
 }
 
 .overviewTitle {
   font-size: 2.9rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   font-weight: 400;
 }
@@ -45,7 +45,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .overview {
     max-width: 100%;
     padding: 1rem;

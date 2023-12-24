@@ -2,7 +2,8 @@
 "use client";
 
 import styles from "@/Styles/HomeBlog.module.css";
-import { Col, Image, Row } from "antd";
+import { Card, Col, Image, Row } from "antd";
+import Link from "next/link";
 
 const blogData = [
   {
@@ -48,17 +49,17 @@ const HomeBlog = () => {
             key={blog?.id_}
             xs={24}
             sm={24}
-            md={12}
+            md={24}
             lg={12}
             xl={12}
           >
-            <div
-              className={styles.homeBlogCard}
-              style={{
-                background: `${blog?.color}`,
-              }}
-            >
-              <div className="">
+            <Link href="/">
+              <Card
+                className={styles.homeBlogCard}
+                style={{
+                  background: `${blog?.color}`,
+                }}
+              >
                 <Image width={"100%"} src={blog?.img} />
                 <h2
                   style={{
@@ -70,11 +71,8 @@ const HomeBlog = () => {
                   {blog?.title}
                 </h2>
                 <p style={{ fontSize: "1.3rem" }}>{blog?.desc}</p>
-              </div>
-              <div>
-                <p>Read The Aricle </p>
-              </div>
-            </div>
+              </Card>
+            </Link>
           </Col>
         ))}
       </Row>
