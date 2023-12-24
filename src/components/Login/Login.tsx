@@ -36,15 +36,15 @@ const LoginPage = () => {
       const res = await userLogin(loginData);
 
       //@ts-ignore
-      if (res?.data?.accessToken) {
-        // router.push("/home");
+      if (res?.data?.data?.accessToken) {
         message.success("User logged in successfully!");
+        // router.push("/dashboard");
       } else {
         return message.error("Wrong credential!");
       }
 
       //@ts-ignore
-      storeUserInfo({ accessToken: res?.data?.accessToken });
+      storeUserInfo({ accessToken: res?.data?.data?.accessToken });
     } catch (err: any) {
       console.error(err.message);
     }
