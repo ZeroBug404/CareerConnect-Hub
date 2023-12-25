@@ -30,7 +30,7 @@ const CreateJob = () => {
       }}
     >
       <Form submitHandler={onSubmit}>
-        <h2>Create a job</h2>
+        <h2>Publish a job</h2>
         <div
           style={{
             border: "1px solid #d9d9d9",
