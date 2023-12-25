@@ -7,7 +7,7 @@ const JobPage = () => {
         <div>
             <h3>This job page</h3>
             <Link href="/dashboard/job/create">
-                <Button type="primary">Create JOb</Button>
+                <Button type="primary">Publish a job?</Button>
             </Link>
         </div>
     );

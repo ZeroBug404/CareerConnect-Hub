@@ -10,9 +10,13 @@ import {
   experienceLevelOptions,
   jobTypeOptions,
 } from "@/components/contants/global";
-import { Button, Col, Flex, Row } from "antd";
+import { useAddJobWithFormDataMutation } from "@/redux/api/jobApi";
+import { Button, Col, Row } from "antd";
 
 const CreateJob = () => {
+  const [addJobWithFormData] = useAddJobWithFormDataMutation();
+  console.log(addJobWithFormData);
+
   const onSubmit = async (data: any) => {
     try {
       console.log(data);
