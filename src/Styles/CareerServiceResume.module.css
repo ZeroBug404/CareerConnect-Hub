@@ -1,0 +1,185 @@
+.careerServiceResume {
+  width: 90%;
+  margin: 2rem auto;
+  background: #fcf0e6;
+  border-radius: 1rem;
+}
+
+.container {
+  width: 70%;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerSecondCol {
+  padding: 1.5rem;
+}
+
+.headerText1 {
+  color: #89471e;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.headerText2 {
+  color: hsl(0, 0%, 50%);
+  font-size: 1.3rem;
+}
+
+.headerTitle {
+  font-size: 3.4rem;
+  margin-bottom: 1rem;
+}
+
+.headerImage {
+  min-width: 13rem;
+  max-height: 16.2rem;
+  margin: 0 auto;
+}
+
+.CardContainer {
+  width: 70%;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem;
+}
+
+.CardDesign {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.CardDesign:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cardImage {
+  width: 10rem;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.cardText {
+  text-align: center;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .careerServiceResume {
+    width: 95%;
+    margin: 2rem auto;
+    background: #fcf0e6;
+    border-radius: 1rem;
+  }
+
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .headerText1 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .headerText2 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .headerTitle {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .headerImage {
+    max-width: 14rem;
+    max-height: 16.2rem;
+    margin: 0 auto;
+  }
+
+  .CardContainer {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .careerServiceResume {
+    width: 100%;
+    border-radius: 0;
+  }
+  .container {
+    width: 96%;
+    margin: 0 auto;
+  }
+  .headerRow {
+    flex-direction: column-reverse !important;
+  }
+
+  .headerText1 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .headerTitle {
+    margin-bottom: 1.5rem;
+  }
+
+  .headerImage {
+    max-height: 16.2rem;
+    margin: 0 auto;
+  }
+
+  .CardContainer {
+    width: 98%;
+    margin: auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .cardContent {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .cardImage {
+    width: 7.5rem;
+  }
+
+  .cardTextContainer {
+    padding: 0 1rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    text-align: start;
+  }
+
+  .cardText {
+    text-align: start;
+    font-size: 0.9rem;
+  }
+}
