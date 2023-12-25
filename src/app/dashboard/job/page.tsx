@@ -1,21 +1,26 @@
 "use client";
 import CareerTable from "@/components/ui/CareerTable";
-import { useJobsQuery } from "@/redux/api/jobApi";
+import { useDeleteJobMutation, useJobsQuery } from "@/redux/api/jobApi";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import Link from "next/link";
 import React, { useState } from "react";
 
 const JobPage = () => {
   const query: Record<string, any> = {};
+  const { data, isLoading } = useJobsQuery({ ...query });
+  const jobData = data?.data;
+  const [deleteJob] = useDeleteJobMutation();
 
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
 
-  const { data, isLoading } = useJobsQuery({ ...query });
-  const jobData = data?.data;
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -27,6 +32,18 @@ const JobPage = () => {
     // console.log(order, field);
     setSortBy(field as string);
     setSortOrder(order === "ascend" ? "asc" : "desc");
+  };
+
+  const deleteHandler = async (id: string) => {
+    message.loading("Deleting.....");
+    try {
+      const res = await deleteJob(id);
+      if (res) {
+        message.success("Job Deleted successfully");
+      }
+    } catch (err: any) {
+      message.error(err.message);
+    }
   };
 
   const columns = [
@@ -68,7 +85,11 @@ const JobPage = () => {
                 <EditOutlined />
               </Button>
             </Link>
-            <Button onClick={() => console.log(data)} type="primary" danger>
+            <Button
+              onClick={() => deleteHandler(data?.id)}
+              type="primary"
+              danger
+            >
               <DeleteOutlined />
             </Button>
           </>
@@ -88,7 +109,6 @@ const JobPage = () => {
         dataSource={jobData}
         showSizeChanger={true}
         showPagination={true}
-        totalPages={100}
         pageSize={size}
         onPaginationChange={onPaginationChange}
         onTableChange={onTableChange}
