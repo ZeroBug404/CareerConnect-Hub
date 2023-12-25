@@ -1,64 +1,39 @@
+import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
 
-const job_URL = "/jobs";
+const JOB_URL = "/jobs";
 
 export const jobApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        addJobWithFormData: build.mutation({
+        jobs: build.query({
+            query: (arg: Record<string, any>) => ({
+                url: JOB_URL,
+                method: "GET",
+                params: arg,
+            }),
+            // transformResponse: (response: IJobData, meta: IMeta) => {
+            //     return {
+            //         jobs: response,
+            //         meta,
+            //     };
+            // },
+            providesTags: [tagTypes.jobs],
+        }),
+
+        addJob: build.mutation({
             query: (data) => ({
-                url: job_URL,
+                url: JOB_URL,
                 method: "POST",
                 data,
                 contentType: "multipart/form-data",
             }),
-            //   invalidatesTags: [tagTypes.job],
+            invalidatesTags: [tagTypes.jobs],
         }),
-
-        // jobs: build.query({
-        //   query: (arg: Record<string, any>) => {
-        //     return {
-        //       url: job_URL,
-        //       method: "GET",
-        //       params: arg,
-        //     };
-        //   },
-        //   transformResponse: (response: Ijob[], meta: IMeta) => {
-        //     return {
-        //       jobs: response,
-        //       meta,
-        //     };
-        //   },
-        //   providesTags: [tagTypes.job],
-        // }),
-
-        // job: build.query({
-        //   query: (id: string | string[] | undefined) => ({
-        //     url: `${job_URL}/${id}`,
-        //     method: "GET",
-        //   }),
-        //   providesTags: [tagTypes.job],
-        // }),
-
-        // updateJob: build.mutation({
-        //   query: (data) => ({
-        //     url: `${job_URL}/${data.id}`,
-        //     method: "PATCH",
-        //     data: data.body,
-        //   }),
-        //   invalidatesTags: [tagTypes.job],
-        // }),
-
-        // deleteJob: build.mutation({
-        //   query: (id) => ({
-        //     url: `${job_URL}/${id}`,
-        //     method: "DELETE",
-        //   }),
-        //   invalidatesTags: [tagTypes.job],
-        // }),
     }),
 });
 
 export const {
-    useAddJobWithFormDataMutation
+    useJobsQuery,
+    useAddJobMutation
 } = jobApi;
