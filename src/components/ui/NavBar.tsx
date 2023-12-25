@@ -2,6 +2,7 @@
 
 import { MenuOutlined } from "@ant-design/icons";
 import { Drawer, Menu } from "antd";
+import Image from "next/image";
 import { useState } from "react";
 
 const NavBar = () => {
@@ -57,33 +58,41 @@ const NavBar = () => {
 
 const NavMenu = ({ isInline = false }) => {
   return (
-    <Menu
-      style={{
-        color: "white",
-        fontSize: "1.2rem",
-        backgroundColor: "#2d2d2d",
-        border: "none",
-      }}
-      mode={isInline ? "inline" : "horizontal"}
-      items={[
-        {
-          label: "Home",
-          key: "home",
-        },
-        {
-          label: "Conatct Us",
-          key: "contact",
-        },
-        {
-          label: "About Us",
-          key: "about",
-        },
-        {
-          label: "Blog",
-          key: "blog",
-        },
-      ]}
-    ></Menu>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <Image
+        src="/path/to/your/logo.png" 
+        alt="Logo"
+        style={{ marginRight: "10px", height: "30px" }}
+      />
+      <Menu
+        style={{
+          color: "white",
+          fontSize: "1.2rem",
+          backgroundColor: "#2d2d2d",
+          border: "none",
+        }}
+        mode={isInline ? "inline" : "horizontal"}
+        className="custom-menu" // Add className here
+        items={[
+          {
+            label: "Home",
+            key: "home",
+          },
+          {
+            label: "Contact Us",
+            key: "contact",
+          },
+          {
+            label: "About Us",
+            key: "about",
+          },
+          {
+            label: "Blog",
+            key: "blog",
+          },
+        ]}
+      ></Menu>
+    </div>
   );
 };
 

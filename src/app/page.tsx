@@ -5,13 +5,13 @@ import HomePageBanner from "@/components/ui/HomePageBanner";
 import Overview from "@/components/ui/Overview";
 
 export default function Home() {
-  return <main>
-    <HomePageBanner></HomePageBanner>
-    <JobFeed/>
+  return (
+    <main>
+      <HomePageBanner></HomePageBanner>
+      <JobFeed />
       <Overview></Overview>
       <HomeBlog></HomeBlog>
-    <HelpCenter />
-  </main>;
+      <HelpCenter />
+    </main>
+  );
 }
-
-
