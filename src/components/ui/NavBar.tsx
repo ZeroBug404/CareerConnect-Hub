@@ -1,14 +1,76 @@
 "use client";
 
 import blueLogo from "@/assets/logo-blue1.png";
-import { MenuOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import { Divider, Drawer, Menu } from "antd";
+import {
+  MenuOutlined,
+  QuestionCircleOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import {
+  Avatar,
+  Button,
+  Divider,
+  Drawer,
+  Dropdown,
+  Menu,
+  MenuProps,
+  Space,
+} from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+
+  const items: MenuProps["items"] = [
+    
+    {
+      key: "0",
+      label: (
+        <div
+          style={{
+            // fontSize: "1.2rem",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            // onClick={logOut}
+            type="text"
+            // size="large"
+            danger
+            style={{
+              fontSize: "1.2rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            LogOut
+          </Button>
+        </div>
+      ),
+    },
+    {
+      key: "1",
+      label: (
+        <Link href={`/`}>
+          <Button
+            type="text"
+            danger
+            style={{
+              fontSize: "1.2rem",
+            }}
+          >
+            Dashboard
+          </Button>
+        </Link>
+      ),
+    },
+  ];
 
   return (
     <div
@@ -122,6 +184,17 @@ const NavBar = () => {
             Find jobs
           </Link>
         </div>
+
+        <Space size={16} wrap>
+          <Dropdown menu={{ items }}>
+            <Space wrap size={16}>
+              <Avatar
+                style={{ backgroundColor: "#87d068" }}
+                icon={<UserOutlined />}
+              />
+            </Space>
+          </Dropdown>
+        </Space>
       </div>
       <Drawer
         // placement="left"
@@ -148,12 +221,6 @@ const NavMenu = ({ isInline = false }) => {
         width: "100%",
       }}
     >
-      {/* <Image
-        src={blueLogo}
-        alt="Logo"
-        width={100}
-        style={{ marginRight: "10px", height: "30px" }}
-      /> */}
       <Menu
         style={{
           color: "white",
@@ -165,85 +232,43 @@ const NavMenu = ({ isInline = false }) => {
         className="custom-menu" // Add className here
         items={[
           {
-            label: "Home",
+            label: (
+              <Link
+                href="#"
+                // target="_blank"
+                rel="noopener noreferrer"
+              >
+                Home
+              </Link>
+            ),
             key: "home",
           },
           {
-            label: "Contact Us",
+            label: (
+              <Link
+                href="#"
+                // target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact
+              </Link>
+            ),
             key: "contact",
           },
           {
-            label: "About Us",
-            key: "about",
-          },
-          {
-            label: "Blog",
+            label: (
+              <Link
+                href="#"
+                // target="_blank"
+                rel="noopener noreferrer"
+              >
+                Blog
+              </Link>
+            ),
             key: "blog",
           },
         ]}
       ></Menu>
-      {/* <div>
-        <Link
-          href="/register"
-          style={{
-            color: "white",
-            fontSize: "0.9rem",
-            backgroundColor: "#2d2d2d",
-            border: "none",
-            textDecoration: "none",
-          }}
-        >
-          Help Center
-          <QuestionCircleOutlined
-            style={{
-              fontWeight: "bolder",
-              fontSize: "1.2rem",
-              marginLeft: "0.4rem",
-            }}
-          />
-        </Link>
-        <Divider
-          type="vertical"
-          style={{
-            backgroundColor: "#949494",
-            height: "2rem",
-            margin: "0 1.5rem",
-          }}
-        />
-        <button
-          style={{
-            backgroundColor: "#2557a7",
-            color: "white",
-            fontSize: "1rem",
-            fontWeight: "bold",
-            padding: "0.6rem 1rem",
-            borderRadius: "5px",
-            border: "none",
-          }}
-        >
-          Login
-        </button>
-        <Divider
-          type="vertical"
-          style={{
-            backgroundColor: "#949494",
-            height: "2rem",
-            margin: "0 1.5rem",
-          }}
-        />
-        <Link
-          href="/register"
-          style={{
-            color: "white",
-            fontSize: "0.9rem",
-            backgroundColor: "#2d2d2d",
-            border: "none",
-            textDecoration: "none",
-          }}
-        >
-          Find jobs
-        </Link>
-      </div> */}
     </div>
   );
 };

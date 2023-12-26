@@ -8,7 +8,7 @@
   scroll-behavior: smooth;
 }
 
-/* Header styles */
+/* ------------------ Header styles -------------------- */
 .custom-menu .ant-menu-item:hover {
   color: white !important;
 }
@@ -33,3 +33,4 @@
     justify-content: start;
   }
 }
+/* ------------------ Header styles end -------------------- */
