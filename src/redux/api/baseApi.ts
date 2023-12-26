@@ -1,11 +1,12 @@
 import { getBaseUrl } from "@/helpers/config/env.config";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { tagTypesList } from "../tag-types";
 
 export const baseApi = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://career-connect-hub-api.vercel.app/api/v1",
   }),
-  // tagTypes: ["user", "reviews"],
+  tagTypes: tagTypesList,
   endpoints: () => ({}),
 });

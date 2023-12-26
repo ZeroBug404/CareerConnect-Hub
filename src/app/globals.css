@@ -8,10 +8,11 @@
   scroll-behavior: smooth;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* ------------------ Header styles -------------------- */
+.custom-menu .ant-menu-item:hover {
+  color: white !important;
 }
+
 @media screen and (max-width: 500px) {
   .headerMenu {
     display: none;
@@ -32,3 +33,4 @@ a {
     justify-content: start;
   }
 }
+/* ------------------ Header styles end -------------------- */

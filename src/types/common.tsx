@@ -21,3 +21,9 @@ export interface IJobData {
   updatedAt: string;
   __v: number;
 }
+
+export interface IMeta {
+  limit: number;
+  page: number;
+  total: number;
+}
