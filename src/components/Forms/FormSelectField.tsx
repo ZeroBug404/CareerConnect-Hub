@@ -21,7 +21,7 @@ type SelectFieldProps = {
 
 const FormSelectField = ({
   name,
-  size = "large",
+  size,
   value,
   placeholder = "select",
   options,
