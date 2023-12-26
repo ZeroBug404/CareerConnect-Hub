@@ -1,5 +1,7 @@
 "use client";
-import { getUserInfo } from "@/services/auth.service";
+import { Breadcrumb, Layout, Menu, theme } from "antd";
+import React, { useState } from "react";
+import type { MenuProps } from "antd";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -7,9 +9,6 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-import React, { useEffect, useState } from "react";
 
 const { Header, Content, Footer, Sider } = Layout;
 type MenuItem = Required<MenuProps>["items"][number];
@@ -49,95 +48,44 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    const res: any = getUserInfo();
-    setUserData(res);
-  }, []);
-
   return (
-    <>
-      {userData?.role == "user" ? (
-        <Layout style={{ minHeight: "100vh" }}>
-          <Sider
-            collapsible
-            collapsed={collapsed}
-            onCollapse={(value) => setCollapsed(value)}
+    <Layout style={{ minHeight: "100vh" }}>
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
+      >
+        <div className="demo-logo-vertical" />
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={["1"]}
+          mode="inline"
+          items={items}
+        />
+      </Sider>
+      <Layout>
+        <Header style={{ padding: 0, background: colorBgContainer }} />
+        <Content style={{ margin: "0 16px" }}>
+          <Breadcrumb style={{ margin: "16px 0" }}>
+            <Breadcrumb.Item>User</Breadcrumb.Item>
+            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+          </Breadcrumb>
+          <div
+            style={{
+              padding: 24,
+              minHeight: 360,
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
+            }}
           >
-            <div className="demo-logo-vertical" />
-            <Menu
-              theme="dark"
-              defaultSelectedKeys={["1"]}
-              mode="inline"
-              items={items}
-            />
-          </Sider>
-          <Layout>
-            <Header style={{ padding: 0, background: colorBgContainer }} />
-            <Content style={{ margin: "0 16px" }}>
-              <Breadcrumb style={{ margin: "16px 0" }}>
-                <Breadcrumb.Item>User</Breadcrumb.Item>
-                <Breadcrumb.Item>{userData?.email}</Breadcrumb.Item>
-              </Breadcrumb>
-              <div
-                style={{
-                  padding: 24,
-                  minHeight: 360,
-                  background: colorBgContainer,
-                  borderRadius: borderRadiusLG,
-                }}
-              >
-                {children}
-              </div>
-            </Content>
-            <Footer style={{ textAlign: "center" }}>
-              Ant Design ©2023 Created by Ant UED
-            </Footer>
-          </Layout>
-        </Layout>
-      ) : userData?.role == "admin" ? (
-        <Layout style={{ minHeight: "100vh" }}>
-          <Sider
-            collapsible
-            collapsed={collapsed}
-            onCollapse={(value) => setCollapsed(value)}
-          >
-            <div className="demo-logo-vertical" />
-            <Menu
-              theme="dark"
-              defaultSelectedKeys={["1"]}
-              mode="inline"
-              items={items}
-            />
-          </Sider>
-          <Layout>
-            {/* <Header style={{ padding: 0, background: colorBgContainer }} /> */}
-            <Content style={{ margin: "0 16px" }}>
-              <Breadcrumb style={{ margin: "16px 0" }}>
-                <Breadcrumb.Item>Admin</Breadcrumb.Item>
-                <Breadcrumb.Item>{userData?.email}</Breadcrumb.Item>
-              </Breadcrumb>
-              <div
-                style={{
-                  padding: 24,
-                  minHeight: 360,
-                  background: colorBgContainer,
-                  borderRadius: borderRadiusLG,
-                }}
-              >
-                {children}
-              </div>
-            </Content>
-            <Footer style={{ textAlign: "center" }}>
-              Ant Design ©2023 Created by Ant UED
-            </Footer>
-          </Layout>
-        </Layout>
-      ) : (
-        <></>
-      )}
-    </>
+            {children}
+          </div>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>
+          Ant Design ©2023 Created by Ant UED
+        </Footer>
+      </Layout>
+    </Layout>
   );
 };
 
