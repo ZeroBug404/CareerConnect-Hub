@@ -245,22 +245,6 @@ const CreateJob = () => {
                 label="Benefits"
               />
             </Col>
-            <Col
-              xs={24}
-              sm={12}
-              md={8}
-              lg={8}
-              style={{
-                margin: "10px 0",
-              }}
-            >
-              <FormInput
-                name="keyResponsibilities"
-                type="text"
-                size="small"
-                label="Key Responsibilities"
-              />
-            </Col>
           </Row>
         </div>
         <div
