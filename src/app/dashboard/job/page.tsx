@@ -86,11 +86,7 @@ const JobPage = () => {
                 <EditOutlined />
               </Button>
             </Link>
-            <Button
-              onClick={() => deleteHandler(data)}
-              type="primary"
-              danger
-            >
+            <Button onClick={() => deleteHandler(data)} type="primary" danger>
               <DeleteOutlined />
             </Button>
           </>
