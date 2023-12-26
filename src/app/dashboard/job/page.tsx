@@ -1,4 +1,5 @@
 "use client";
+
 import CareerTable from "@/components/ui/CareerTable";
 import { useDeleteJobMutation, useJobsQuery } from "@/redux/api/jobApi";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
@@ -8,10 +9,6 @@ import React, { useState } from "react";
 
 const JobPage = () => {
   const query: Record<string, any> = {};
-  const { data, isLoading } = useJobsQuery({ ...query });
-  const jobData = data?.data;
-  const [deleteJob] = useDeleteJobMutation();
-
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
   const [sortBy, setSortBy] = useState<string>("");
@@ -21,6 +18,10 @@ const JobPage = () => {
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
+
+  const { data, isLoading } = useJobsQuery({ ...query });
+  const jobData = data?.data;
+  const [deleteJob] = useDeleteJobMutation();
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -74,7 +75,7 @@ const JobPage = () => {
       render: function (data: any) {
         return (
           <>
-            <Link href={`${data?.id}`}>
+            <Link href={`/dashboard/job/edit/${data}`}>
               <Button
                 style={{
                   margin: "0px 5px",
@@ -86,7 +87,7 @@ const JobPage = () => {
               </Button>
             </Link>
             <Button
-              onClick={() => deleteHandler(data?.id)}
+              onClick={() => deleteHandler(data)}
               type="primary"
               danger
             >

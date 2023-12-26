@@ -373,7 +373,7 @@ const CreateJob = () => {
         </div>
 
         <div style={{ margin: "10px 0" }}>
-          <Button type="primary" htmlType="submit" size="small">
+          <Button type="primary" htmlType="submit" size="large">
             Add Job
           </Button>
         </div>

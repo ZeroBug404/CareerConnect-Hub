@@ -31,6 +31,24 @@ export const jobApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: [tagTypes.jobs],
         }),
+        // get single jobs by id
+        job: build.query({
+            query: (id) => ({
+                url: `${JOB_URL}/${id}`,
+                method: "GET",
+            }),
+            providesTags: [tagTypes.jobs],
+        }),
+
+        // update single jobs by id
+        updateJob: build.mutation({
+            query: (data) => ({
+                url: `${JOB_URL}/${data.id}`,
+                method: "PATCH",
+                data: data.body,
+            }),
+            invalidatesTags: [tagTypes.jobs],
+        }),
         // delete single job by id
         deleteJob: build.mutation({
             query: (id) => ({
@@ -45,5 +63,7 @@ export const jobApi = baseApi.injectEndpoints({
 export const {
     useJobsQuery,
     useAddJobMutation,
-    useDeleteJobMutation
+    useJobQuery,
+    useUpdateJobMutation,
+    useDeleteJobMutation,
 } = jobApi;
