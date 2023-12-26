@@ -10,7 +10,7 @@ import {
   experienceLevelOptions,
   jobTypeOptions,
 } from "@/components/contants/global";
-import { Button, Col, Flex, Row } from "antd";
+import { Button, Col, Row } from "antd";
 
 const CreateJob = () => {
   const onSubmit = async (data: any) => {

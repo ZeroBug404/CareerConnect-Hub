@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "antd";
-import { useFormContext, Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 interface IInput {
   name: string;
   type?: string;
@@ -42,6 +42,7 @@ const FormInput = ({
             />
           ) : (
             <Input
+              style={{ margin: ".3rem 0" }}
               type={type}
               size={size}
               placeholder={placeholder}
