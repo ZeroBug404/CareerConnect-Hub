@@ -2,12 +2,15 @@ import HelpCenter from "@/components/ui/HelpCenter";
 import HomeBlog from "@/components/ui/HomeBlog";
 import HomePageBanner from "@/components/ui/HomePageBanner";
 import Overview from "@/components/ui/Overview";
+import JobListMain from "@/components/ui/JobListMain";
+import JobFeed from "@/components/ui/jobFeed";
 
 const HomePage = async () => {
   return (
     <main>
       <HomePageBanner></HomePageBanner>
-      {/* <JobFeed /> */}
+      {/* <JobListMain /> */}
+      <JobFeed />
       <Overview></Overview>
       <HomeBlog></HomeBlog>
       <HelpCenter />
