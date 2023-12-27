@@ -6,28 +6,21 @@ const JOB_URL = "/jobs";
 
 export const jobApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        //Post
+        //Get
         jobs: build.query({
             query: (arg: Record<string, any>) => ({
                 url: JOB_URL,
                 method: "GET",
                 params: arg,
             }),
-            // transformResponse: (response: IJobData, meta: IMeta) => {
-            //     return {
-            //         jobs: response,
-            //         meta,
-            //     };
-            // },
             providesTags: [tagTypes.jobs],
         }),
-        //Get
+        // post
         addJob: build.mutation({
             query: (data) => ({
                 url: JOB_URL,
                 method: "POST",
                 data,
-                contentType: "multipart/form-data",
             }),
             invalidatesTags: [tagTypes.jobs],
         }),
