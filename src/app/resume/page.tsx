@@ -1,3 +1,4 @@
+'use client'
 import AdditionalDetails from "@/components/Resume/additionalDetails";
 import Education from "@/components/Resume/education";
 import JobResponsibilities from "@/components/Resume/jobResponsibilities";

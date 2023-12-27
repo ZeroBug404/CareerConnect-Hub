@@ -13,7 +13,7 @@ const Education = () => {
       }}
     >
       <p>EDUCATION</p>
-      <div style={{width: "50%"}}>
+      <div style={{ width: "50%" }}>
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
             <div>

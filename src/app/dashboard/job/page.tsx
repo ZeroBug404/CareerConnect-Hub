@@ -5,7 +5,7 @@ import { useDeleteJobMutation, useJobsQuery } from "@/redux/api/jobApi";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const JobPage = () => {
   const query: Record<string, any> = {};

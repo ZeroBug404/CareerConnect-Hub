@@ -42,6 +42,7 @@ const CareerTable = ({
       dataSource={dataSource}
       pagination={paginationConfig}
       onChange={onTableChange}
+      scroll={{ x: 1000 }}
     />
   );
 };
