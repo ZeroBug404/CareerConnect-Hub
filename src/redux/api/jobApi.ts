@@ -17,10 +17,10 @@ export const jobApi = baseApi.injectEndpoints({
         }),
         // post
         addJob: build.mutation({
-            query: (data) => ({
+            query: ({data}) => ({
                 url: JOB_URL,
                 method: "POST",
-                data,
+                body: data,
             }),
             invalidatesTags: [tagTypes.jobs],
         }),

@@ -13,17 +13,38 @@ import {
 
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useAddJobMutation } from "@/redux/api/jobApi";
-import { IJobData } from "@/types";
 import { Button, Col, Row, message } from "antd";
 
 const CreateJob = () => {
   const [addJob] = useAddJobMutation();
 
-  const onSubmit = async (data: IJobData) => {
+  const onSubmit = async (data: any) => {
+    const options = {
+      data: {
+        title: 'Junior web Developer',
+        company: 'XYZ Tech',
+        location: 'Dhaka, Bangladesh',
+        companyDescription: 'A leading technology company',
+        jobDescription: 'Developing and maintaining software applications',
+        requirements: ['Bachelor\'s degree in Computer Science', 'Experience with JavaScript and Node.js'],
+        salary: 80000,
+        deadline: '2023-12-31',
+        category: 'Information Technology',
+        jobType: 'Full-time',
+        experienceLevel: 'Intermediate',
+        skills: ['JavaScript', 'Node.js', 'React'],
+        benefits: ['Health insurance', '401(k)'],
+        contactEmail: 'jobs@abctech.com',
+        joiningDate: '2024-01-15',
+        keyResponsibilities: ['Developing new features', 'Bug fixing'],
+        numberOfOpenings: '3',
+        companyId: '6587f647a3d02b0cf0caa3aa',
+      },
+    };
     message.loading("Publishing...");
     try {
-      console.log(data);
-      const res = await addJob(data);
+      console.log(options);
+      const res = await addJob(options);
       if (!!res) {
         message.success("Jobs published successfully");
       }
