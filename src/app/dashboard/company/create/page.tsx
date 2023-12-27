@@ -30,14 +30,14 @@ const AddCompany = () => {
         },
         contact: {
           email: companyData.email,
-          contact: companyData.contact,
+          phone: companyData.phone,
           address: companyData.address,
         },
       },
     };
     message.loading("Publishing...");
     try {
-      console.log(options);
+      // console.log(options);
       await addCompany(options);
       message.success("Company published successfully");
     } catch (err: any) {
@@ -121,7 +121,7 @@ const AddCompany = () => {
                   margin: "10px 0",
                 }}
               >
-                <FormInput name="contact" type="text" label="Phone" />
+                <FormInput name="phone" type="text" label="Phone" />
               </Col>
               <Col
                 xs={24}
