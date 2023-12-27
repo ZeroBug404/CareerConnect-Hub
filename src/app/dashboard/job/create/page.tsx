@@ -13,12 +13,13 @@ import {
 
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useAddJobMutation } from "@/redux/api/jobApi";
+import { IJobData } from "@/types";
 import { Button, Col, Row, message } from "antd";
 
 const CreateJob = () => {
   const [addJob] = useAddJobMutation();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: IJobData) => {
     message.loading("Publishing...");
     try {
       console.log(data);
