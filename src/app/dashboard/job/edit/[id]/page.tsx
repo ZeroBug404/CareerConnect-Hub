@@ -83,7 +83,7 @@ const EditJobPage = ({ params }: any) => {
               border: "1px solid #d9d9d9",
               borderRadius: "5px",
               padding: "15px",
-              marginBottom: "10px",
+              margin: "10px 0",
             }}
           >
             <p
@@ -101,7 +101,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -117,7 +117,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -133,7 +133,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -149,7 +149,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -172,7 +172,7 @@ const EditJobPage = ({ params }: any) => {
             <p
               style={{
                 fontSize: "18px",
-                marginBottom: "10px",
+                margin: "10px 0",
               }}
             >
               Job Information
@@ -184,7 +184,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -200,7 +200,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormSelectField
@@ -216,7 +216,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormSelectField
@@ -232,7 +232,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -248,7 +248,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -264,7 +264,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -280,7 +280,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -315,7 +315,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -330,7 +330,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -345,7 +345,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -360,7 +360,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -386,7 +386,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormDatePicker name="joiningDate" label="Joining Date" />
@@ -397,7 +397,7 @@ const EditJobPage = ({ params }: any) => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormDatePicker name="deadline" label="Deadline" />

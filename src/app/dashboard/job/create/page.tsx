@@ -57,7 +57,7 @@ const CreateJob = () => {
               border: "1px solid #d9d9d9",
               borderRadius: "5px",
               padding: "15px",
-              marginBottom: "10px",
+              margin: "10px 0",
             }}
           >
             <p
@@ -75,7 +75,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -91,7 +91,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -107,7 +107,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -123,7 +123,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -158,7 +158,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -174,7 +174,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormSelectField
@@ -190,7 +190,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormSelectField
@@ -206,7 +206,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -222,7 +222,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -238,7 +238,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -254,7 +254,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -289,7 +289,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -304,7 +304,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -319,7 +319,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -334,7 +334,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -360,7 +360,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormDatePicker name="joiningDate" label="Joining Date" />
@@ -371,7 +371,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormDatePicker name="deadline" label="Deadline" />

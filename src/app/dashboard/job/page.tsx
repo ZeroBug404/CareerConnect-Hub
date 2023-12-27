@@ -98,7 +98,7 @@ const JobPage = () => {
   return (
     <div>
       <Link href="/dashboard/job/create">
-        <Button type="primary">Publish a job?</Button>
+        <Button type="primary" style={{margin: "10px 0"}}>Publish a job?</Button>
       </Link>
       <CareerTable
         loading={isLoading}
