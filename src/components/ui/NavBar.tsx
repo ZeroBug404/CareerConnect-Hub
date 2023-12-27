@@ -24,7 +24,6 @@ const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const items: MenuProps["items"] = [
-    
     {
       key: "0",
       label: (
@@ -57,7 +56,7 @@ const NavBar = () => {
     {
       key: "1",
       label: (
-        <Link href={`/`}>
+        <Link href={`/dashboard`}>
           <Button
             type="text"
             danger
@@ -149,19 +148,27 @@ const NavBar = () => {
               margin: "0 1.5rem",
             }}
           />
-          <button
+          <Link
+            href={"/login"}
             style={{
-              backgroundColor: "#2557a7",
-              color: "white",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              padding: "0.6rem 1rem",
-              borderRadius: "5px",
-              border: "none",
+              cursor: "pointer",
             }}
           >
-            Login
-          </button>
+            <button
+              style={{
+                backgroundColor: "#2557a7",
+                color: "white",
+                fontSize: "1rem",
+                fontWeight: "bold",
+                padding: "0.6rem 1rem",
+                borderRadius: "5px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Login
+            </button>
+          </Link>
           <Divider
             type="vertical"
             style={{
@@ -234,7 +241,7 @@ const NavMenu = ({ isInline = false }) => {
           {
             label: (
               <Link
-                href="#"
+                href="/"
                 // target="_blank"
                 rel="noopener noreferrer"
               >
