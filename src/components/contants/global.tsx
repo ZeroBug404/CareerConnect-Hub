@@ -23,3 +23,18 @@ export const experienceLevelOptions = [
     value: "advanced",
   },
 ];
+
+export const sizes = [
+  {
+    label: "Large",
+    value: "Large",
+  },
+  {
+    label: "Medium",
+    value: "Medium",
+  },
+  {
+    label: "Small",
+    value: "Small",
+  },
+];

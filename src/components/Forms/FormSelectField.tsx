@@ -1,7 +1,7 @@
 "use client";
 
 import { Select } from "antd";
-import { useFormContext, Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 
 export type SelectOptions = {
   label: string;
@@ -43,7 +43,7 @@ const FormSelectField = ({
             size={size}
             options={options}
             value={value}
-            style={{ width: "100%" }}
+            style={{ width: "100%", margin: ".3rem 0" }}
             placeholder={placeholder}
           />
         )}

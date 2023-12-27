@@ -25,6 +25,7 @@ const FormTextArea = ({
         control={control}
         render={({ field }) => (
           <Input.TextArea
+            style={{ margin: ".3rem 0" }}
             rows={rows}
             placeholder={placeholder}
             {...field}

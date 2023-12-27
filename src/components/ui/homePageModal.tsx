@@ -1,6 +1,7 @@
 "use client";
 
 import { Button, Form, Input } from "antd";
+import Link from "next/link";
 
 const HomePageModal = () => {
   const onFinish = (values: any) => {
@@ -9,7 +10,9 @@ const HomePageModal = () => {
 
   return (
     <div>
-      <p style={{ fontSize: "1rem" }}>Already have an account? Sign in</p>
+      <p style={{ fontSize: "1rem", marginTop: "1rem", marginBottom: ".5rem" }}>
+        Already have an account? <Link href="">Sign in</Link>
+      </p>
       <Form
         name="myForm"
         onFinish={onFinish}
@@ -21,7 +24,7 @@ const HomePageModal = () => {
           name="companyName"
           rules={[{ required: true, message: "Please input Company name!" }]}
         >
-          <Input style={{ width: "100%" }} size="large" />
+          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
         </Form.Item>
 
         <Form.Item
@@ -29,14 +32,12 @@ const HomePageModal = () => {
           name="email"
           rules={[{ required: true, message: "Please input Email!" }]}
         >
-          <Input style={{ width: "100%" }} size="large" />
+          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
         </Form.Item>
 
-        <Form.Item>
-          <Button size="large" type="primary" htmlType="submit">
-            Continue
-          </Button>
-        </Form.Item>
+        <Button style={{ marginTop: ".7rem" }} type="primary" htmlType="submit">
+          Continue
+        </Button>
       </Form>
     </div>
   );

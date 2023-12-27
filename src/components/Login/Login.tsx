@@ -13,7 +13,7 @@ import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
 
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import logo from "../../assets/1-removebg-preview.png";
+import logo from "../../assets/logo-blue1.png";
 import { storeUserInfo } from "@/services/auth.service";
 
 type FormValues = {
@@ -36,15 +36,15 @@ const LoginPage = () => {
       const res = await userLogin(loginData);
 
       //@ts-ignore
-      if (res?.data?.accessToken) {
-        // router.push("/home");
+      if (res?.data?.data?.accessToken) {
         message.success("User logged in successfully!");
+        router.push("/dashboard");
       } else {
         return message.error("Wrong credential!");
       }
 
       //@ts-ignore
-      storeUserInfo({ accessToken: res?.data?.accessToken });
+      storeUserInfo({ accessToken: res?.data?.data?.accessToken });
     } catch (err: any) {
       console.error(err.message);
     }
@@ -62,7 +62,7 @@ const LoginPage = () => {
       {/* <Col sm={12} md={16} lg={10}>
         <Image src={loginImage} width={500} alt="login image" />
       </Col> */}
-      <Image src={logo} width={260} height={120} alt="login image" />
+      <Image src={logo} width={300} height={120} alt="login image" />
       <Col
         sm={12}
         md={8}
@@ -114,7 +114,7 @@ const LoginPage = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: "#f68c29",
+                backgroundColor: "#0e3160",
                 fontSize: "1.2rem",
                 width: "100%",
                 transition: "transform 0.3s ease-in-out",
