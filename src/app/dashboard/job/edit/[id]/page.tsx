@@ -10,20 +10,24 @@ import {
   jobTypeOptions,
 } from "@/components/contants/global";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
-import { useJobQuery } from "@/redux/api/jobApi";
+import { useJobQuery, useUpdateJobMutation } from "@/redux/api/jobApi";
 import { IJobData } from "@/types";
 import { Button, Col, Row, message } from "antd";
 
 const EditJobPage = ({ params }: any) => {
   const { id } = params;
   const { data, isLoading } = useJobQuery(id);
-  console.log(data);
+  const [updateJob] = useUpdateJobMutation();
 
   const onSubmit = async (data: IJobData) => {
     message.loading("Updating...");
     try {
       console.log(data);
-      message.success("Jobs updated successfully");
+      const res = await updateJob({ id: params?.id, body: data }).unwrap();
+
+      if (res?.id) {
+        message.success("Jobs updated successfully");
+      }
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);

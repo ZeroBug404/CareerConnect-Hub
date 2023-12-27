@@ -23,8 +23,10 @@ const CreateJob = () => {
     message.loading("Publishing...");
     try {
       console.log(data);
-      await addJob(data);
-      message.success("Jobs published successfully");
+      const res = await addJob(data);
+      if (!!res) {
+        message.success("Jobs published successfully");
+      }
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
