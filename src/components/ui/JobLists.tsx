@@ -15,8 +15,8 @@ const JobLists = async (props: any) => {
     fetch("https://career-connect-hub-api.vercel.app/api/v1/jobs")
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
-        setData(res.data);
+        console.log(res?.data?.data);
+        setData(res?.data?.data);
       });
   }, []);
 
