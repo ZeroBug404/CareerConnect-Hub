@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Form from "@/components/Forms/Form";
@@ -18,30 +17,35 @@ import { Button, Col, Row, message } from "antd";
 const CreateJob = () => {
   const [addJob] = useAddJobMutation();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (jobData: any) => {
+    const requirements = jobData.requirements;
+    const skills = jobData.skills;
+    const benefits = jobData.benefits;
+    const mOpeningsData = jobData.numberOfOpenings.toString();
     const options = {
       data: {
-        title: 'Junior web Developer',
-        company: 'XYZ Tech',
-        location: 'Dhaka, Bangladesh',
-        companyDescription: 'A leading technology company',
-        jobDescription: 'Developing and maintaining software applications',
-        requirements: ['Bachelor\'s degree in Computer Science', 'Experience with JavaScript and Node.js'],
-        salary: 80000,
-        deadline: '2023-12-31',
-        category: 'Information Technology',
-        jobType: 'Full-time',
-        experienceLevel: 'Intermediate',
-        skills: ['JavaScript', 'Node.js', 'React'],
-        benefits: ['Health insurance', '401(k)'],
-        contactEmail: 'jobs@abctech.com',
-        joiningDate: '2024-01-15',
-        keyResponsibilities: ['Developing new features', 'Bug fixing'],
-        numberOfOpenings: '3',
-        companyId: '6587f647a3d02b0cf0caa3aa',
+        title: jobData.title,
+        company: jobData.company,
+        location: jobData.location,
+        companyDescription: jobData.companyDescription,
+        jobDescription: jobData.jobDescription,
+        requirements: [requirements],
+        salary: jobData.salary,
+        deadline: "29-12-14",
+        category: jobData.category,
+        jobType: jobData.jobType,
+        experienceLevel: jobData.experienceLevel,
+        skills: [skills],
+        benefits: [benefits],
+        contactEmail: jobData.contactEmail,
+        joiningDate: "29-12-14",
+        keyResponsibilities: jobData.keyResponsibilities,
+        numberOfOpenings: mOpeningsData,
+        companyId: "6587f647a3d02b0cf0caa3aa",
       },
     };
-    message.loading("Publishing...");
+    // message.loading("Publishing...");
+    console.log(options);
     try {
       console.log(options);
       const res = await addJob(options);
