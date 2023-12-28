@@ -18,44 +18,44 @@ const CreateJob = () => {
   const [addJob] = useAddJobMutation();
 
   const onSubmit = async (jobData: any) => {
-    const requirements = jobData.requirements;
-    const skills = jobData.skills;
-    const benefits = jobData.benefits;
+    const mRequirements = jobData.requirements;
+    const mSkills = jobData.skills;
+    const mBenefits = jobData.benefits;
+    const mSalary = parseInt(jobData.salary);
     const mOpeningsData = jobData.numberOfOpenings.toString();
     const options = {
-      data: {
-        title: jobData.title,
-        company: jobData.company,
-        location: jobData.location,
-        companyDescription: jobData.companyDescription,
-        jobDescription: jobData.jobDescription,
-        requirements: [requirements],
-        salary: jobData.salary,
-        deadline: "29-12-14",
-        category: jobData.category,
-        jobType: jobData.jobType,
-        experienceLevel: jobData.experienceLevel,
-        skills: [skills],
-        benefits: [benefits],
-        contactEmail: jobData.contactEmail,
-        joiningDate: "29-12-14",
-        keyResponsibilities: jobData.keyResponsibilities,
-        numberOfOpenings: mOpeningsData,
-        companyId: "6587f647a3d02b0cf0caa3aa",
-      },
+      title: jobData.title,
+      company: jobData.company,
+      location: jobData.location,
+      companyDescription: jobData.companyDescription,
+      jobDescription: jobData.jobDescription,
+      requirements: [mRequirements],
+      salary: mSalary,
+      deadline: "29-12-14",
+      category: jobData.category,
+      jobType: jobData.jobType,
+      experienceLevel: jobData.experienceLevel,
+      skills: [mSkills],
+      benefits: [mBenefits],
+      contactEmail: jobData.contactEmail,
+      joiningDate: "29-12-14",
+      keyResponsibilities: jobData.keyResponsibilities,
+      numberOfOpenings: mOpeningsData,
+      companyId: "6587f647a3d02b0cf0caa3aa",
     };
-    // message.loading("Publishing...");
-    console.log(options);
-    try {
-      console.log(options);
-      const res = await addJob(options);
-      if (!!res) {
-        message.success("Jobs published successfully");
-      }
-    } catch (err: any) {
-      console.error(err.message);
-      message.error(err.message);
-    }
+    message.loading("Publishing...");
+    console.log("options", options);
+    fetch("http://localhost:5000/api/v1/jobs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(options),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (

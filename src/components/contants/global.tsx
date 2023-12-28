@@ -1,11 +1,11 @@
 export const jobTypeOptions = [
   {
     label: "Full-Time",
-    value: "Full-Time",
+    value: "Full-time",
   },
   {
     label: "Part-Time",
-    value: "Part-Time",
+    value: "Part-time",
   },
   {
     label: "Contract",

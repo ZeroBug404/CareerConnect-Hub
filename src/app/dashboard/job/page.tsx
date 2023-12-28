@@ -20,8 +20,9 @@ const JobPage = () => {
   query["sortOrder"] = sortOrder;
 
   const { data, isLoading } = useJobsQuery({ ...query });
-  const jobData = data?.data;
+  const jobData = data?.data?.data;
   const [deleteJob] = useDeleteJobMutation();
+  console.log("jobData", jobData);
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -98,7 +99,9 @@ const JobPage = () => {
   return (
     <div>
       <Link href="/dashboard/job/create">
-        <Button type="primary" style={{margin: "10px 0"}}>Publish a job?</Button>
+        <Button type="primary" style={{ margin: "10px 0" }}>
+          Publish a job?
+        </Button>
       </Link>
       <CareerTable
         loading={isLoading}
