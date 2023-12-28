@@ -1,7 +1,13 @@
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+"use client";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
+import { useState } from "react";
+import GlobalModal from "../Shared/GlobalModal";
+import AdditionalDetailModal from "../ui/ResumeModal/AdditionalDetailModal";
+import UpdateAdditionalDetails from "./UpdateAdditionalDetails";
 
 const AdditionalDetails = () => {
+  const [open, setOpen] = useState(false);
   return (
     <Flex
       wrap="wrap"
@@ -23,17 +29,20 @@ const AdditionalDetails = () => {
               <p>Design</p>
             </div>
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
-              <EditOutlined />
+              <UpdateAdditionalDetails />
               <DeleteOutlined />
             </Flex>
           </Flex>
         </div>
         <div>
-          <Button type="link">
+          <Button type="link" onClick={() => setOpen(true)}>
             <PlusOutlined />
             Add accomplishment/ additional detail
           </Button>
         </div>
+        <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
+          <AdditionalDetailModal btnName={"Save"}></AdditionalDetailModal>
+        </GlobalModal>
       </div>
     </Flex>
   );

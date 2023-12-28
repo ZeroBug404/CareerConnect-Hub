@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import AdditionalDetails from "@/components/Resume/additionalDetails";
 import Education from "@/components/Resume/education";
 import JobResponsibilities from "@/components/Resume/jobResponsibilities";
@@ -20,10 +20,14 @@ const ResumePage = () => {
       <div
         style={{
           margin: "32px",
-          color: "blue"
         }}
       >
-        <Link href="/">
+        <Link
+          href="/"
+          style={{
+            color: "blue",
+          }}
+        >
           <ArrowLeftOutlined /> Back
         </Link>
       </div>

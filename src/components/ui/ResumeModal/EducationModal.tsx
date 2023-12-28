@@ -1,10 +1,15 @@
 "use client";
 import { Button, Form, Input, Select } from "antd";
 
-const EducationModal = () => {
+interface EducationModalProps {
+  btnName: string;
+}
+
+const EducationModal: React.FC<EducationModalProps> = ({ btnName }) => {
   const onFinish = (values: any) => {
     console.log("Form values:", values);
   };
+
   return (
     <div>
       <p
@@ -24,7 +29,7 @@ const EducationModal = () => {
         labelCol={{ span: 24 }}
         wrapperCol={{ span: 24 }}
       >
-        <Form.Item label="Company" name="company">
+        <Form.Item label="College" name="college">
           <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
         </Form.Item>
         <div style={{ display: "flex", width: "100%", gap: ".6rem" }}>
@@ -111,7 +116,7 @@ const EducationModal = () => {
         </div>
         <div style={{ display: "flex", justifyContent: "end" }}>
           <Button type="primary" htmlType="submit">
-            Save
+            {btnName}
           </Button>
         </div>
       </Form>
