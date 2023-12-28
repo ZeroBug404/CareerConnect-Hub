@@ -7,18 +7,20 @@ import Title from "antd/es/typography/Title";
 import { useEffect, useState } from "react";
 
 const JobLists = async (props: any) => {
-  const { setSelectedID } = props;
+  const { setSelectedID, searchData } = props;
 
   const [data, setData] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   useEffect(() => {
-    fetch("https://career-connect-hub-api.vercel.app/api/v1/jobs")
+    fetch(
+      `https://career-connect-hub-api.vercel.app/api/v1/jobs?searchTerm=${searchData}`
+    )
       .then((res) => res.json())
       .then((res) => {
         console.log(res?.data?.data);
         setData(res?.data?.data);
       });
-  }, []);
+  }, [searchData]);
 
   const onClickHandler = (index: any, ID: any): void => {
     setSelectedIndex(index);

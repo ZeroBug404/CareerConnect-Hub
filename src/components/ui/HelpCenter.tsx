@@ -24,7 +24,7 @@ const HelpCenter = () => {
       <div className={styles.helpCenter_right}>
         <Image
           src={helpCenterImage}
-          width={450}
+          width={350}
           height={350}
           alt="Picture of the author"
         />
