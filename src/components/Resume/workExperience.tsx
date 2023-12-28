@@ -1,8 +1,10 @@
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+"use client";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
-import ExperienceModal from "../ui/ExperienceModal";
+import ExperienceModal from "../ui/ResumeModal/ExperienceModal";
+import UpdateWorkExperience from "./UpdateWorkExperience";
 
 const WorkExperience = () => {
   const [open, setOpen] = useState(false);
@@ -31,7 +33,7 @@ const WorkExperience = () => {
               </p>
             </div>
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
-              <EditOutlined />
+              <UpdateWorkExperience />
               <DeleteOutlined />
             </Flex>
           </Flex>
@@ -43,7 +45,7 @@ const WorkExperience = () => {
           </Button>
         </div>
         <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-          <ExperienceModal></ExperienceModal>
+          <ExperienceModal btnName={"Save"}></ExperienceModal>
         </GlobalModal>
       </div>
     </Flex>
