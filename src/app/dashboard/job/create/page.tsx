@@ -45,7 +45,7 @@ const CreateJob = () => {
     };
     message.loading("Publishing...");
     console.log("options", options);
-    fetch("http://localhost:5000/api/v1/jobs", {
+    fetch("https://career-connect-hub-api.vercel.app/api/v1/jobs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
