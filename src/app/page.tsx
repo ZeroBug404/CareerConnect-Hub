@@ -10,7 +10,7 @@ const HomePage = async () => {
     <main>
       <HomePageBanner></HomePageBanner>
       {/* <JobListMain /> */}
-      <JobFeed />
+      {/* <JobFeed /> */}
       <Overview></Overview>
       <HomeBlog></HomeBlog>
       <HelpCenter />

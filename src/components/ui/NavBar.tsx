@@ -1,6 +1,6 @@
 "use client";
 
-import blueLogo from "@/assets/logo-blue1.png";
+import blueLogo from "@/assets/1-removebg-preview.png";
 import {
   MenuOutlined,
   QuestionCircleOutlined,
@@ -103,12 +103,15 @@ const NavBar = () => {
           width: "100%",
         }}
       >
-        <Image
-          src={blueLogo}
-          alt="Logo"
-          width={100}
-          style={{ marginRight: "10px", height: "30px" }}
-        />
+        <Link href="/">
+          {" "}
+          <Image
+            src={blueLogo}
+            alt="Logo"
+            width={200}
+            style={{ marginRight: "10px", height: "80px" }}
+          />
+        </Link>
         <NavMenu />
         <div
           style={{
@@ -118,7 +121,7 @@ const NavBar = () => {
           }}
         >
           <Link
-            href="/register"
+            href="/career-services"
             style={{
               color: "white",
               fontSize: "0.9rem",
@@ -178,7 +181,7 @@ const NavBar = () => {
             }}
           />
           <Link
-            href="/register"
+            href="/job-list"
             style={{
               color: "white",
               fontSize: "0.9rem",
@@ -253,7 +256,7 @@ const NavMenu = ({ isInline = false }) => {
           {
             label: (
               <Link
-                href="#"
+                href="/contact"
                 // target="_blank"
                 rel="noopener noreferrer"
               >
@@ -265,7 +268,7 @@ const NavMenu = ({ isInline = false }) => {
           {
             label: (
               <Link
-                href="#"
+                href="/blog"
                 // target="_blank"
                 rel="noopener noreferrer"
               >
