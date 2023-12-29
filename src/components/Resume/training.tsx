@@ -1,7 +1,12 @@
+import { useTrainingQuery } from "@/redux/api/trainingApi";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 
 const Training = () => {
+  const query: Record<string, any> = {};
+  const { data, isLoading } = useTrainingQuery({ ...query });
+  const trainingData = data?.data;
+  console.log(data?.data);
   return (
     <Flex
       wrap="wrap"

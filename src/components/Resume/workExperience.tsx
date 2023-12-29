@@ -3,9 +3,14 @@ import { Button, Flex } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import ExperienceModal from "../ui/ExperienceModal";
+import { useWorkExperienceQuery } from "@/redux/api/workExperienceApi";
 
 const WorkExperience = () => {
   const [open, setOpen] = useState(false);
+  const query: Record<string, any> = {};
+  const { data, isLoading } = useWorkExperienceQuery({ ...query });
+  const experiencesData = data?.data;
+  console.log(data?.data);
   return (
     <Flex
       wrap="wrap"

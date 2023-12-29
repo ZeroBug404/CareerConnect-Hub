@@ -4,7 +4,7 @@ export enum tagTypes {
   company = "company",
   education= 'education',
   workExperience = 'workExperience',
-  jobResponsibility = 'jobResponsibilities',
+  jobResponsibility = 'jobResponsibility',
   training = 'training',
 }
 

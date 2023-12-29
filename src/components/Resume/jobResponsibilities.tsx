@@ -1,7 +1,12 @@
+import { useResponsibilityQuery } from "@/redux/api/jobResponsibilityApi";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 
 const JobResponsibilities = () => {
+  const query: Record<string, any> = {};
+  const { data, isLoading } = useResponsibilityQuery({ ...query });
+  const responsibilityData = data?.data;
+  console.log(data?.data);
   return (
     <Flex
       wrap="wrap"
