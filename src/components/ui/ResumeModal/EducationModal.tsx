@@ -16,23 +16,10 @@ interface JobResponsibilityModalProps {
 const EducationModal: React.FC<JobResponsibilityModalProps> = ({ btnName }) => {
   const [addEducation] = useAddEducationMutation();
 
-  const onSubmit = async (educationData: any) => {
-    console.log(educationData);
-    const options = {
-      data: {
-        college: educationData.college,
-        startYear: educationData.startYear,
-        endYear: educationData.endYear,
-        degree: educationData.degree,
-        description: educationData.description,
-        performanceScale: educationData.performanceScale,
-        cgpa: educationData.cgpa,
-      },
-    };
+  const onSubmit = async (educationData: any) => {    
     message.loading("Adding...");
     try {
-      console.log(options);
-      await addEducation(options);
+      await addEducation(educationData);
       message.success("Education added successfully");
     } catch (err: any) {
       console.error(err.message);
