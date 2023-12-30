@@ -2,7 +2,7 @@
 
 import { useTrainingsQuery } from "@/redux/api/trainingApi";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Flex } from "antd";
+import { Button, Col, Flex, Row } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import TrainingModal from "../ui/ResumeModal/TrainingModal";
@@ -16,21 +16,18 @@ const Training = () => {
   const trainingData = data?.data;
 
   return (
-    <Flex
-      wrap="wrap"
-      gap="small"
-      justify="space-between"
-      style={{
-        borderBottom: "1px solid black",
-        padding: "10px 0",
-      }}
-    >
-      <div>
-        <p>TRAININGS/ COURSES</p>
-      </div>
-      <div style={{ width: "50%" }}>
-        <div>
-          <Flex vertical gap="middle" justify="space-between" align="start">
+    <>
+      <Row
+        style={{
+          borderBottom: "1px solid black",
+          padding: "10px 0",
+        }}
+      >
+        <Col span={8}>
+          <p>TRAININGS/ COURSES</p>
+        </Col>
+        <Col span={16}>
+          <Col>
             {trainingData?.map((training: ITraining) => (
               <Flex
                 wrap="wrap"
@@ -51,19 +48,19 @@ const Training = () => {
                 </Flex>
               </Flex>
             ))}
-          </Flex>
-        </div>
-        <div>
-          <Button type="link" onClick={() => setOpen(true)}>
-            <PlusOutlined />
-            Add training/ course
-          </Button>
-        </div>
-        <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-          <TrainingModal btnName={"Save"}></TrainingModal>
-        </GlobalModal>
-      </div>
-    </Flex>
+          </Col>
+          <div>
+            <Button type="link" onClick={() => setOpen(true)}>
+              <PlusOutlined />
+              Add training/ course
+            </Button>
+          </div>
+          <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
+            <TrainingModal btnName={"Save"}></TrainingModal>
+          </GlobalModal>
+        </Col>
+      </Row>
+    </>
   );
 };
 

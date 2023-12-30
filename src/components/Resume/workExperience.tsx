@@ -1,6 +1,6 @@
 "use client";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Flex } from "antd";
+import { Button, Col, Flex, Row } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import UpdateWorkExperience from "./UpdateWorkExperience";
@@ -15,22 +15,21 @@ const WorkExperience = () => {
   const experiencesData = data?.data;
 
   return (
-    <Flex
-      wrap="wrap"
-      gap="small"
-      justify="space-between"
-      style={{
-        borderBottom: "1px solid black",
-        padding: "10px 0",
-      }}
-    >
-      <div>
-        <p>WORK EXPERIENCE</p>
-        <p>year</p>
-      </div>
-      <div style={{ width: "50%" }}>
-        <div>
-          <Flex vertical gap="middle" justify="space-between" align="start">
+    <>
+      <Row
+        style={{
+          borderBottom: "1px solid black",
+          padding: "10px 0",
+        }}
+      >
+        <Col span={8}>
+          <div>
+            <p>WORK EXPERIENCE</p>
+            <p>year</p>
+          </div>
+        </Col>
+        <Col span={16}>
+          <Col>
             {experiencesData?.map((exp: IWorkExperience) => (
               <Flex
                 wrap="wrap"
@@ -53,19 +52,19 @@ const WorkExperience = () => {
                 </Flex>
               </Flex>
             ))}
-          </Flex>
-        </div>
-        <div>
-          <Button type="link" onClick={() => setOpen(true)}>
-            <PlusOutlined />
-            Add Job
-          </Button>
-        </div>
-        <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-          <ExperienceModal btnName={"Save"}></ExperienceModal>
-        </GlobalModal>
-      </div>
-    </Flex>
+          </Col>
+          <div>
+            <Button type="link" onClick={() => setOpen(true)}>
+              <PlusOutlined />
+              Add Job
+            </Button>
+          </div>
+          <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
+            <ExperienceModal btnName={"Save"}></ExperienceModal>
+          </GlobalModal>
+        </Col>
+      </Row>
+    </>
   );
 };
 
