@@ -1,0 +1,282 @@
+.main_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.top_section {
+  background-color: rgb(255, 255, 255);
+  width: 45vw;
+}
+
+.top_section_head {
+  width: 100%;
+  background-color: #546e7a;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.top_section_body {
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.top_section_body_title {
+  padding: 10px 0;
+  color: #333;
+  font-size: 14px;
+}
+.top_section_body_complete {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #f7f7f7;
+  border-radius: 6px;
+}
+.top_section_body_complete_text1 {
+  color: #666;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.top_section_body_complete_text2 {
+  color: #666666;
+}
+.top_section_body_complete_download {
+  padding: 10px 0;
+  font-size: 16px;
+  margin: 0 7px 0 0;
+  color: #333;
+  padding-left: 0;
+  font-weight: 600;
+}
+.profile_section {
+  width: 45vw;
+  background-color: rgb(255, 255, 255);
+  padding-bottom: 5px;
+}
+.profile_section_container {
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+.profile_section_info_pic {
+  display: flex;
+  justify-content: space-between;
+}
+.profile_section_info_Name {
+  background: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0b5f8a;
+  padding-top: 16px;
+  padding-bottom: 3.5px;
+}
+.profile_section_info_address,
+.profile_section_info_contact,
+.profile_section_info_email,
+.profile_section_info_fb,
+.profile_section_info_linkedin,
+.profile_section_info_github {
+  font-size: 13px;
+  font-weight: normal;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+/* .profile_section_objective{
+
+} */
+.profile_section_title_header {
+  background: #f5f5f5;
+  color: #666;
+  font-size: 15px;
+  font-weight: bold;
+  padding-top: 3px;
+  padding-left: 2px;
+  padding-bottom: 2px;
+  line-height: 24px;
+  margin: 10px auto 10px auto;
+  width: 100%;
+}
+.profile_section_objective_body,
+.profile_section_summary_body {
+  font-size: 14px;
+  font-weight: normal;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  margin: 10px auto 10px auto;
+  width: 100%;
+}
+
+/* .profile_section_Employment_History{
+
+} */
+.profile_section_Employment_History_body {
+  margin: 10px auto 10px auto;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  color: #666;
+  font-size: 14px;
+}
+.profile_section_head {
+  font-weight: 700;
+}
+.profile_section_head_value {
+  font-weight: 500;
+}
+/* .profile_section_Academic_Qualification {
+} */
+.profile_section_Academic_Qualification_table_container,
+.profile_section_Training_Summary_table_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
+}
+.profile_section_Academic_Qualification_table {
+  border-collapse: collapse;
+  border: 1px solid #dddddd;
+  width: 80%;
+}
+.profile_section_Academic_Qualification_table > tr > th {
+  border: 1px solid #dddddd;
+  padding: 3px;
+  text-align: center;
+  font-size: 11px;
+  color: #666;
+}
+.profile_section_Academic_Qualification_table > tr > td {
+  border: 1px solid #dddddd;
+  padding: 3px;
+  text-align: center;
+  font-size: 11px;
+  color: #666;
+}
+
+.profile_section_Training_Summary_table {
+  border-collapse: collapse;
+  border: 1px solid #dddddd;
+  width: 80%;
+}
+.profile_section_Training_Summary_table > tr > th {
+  border: 1px solid #dddddd;
+  padding: 3px;
+  text-align: center;
+  font-size: 11px;
+  color: #666;
+}
+.profile_section_Training_Summary_table > tr > td {
+  border: 1px solid #dddddd;
+  padding: 3px;
+  text-align: center;
+  font-size: 11px;
+  color: #666;
+}
+.profile_section_Career_Application_table_container {
+  width: 100%;
+  padding-bottom: 15px;
+  padding-left: 5px;
+}
+/* .profile_section_Career_Application_table {
+} */
+.profile_section_Career_Application_table > tr > td {
+  padding: 2px;
+  font-size: 14px;
+  color: #666;
+}
+
+.profile_section_Extra_Curricular_body {
+  font-weight: 500;
+  margin: 10px auto 10px auto;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  color: #666;
+  font-size: 14px;
+}
+.profile_section_Skills_table_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
+}
+.profile_section_Skills_table {
+  border-collapse: collapse;
+  border: 1px solid #dddddd;
+  width: 80%;
+}
+.profile_section_Skills_table > tr > th {
+  border: 1px solid #dddddd;
+  padding: 3px;
+  font-size: 11px;
+  color: #666;
+}
+.profile_section_Skills_table > tr > td {
+  border: 1px solid #dddddd;
+  padding: 3px;
+  font-size: 11px;
+  color: #666;
+}
+
+.profile_section_Language_table_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
+}
+.profile_section_Language_table {
+  border-collapse: collapse;
+  border: 1px solid #dddddd;
+  width: 80%;
+}
+.profile_section_Language_table > tr > th {
+  border: 1px solid #dddddd;
+  padding: 3px;
+  text-align: center;
+  font-size: 11px;
+  color: #666;
+}
+.profile_section_Language_table > tr > td {
+  border: 1px solid #dddddd;
+  padding: 3px;
+  text-align: center;
+  font-size: 11px;
+  color: #666;
+}
+
+.profile_section_Personal_Details_table_container {
+  width: 100%;
+  padding-bottom: 15px;
+  padding-left: 5px;
+}
+/* .profile_section_Career_Application_table {
+} */
+.profile_section_Personal_Details_table > tr > td {
+  padding: 1px;
+  font-size: 14px;
+  color: #666;
+}
+.profile_section_Reference_table_container {
+  width: 100%;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile_section_Reference_table {
+  border-bottom: 1px solid #666;
+  padding-bottom: 10px;
+  width: 80%;
+}
+
+.profile_section_Reference_table > tr > td {
+  font-size: 14px;
+  color: #666;
+}
