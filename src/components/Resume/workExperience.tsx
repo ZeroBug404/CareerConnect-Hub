@@ -38,7 +38,7 @@ const WorkExperience = () => {
                 align="start"
                 key={exp._id}
               >
-                <div>
+                <div style={{padding: "5px 0"}}>
                   <h4>{exp?.profile}</h4>
                   <p>{exp?.location}</p>
                   <p>

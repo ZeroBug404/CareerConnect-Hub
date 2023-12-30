@@ -36,7 +36,7 @@ const Training = () => {
                 align="start"
                 key={training._id}
               >
-                <div>
+                <div style={{padding: "5px 0"}}>
                   <h4>{training?.title}</h4>
                   <p>
                     {training?.startDate} - {training?.endDate}

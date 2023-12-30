@@ -35,7 +35,7 @@ const Education = () => {
                 align="start"
                 key={education._id}
               >
-                <div>
+                <div style={{padding: "5px 0"}}>
                   <h4>{education?.degree}</h4>
                   <p>{education?.college}</p>
                   <p>
