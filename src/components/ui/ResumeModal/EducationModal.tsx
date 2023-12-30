@@ -65,7 +65,7 @@ const EducationModal: React.FC<JobResponsibilityModalProps> = ({ btnName }) => {
             <FormInput name="degree" type="text" label="Degree" />
           </div>
           <div style={{ width: "50%" }}>
-            <FormInput name="stream" type="text" label="Stream(Optional)" />
+            <FormInput name="description" type="text" label="Stream(Optional)" />
           </div>
         </div>
         <div
@@ -84,7 +84,7 @@ const EducationModal: React.FC<JobResponsibilityModalProps> = ({ btnName }) => {
           </div>
           <div style={{ width: "50%" }}>
             <FormInput
-              name="performance"
+              name="cgpa"
               type="text"
               label="Performance (Optional)"
             />
