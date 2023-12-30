@@ -14,7 +14,7 @@ const WorkExperience = () => {
   const query: Record<string, any> = {};
   const { data, isLoading } = useWorkExperienceQuery({ ...query });
   const experiencesData = data?.data;
-  console.log(data?.data);
+
   return (
     <Flex
       wrap="wrap"
@@ -32,13 +32,17 @@ const WorkExperience = () => {
       <div style={{ width: "50%" }}>
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            <div>
-              <h4>Frontend dev</h4>
-              <p>NY, Remote</p>
-              <p>
-                Job <span>Dec 2022 - Dec 2023</span>
-              </p>
-            </div>
+            <Flex vertical gap="middle" justify="space-between" align="start">
+              {experiencesData?.map((exp) => (
+                <div key={exp._id}>
+                  <h4>{exp?.profile}</h4>
+                  <p>{exp?.location}</p>
+                  <p>
+                    Job - {exp?.startDate} - {exp?.endDate}
+                  </p>
+                </div>
+              ))}
+            </Flex>
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
               <UpdateWorkExperience />
               <DeleteOutlined />

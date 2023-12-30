@@ -14,7 +14,7 @@ const Education = () => {
   const query: Record<string, any> = {};
   const { data, isLoading } = useEducationQuery({ ...query });
   const educationData = data?.data;
-  console.log(data?.data);
+
   return (
     <Flex
       wrap="wrap"
@@ -29,11 +29,20 @@ const Education = () => {
       <div style={{ width: "50%" }}>
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            <div>
-              <h4>Department</h4>
-              <p>Institute</p>
-              <p>year</p>
-            </div>
+            <Flex
+              vertical
+              gap="middle"
+              justify="space-between"
+              align="start"
+            >
+              {educationData?.map((education) => (
+                <div key={education._id}>
+                  <h4>{education?.degree}</h4>
+                  <p>{education?.college}</p>
+                  <p>{education?.startYear} - {education?.endYear}</p>
+                </div>
+              ))}
+            </Flex>
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
               <UpdateEducation />
               <DeleteOutlined />

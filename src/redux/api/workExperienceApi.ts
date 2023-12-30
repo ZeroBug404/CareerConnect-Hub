@@ -1,7 +1,7 @@
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
-const WORK_EXP_URL = "/workExperience";
+const WORK_EXP_URL = "/experience";
 
 export const workExperienceApi = baseApi.injectEndpoints({
   endpoints: (build) => ({

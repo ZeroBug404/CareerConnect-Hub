@@ -1,7 +1,7 @@
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
-const TRAINING_URL = "/trailing";
+const TRAINING_URL = "/training";
 
 export const trainingApi = baseApi.injectEndpoints({
     endpoints: (build) => ({

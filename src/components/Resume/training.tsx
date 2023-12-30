@@ -1,10 +1,7 @@
-
 "use client";
-
 
 import { useTrainingQuery } from "@/redux/api/trainingApi";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-
 import { Button, Flex } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
@@ -12,9 +9,7 @@ import TrainingModal from "../ui/ResumeModal/TrainingModal";
 import UpdateTraining from "./UpdateTraining";
 
 const Training = () => {
-
   const [open, setOpen] = useState(false);
-
   const query: Record<string, any> = {};
   const { data, isLoading } = useTrainingQuery({ ...query });
   const trainingData = data?.data;
@@ -36,10 +31,16 @@ const Training = () => {
       <div style={{ width: "50%" }}>
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            <div>
-              <h4>Web dev</h4>
-              <p>Dec 2022 - Dec 2023</p>
-            </div>
+            <Flex vertical gap="middle" justify="space-between" align="start">
+              {trainingData?.map((training) => (
+                <div key={training._id}>
+                  <h4>{training?.title}</h4>
+                  <p>
+                    {training?.startDate} - {training?.endDate}
+                  </p>
+                </div>
+              ))}
+            </Flex>
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
               <UpdateTraining />
               <DeleteOutlined />
