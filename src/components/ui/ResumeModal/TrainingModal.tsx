@@ -64,9 +64,10 @@ const TrainingModal: React.FC<TrainingModalProps> = ({ btnName }) => {
         <div
           style={{
             width: "100%",
+            height: "100%", minHeight: "10rem", resize: "none"
           }}
         >
-          <FormTextArea name="description" label="Description (Optional)" style={{ height: "100%", minHeight: "10rem", resize: "none" }} />
+          <FormTextArea name="description" label="Description (Optional)"/>
         </div>
         <div style={{ display: "flex", justifyContent: "end", marginTop: "10px"  }}>
           <Button type="primary" htmlType="submit">

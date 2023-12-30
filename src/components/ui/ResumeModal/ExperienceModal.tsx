@@ -1,5 +1,9 @@
 "use client";
-import { Button, Form, Input } from "antd";
+import Form from "@/components/Forms/Form";
+import FormInput from "@/components/Forms/FormInput";
+import FormTextArea from "@/components/Forms/FormTextArea";
+import { useAddWorkExperienceMutation } from "@/redux/api/workExperienceApi";
+import { Button, Input, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 interface ExperienceModalProps {
@@ -7,8 +11,17 @@ interface ExperienceModalProps {
 }
 
 const ExperienceModal: React.FC<ExperienceModalProps> = ({ btnName }) => {
-  const onFinish = (values: any) => {
-    console.log("Form values:", values);
+  const [addWorkExperience] = useAddWorkExperienceMutation();
+
+  const onSubmit = async (trainingData: any) => {
+    message.loading("Adding...");
+    try {
+      await addWorkExperience(trainingData);
+      message.success("Experience added successfully");
+    } catch (err: any) {
+      console.error(err.message);
+      message.error(err.message);
+    }
   };
 
   return (
@@ -24,24 +37,16 @@ const ExperienceModal: React.FC<ExperienceModalProps> = ({ btnName }) => {
       >
         Job details
       </p>
-      <Form
-        name="myForm"
-        onFinish={onFinish}
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-      >
-        <Form.Item label="Designation" name="Designation">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <Form.Item label="Profile" name="Profile">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <Form.Item label="Organization" name="Organization">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <Form.Item label="Location" name="Locations">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
+      <Form submitHandler={onSubmit}>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput name="profile" type="text" label="Profile" />
+        </div>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput name="organization" type="text" label="Organization" />
+        </div>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput name="location" type="text" label="Locations" />
+        </div>
         <div
           style={{
             display: "flex",
@@ -49,38 +54,26 @@ const ExperienceModal: React.FC<ExperienceModalProps> = ({ btnName }) => {
             gap: ".6rem",
           }}
         >
-          <Form.Item
-            style={{ width: "50%" }}
-            label="Start date"
-            name="startdate"
-          >
-            <Input
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              size="large"
-              type="date"
-            />
-          </Form.Item>
-          <Form.Item style={{ width: "50%" }} label="End date" name="end date">
-            <Input
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              size="large"
-              type="date"
-            />
-          </Form.Item>
+          <div style={{ width: "50%", marginTop: "-.5rem" }}>
+            <FormInput name="startDate" type="date" label="Start Date" />
+          </div>
+          <div style={{ width: "50%", marginTop: "-.5rem" }}>
+            <FormInput name="endDate" type="date" label="End Date" />
+          </div>
         </div>
-        <Form.Item
-          style={{ width: "100%" }}
-          label="Description (Optional)"
-          name="description"
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput name="responsibility" type="text" label="responsibility" />
+        </div>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            minHeight: "10rem",
+            resize: "none",
+          }}
         >
-          <TextArea
-            // showCount
-            placeholder="Description"
-            size="large"
-            style={{ height: "100%", minHeight: "10rem", resize: "none" }}
-            maxLength={250}
-          />
-        </Form.Item>
+          <FormTextArea name="description" label="Description (Optional)" />
+        </div>
         <div style={{ display: "flex", justifyContent: "end" }}>
           <Button type="primary" htmlType="submit">
             {btnName}
