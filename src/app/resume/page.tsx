@@ -8,6 +8,7 @@ import Projects from "@/components/Resume/projects";
 import Skills from "@/components/Resume/skills";
 import Training from "@/components/Resume/training";
 import WorkExperience from "@/components/Resume/workExperience";
+import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import {
   ArrowLeftOutlined,
   ExclamationCircleOutlined,
@@ -22,14 +23,15 @@ const ResumePage = () => {
           margin: "32px",
         }}
       >
-        <Link
-          href="/"
-          style={{
-            color: "blue",
-          }}
-        >
-          <ArrowLeftOutlined /> Back
-        </Link>
+        <CareerBreadCrumb
+        items={[
+          {
+            label: "Back",
+            link: "/",
+          },
+        ]}
+      />
+        
       </div>
       <div
         style={{

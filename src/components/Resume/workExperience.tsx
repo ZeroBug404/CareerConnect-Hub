@@ -30,25 +30,29 @@ const WorkExperience = () => {
       </div>
       <div style={{ width: "50%" }}>
         <div>
-          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            <Flex vertical gap="middle" justify="space-between" align="start">
-              {experiencesData?.map((exp: IWorkExperience) => (
-                <div key={exp._id}>
+          <Flex vertical gap="middle" justify="space-between" align="start">
+            {experiencesData?.map((exp: IWorkExperience) => (
+              <Flex
+                wrap="wrap"
+                gap="large"
+                justify="space-between"
+                align="start"
+                key={exp._id}
+              >
+                <div>
                   <h4>{exp?.profile}</h4>
                   <p>{exp?.location}</p>
                   <p>
                     Job - {exp?.startDate} - {exp?.endDate}
                   </p>
-                  <p>
-                    Responsibility - {exp?.responsibility}
-                  </p>
+                  <p>Responsibility - {exp?.responsibility}</p>
                 </div>
-              ))}
-            </Flex>
-            <Flex wrap="wrap" gap="middle" justify="end" align="start">
-              <UpdateWorkExperience />
-              <DeleteOutlined />
-            </Flex>
+                <Flex wrap="wrap" gap="middle" justify="end" align="start">
+                  <UpdateWorkExperience />
+                  <DeleteOutlined />
+                </Flex>
+              </Flex>
+            ))}
           </Flex>
         </div>
         <div>

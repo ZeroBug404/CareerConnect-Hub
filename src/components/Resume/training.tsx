@@ -30,21 +30,27 @@ const Training = () => {
       </div>
       <div style={{ width: "50%" }}>
         <div>
-          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            <Flex vertical gap="middle" justify="space-between" align="start">
-              {trainingData?.map((training: ITraining) => (
-                <div key={training._id}>
+          <Flex vertical gap="middle" justify="space-between" align="start">
+            {trainingData?.map((training: ITraining) => (
+              <Flex
+                wrap="wrap"
+                gap="middle"
+                justify="space-between"
+                align="start"
+                key={training._id}
+              >
+                <div>
                   <h4>{training?.title}</h4>
                   <p>
                     {training?.startDate} - {training?.endDate}
                   </p>
                 </div>
-              ))}
-            </Flex>
-            <Flex wrap="wrap" gap="middle" justify="end" align="start">
-              <UpdateTraining />
-              <DeleteOutlined />
-            </Flex>
+                <Flex wrap="wrap" gap="middle" justify="end" align="start">
+                  <UpdateTraining />
+                  <DeleteOutlined />
+                </Flex>
+              </Flex>
+            ))}
           </Flex>
         </div>
         <div>

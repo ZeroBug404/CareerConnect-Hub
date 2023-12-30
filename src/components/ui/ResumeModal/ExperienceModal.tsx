@@ -4,7 +4,6 @@ import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import { useAddWorkExperienceMutation } from "@/redux/api/workExperienceApi";
 import { Button, Input, message } from "antd";
-import TextArea from "antd/es/input/TextArea";
 
 interface ExperienceModalProps {
   btnName: string;

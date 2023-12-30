@@ -27,25 +27,28 @@ const Education = () => {
       <p>EDUCATION</p>
       <div style={{ width: "50%" }}>
         <div>
-          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            <Flex
-              vertical
-              gap="middle"
-              justify="space-between"
-              align="start"
-            >
-              {educationData?.map((education:IEducation) => (
-                <div key={education._id}>
+          <Flex vertical gap="middle" justify="space-between" align="start">
+            {educationData?.map((education: IEducation) => (
+              <Flex
+                wrap="wrap"
+                gap="middle"
+                justify="space-between"
+                align="start"
+                key={education._id}
+              >
+                <div>
                   <h4>{education?.degree}</h4>
                   <p>{education?.college}</p>
-                  <p>{education?.startYear} - {education?.endYear}</p>
+                  <p>
+                    {education?.startYear} - {education?.endYear}
+                  </p>
                 </div>
-              ))}
-            </Flex>
-            <Flex wrap="wrap" gap="middle" justify="end" align="start">
-              <UpdateEducation />
-              <DeleteOutlined />
-            </Flex>
+                <Flex wrap="wrap" gap="middle" justify="end" align="start">
+                  <UpdateEducation />
+                  <DeleteOutlined />
+                </Flex>
+              </Flex>
+            ))}
           </Flex>
         </div>
         <div>
