@@ -61,7 +61,7 @@ const ResumePage = () => {
         <PersonalInfo />
         <Education />
         <WorkExperience />
-        <JobResponsibilities />
+        {/* <JobResponsibilities /> */}
         <Training />
         <Projects />
         <Skills />

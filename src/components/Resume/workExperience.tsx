@@ -39,6 +39,9 @@ const WorkExperience = () => {
                   <p>
                     Job - {exp?.startDate} - {exp?.endDate}
                   </p>
+                  <p>
+                    Responsibility - {exp?.responsibility}
+                  </p>
                 </div>
               ))}
             </Flex>
