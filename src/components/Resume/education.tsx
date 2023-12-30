@@ -1,9 +1,10 @@
 "use client";
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
-import EducationModal from "../ui/EducationModal";
+import EducationModal from "../ui/ResumeModal/EducationModal";
+import UpdateEducation from "./UpdateEducation";
 
 const Education = () => {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ const Education = () => {
               <p>year</p>
             </div>
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
-              <EditOutlined />
+              <UpdateEducation />
               <DeleteOutlined />
             </Flex>
           </Flex>
@@ -38,8 +39,8 @@ const Education = () => {
             Add Education
           </Button>
         </div>
-        <GlobalModal open={open} setOpen={setOpen} width={700} title={""}>
-          <EducationModal></EducationModal>
+        <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
+          <EducationModal btnName={"Save"}></EducationModal>
         </GlobalModal>
       </div>
     </Flex>

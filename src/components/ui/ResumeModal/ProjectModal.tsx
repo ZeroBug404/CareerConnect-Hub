@@ -2,7 +2,11 @@
 import { Button, Form, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
-const ExperienceModal = () => {
+interface ProjectModalProps {
+  btnName: string;
+}
+
+const ProjectModal: React.FC<ProjectModalProps> = ({ btnName }) => {
   const onFinish = (values: any) => {
     console.log("Form values:", values);
   };
@@ -18,7 +22,7 @@ const ExperienceModal = () => {
           fontWeight: "bold",
         }}
       >
-        Job details
+        Project details
       </p>
       <Form
         name="myForm"
@@ -26,16 +30,7 @@ const ExperienceModal = () => {
         labelCol={{ span: 24 }}
         wrapperCol={{ span: 24 }}
       >
-        <Form.Item label="Designation" name="Designation">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <Form.Item label="Profile" name="Profile">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <Form.Item label="Organization" name="Organization">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <Form.Item label="Location" name="Locations">
+        <Form.Item label="Title" name="title">
           <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
         </Form.Item>
         <div
@@ -73,13 +68,16 @@ const ExperienceModal = () => {
             // showCount
             placeholder="Description"
             size="large"
-            style={{ height: "100%", resize: "none" }}
+            style={{ height: "100%", minHeight: "10rem", resize: "none" }}
             maxLength={250}
           />
         </Form.Item>
+        <Form.Item label="Project link (Optional)" name="projectLink">
+          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
+        </Form.Item>
         <div style={{ display: "flex", justifyContent: "end" }}>
           <Button type="primary" htmlType="submit">
-            Save
+            {btnName}
           </Button>
         </div>
       </Form>
@@ -87,4 +85,4 @@ const ExperienceModal = () => {
   );
 };
 
-export default ExperienceModal;
+export default ProjectModal;
