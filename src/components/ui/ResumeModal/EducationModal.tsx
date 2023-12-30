@@ -32,8 +32,8 @@ const EducationModal: React.FC<JobResponsibilityModalProps> = ({ btnName }) => {
     message.loading("Adding...");
     try {
       console.log(options);
-      // await addEducation(options);
-      // message.success("Education added successfully");
+      await addEducation(options);
+      message.success("Education added successfully");
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
