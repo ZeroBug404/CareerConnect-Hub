@@ -22,13 +22,13 @@ const WorkExperience = () => {
           padding: "10px 0",
         }}
       >
-        <Col span={8}>
+        <Col xs={24} sm={8}>
           <div>
             <p>WORK EXPERIENCE</p>
             <p>year</p>
           </div>
         </Col>
-        <Col span={16}>
+        <Col xs={24} sm={16}>
           <Col>
             {experiencesData?.map((exp: IWorkExperience) => (
               <Flex

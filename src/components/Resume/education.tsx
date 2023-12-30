@@ -22,10 +22,10 @@ const Education = () => {
           padding: "10px 0",
         }}
       >
-        <Col span={8}>
+        <Col xs={24} sm={8}>
           <p>EDUCATION</p>
         </Col>
-        <Col span={16}>
+        <Col xs={24} sm={16}>
           <Col>
             {educationData?.map((education: IEducation) => (
               <Flex
