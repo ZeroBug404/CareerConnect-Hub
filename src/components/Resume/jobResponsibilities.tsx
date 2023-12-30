@@ -18,7 +18,6 @@ const JobResponsibilities = () => {
   const query: Record<string, any> = {};
   const { data, isLoading } = useResponsibilityQuery({ ...query });
   const responsibilityData = data?.data;
-  console.log(data?.data);
 
   return (
     <div className="">

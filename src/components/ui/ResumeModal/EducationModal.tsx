@@ -1,13 +1,24 @@
 "use client";
-import { Button, Form, Input, Select } from "antd";
+import Form from "@/components/Forms/Form";
+import FormInput from "@/components/Forms/FormInput";
+import FormSelectField from "@/components/Forms/FormSelectField";
+import {
+  educationYearOptions,
+  performanceScale,
+} from "@/components/contants/global";
+import { Button, message } from "antd";
 
-interface EducationModalProps {
-  btnName: string;
-}
+const EducationModal = () => {
+  const onSubmit = async (data: any) => {
+    message.loading("Updating...");
+    try {
+      console.log(data);
 
-const EducationModal: React.FC<EducationModalProps> = ({ btnName }) => {
-  const onFinish = (values: any) => {
-    console.log("Form values:", values);
+      message.success("Education Update successfully");
+    } catch (err: any) {
+      console.error(err.message);
+      message.error(err.message);
+    }
   };
 
   return (
@@ -23,62 +34,33 @@ const EducationModal: React.FC<EducationModalProps> = ({ btnName }) => {
       >
         Graduation details/ Post graduation details
       </p>
-      <Form
-        name="myForm"
-        onFinish={onFinish}
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-      >
-        <Form.Item label="College" name="college">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <div style={{ display: "flex", width: "100%", gap: ".6rem" }}>
-          <Form.Item
-            style={{ width: "50%" }}
-            label="Start year"
-            name="startyear"
-          >
-            <Select
-              defaultValue="2023"
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              options={[
-                { value: "2023", label: "2023" },
-                { value: "2022", label: "2022" },
-                { value: "2021", label: "2021" },
-              ]}
-              size="large"
-            />
-          </Form.Item>
-          <Form.Item style={{ width: "50%" }} label="End year" name="endyear">
-            <Select
-              defaultValue="2023"
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              options={[
-                { value: "2023", label: "2023" },
-                { value: "2022", label: "2022" },
-                { value: "2021", label: "2021" },
-              ]}
-              size="large"
-            />
-          </Form.Item>
+      <Form submitHandler={onSubmit}>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput name="college" type="text" label="College" />
         </div>
         <div style={{ display: "flex", width: "100%", gap: ".6rem" }}>
-          <Form.Item style={{ width: "50%" }} label="Degree" name="degree">
-            <Input
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              size="large"
+          <div style={{ width: "50%" }}>
+            <FormSelectField
+              name="startYear"
+              label="Start year"
+              options={educationYearOptions}
             />
-          </Form.Item>
-          <Form.Item
-            style={{ width: "50%" }}
-            label="Stream(Optional)"
-            name="stream"
-          >
-            <Input
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              size="large"
+          </div>
+          <div style={{ width: "50%" }}>
+            <FormSelectField
+              name="endYear"
+              label="End year"
+              options={educationYearOptions}
             />
-          </Form.Item>
+          </div>
+        </div>
+        <div style={{ display: "flex", width: "100%", gap: ".6rem" }}>
+          <div style={{ width: "50%" }}>
+            <FormInput name="degree" type="text" label="Degree" />
+          </div>
+          <div style={{ width: "50%" }}>
+            <FormInput name="stream" type="text" label="Stream(Optional)" />
+          </div>
         </div>
         <div
           style={{
@@ -87,36 +69,26 @@ const EducationModal: React.FC<EducationModalProps> = ({ btnName }) => {
             gap: ".6rem",
           }}
         >
-          <Form.Item
-            style={{ width: "50%" }}
-            label="Performance Scale (Optional)"
-            name="performanceScale"
-          >
-            <Select
-              defaultValue="2023"
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              options={[
-                { value: "2023", label: "2023" },
-                { value: "2022", label: "2022" },
-                { value: "2021", label: "2021" },
-              ]}
-              size="large"
+          <div style={{ width: "50%" }}>
+            <FormSelectField
+              name="performanceScale"
+              label="Performance Scale (Optional)"
+              options={performanceScale}
             />
-          </Form.Item>
-          <Form.Item
-            style={{ width: "50%" }}
-            label="Performance (Optional)"
-            name="performance"
-          >
-            <Input
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              size="large"
+          </div>
+          <div style={{ width: "50%" }}>
+            <FormInput
+              name="performance"
+              type="text"
+              label="Performance (Optional)"
             />
-          </Form.Item>
+          </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "end" }}>
+        <div
+          style={{ display: "flex", justifyContent: "end", marginTop: "10px" }}
+        >
           <Button type="primary" htmlType="submit">
-            {btnName}
+            Update
           </Button>
         </div>
       </Form>
