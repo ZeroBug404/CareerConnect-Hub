@@ -7,6 +7,7 @@ import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import TrainingModal from "../ui/ResumeModal/TrainingModal";
 import UpdateTraining from "./UpdateTraining";
+import { ITraining } from "@/types";
 
 const Training = () => {
   const [open, setOpen] = useState(false);
@@ -31,7 +32,7 @@ const Training = () => {
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
             <Flex vertical gap="middle" justify="space-between" align="start">
-              {trainingData?.map((training:any) => (
+              {trainingData?.map((training: ITraining) => (
                 <div key={training._id}>
                   <h4>{training?.title}</h4>
                   <p>

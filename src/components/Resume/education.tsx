@@ -8,6 +8,7 @@ import EducationModal from "../ui/ResumeModal/EducationModal";
 import UpdateEducation from "./UpdateEducation";
 
 import { useEducationQuery } from "@/redux/api/educationApi";
+import { IEducation } from "@/types";
 
 const Education = () => {
   const [open, setOpen] = useState(false);
@@ -35,7 +36,7 @@ const Education = () => {
               justify="space-between"
               align="start"
             >
-              {educationData?.map((education:any) => (
+              {educationData?.map((education:IEducation) => (
                 <div key={education._id}>
                   <h4>{education?.degree}</h4>
                   <p>{education?.college}</p>

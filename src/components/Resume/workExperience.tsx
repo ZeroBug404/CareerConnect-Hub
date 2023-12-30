@@ -8,6 +8,7 @@ import UpdateWorkExperience from "./UpdateWorkExperience";
 
 import { useWorkExperienceQuery } from "@/redux/api/workExperienceApi";
 import ExperienceModal from "../ui/ResumeModal/ExperienceModal";
+import { IWorkExperience } from "@/types";
 
 const WorkExperience = () => {
   const [open, setOpen] = useState(false);
@@ -33,7 +34,7 @@ const WorkExperience = () => {
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
             <Flex vertical gap="middle" justify="space-between" align="start">
-              {experiencesData?.map((exp:any) => (
+              {experiencesData?.map((exp: IWorkExperience) => (
                 <div key={exp._id}>
                   <h4>{exp?.profile}</h4>
                   <p>{exp?.location}</p>
