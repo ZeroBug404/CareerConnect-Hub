@@ -11,13 +11,14 @@ import { useEffect, useState } from "react";
 const JobDetailView = async (props: any) => {
   const { selectedID } = props;
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
 
   useEffect(() => {
     fetch(`https://career-connect-hub-api.vercel.app/api/v1/jobs/${selectedID}`)
       .then((res) => res.json())
       .then((res) => {
-        setData(res.data);
+        console.log("setData", res.data);
+        setData(res?.data);
       });
   }, [selectedID]);
 
@@ -43,43 +44,58 @@ const JobDetailView = async (props: any) => {
             <RiseOutlined /> <p>Active Hiring</p>
           </Flex>
         </div>
+        {/* @ts-ignore */}
         <Card title={<Title level={4}>{data?.title}</Title>} bordered={false}>
+          {/* @ts-ignore */}
           <h3>{data?.company}</h3>
           <br />
           <Flex wrap="wrap" gap="small">
+            {/* @ts-ignore */}
             <p>Location: {data?.location},</p>
+            {/* @ts-ignore */}
             <p>JobType: {data?.jobType},</p>
+            {/* @ts-ignore */}
             <p>Joining Date: {data?.joiningDate},</p>
+            {/* @ts-ignore */}
             <p>CTC: {data?.salary},</p>
+            {/* @ts-ignore */}
             <p>Experience: {data?.experienceLevel}</p>
           </Flex>
           <br />
           <div>
+            {/* @ts-ignore */}
             <h4>About {data?.company}</h4>
+            {/* @ts-ignore */}
             <p>{data?.companyDescription}</p>
           </div>
           <div>
             <h4>About Job</h4>
+            {/* @ts-ignore */}
             <p>{data?.jobDescription}</p>
           </div>
           <div>
             <h4>Key responsibilities:</h4>
+            {/* @ts-ignore */}
             <List>{data?.keyResponsibilities}</List>
           </div>
           <div>
             <h4>Skill(s) required</h4>
+            {/* @ts-ignore */}
             <p>{data?.skills}</p>
           </div>
           <div>
             <h4>Salary</h4>
+            {/* @ts-ignore */}
             <p>{data?.salary}</p>
           </div>
           <div>
             <h4>Additional Information</h4>
+            {/* @ts-ignore */}
             <p>{data?.benefits}</p>
           </div>
           <div>
             <h4>Number of openings</h4>
+            {/* @ts-ignore */}
             <p>{data?.numberOfOpenings}</p>
           </div>
 
