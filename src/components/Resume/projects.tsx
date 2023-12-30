@@ -1,13 +1,25 @@
 "use client";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
-import { useState } from "react";
+import {
+  JSXElementConstructor,
+  Key,
+  PromiseLikeOfReactNode,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+  useState,
+} from "react";
+import { useGetProjectsQuery } from "../../redux/api/projectApi";
 import GlobalModal from "../Shared/GlobalModal";
 import ProjectModal from "../ui/ResumeModal/ProjectModal";
 import UpdateProjects from "./UpdateProjects";
 
 const Projects = () => {
   const [open, setOpen] = useState(false);
+
+  const { data } = useGetProjectsQuery({});
+
   return (
     <Flex
       wrap="wrap"
@@ -26,10 +38,27 @@ const Projects = () => {
       <div style={{ width: "50%" }}>
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            <div>
-              <h4>Project name</h4>
-              <p>Link</p>
-            </div>
+            {data?.data?.map(
+              (project: {
+                projectLink: ReactNode;
+                id: Key | null | undefined;
+                title:
+                  | string
+                  | number
+                  | boolean
+                  | ReactElement<any, string | JSXElementConstructor<any>>
+                  | Iterable<ReactNode>
+                  | ReactPortal
+                  | PromiseLikeOfReactNode
+                  | null
+                  | undefined;
+              }) => (
+                <div key={project.id}>
+                  <h4>{project.title}</h4>
+                  <p>{project.projectLink}</p>
+                </div>
+              )
+            )}
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
               <UpdateProjects />
               <DeleteOutlined />
