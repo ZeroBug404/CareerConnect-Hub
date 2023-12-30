@@ -5,6 +5,15 @@ const SKILL_URL = "/skill";
 
 export const skillApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
+    // get single skills by id
+    getSkills: build.query({
+      query: () => ({
+        url: `${SKILL_URL}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.portfolio],
+    }),
+
     // post
     addSkill: build.mutation({
       query: (data) => ({
@@ -15,7 +24,7 @@ export const skillApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.portfolio],
     }),
 
-    // get single jobs by id
+    // get single skills by id
     skill: build.query({
       query: (id) => ({
         url: `${SKILL_URL}/${id}`,
@@ -24,7 +33,7 @@ export const skillApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.portfolio],
     }),
 
-    // update single jobs by id
+    // update single skills by id
     updateSkill: build.mutation({
       query: (data) => ({
         url: `${SKILL_URL}/${data.id}`,
@@ -34,7 +43,7 @@ export const skillApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.portfolio],
     }),
 
-    // delete single job by id
+    // delete single skills by id
     deleteSkill: build.mutation({
       query: (id) => ({
         url: `${SKILL_URL}/${id}`,
@@ -45,4 +54,4 @@ export const skillApi = baseApi.injectEndpoints({
   }),
 });
 
-export const {} = skillApi;
+export const {useAddSkillMutation, useDeleteSkillMutation, useUpdateSkillMutation, useSkillQuery, useGetSkillsQuery} = skillApi;
