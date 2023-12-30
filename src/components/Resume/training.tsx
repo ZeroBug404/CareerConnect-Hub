@@ -13,7 +13,6 @@ const Training = () => {
   const query: Record<string, any> = {};
   const { data, isLoading } = useTrainingQuery({ ...query });
   const trainingData = data?.data;
-  console.log(data?.data);
 
   return (
     <Flex
@@ -32,7 +31,7 @@ const Training = () => {
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
             <Flex vertical gap="middle" justify="space-between" align="start">
-              {trainingData?.map((training) => (
+              {trainingData?.map((training:any) => (
                 <div key={training._id}>
                   <h4>{training?.title}</h4>
                   <p>

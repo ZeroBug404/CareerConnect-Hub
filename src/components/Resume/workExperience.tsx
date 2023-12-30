@@ -33,7 +33,7 @@ const WorkExperience = () => {
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
             <Flex vertical gap="middle" justify="space-between" align="start">
-              {experiencesData?.map((exp) => (
+              {experiencesData?.map((exp:any) => (
                 <div key={exp._id}>
                   <h4>{exp?.profile}</h4>
                   <p>{exp?.location}</p>

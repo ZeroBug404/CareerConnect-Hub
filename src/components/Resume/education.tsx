@@ -35,7 +35,7 @@ const Education = () => {
               justify="space-between"
               align="start"
             >
-              {educationData?.map((education) => (
+              {educationData?.map((education:any) => (
                 <div key={education._id}>
                   <h4>{education?.degree}</h4>
                   <p>{education?.college}</p>
