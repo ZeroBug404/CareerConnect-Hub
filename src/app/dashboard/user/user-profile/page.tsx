@@ -4,6 +4,7 @@ import styles from "@/Styles/UserProfile.module.css";
 import userImage from "@/assets/user-img.jpg";
 import { Progress } from "antd";
 import Image from "next/image";
+import React from "react";
 const page = () => {
   return (
     <div className={styles.main_body}>
