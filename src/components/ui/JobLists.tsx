@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-async-client-component */
 "use client";
 
@@ -7,7 +8,7 @@ import Title from "antd/es/typography/Title";
 import { useEffect, useState } from "react";
 
 const JobLists = async (props: any) => {
-  const { setSelectedID, data } = props;
+  const { setSelectedID, allData } = props;
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -16,10 +17,14 @@ const JobLists = async (props: any) => {
     setSelectedID(ID);
   };
 
+  useEffect(() => {
+    setSelectedID(allData[0]?._id)
+  }, [allData])
+  
   return (
     <div style={{ padding: "16px" }} className={styles.JobLists_div_main}>
       <Row gutter={[16, 24]}>
-        {data?.map((job: any, index: number) => (
+        {allData?.map((job: any, index: number) => (
           <Col
             xs={24}
             sm={24}

@@ -5,29 +5,45 @@
 import styles from "@/Styles/JobList.module.css";
 import JobDetailView from "@/components/ui/JobDetailView";
 import JobLists from "@/components/ui/JobLists";
-import { Button, Input, Space } from "antd";
+import { Button, Input, Space } from "antd"; // Import Spin from Ant Design
 import { useEffect, useState } from "react";
 
 const JobListMain = async () => {
   const [selectedID, setSelectedID] = useState(null);
-  const [searchData, setSearchData] = useState("");
-  const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
+  const [singleData, setSingleData] = useState([]);
+
+  let search = "";
 
   const handleSearch = () => {
     fetch(
-      `https://career-connect-hub-api.vercel.app/api/v1/jobs?searchTerm=${searchData}`
+      `https://career-connect-hub-api.vercel.app/api/v1/jobs?searchTerm=${search}`
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res?.data?.data);
-        setData(res?.data?.data);
-      });
+        setAllData(res?.data?.data);
+      })
+      .finally(() => {});
+  };
+
+  const onChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    search = e.target.value;
   };
 
   useEffect(() => {
-    handleSearch()
-  }, [])
-  
+    fetch(`https://career-connect-hub-api.vercel.app/api/v1/jobs/${selectedID}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setSingleData(res.data);
+      });
+  }, [selectedID]);
+
+  useEffect(() => {
+    handleSearch();
+  }, []);
+
   return (
     <div
       style={{
@@ -45,19 +61,16 @@ const JobListMain = async () => {
         }}
       >
         <Space.Compact style={{ width: "40%" }}>
-          <Input
-            placeholder="Search for jobs"
-            onChange={(e) => setSearchData(e.target.value)}
-          />
+          <Input placeholder="Search for jobs" onChange={onChangeHandler} />
           <Button type="primary" onClick={handleSearch}>
             Search
           </Button>
         </Space.Compact>
       </div>
-      {data.length > 0 ? (
+      {allData.length > 0 ? (
         <div className={styles.JobList_div_main}>
-          <JobLists setSelectedID={setSelectedID} data={data} />
-          <JobDetailView selectedID={selectedID} />
+          <JobLists setSelectedID={setSelectedID} allData={allData} />
+          <JobDetailView singleData={singleData} />
         </div>
       ) : (
         <div className={styles.JobList_div_main}>No Data found.</div>
