@@ -1,5 +1,10 @@
+
 "use client";
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+
+
+import { useTrainingQuery } from "@/redux/api/trainingApi";
+import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+
 import { Button, Flex } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
@@ -7,7 +12,14 @@ import TrainingModal from "../ui/ResumeModal/TrainingModal";
 import UpdateTraining from "./UpdateTraining";
 
 const Training = () => {
+
   const [open, setOpen] = useState(false);
+
+  const query: Record<string, any> = {};
+  const { data, isLoading } = useTrainingQuery({ ...query });
+  const trainingData = data?.data;
+  console.log(data?.data);
+
   return (
     <Flex
       wrap="wrap"

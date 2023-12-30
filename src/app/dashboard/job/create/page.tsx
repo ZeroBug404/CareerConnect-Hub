@@ -44,18 +44,12 @@ const CreateJob = () => {
       companyId: "6587f647a3d02b0cf0caa3aa",
     };
     message.loading("Publishing...");
-    console.log("options", options);
-    fetch("https://career-connect-hub-api.vercel.app/api/v1/jobs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(options),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    try {
+      await addJob(options);
+      message.success("Job published successfully");
+    } catch (err: any) {
+      message.error(err.message);
+    }
   };
 
   return (

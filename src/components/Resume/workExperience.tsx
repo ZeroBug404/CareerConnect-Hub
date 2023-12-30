@@ -3,11 +3,18 @@ import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
-import ExperienceModal from "../ui/ResumeModal/ExperienceModal";
+
 import UpdateWorkExperience from "./UpdateWorkExperience";
+
+import { useWorkExperienceQuery } from "@/redux/api/workExperienceApi";
+import ExperienceModal from "../ui/ResumeModal/ExperienceModal";
 
 const WorkExperience = () => {
   const [open, setOpen] = useState(false);
+  const query: Record<string, any> = {};
+  const { data, isLoading } = useWorkExperienceQuery({ ...query });
+  const experiencesData = data?.data;
+  console.log(data?.data);
   return (
     <Flex
       wrap="wrap"

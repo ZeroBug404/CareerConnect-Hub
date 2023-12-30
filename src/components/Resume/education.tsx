@@ -3,11 +3,18 @@ import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
+
 import EducationModal from "../ui/ResumeModal/EducationModal";
 import UpdateEducation from "./UpdateEducation";
 
+import { useEducationQuery } from "@/redux/api/educationApi";
+
 const Education = () => {
   const [open, setOpen] = useState(false);
+  const query: Record<string, any> = {};
+  const { data, isLoading } = useEducationQuery({ ...query });
+  const educationData = data?.data;
+  console.log(data?.data);
   return (
     <Flex
       wrap="wrap"
