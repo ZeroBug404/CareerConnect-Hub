@@ -9,59 +9,59 @@ import {
   experienceLevelOptions,
   jobTypeOptions,
 } from "@/components/contants/global";
-
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
-import { useAddJobMutation } from "@/redux/api/jobApi";
+import { useJobQuery, useUpdateJobMutation } from "@/redux/api/jobApi";
+import { IJobData } from "@/types";
 import { Button, Col, Row, message } from "antd";
 
-const CreateJob = () => {
-  const [addJob] = useAddJobMutation();
+const EditJobPage = ({ params }: any) => {
+  const { id } = params;
+  const { data, isLoading } = useJobQuery(id);
+  const [updateJob] = useUpdateJobMutation();
 
-  const onSubmit = async (jobData: any) => {
-    const mRequirements = jobData.requirements;
-    const mSkills = jobData.skills;
-    const mBenefits = jobData.benefits;
-    const mSalary = parseInt(jobData.salary);
-    const mOpeningsData = jobData.numberOfOpenings.toString();
-    const options = {
-      title: jobData.title,
-      company: jobData.company,
-      location: jobData.location,
-      companyDescription: jobData.companyDescription,
-      jobDescription: jobData.jobDescription,
-      requirements: [mRequirements],
-      salary: mSalary,
-      deadline: "29-12-14",
-      category: jobData.category,
-      jobType: jobData.jobType,
-      experienceLevel: jobData.experienceLevel,
-      skills: [mSkills],
-      benefits: [mBenefits],
-      contactEmail: jobData.contactEmail,
-      joiningDate: "29-12-14",
-      keyResponsibilities: jobData.keyResponsibilities,
-      numberOfOpenings: mOpeningsData,
-      companyId: "6587f647a3d02b0cf0caa3aa",
-    };
-    message.loading("Publishing...");
-    console.log("options", options);
-    fetch("https://career-connect-hub-api.vercel.app/api/v1/jobs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(options),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+  const onSubmit = async (data: IJobData) => {
+    message.loading("Updating...");
+    try {
+      console.log(data);
+      const res = await updateJob({ id: params?.id, body: data }).unwrap();
+
+      if (res?.id) {
+        message.success("Jobs updated successfully");
+      }
+    } catch (err: any) {
+      console.error(err.message);
+      message.error(err.message);
+    }
+  };
+
+  const defaultValues = {
+    company: data?.data?.company || "",
+    location: data?.data?.location || "",
+    contactEmail: data?.data?.contactEmail || "",
+    category: data?.data?.category || "",
+    title: data?.data?.title || "",
+    jobType: data?.data?.jobType || "",
+    experienceLevel: data?.data?.experienceLevel || "",
+    salary: data?.data?.salary || "",
+    numberOfOpenings: data?.data?.numberOfOpenings || "",
+    skills: data?.data?.skills || "",
+    benefits: data?.data?.benefits || "",
+    keyResponsibilities: data?.data?.keyResponsibilities || "",
+    companyDescription: data?.data?.companyDescription || "",
+    jobDescription: data?.data?.jobDescription || "",
+    requirements: data?.data?.requirements || "",
+    joiningDate: data?.data?.joiningDate || "",
+    deadline: data?.data?.deadline || "",
   };
 
   return (
     <>
       <CareerBreadCrumb
         items={[
+          {
+            label: "Publish Job",
+            link: "/dashboard/job/create",
+          },
           {
             label: "View Jobs",
             link: "/dashboard/job",
@@ -76,8 +76,8 @@ const CreateJob = () => {
           width: "100%",
         }}
       >
-        <Form submitHandler={onSubmit}>
-          <h2>Publish a job</h2>
+        <Form submitHandler={onSubmit} defaultValues={defaultValues}>
+          <h2>Update a job</h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -172,7 +172,7 @@ const CreateJob = () => {
             <p
               style={{
                 fontSize: "18px",
-                marginBottom: "10px",
+                margin: "10px 0",
               }}
             >
               Job Information
@@ -407,7 +407,7 @@ const CreateJob = () => {
 
           <div style={{ margin: "10px 0" }}>
             <Button type="primary" htmlType="submit" size="large">
-              Add Job
+              Update Job
             </Button>
           </div>
         </Form>
@@ -416,4 +416,4 @@ const CreateJob = () => {
   );
 };
 
-export default CreateJob;
+export default EditJobPage;

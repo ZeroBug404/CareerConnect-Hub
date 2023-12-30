@@ -1,25 +1,48 @@
 export const jobTypeOptions = [
   {
     label: "Full-Time",
-    value: "full-time",
+    value: "Full-time",
   },
   {
     label: "Part-Time",
-    value: "part-time",
+    value: "Part-time",
+  },
+  {
+    label: "Contract",
+    value: "Contract",
+  },
+  {
+    label: "Freelance",
+    value: "Freelance",
   },
 ];
 
 export const experienceLevelOptions = [
   {
-    label: "Beginner",
-    value: "beginner",
+    label: "Entry",
+    value: "Entry",
   },
   {
     label: "Intermediate",
-    value: "intermediate",
+    value: "Intermediate",
   },
   {
-    label: "Advanced",
-    value: "advanced",
+    label: "Senior",
+    value: "Senior",
+  },
+];
+
+export const sizes = [
+  {
+    label: "Large",
+    value: "Large",
+  },
+  {
+    label: "Medium",
+    value: "Medium",
+  },
+  {
+    label: "Small",
+    value: "Small",
   },
 ];

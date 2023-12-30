@@ -15,14 +15,32 @@ const Footer = () => {
     <div className={styles.footer_div_main}>
       <div className={styles.top_section}>
         <div className={styles.left_section}>
-          <h3>We are here to help</h3>
-          <p>
+          <h3
+            style={{
+              color: "#2d2d2d",
+              fontSize: "24px",
+              fontWeight: "bold",
+              marginBottom: "10px",
+            }}
+          >
+            We are here to help
+          </h3>
+          <p
+            style={{
+              color: "#2d2d2d",
+              marginBottom: "10px",
+            }}
+          >
             Visit our Help Center for answers to common questions or contact us
             directly.
           </p>
           <Flex gap="small" wrap="wrap" style={{ marginTop: "10px" }}>
-            <Button>Help center</Button>
-            <Button>Contact Support</Button>
+            <Button size="large" type="primary" ghost>
+              Help center
+            </Button>
+            <Button size="large" type="primary" ghost>
+              Contact Support
+            </Button>
           </Flex>
         </div>
         <div className={styles.right_section}>
@@ -39,7 +57,7 @@ const Footer = () => {
                 <Link href="/">Security</Link>
               </li>
               <li>
-                <Link href="/">Terms</Link>
+                <Link href="/terms">Terms</Link>
               </li>
               <li>
                 <Link href="/">Privacy Center and Ad Choices</Link>
@@ -106,10 +124,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className={styles.bottom_section}>
+      <div
+        className={styles.bottom_section}
+      >
         <div className={styles.bottom_section_left}>
-          <Link href="/">Career Connect Hub </Link>
-          © 2023{" "}
+          <Link href="/">Career Connect Hub </Link>© 2023{" "}
         </div>
         <div className={styles.bottom_section_middle}>
           <Link href="/">Your privacy choices</Link>
