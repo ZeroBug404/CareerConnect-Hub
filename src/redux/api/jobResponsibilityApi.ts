@@ -6,7 +6,7 @@ const JOB_RESPONSIBILITY_URL = "/responsibility";
 export const jobResponsibilityApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
         //Get
-        responsibility: build.query({
+        responsibilities: build.query({
             query: (arg: Record<string, any>) => ({
                 url: JOB_RESPONSIBILITY_URL,
                 method: "GET",
@@ -23,7 +23,14 @@ export const jobResponsibilityApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: [tagTypes.jobResponsibility],
         }),
-
+        // get single id
+        responsibility: build.query({
+            query: (id) => ({
+                url: `${JOB_RESPONSIBILITY_URL}/${id}`,
+                method: "GET",
+            }),
+            providesTags: [tagTypes.jobResponsibility],
+        }),
         // update
         updateResponsibility: build.mutation({
             query: (data) => ({
@@ -45,6 +52,7 @@ export const jobResponsibilityApi = baseApi.injectEndpoints({
 });
 
 export const {
+    useResponsibilitiesQuery,
     useResponsibilityQuery,
     useAddResponsibilityMutation,
     useUpdateResponsibilityMutation,

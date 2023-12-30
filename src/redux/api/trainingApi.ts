@@ -6,7 +6,7 @@ const TRAINING_URL = "/training";
 export const trainingApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
         //Get
-        training: build.query({
+        trainings: build.query({
             query: (arg: Record<string, any>) => ({
                 url: TRAINING_URL,
                 method: "GET",
@@ -23,7 +23,14 @@ export const trainingApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: [tagTypes.training],
         }),
-
+        // get single id
+        training: build.query({
+            query: (id) => ({
+                url: `${TRAINING_URL}/${id}`,
+                method: "GET",
+            }),
+            providesTags: [tagTypes.training],
+        }),
         // update
         updateTraining: build.mutation({
             query: (data) => ({
@@ -45,6 +52,7 @@ export const trainingApi = baseApi.injectEndpoints({
 });
 
 export const {
+    useTrainingsQuery,
     useTrainingQuery,
     useAddTrainingMutation,
     useUpdateTrainingMutation,

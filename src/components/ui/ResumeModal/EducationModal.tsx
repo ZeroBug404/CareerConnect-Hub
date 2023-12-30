@@ -15,12 +15,25 @@ interface JobResponsibilityModalProps {
 
 const EducationModal: React.FC<JobResponsibilityModalProps> = ({ btnName }) => {
   const [addEducation] = useAddEducationMutation();
-  const onSubmit = async (data: any) => {
-    message.loading("Updating...");
+
+  const onSubmit = async (educationData: any) => {
+    console.log(educationData);
+    const options = {
+      data: {
+        college: educationData.college,
+        startYear: educationData.startYear,
+        endYear: educationData.endYear,
+        degree: educationData.degree,
+        description: educationData.description,
+        performanceScale: educationData.performanceScale,
+        cgpa: educationData.cgpa,
+      },
+    };
+    message.loading("Adding...");
     try {
-      console.log(data);
-      await addEducation(data);
-      message.success("Education Update successfully");
+      console.log(options);
+      // await addEducation(options);
+      // message.success("Education added successfully");
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
@@ -65,7 +78,11 @@ const EducationModal: React.FC<JobResponsibilityModalProps> = ({ btnName }) => {
             <FormInput name="degree" type="text" label="Degree" />
           </div>
           <div style={{ width: "50%" }}>
-            <FormInput name="description" type="text" label="Stream(Optional)" />
+            <FormInput
+              name="description"
+              type="text"
+              label="Stream(Optional)"
+            />
           </div>
         </div>
         <div
@@ -83,11 +100,7 @@ const EducationModal: React.FC<JobResponsibilityModalProps> = ({ btnName }) => {
             />
           </div>
           <div style={{ width: "50%" }}>
-            <FormInput
-              name="cgpa"
-              type="text"
-              label="Performance (Optional)"
-            />
+            <FormInput name="cgpa" type="text" label="Performance (Optional)" />
           </div>
         </div>
         <div

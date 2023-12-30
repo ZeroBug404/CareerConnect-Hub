@@ -6,7 +6,7 @@ const EDUCATION_URL = "/education";
 export const educationApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
         //Get
-        education: build.query({
+        educations: build.query({
             query: (arg: Record<string, any>) => ({
                 url: EDUCATION_URL,
                 method: "GET",
@@ -22,6 +22,15 @@ export const educationApi = baseApi.injectEndpoints({
                 body: data,
             }),
             invalidatesTags: [tagTypes.education],
+        }),
+
+        // get single id
+        education: build.query({
+            query: (id) => ({
+                url: `${EDUCATION_URL}/${id}`,
+                method: "GET",
+            }),
+            providesTags: [tagTypes.education],
         }),
 
         // update
@@ -45,6 +54,7 @@ export const educationApi = baseApi.injectEndpoints({
 });
 
 export const {
+    useEducationsQuery,
     useEducationQuery,
     useAddEducationMutation,
     useUpdateEducationMutation,

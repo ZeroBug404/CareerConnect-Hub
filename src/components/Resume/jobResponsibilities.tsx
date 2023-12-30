@@ -2,9 +2,8 @@
 "use client";
 
 
-import { useResponsibilityQuery } from "@/redux/api/jobResponsibilityApi";
+import { useResponsibilitiesQuery } from "@/redux/api/jobResponsibilityApi";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-
 import { Button, Flex } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
@@ -16,7 +15,7 @@ const JobResponsibilities = () => {
   const [open, setOpen] = useState(false);
 
   const query: Record<string, any> = {};
-  const { data, isLoading } = useResponsibilityQuery({ ...query });
+  const { data, isLoading } = useResponsibilitiesQuery({ ...query });
   const responsibilityData = data?.data;
 
   return (

@@ -6,7 +6,7 @@ const WORK_EXP_URL = "/experience";
 export const workExperienceApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     //Get
-    workExperience: build.query({
+    workExperiences: build.query({
       query: (arg: Record<string, any>) => ({
         url: WORK_EXP_URL,
         method: "GET",
@@ -23,7 +23,14 @@ export const workExperienceApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.workExperience],
     }),
-
+    // get single id
+    workExperience: build.query({
+      query: (id) => ({
+        url: `${WORK_EXP_URL}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.workExperience],
+    }),
     // update
     updateWorkExperience: build.mutation({
       query: (data) => ({
@@ -45,6 +52,7 @@ export const workExperienceApi = baseApi.injectEndpoints({
 });
 
 export const {
+  useWorkExperiencesQuery,
   useWorkExperienceQuery,
   useAddWorkExperienceMutation,
   useUpdateWorkExperienceMutation,

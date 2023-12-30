@@ -1,6 +1,6 @@
 "use client";
 
-import { useTrainingQuery } from "@/redux/api/trainingApi";
+import { useTrainingsQuery } from "@/redux/api/trainingApi";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 import { useState } from "react";
@@ -12,7 +12,7 @@ import { ITraining } from "@/types";
 const Training = () => {
   const [open, setOpen] = useState(false);
   const query: Record<string, any> = {};
-  const { data, isLoading } = useTrainingQuery({ ...query });
+  const { data, isLoading } = useTrainingsQuery({ ...query });
   const trainingData = data?.data;
 
   return (

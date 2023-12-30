@@ -6,14 +6,13 @@ import GlobalModal from "../Shared/GlobalModal";
 
 import EducationModal from "../ui/ResumeModal/EducationModal";
 import UpdateEducation from "./UpdateEducation";
-
-import { useEducationQuery } from "@/redux/api/educationApi";
+import { useEducationsQuery } from "@/redux/api/educationApi";
 import { IEducation } from "@/types";
 
 const Education = () => {
   const [open, setOpen] = useState(false);
   const query: Record<string, any> = {};
-  const { data, isLoading } = useEducationQuery({ ...query });
+  const { data, isLoading } = useEducationsQuery({ ...query });
   const educationData = data?.data;
 
   return (
