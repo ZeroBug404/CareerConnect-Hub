@@ -1,5 +1,6 @@
 "use client";
-import { Button, Form, Input } from "antd";
+import { useAddProjectMutation } from "@/redux/api/projectApi";
+import { Button, Form, Input, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 interface ProjectModalProps {
@@ -7,8 +8,21 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ btnName }) => {
-  const onFinish = (values: any) => {
-    console.log("Form values:", values);
+  const [addProject] = useAddProjectMutation();
+
+  const onFinish = async (values: any) => {
+
+    const options = {
+      title: values.title,
+      description: values.description,
+      projectLink: values.projectLink,
+      startMonth: values.startMonth,
+      endMonth: values.endMonth,
+    };
+
+    await addProject(options);
+
+    await message.success("Project Added successfully!");
   };
 
   return (
@@ -43,7 +57,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ btnName }) => {
           <Form.Item
             style={{ width: "50%" }}
             label="Start date"
-            name="startdate"
+            name="startMonth"
           >
             <Input
               style={{ width: "100%", marginTop: "-.5rem" }}
@@ -51,7 +65,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ btnName }) => {
               type="date"
             />
           </Form.Item>
-          <Form.Item style={{ width: "50%" }} label="End date" name="end date">
+          <Form.Item style={{ width: "50%" }} label="End date" name="endMonth">
             <Input
               style={{ width: "100%", marginTop: "-.5rem" }}
               size="large"

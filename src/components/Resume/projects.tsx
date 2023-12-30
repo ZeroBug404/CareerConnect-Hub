@@ -39,7 +39,7 @@ const Projects = () => {
         <div>
           <Button type="link" onClick={() => setOpen(true)}>
             <PlusOutlined />
-            Add training/ course
+            Add porjects
           </Button>
         </div>
         <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
