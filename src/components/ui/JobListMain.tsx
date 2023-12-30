@@ -9,11 +9,17 @@ import Search from "antd/es/input/Search";
 
 const JobListMain = async () => {
   const [selectedID, setSelectedID] = useState(null);
+  const [searchData, setSearchData] = useState("");
+  const handleSearch = (e: any) => {
+    setSearchData(e.target.value);
+  };
   return (
-    <div style={{
+    <div
+      style={{
         marginBottom: "2vw",
-      }}>
-        <div
+      }}
+    >
+      <div
         style={{
           display: "flex",
           flexDirection: "column",
@@ -24,6 +30,7 @@ const JobListMain = async () => {
         }}
       >
         <Search
+          onClick={(e) => handleSearch(e)}
           placeholder="Search for jobs"
           enterButton="Search"
           size="large"
@@ -34,7 +41,7 @@ const JobListMain = async () => {
         />
       </div>
       <div className={styles.JobList_div_main}>
-        <JobLists setSelectedID={setSelectedID} />
+        <JobLists searchData={searchData} setSelectedID={setSelectedID} />
         <JobDetailView selectedID={selectedID} />
       </div>
     </div>

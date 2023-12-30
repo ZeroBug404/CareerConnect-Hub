@@ -37,6 +37,21 @@ export const sidebarItems = (role: string) => {
         },
       ],
     },
+    {
+      label: "Manage Company",
+      key: "company",
+      icon: <AppstoreOutlined />,
+      children: [
+        {
+          label: <Link href="/dashboard/company">View Company</Link>,
+          key: `/${role}/dashboard/company`,
+        },
+        {
+          label: <Link href="/dashboard/company/create">Manage a Company</Link>,
+          key: `/${role}/dashboard/company/create`,
+        },
+      ],
+    },
   ];
 
 
@@ -45,3 +60,5 @@ export const sidebarItems = (role: string) => {
     return defaultSidebarItems;
   }
 };
+
+<p>hello</p>

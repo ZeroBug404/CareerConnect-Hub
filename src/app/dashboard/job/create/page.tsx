@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Form from "@/components/Forms/Form";
@@ -18,16 +17,45 @@ import { Button, Col, Row, message } from "antd";
 const CreateJob = () => {
   const [addJob] = useAddJobMutation();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (jobData: any) => {
+    const mRequirements = jobData.requirements;
+    const mSkills = jobData.skills;
+    const mBenefits = jobData.benefits;
+    const mSalary = parseInt(jobData.salary);
+    const mOpeningsData = jobData.numberOfOpenings.toString();
+    const options = {
+      title: jobData.title,
+      company: jobData.company,
+      location: jobData.location,
+      companyDescription: jobData.companyDescription,
+      jobDescription: jobData.jobDescription,
+      requirements: [mRequirements],
+      salary: mSalary,
+      deadline: "29-12-14",
+      category: jobData.category,
+      jobType: jobData.jobType,
+      experienceLevel: jobData.experienceLevel,
+      skills: [mSkills],
+      benefits: [mBenefits],
+      contactEmail: jobData.contactEmail,
+      joiningDate: "29-12-14",
+      keyResponsibilities: jobData.keyResponsibilities,
+      numberOfOpenings: mOpeningsData,
+      companyId: "6587f647a3d02b0cf0caa3aa",
+    };
     message.loading("Publishing...");
-    try {
-      console.log(data);
-      await addJob(data);
-      message.success("Jobs published successfully");
-    } catch (err: any) {
-      console.error(err.message);
-      message.error(err.message);
-    }
+    console.log("options", options);
+    fetch("https://career-connect-hub-api.vercel.app/api/v1/jobs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(options),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
@@ -55,7 +83,7 @@ const CreateJob = () => {
               border: "1px solid #d9d9d9",
               borderRadius: "5px",
               padding: "15px",
-              marginBottom: "10px",
+              margin: "10px 0",
             }}
           >
             <p
@@ -73,7 +101,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -89,7 +117,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -105,7 +133,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -121,7 +149,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -156,7 +184,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -172,7 +200,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormSelectField
@@ -188,7 +216,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormSelectField
@@ -204,7 +232,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -220,7 +248,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -236,7 +264,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -252,7 +280,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -287,7 +315,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -302,7 +330,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -317,7 +345,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -332,7 +360,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -358,7 +386,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormDatePicker name="joiningDate" label="Joining Date" />
@@ -369,7 +397,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormDatePicker name="deadline" label="Deadline" />
