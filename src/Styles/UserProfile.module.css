@@ -55,6 +55,7 @@
 .profile_section {
   width: 45vw;
   background-color: rgb(255, 255, 255);
+  padding-bottom: 5px;
 }
 .profile_section_container {
   margin-left: 2vw;
@@ -183,7 +184,7 @@
 /* .profile_section_Career_Application_table {
 } */
 .profile_section_Career_Application_table > tr > td {
-  padding: 3px;
+  padding: 2px;
   font-size: 14px;
   color: #666;
 }
@@ -257,7 +258,24 @@
 /* .profile_section_Career_Application_table {
 } */
 .profile_section_Personal_Details_table > tr > td {
-  padding: 3px;
+  padding: 1px;
+  font-size: 14px;
+  color: #666;
+}
+.profile_section_Reference_table_container {
+  width: 100%;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile_section_Reference_table {
+  border-bottom: 1px solid #666;
+  padding-bottom: 10px;
+}
+
+.profile_section_Reference_table > tr > td {
   font-size: 14px;
   color: #666;
 }

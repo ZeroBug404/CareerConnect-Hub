@@ -443,6 +443,70 @@ const page = () => {
               </table>
             </div>
           </div>
+          <div className={styles.profile_section_Reference}>
+            <h3 className={styles.profile_section_title_header}>
+              Reference (s):
+            </h3>
+            <div className={styles.profile_section_Reference_table_container}>
+              <table className={styles.profile_section_Reference_table}>
+                <tr>
+                  <td style={{ width: "22%" }}>Name</td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}>Mr. Reference </td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Organization</td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}>University Of Barisal </td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Designation</td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}>Lecturer</td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Address</td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}></td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Phone (Off.) </td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}></td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Phone (Res.) </td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}></td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Primary Mobile No</td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}>+880123456789</td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Primary Email</td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}>user@gmail.com</td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Relation</td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}>Academic</td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Current Location</td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}>Dhaka</td>
+                </tr>
+                <tr>
+                  <td style={{ width: "22%" }}>Blood Group</td>
+                  <td style={{ width: "2%" }}>:</td>
+                  <td style={{ width: "76%" }}>B+</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
