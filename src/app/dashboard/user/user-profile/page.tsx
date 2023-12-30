@@ -382,17 +382,17 @@ const page = () => {
                 <tr>
                   <td style={{ width: "22%" }}>Father's Name</td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>S.M. Rezekur Rahman </td>
+                  <td style={{ width: "76%" }}>Mr. Father </td>
                 </tr>
                 <tr>
                   <td style={{ width: "22%" }}>Mother's Name </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Ferdousi Begum </td>
+                  <td style={{ width: "76%" }}>Mrs. Mother</td>
                 </tr>
                 <tr>
                   <td style={{ width: "22%" }}>Date of Birth</td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>28 Dec 1995</td>
+                  <td style={{ width: "76%" }}>1 Jan 1996</td>
                 </tr>
                 <tr>
                   <td style={{ width: "22%" }}>Gender</td>
