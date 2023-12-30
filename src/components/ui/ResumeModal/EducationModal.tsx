@@ -6,14 +6,20 @@ import {
   educationYearOptions,
   performanceScale,
 } from "@/components/contants/global";
+import { useAddEducationMutation } from "@/redux/api/educationApi";
 import { Button, message } from "antd";
 
-const EducationModal = () => {
+interface JobResponsibilityModalProps {
+  btnName: string;
+}
+
+const EducationModal: React.FC<JobResponsibilityModalProps> = ({ btnName }) => {
+  const [addEducation] = useAddEducationMutation();
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
       console.log(data);
-
+      await addEducation(data);
       message.success("Education Update successfully");
     } catch (err: any) {
       console.error(err.message);
@@ -88,7 +94,7 @@ const EducationModal = () => {
           style={{ display: "flex", justifyContent: "end", marginTop: "10px" }}
         >
           <Button type="primary" htmlType="submit">
-            Update
+            {btnName}
           </Button>
         </div>
       </Form>
