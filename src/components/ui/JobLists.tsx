@@ -38,7 +38,7 @@ const JobLists = async (props: any) => {
                 width: "100%",
                 height: "100%",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                border: `${selectedIndex === index ? "2px solid #104278" : ""}`,
+                border: `${selectedIndex === index ? "2px solid #104278" : "1px solid #000"}`,
                 borderRadius: "10px",
               }}
             >
