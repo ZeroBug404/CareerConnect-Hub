@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
+import styles from "@/components/Login/login.module.css";
 
 import { useState } from "react";
 // import { useUserLoginMutation } from "@/redux/api/authApi";
 // import { storeUserInfo } from "@/services/auth.service";
 import { Button, Col, Row, message } from "antd";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
@@ -13,7 +13,6 @@ import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
 
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import logo from "../../assets/logo-blue1.png";
 import { storeUserInfo } from "@/services/auth.service";
 
 type FormValues = {
@@ -32,8 +31,9 @@ const LoginPage = () => {
         email: data.email,
         password: data.password,
       };
-
+      console.log(loginData);
       const res = await userLogin(loginData);
+      console.log(res);
 
       //@ts-ignore
       if (res?.data?.data?.accessToken) {
@@ -57,31 +57,28 @@ const LoginPage = () => {
       style={{
         minHeight: "100vh",
         flexDirection: "column",
+        margin: "2.4rem 0",
       }}
     >
-      {/* <Col sm={12} md={16} lg={10}>
-        <Image src={loginImage} width={500} alt="login image" />
-      </Col> */}
-      <Image src={logo} width={300} height={120} alt="login image" />
       <Col
-        sm={12}
-        md={8}
+        sm={22}
+        md={14}
         lg={8}
         style={{
           backgroundColor: "white",
-          padding: "20px 40px",
+          padding: "30px 40px",
           borderRadius: "10px",
-          boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.1)",
           width: "100%",
         }}
+        className={styles.colDesign}
       >
-        <h1
+        <h2
           style={{
-            margin: "15px 0px",
+            margin: "12px 0px",
           }}
         >
           Ready to take the next step?
-        </h1>
+        </h2>
         <p
           style={{
             fontSize: "1.2rem",
@@ -94,7 +91,11 @@ const LoginPage = () => {
         <div>
           <Form submitHandler={onSubmit}>
             <div style={{ width: "100%" }}>
-              <h3 style={{ color: "gray", fontSize: "14px" }}>Email</h3>
+              <h3
+                style={{ color: "gray", fontSize: "14px", marginBottom: "3px" }}
+              >
+                Email
+              </h3>
               <FormInput name="email" type="email" size="large" />
             </div>
             <div
@@ -103,7 +104,15 @@ const LoginPage = () => {
                 width: "100%",
               }}
             >
-              <h3 style={{ color: "gray", fontSize: "14px" }}>Password</h3>
+              <h3
+                style={{
+                  color: "gray",
+                  fontSize: "14px",
+                  marginBottom: "10px",
+                }}
+              >
+                Password
+              </h3>
               <FormInput name="password" type="password" size="large" />
             </div>
             <Button
@@ -114,7 +123,7 @@ const LoginPage = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: "#0e3160",
+                backgroundColor: "#00A6E5",
                 fontSize: "1.2rem",
                 width: "100%",
                 transition: "transform 0.3s ease-in-out",
@@ -131,6 +140,7 @@ const LoginPage = () => {
           style={{
             marginTop: "1rem",
             fontSize: "18px",
+            textAlign: "center",
           }}
         >
           <p>

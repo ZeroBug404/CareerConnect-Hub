@@ -31,6 +31,34 @@ export const experienceLevelOptions = [
     value: "Senior",
   },
 ];
+export const educationYearOptions = [
+  {
+    label: "2023",
+    value: "2023",
+  },
+  {
+    label: "2022",
+    value: "2022",
+  },
+  {
+    label: "2021",
+    value: "2021",
+  },
+];
+export const performanceScale = [
+  {
+    label: "CGPA (Scale of 10)",
+    value: "CGPA (Scale of 10)",
+  },
+  {
+    label: "CGPA (Scale of 9)",
+    value: "CGPA (Scale of 9)",
+  },
+  {
+    label: "CGPA (Scale of 8)",
+    value: "CGPA (Scale of 8)",
+  },
+];
 
 export const sizes = [
   {

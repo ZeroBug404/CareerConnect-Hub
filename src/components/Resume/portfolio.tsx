@@ -1,7 +1,25 @@
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+"use client";
+import { useGetPortfoliosQuery } from "@/redux/api/portfolioApi";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
+import {
+  JSXElementConstructor,
+  Key,
+  PromiseLikeOfReactNode,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+  useState,
+} from "react";
+import GlobalModal from "../Shared/GlobalModal";
+import PortfolioModal from "../ui/ResumeModal/PortfolioModal";
+import UpdatePortfolio from "./UpdatePortfolio";
 
 const Portfolio = () => {
+  const [open, setOpen] = useState(false);
+
+  const { data } = useGetPortfoliosQuery({});
+
   return (
     <Flex
       wrap="wrap"
@@ -18,22 +36,51 @@ const Portfolio = () => {
       <div style={{ width: "50%" }}>
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            <div>
-              <h4>Github</h4>
-              <p>link</p>
-            </div>
+            {data?.data?.map(
+              (portfolio: {
+                id: Key | null | undefined;
+                title:
+                  | string
+                  | number
+                  | boolean
+                  | ReactElement<any, string | JSXElementConstructor<any>>
+                  | Iterable<ReactNode>
+                  | ReactPortal
+                  | PromiseLikeOfReactNode
+                  | null
+                  | undefined;
+                gitHub:
+                  | string
+                  | number
+                  | boolean
+                  | ReactElement<any, string | JSXElementConstructor<any>>
+                  | Iterable<ReactNode>
+                  | ReactPortal
+                  | PromiseLikeOfReactNode
+                  | null
+                  | undefined;
+              }) => (
+                <div key={portfolio.id}>
+                  <h4>{portfolio.title}</h4>
+                  <p>{portfolio.gitHub}</p>
+                </div>
+              )
+            )}
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
-              <EditOutlined />
+              <UpdatePortfolio />
               <DeleteOutlined />
             </Flex>
           </Flex>
         </div>
         <div>
-          <Button type="link">
+          <Button type="link" onClick={() => setOpen(true)}>
             <PlusOutlined />
             Add Portfolio
           </Button>
         </div>
+        <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
+          <PortfolioModal btnName={"Save"}></PortfolioModal>
+        </GlobalModal>
       </div>
     </Flex>
   );
