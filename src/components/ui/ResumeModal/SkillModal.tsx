@@ -4,7 +4,7 @@ import type { SelectProps } from "antd";
 import { Select, message } from "antd";
 
 interface SkillModalProps {
-  btnName: string;
+  btnName?: string;
 }
 
 const SkillModal: React.FC<SkillModalProps> = ({ btnName }) => {
@@ -13,7 +13,6 @@ const SkillModal: React.FC<SkillModalProps> = ({ btnName }) => {
   const options: SelectProps["options"] = [];
 
   const handleChange = async (value: string[]) => {
-
     const options = {
       skills: value,
     };

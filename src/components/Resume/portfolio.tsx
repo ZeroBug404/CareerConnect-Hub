@@ -79,7 +79,10 @@ const Portfolio = () => {
           </Button>
         </div>
         <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-          <PortfolioModal btnName={"Save"}></PortfolioModal>
+          <PortfolioModal
+            btnName={"Save"}
+            modalData={data?.data}
+          ></PortfolioModal>
         </GlobalModal>
       </div>
     </Flex>

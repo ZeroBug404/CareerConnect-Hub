@@ -1,12 +1,12 @@
 "use client";
+import { useEducationsQuery } from "@/redux/api/educationApi";
+import { IEducation } from "@/types";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Flex, Row } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import EducationModal from "../ui/ResumeModal/EducationModal";
 import UpdateEducation from "./UpdateEducation";
-import { useEducationsQuery } from "@/redux/api/educationApi";
-import { IEducation } from "@/types";
 
 const Education = () => {
   const [open, setOpen] = useState(false);
@@ -35,7 +35,7 @@ const Education = () => {
                 align="start"
                 key={education._id}
               >
-                <div style={{padding: "5px 0"}}>
+                <div style={{ padding: "5px 0" }}>
                   <h4>{education?.degree}</h4>
                   <p>{education?.college}</p>
                   <p>
@@ -43,7 +43,7 @@ const Education = () => {
                   </p>
                 </div>
                 <Flex wrap="wrap" gap="middle" justify="end" align="start">
-                  <UpdateEducation />
+                  <UpdateEducation id={education._id} />
                   <DeleteOutlined />
                 </Flex>
               </Flex>
@@ -56,7 +56,7 @@ const Education = () => {
             </Button>
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-            <EducationModal btnName={"Save"}></EducationModal>
+            <EducationModal></EducationModal>
           </GlobalModal>
         </Col>
       </Row>

@@ -6,21 +6,35 @@ import {
   educationYearOptions,
   performanceScale,
 } from "@/components/contants/global";
-import { useAddEducationMutation } from "@/redux/api/educationApi";
-import { Button, message } from "antd";
+import { Button } from "antd";
 
-const EducationModal = () => {
-  const [addEducation] = useAddEducationMutation();
+interface JobResponsibilityModalProps {
+  modalData?: {
+    college: string;
+    startYear: string;
+    endYear: string;
+    degree: string;
+    description: string;
+    performanceScale: string;
+    cgpa: string;
+  };
+}
 
+const UpdateEducationModal: React.FC<JobResponsibilityModalProps> = ({
+  modalData,
+}) => {
   const onSubmit = async (educationData: any) => {
-    message.loading("Adding...");
-    try {
-      await addEducation(educationData);
-      message.success("Education added successfully");
-    } catch (err: any) {
-      console.error(err.message);
-      message.error(err.message);
-    }
+    console.log(educationData);
+  };
+
+  const defaultValues = {
+    college: modalData?.college || "",
+    startYear: modalData?.startYear || "",
+    endYear: modalData?.endYear || "",
+    degree: modalData?.degree || "",
+    description: modalData?.description || "",
+    performanceScale: modalData?.performanceScale || "",
+    cgpa: modalData?.cgpa || "",
   };
 
   return (
@@ -36,7 +50,7 @@ const EducationModal = () => {
       >
         Graduation details/ Post graduation details
       </p>
-      <Form submitHandler={onSubmit}>
+      <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <div style={{ width: "100%", marginTop: "-.5rem" }}>
           <FormInput name="college" type="text" label="College" />
         </div>
@@ -90,7 +104,7 @@ const EducationModal = () => {
           style={{ display: "flex", justifyContent: "end", marginTop: "10px" }}
         >
           <Button type="primary" htmlType="submit">
-            Save
+            Update
           </Button>
         </div>
       </Form>
@@ -98,4 +112,4 @@ const EducationModal = () => {
   );
 };
 
-export default EducationModal;
+export default UpdateEducationModal;
