@@ -1,4 +1,5 @@
 "use client";
+import { useGetSkillsQuery } from "@/redux/api/skillApi";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 import { useState } from "react";
@@ -8,6 +9,11 @@ import UpdateSkills from "./UpdateSkills";
 
 const Skills = () => {
   const [open, setOpen] = useState(false);
+
+  const { data } = useGetSkillsQuery({});
+
+  console.log(data?.data);
+
   return (
     <Flex
       wrap="wrap"
