@@ -1,10 +1,10 @@
 "use client";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Col, Flex, Row } from "antd";
+import { Button, Col, Flex, Row, message } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import UpdateWorkExperience from "./UpdateWorkExperience";
-import { useWorkExperiencesQuery } from "@/redux/api/workExperienceApi";
+import { useDeleteWorkExperienceMutation, useWorkExperiencesQuery } from "@/redux/api/workExperienceApi";
 import ExperienceModal from "../ui/ResumeModal/ExperienceModal";
 import { IWorkExperience } from "@/types";
 
@@ -13,6 +13,19 @@ const WorkExperience = () => {
   const query: Record<string, any> = {};
   const { data, isLoading } = useWorkExperiencesQuery({ ...query });
   const experiencesData = data?.data;
+  const [deleteWorkExperience] = useDeleteWorkExperienceMutation();
+
+  const deleteHandler = async (id: string) => {
+    message.loading("Deleting.....");
+    try {
+      const res = await deleteWorkExperience(id);
+      if (res) {
+        message.success("Work Experience deleted successfully");
+      }
+    } catch (err: any) {
+      message.error(err.message);
+    }
+  };
 
   return (
     <>
@@ -46,9 +59,11 @@ const WorkExperience = () => {
                   </p>
                   <p>Responsibility - {exp?.responsibility}</p>
                 </div>
-                <Flex wrap="wrap" gap="middle" justify="end" align="start">
+                <Flex wrap="wrap" gap="middle" justify="end" align="center">
                   <UpdateWorkExperience />
-                  <DeleteOutlined />
+                  <Button onClick={() => deleteHandler(exp?._id)}>
+                    <DeleteOutlined />
+                  </Button>
                 </Flex>
               </Flex>
             ))}

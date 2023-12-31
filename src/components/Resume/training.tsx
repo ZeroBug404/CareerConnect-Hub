@@ -1,8 +1,8 @@
 "use client";
 
-import { useTrainingsQuery } from "@/redux/api/trainingApi";
+import { useDeleteTrainingMutation, useTrainingsQuery } from "@/redux/api/trainingApi";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Col, Flex, Row } from "antd";
+import { Button, Col, Flex, Row, message } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import TrainingModal from "../ui/ResumeModal/TrainingModal";
@@ -14,6 +14,19 @@ const Training = () => {
   const query: Record<string, any> = {};
   const { data, isLoading } = useTrainingsQuery({ ...query });
   const trainingData = data?.data;
+  const [deleteTraining] = useDeleteTrainingMutation();
+
+  const deleteHandler = async (id: string) => {
+    message.loading("Deleting.....");
+    try {
+      const res = await deleteTraining(id);
+      if (res) {
+        message.success("Work Experience deleted successfully");
+      }
+    } catch (err: any) {
+      message.error(err.message);
+    }
+  };
 
   return (
     <>
@@ -42,9 +55,11 @@ const Training = () => {
                     {training?.startDate} - {training?.endDate}
                   </p>
                 </div>
-                <Flex wrap="wrap" gap="middle" justify="end" align="start">
+                <Flex wrap="wrap" gap="middle" justify="end" align="center">
                   <UpdateTraining />
-                  <DeleteOutlined />
+                  <Button onClick={() => deleteHandler(training?._id)}>
+                    <DeleteOutlined />
+                  </Button>
                 </Flex>
               </Flex>
             ))}
