@@ -32,8 +32,9 @@ const LoginPage = () => {
         email: data.email,
         password: data.password,
       };
-
+      console.log(loginData);
       const res = await userLogin(loginData);
+      console.log(res);
 
       //@ts-ignore
       if (res?.data?.data?.accessToken) {
