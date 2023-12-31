@@ -1,18 +1,47 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-async-client-component */
 "use client";
 
 import styles from "@/Styles/JobList.module.css";
 import JobDetailView from "@/components/ui/JobDetailView";
 import JobLists from "@/components/ui/JobLists";
-import { useState } from "react";
-import Search from "antd/es/input/Search";
+import { Button, Input, Space } from "antd"; // Import Spin from Ant Design
+import { useEffect, useState } from "react";
 
 const JobListMain = async () => {
   const [selectedID, setSelectedID] = useState(null);
-  const [searchData, setSearchData] = useState("");
-  const handleSearch = (e: any) => {
-    setSearchData(e.target.value);
+  const [allData, setAllData] = useState([]);
+  const [singleData, setSingleData] = useState([]);
+
+  let search = "";
+
+  const handleSearch = () => {
+    fetch(`http://localhost:5000/api/v1/jobs?searchTerm=${search}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setAllData(res?.data?.data);
+      })
+      .finally(() => {});
   };
+
+  const onChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    search = e.target.value;
+  };
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/v1/jobs/${selectedID}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setSingleData(res.data);
+      });
+  }, [selectedID]);
+
+  useEffect(() => {
+    handleSearch();
+  }, []);
+
   return (
     <div
       style={{
@@ -29,21 +58,21 @@ const JobListMain = async () => {
           marginTop: "16px",
         }}
       >
-        <Search
-          onClick={(e) => handleSearch(e)}
-          placeholder="Search for jobs"
-          enterButton="Search"
-          size="large"
-          style={{
-            maxWidth: "500px",
-            width: "100%",
-          }}
-        />
+        <Space.Compact style={{ width: "40%" }}>
+          <Input placeholder="Search for jobs" onChange={onChangeHandler} />
+          <Button type="primary" onClick={handleSearch}>
+            Search
+          </Button>
+        </Space.Compact>
       </div>
-      <div className={styles.JobList_div_main}>
-        <JobLists searchData={searchData} setSelectedID={setSelectedID} />
-        <JobDetailView selectedID={selectedID} />
-      </div>
+      {allData.length > 0 ? (
+        <div className={styles.JobList_div_main}>
+          <JobLists setSelectedID={setSelectedID} allData={allData} />
+          <JobDetailView singleData={singleData} />
+        </div>
+      ) : (
+        <div className={styles.JobList_div_main}>No Data found.</div>
+      )}
     </div>
   );
 };

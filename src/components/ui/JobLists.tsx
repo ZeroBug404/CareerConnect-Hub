@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-async-client-component */
 "use client";
 
@@ -7,30 +8,23 @@ import Title from "antd/es/typography/Title";
 import { useEffect, useState } from "react";
 
 const JobLists = async (props: any) => {
-  const { setSelectedID, searchData } = props;
+  const { setSelectedID, allData } = props;
 
-  const [data, setData] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  useEffect(() => {
-    fetch(
-      `https://career-connect-hub-api.vercel.app/api/v1/jobs?searchTerm=${searchData}`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res?.data?.data);
-        setData(res?.data?.data);
-      });
-  }, [searchData]);
 
   const onClickHandler = (index: any, ID: any): void => {
     setSelectedIndex(index);
     setSelectedID(ID);
   };
 
+  useEffect(() => {
+    setSelectedID(allData[0]?._id)
+  }, [allData])
+  
   return (
     <div style={{ padding: "16px" }} className={styles.JobLists_div_main}>
       <Row gutter={[16, 24]}>
-        {data?.map((job: any, index: number) => (
+        {allData?.map((job: any, index: number) => (
           <Col
             xs={24}
             sm={24}
@@ -44,7 +38,7 @@ const JobLists = async (props: any) => {
                 width: "100%",
                 height: "100%",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                border: `${selectedIndex === index ? "2px solid #104278" : ""}`,
+                border: `${selectedIndex === index ? "2px solid #104278" : "1px solid #000"}`,
                 borderRadius: "10px",
               }}
             >
