@@ -23,9 +23,9 @@ const EditJobPage = ({ params }: any) => {
     message.loading("Updating...");
     try {
       console.log(data);
-      const res = await updateJob({ id: params?.id, body: data }).unwrap();
+      const res = await updateJob({ body: data }).unwrap();
 
-      if (res?.id) {
+      if (res) {
         message.success("Jobs updated successfully");
       }
     } catch (err: any) {

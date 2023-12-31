@@ -6,7 +6,8 @@ import {
   educationYearOptions,
   performanceScale,
 } from "@/components/contants/global";
-import { Button } from "antd";
+import { useUpdateEducationMutation } from "@/redux/api/educationApi";
+import { Button, message } from "antd";
 
 interface JobResponsibilityModalProps {
   modalData?: {
@@ -23,8 +24,22 @@ interface JobResponsibilityModalProps {
 const UpdateEducationModal: React.FC<JobResponsibilityModalProps> = ({
   modalData,
 }) => {
-  const onSubmit = async (educationData: any) => {
-    console.log(educationData);
+  
+  const [UpdateEducation] = useUpdateEducationMutation()
+
+  const onSubmit = async (data: any) => {
+    message.loading("Updating...");
+    try {
+      console.log(data);
+      const res = await UpdateEducation({ body: data }).unwrap();
+
+      if (res) {
+        message.success("education updated successfully");
+      }
+    } catch (err: any) {
+      console.error(err.message);
+      message.error(err.message);
+    }
   };
 
   const defaultValues = {
