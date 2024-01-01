@@ -2,7 +2,6 @@
 
 import CareerTable from "@/components/ui/CareerTable";
 import { useBlogsQuery, useDeleteBlogMutation } from "@/redux/api/blogApi";
-import {  useJobsQuery } from "@/redux/api/jobApi";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import Link from "next/link";
@@ -21,6 +20,7 @@ const BlogPage = () => {
   query["sortOrder"] = sortOrder;
 
   const { data, isLoading } = useBlogsQuery({ ...query });
+  console.log(data);
   const blogData = data?.data?.data;
   const [deleteBlog] = useDeleteBlogMutation();
   console.log("blogData", blogData);
@@ -62,14 +62,14 @@ const BlogPage = () => {
       title: "PublishDate",
       dataIndex: "publishDate",
     },
-    {
-      title: "Views",
-      dataIndex: "views",
-    },
-    {
-      title: "Likes",
-      dataIndex: "likes",
-    },
+    // {
+    //   title: "Views",
+    //   dataIndex: "views",
+    // },
+    // {
+    //   title: "Likes",
+    //   dataIndex: "likes",
+    // },
     {
       title: "Action",
       dataIndex: "id",

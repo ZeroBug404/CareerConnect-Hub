@@ -1,18 +1,10 @@
 "use client";
 
 import Form from "@/components/Forms/Form";
-import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
-import FormSelectField from "@/components/Forms/FormSelectField";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import {
-  experienceLevelOptions,
-  jobTypeOptions,
-} from "@/components/contants/global";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useBlogQuery, useUpdateBlogMutation } from "@/redux/api/blogApi";
-import { useJobQuery } from "@/redux/api/jobApi";
-import { IJobData } from "@/types";
 import { Button, Col, Row, message } from "antd";
 
 const EditBlogPage = ({ params }: any) => {
@@ -38,12 +30,12 @@ const EditBlogPage = ({ params }: any) => {
   const defaultValues = {
     title: data?.data?.title || "",
     author: data?.data?.author || "",
-    content: data?.data?.content || "",
     publishDate: data?.data?.publishDate || "",
-    views: data?.data?.views || "",
-    likes: data?.data?.likes || "",
-    commentText: data?.data?.commentText || "",
-    commentDate: data?.data?.commentDate || "",
+    content: data?.data?.content || "",
+    // views: data?.data?.views || "",
+    // likes: data?.data?.likes || "",
+    // commentText: data?.data?.commentText || "",
+    // commentDate: data?.data?.commentDate || "",
   };
 
   return (
@@ -51,12 +43,12 @@ const EditBlogPage = ({ params }: any) => {
       <CareerBreadCrumb
         items={[
           {
-            label: "Publish Job",
-            link: "/dashboard/job/create",
+            label: "Publish Blog",
+            link: "/dashboard/blog/create",
           },
           {
-            label: "View Jobs",
-            link: "/dashboard/job",
+            label: "View Blogs",
+            link: "/dashboard/blog",
           },
         ]}
       />
@@ -69,7 +61,7 @@ const EditBlogPage = ({ params }: any) => {
         }}
       >
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
-          <h2>Update a job</h2>
+          <h2>Update a blog</h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -84,90 +76,7 @@ const EditBlogPage = ({ params }: any) => {
                 marginBottom: "10px",
               }}
             >
-              Company Information
-            </p>
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="company"
-                  type="text"
-                  size="small"
-                  label="Company"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="location"
-                  type="text"
-                  size="small"
-                  label="Location"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="contactEmail"
-                  type="email"
-                  size="small"
-                  label="Contact Email"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="category"
-                  type="text"
-                  size="small"
-                  label="Category"
-                />
-              </Col>
-            </Row>
-          </div>
-          <div
-            style={{
-              border: "1px solid #d9d9d9",
-              borderRadius: "5px",
-              padding: "15px",
-              marginBottom: "10px",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "18px",
-                margin: "10px 0",
-              }}
-            >
-              Job Information
+              Blog Information
             </p>
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               <Col
@@ -195,75 +104,11 @@ const EditBlogPage = ({ params }: any) => {
                   margin: "5px 0",
                 }}
               >
-                <FormSelectField
-                  name="jobType"
-                  label="Job Type"
-                  options={jobTypeOptions}
-                  size="small"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormSelectField
-                  name="experienceLevel"
-                  label="Experience Level"
-                  options={experienceLevelOptions}
-                  size="small"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
                 <FormInput
-                  name="salary"
-                  type="number"
-                  size="small"
-                  label="Salary"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="numberOfOpenings"
-                  type="number"
-                  size="small"
-                  label="Number Of Openings"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="skills"
+                  name="author"
                   type="text"
                   size="small"
-                  label="Skills"
+                  label="Author"
                 />
               </Col>
               <Col
@@ -276,112 +121,59 @@ const EditBlogPage = ({ params }: any) => {
                 }}
               >
                 <FormInput
-                  name="benefits"
+                  name="publishDate"
+                  type="date"
+                  size="small"
+                  label="Publish Date"
+                />
+              </Col>
+              {/* <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="views"
+                  type="number"
+                  size="small"
+                  label="Views"
+                />
+              </Col>
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="likes"
+                  type="number"
+                  size="small"
+                  label="Likes"
+                />
+              </Col>
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="commentText"
                   type="text"
                   size="small"
-                  label="Benefits"
+                  label="Comment Text"
                 />
-              </Col>
-            </Row>
-          </div>
-          <div
-            style={{
-              border: "1px solid #d9d9d9",
-              borderRadius: "5px",
-              padding: "15px",
-              marginBottom: "10px",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "18px",
-                marginBottom: "10px",
-              }}
-            >
-              Others
-            </p>
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={6}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormTextArea
-                  name="companyDescription"
-                  label="Company Description"
-                  rows={4}
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={6}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormTextArea
-                  name="jobDescription"
-                  label="Job Description"
-                  rows={4}
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={6}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormTextArea
-                  name="requirements"
-                  label="Requirements"
-                  rows={4}
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={6}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormTextArea
-                  name="keyResponsibilities"
-                  label="Key Responsibilities"
-                  rows={4}
-                />
-              </Col>
-            </Row>
-          </div>
-          <div
-            style={{
-              border: "1px solid #d9d9d9",
-              borderRadius: "5px",
-              padding: "15px",
-              marginBottom: "10px",
-            }}
-          >
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormDatePicker name="joiningDate" label="Joining Date" />
               </Col>
               <Col
                 xs={24}
@@ -392,14 +184,33 @@ const EditBlogPage = ({ params }: any) => {
                   margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="deadline" label="Deadline" />
+                <FormInput
+                  name="commentDate"
+                  type="date"
+                  size="small"
+                  label="Comment Date"
+                />
+              </Col> */}
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormTextArea
+                  name="content"
+                  label="Content"
+                  rows={4}
+                />
               </Col>
             </Row>
           </div>
-
           <div style={{ margin: "10px 0" }}>
             <Button type="primary" htmlType="submit" size="large">
-              Update Job
+              Update Blog
             </Button>
           </div>
         </Form>

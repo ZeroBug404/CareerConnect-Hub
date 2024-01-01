@@ -106,7 +106,7 @@ const CreateBlog = () => {
                   label="Publish Date"
                 />
               </Col>
-              <Col
+              {/* <Col
                 xs={24}
                 sm={12}
                 md={8}
@@ -169,7 +169,7 @@ const CreateBlog = () => {
                   size="small"
                   label="Comment Date"
                 />
-              </Col>
+              </Col> */}
               <Col
                 xs={24}
                 sm={12}
