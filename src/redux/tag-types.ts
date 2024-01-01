@@ -2,6 +2,7 @@ export enum tagTypes {
   user = "user",
   jobs = "jobs",
   company = "company",
+  faq = "faq",
 
   education = "education",
   workExperience = "workExperience",
@@ -16,6 +17,7 @@ export const tagTypesList = [
   tagTypes.user,
   tagTypes.jobs,
   tagTypes.company,
+  tagTypes.faq,
   tagTypes.education,
   tagTypes.workExperience,
   tagTypes.jobResponsibility,
