@@ -1,16 +1,22 @@
 "use client";
 
-import { useDeleteTrainingMutation, useTrainingsQuery } from "@/redux/api/trainingApi";
+import {
+  useDeleteTrainingMutation,
+  useTrainingsQuery,
+} from "@/redux/api/trainingApi";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Flex, Row, message } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import TrainingModal from "../ui/ResumeModal/TrainingModal";
-import UpdateTraining from "./UpdateTraining";
 import { ITraining } from "@/types";
+import UpdateTrainingModal from "../ui/ResumeModal/UpdateTrainingModal";
 
 const Training = () => {
   const [open, setOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
   const query: Record<string, any> = {};
   const { data, isLoading } = useTrainingsQuery({ ...query });
   const trainingData = data?.data;
@@ -26,6 +32,11 @@ const Training = () => {
     } catch (err: any) {
       message.error(err.message);
     }
+  };
+
+  const handleEditClick = (id: string) => {
+    setSelectedId(id);
+    setEditModalOpen(true);
   };
 
   return (
@@ -49,14 +60,16 @@ const Training = () => {
                 align="start"
                 key={training._id}
               >
-                <div style={{padding: "5px 0"}}>
+                <div style={{ padding: "5px 0" }}>
                   <h4>{training?.title}</h4>
                   <p>
                     {training?.startDate} - {training?.endDate}
                   </p>
                 </div>
                 <Flex wrap="wrap" gap="middle" justify="end" align="center">
-                  <UpdateTraining />
+                  <Button onClick={() => handleEditClick(training._id)}>
+                    <EditOutlined />
+                  </Button>
                   <Button onClick={() => deleteHandler(training?._id)}>
                     <DeleteOutlined />
                   </Button>
@@ -72,6 +85,18 @@ const Training = () => {
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
             <TrainingModal btnName={"Save"}></TrainingModal>
+          </GlobalModal>
+          <GlobalModal
+            open={editModalOpen}
+            setOpen={() => {
+              setEditModalOpen(false);
+              setSelectedId(null);
+            }}
+            width={650}
+            title={""}
+          >
+            {/* Pass the selected ID to the UpdateExperienceModal */}
+            <UpdateTrainingModal id={selectedId} />
           </GlobalModal>
         </Col>
       </Row>
