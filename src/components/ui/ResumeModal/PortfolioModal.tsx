@@ -14,8 +14,8 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ btnName }) => {
 
     const options = {
       gitHub: values.gitHub,
-      other: values.other,    
-    }
+      other: values.other,
+    };
 
     await addPortfolio(options);
 
