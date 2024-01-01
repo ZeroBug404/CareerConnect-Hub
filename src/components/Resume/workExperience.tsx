@@ -1,5 +1,5 @@
 "use client";
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Flex, Row, message } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
@@ -7,9 +7,13 @@ import UpdateWorkExperience from "./UpdateWorkExperience";
 import { useDeleteWorkExperienceMutation, useWorkExperiencesQuery } from "@/redux/api/workExperienceApi";
 import ExperienceModal from "../ui/ResumeModal/ExperienceModal";
 import { IWorkExperience } from "@/types";
+import UpdateExperienceModal from "../ui/ResumeModal/UpdateExperienceModal";
 
 const WorkExperience = () => {
   const [open, setOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
   const query: Record<string, any> = {};
   const { data, isLoading } = useWorkExperiencesQuery({ ...query });
   const experiencesData = data?.data;
@@ -25,6 +29,11 @@ const WorkExperience = () => {
     } catch (err: any) {
       message.error(err.message);
     }
+  };
+
+  const handleEditClick = (id: string) => {
+    setSelectedId(id);
+    setEditModalOpen(true);
   };
 
   return (
@@ -60,7 +69,11 @@ const WorkExperience = () => {
                   <p>Responsibility - {exp?.responsibility}</p>
                 </div>
                 <Flex wrap="wrap" gap="middle" justify="end" align="center">
-                  <UpdateWorkExperience />
+                  {/* <UpdateWorkExperience /> */}
+                  <Button onClick={() => handleEditClick(exp._id)}>
+                    <EditOutlined />
+                  </Button>
+                 
                   <Button onClick={() => deleteHandler(exp?._id)}>
                     <DeleteOutlined />
                   </Button>
@@ -76,6 +89,18 @@ const WorkExperience = () => {
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
             <ExperienceModal btnName={"Save"}></ExperienceModal>
+          </GlobalModal>
+          <GlobalModal
+            open={editModalOpen}
+            setOpen={() => {
+              setEditModalOpen(false);
+              setSelectedId(null); // Reset the selected ID when the modal is closed
+            }}
+            width={650}
+            title={""}
+          >
+            {/* Pass the selected ID to the UpdateExperienceModal */}
+            <UpdateExperienceModal id={selectedId} />
           </GlobalModal>
         </Col>
       </Row>
