@@ -20,10 +20,9 @@ const BlogPage = () => {
   query["sortOrder"] = sortOrder;
 
   const { data, isLoading } = useBlogsQuery({ ...query });
-  console.log(data);
-  const blogData = data?.data?.data;
+  console.log(data?.data);
+  const blogData = data?.data;
   const [deleteBlog] = useDeleteBlogMutation();
-  console.log("blogData", blogData);
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
