@@ -17,13 +17,12 @@ const UpdateTrainingModal = ({ id }: any) => {
     message.loading("Updating...");
     try {
       const res = await updateWorkExperience({ body: data }).unwrap();
-
       if (res) {
         message.success("Training updated successfully");
       }
     } catch (err: any) {
       console.error(err.message);
-      message.error(err.message);
+      message.error("Please try again");
     }
   };
 

@@ -8,11 +8,7 @@ import Skills from "@/components/Resume/skills";
 import Training from "@/components/Resume/training";
 import WorkExperience from "@/components/Resume/workExperience";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
-import {
-  ArrowLeftOutlined,
-  ExclamationCircleOutlined,
-} from "@ant-design/icons";
-import Link from "next/link";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 const ResumePage = () => {
   return (
@@ -23,14 +19,13 @@ const ResumePage = () => {
         }}
       >
         <CareerBreadCrumb
-        items={[
-          {
-            label: "Back",
-            link: "/",
-          },
-        ]}
-      />
-        
+          items={[
+            {
+              label: "Back",
+              link: "/",
+            },
+          ]}
+        />
       </div>
       <div
         style={{

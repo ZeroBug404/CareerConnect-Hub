@@ -17,15 +17,13 @@ const UpdateEducationModal = ({ id }: any) => {
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      console.log(data);
       const res = await UpdateEducation({ body: data }).unwrap();
-
       if (res) {
         message.success("education updated successfully");
       }
     } catch (err: any) {
       console.error(err.message);
-      message.error(err.message);
+      message.error("Please try again");
     }
   };
 
