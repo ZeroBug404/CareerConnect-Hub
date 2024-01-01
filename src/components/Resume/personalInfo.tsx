@@ -1,3 +1,4 @@
+"use client";
 import { DownloadOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
 

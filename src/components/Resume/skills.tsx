@@ -1,7 +1,19 @@
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+"use client";
+import { useGetSkillsQuery } from "@/redux/api/skillApi";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
+import { useState } from "react";
+import GlobalModal from "../Shared/GlobalModal";
+import SkillModal from "../ui/ResumeModal/SkillModal";
+import UpdateSkills from "./UpdateSkills";
 
 const Skills = () => {
+  const [open, setOpen] = useState(false);
+
+  const { data } = useGetSkillsQuery({});
+
+  console.log(data?.data);
+
   return (
     <Flex
       wrap="wrap"
@@ -23,17 +35,20 @@ const Skills = () => {
               <p>Intermediate</p>
             </div>
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
-              <EditOutlined />
+              <UpdateSkills />
               <DeleteOutlined />
             </Flex>
           </Flex>
         </div>
         <div>
-          <Button type="link">
+          <Button type="link" onClick={() => setOpen(true)}>
             <PlusOutlined />
             Add skill
           </Button>
         </div>
+        <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
+          <SkillModal btnName={"Save"}></SkillModal>
+        </GlobalModal>
       </div>
     </Flex>
   );

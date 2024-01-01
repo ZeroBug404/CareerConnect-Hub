@@ -21,6 +21,40 @@ export interface IJobData {
   updatedAt: string;
   __v: number;
 }
+export interface IEducation {
+  _id: string;
+  college: string;
+  startYear: string;
+  endYear: string;
+  degree: string;
+  description: string;
+  performanceScale: string;
+  cgpa: string;
+}
+export interface IWorkExperience {
+  _id: string;
+  profile: string;
+  organization: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  isWorkFromHome: boolean;
+  description: string;
+  currentlyWorking: boolean;
+  responsibility: string;
+}
+
+export interface ITraining {
+  _id: string;
+  title: string;
+  organization: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  online: boolean;
+  description: string;
+  currentlyOngoing: boolean;
+}
 
 export interface IMeta {
   limit: number;
