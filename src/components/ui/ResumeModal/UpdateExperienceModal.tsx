@@ -10,7 +10,6 @@ import { Button, message } from "antd";
 
 const UpdateExperienceModal = ({ id }: any) => {
   const { data } = useWorkExperienceQuery(id);
-  console.log(data);
   
   const [updateWorkExperience] = useUpdateWorkExperienceMutation();
 

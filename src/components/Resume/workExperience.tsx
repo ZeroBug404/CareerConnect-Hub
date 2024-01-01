@@ -69,7 +69,6 @@ const WorkExperience = () => {
                   <p>Responsibility - {exp?.responsibility}</p>
                 </div>
                 <Flex wrap="wrap" gap="middle" justify="end" align="center">
-                  {/* <UpdateWorkExperience /> */}
                   <Button onClick={() => handleEditClick(exp._id)}>
                     <EditOutlined />
                   </Button>
@@ -94,7 +93,7 @@ const WorkExperience = () => {
             open={editModalOpen}
             setOpen={() => {
               setEditModalOpen(false);
-              setSelectedId(null); // Reset the selected ID when the modal is closed
+              setSelectedId(null);
             }}
             width={650}
             title={""}

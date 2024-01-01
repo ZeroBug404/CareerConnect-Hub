@@ -1,17 +1,21 @@
 "use client";
 import { useDeleteEducationMutation, useEducationsQuery } from "@/redux/api/educationApi";
 import { IEducation } from "@/types";
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Flex, Row, message } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import EducationModal from "../ui/ResumeModal/EducationModal";
 import UpdateEducation from "./UpdateEducation";
+import UpdateEducationModal from "../ui/ResumeModal/UpdateEducationModal";
 
 
 
 const Education = () => {
   const [open, setOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
   const query: Record<string, any> = {};
   const { data, isLoading } = useEducationsQuery({ ...query });
   const educationData = data?.data;
@@ -27,6 +31,11 @@ const Education = () => {
     } catch (err: any) {
       message.error(err.message);
     }
+  };
+
+  const handleEditClick = (id: string) => {
+    setSelectedId(id);
+    setEditModalOpen(true);
   };
 
   return (
@@ -58,7 +67,9 @@ const Education = () => {
                   </p>
                 </div>
                 <Flex wrap="wrap" gap="middle" justify="end" align="center">
-                  <UpdateEducation id={education._id} />
+                <Button onClick={() => handleEditClick(education._id)}>
+                    <EditOutlined />
+                  </Button>
                   <Button onClick={() => deleteHandler(education?._id)}>
                     <DeleteOutlined />
                   </Button>
@@ -74,6 +85,18 @@ const Education = () => {
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
             <EducationModal></EducationModal>
+          </GlobalModal>
+          <GlobalModal
+            open={editModalOpen}
+            setOpen={() => {
+              setEditModalOpen(false);
+              setSelectedId(null);
+            }}
+            width={650}
+            title={""}
+          >
+            {/* Pass the selected ID to the UpdateExperienceModal */}
+            <UpdateEducationModal id={selectedId} />
           </GlobalModal>
         </Col>
       </Row>

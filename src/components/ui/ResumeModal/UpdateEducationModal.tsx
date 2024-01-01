@@ -6,24 +6,11 @@ import {
   educationYearOptions,
   performanceScale,
 } from "@/components/contants/global";
-import { useUpdateEducationMutation } from "@/redux/api/educationApi";
+import { useEducationQuery, useUpdateEducationMutation } from "@/redux/api/educationApi";
 import { Button, message } from "antd";
 
-interface JobResponsibilityModalProps {
-  modalData?: {
-    college: string;
-    startYear: string;
-    endYear: string;
-    degree: string;
-    description: string;
-    performanceScale: string;
-    cgpa: string;
-  };
-}
-
-const UpdateEducationModal: React.FC<JobResponsibilityModalProps> = ({
-  modalData,
-}) => {
+const UpdateEducationModal = ({ id }: any) => {
+  const { data } = useEducationQuery(id);
   
   const [UpdateEducation] = useUpdateEducationMutation()
 
@@ -43,13 +30,13 @@ const UpdateEducationModal: React.FC<JobResponsibilityModalProps> = ({
   };
 
   const defaultValues = {
-    college: modalData?.college || "",
-    startYear: modalData?.startYear || "",
-    endYear: modalData?.endYear || "",
-    degree: modalData?.degree || "",
-    description: modalData?.description || "",
-    performanceScale: modalData?.performanceScale || "",
-    cgpa: modalData?.cgpa || "",
+    college: data?.data?.college || "",
+    startYear: data?.data?.startYear || "",
+    endYear: data?.data?.endYear || "",
+    degree: data?.data?.degree || "",
+    description: data?.data?.description || "",
+    performanceScale: data?.data?.performanceScale || "",
+    cgpa: data?.data?.cgpa || "",
   };
 
   return (
