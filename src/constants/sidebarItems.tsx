@@ -1,8 +1,5 @@
 import type { MenuProps } from "antd";
-import {
-  AppstoreOutlined,
-  ProfileOutlined,
-} from "@ant-design/icons";
+import { AppstoreOutlined, ProfileOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 
@@ -16,12 +13,27 @@ export const sidebarItems = (role: string) => {
         {
           label: <Link href="/resume">My Profile</Link>,
           key: `/${role}/resume`,
-        }
+        },
       ],
     },
   ];
   const adminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
+    {
+      label: "Manage Company",
+      key: "company",
+      icon: <AppstoreOutlined />,
+      children: [
+        {
+          label: <Link href="/dashboard/company">View Company</Link>,
+          key: `/${role}/dashboard/company`,
+        },
+        {
+          label: <Link href="/dashboard/company/create">Create a Company</Link>,
+          key: `/${role}/dashboard/company/create`,
+        },
+      ],
+    },
     {
       label: "Manage Job",
       key: "management",
@@ -38,22 +50,21 @@ export const sidebarItems = (role: string) => {
       ],
     },
     {
-      label: "Manage Company",
-      key: "company",
+      label: "Manage Blog",
+      key: "blog",
       icon: <AppstoreOutlined />,
       children: [
         {
-          label: <Link href="/dashboard/company">View Company</Link>,
-          key: `/${role}/dashboard/company`,
+          label: <Link href="/dashboard/blog">View Blog</Link>,
+          key: `/${role}/dashboard/blog`,
         },
         {
-          label: <Link href="/dashboard/company/create">Manage a Company</Link>,
-          key: `/${role}/dashboard/company/create`,
+          label: <Link href="/dashboard/blog/create">Publish a Blog</Link>,
+          key: `/${role}/dashboard/blog/create`,
         },
       ],
     },
   ];
-
 
   if (role === USER_ROLE.ADMIN) return adminSidebarItems;
   else {
@@ -61,4 +72,4 @@ export const sidebarItems = (role: string) => {
   }
 };
 
-<p>hello</p>
+<p>hello</p>;

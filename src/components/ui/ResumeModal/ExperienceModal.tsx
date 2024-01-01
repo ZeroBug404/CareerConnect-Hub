@@ -3,7 +3,7 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import { useAddWorkExperienceMutation } from "@/redux/api/workExperienceApi";
-import { Button, Input, message } from "antd";
+import { Button, message } from "antd";
 
 interface ExperienceModalProps {
   btnName: string;
@@ -75,7 +75,7 @@ const ExperienceModal: React.FC<ExperienceModalProps> = ({ btnName }) => {
         </div>
         <div style={{ display: "flex", justifyContent: "end" }}>
           <Button type="primary" htmlType="submit">
-            {btnName}
+            Save
           </Button>
         </div>
       </Form>

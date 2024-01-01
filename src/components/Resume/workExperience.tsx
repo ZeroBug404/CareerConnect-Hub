@@ -3,7 +3,6 @@ import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Flex, Row, message } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
-import UpdateWorkExperience from "./UpdateWorkExperience";
 import { useDeleteWorkExperienceMutation, useWorkExperiencesQuery } from "@/redux/api/workExperienceApi";
 import ExperienceModal from "../ui/ResumeModal/ExperienceModal";
 import { IWorkExperience } from "@/types";

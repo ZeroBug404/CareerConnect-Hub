@@ -71,7 +71,7 @@ const TrainingModal: React.FC<TrainingModalProps> = ({ btnName }) => {
         </div>
         <div style={{ display: "flex", justifyContent: "end", marginTop: "10px"  }}>
           <Button type="primary" htmlType="submit">
-            {btnName}
+            Save
           </Button>
         </div>
       </Form>

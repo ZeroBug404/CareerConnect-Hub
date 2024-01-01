@@ -6,10 +6,7 @@ import { Button, Col, Flex, Row, message } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import EducationModal from "../ui/ResumeModal/EducationModal";
-import UpdateEducation from "./UpdateEducation";
 import UpdateEducationModal from "../ui/ResumeModal/UpdateEducationModal";
-
-
 
 const Education = () => {
   const [open, setOpen] = useState(false);
