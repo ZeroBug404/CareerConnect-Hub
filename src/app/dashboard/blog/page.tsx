@@ -20,7 +20,6 @@ const BlogPage = () => {
   query["sortOrder"] = sortOrder;
 
   const { data, isLoading } = useBlogsQuery({ ...query });
-  console.log(data?.data);
   const blogData = data?.data;
   const [deleteBlog] = useDeleteBlogMutation();
 
