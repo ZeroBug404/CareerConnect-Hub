@@ -56,7 +56,7 @@ const JobListMain = async () => {
     },
     {
       label: "High to Low",
-      key: "dsc",
+      key: "desc",
     },
     {
       label: "Select Sort Salary",
