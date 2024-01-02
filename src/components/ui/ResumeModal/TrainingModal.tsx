@@ -6,11 +6,8 @@ import FormTextArea from "@/components/Forms/FormTextArea";
 import { useAddTrainingMutation } from "@/redux/api/trainingApi";
 import { Button, message } from "antd";
 
-interface TrainingModalProps {
-  btnName: string;
-}
 
-const TrainingModal: React.FC<TrainingModalProps> = ({ btnName }) => {
+const TrainingModal = () => {
   const [addTraining] = useAddTrainingMutation();
 
   const onSubmit = async (trainingData: any) => {

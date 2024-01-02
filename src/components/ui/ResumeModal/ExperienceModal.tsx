@@ -5,11 +5,7 @@ import FormTextArea from "@/components/Forms/FormTextArea";
 import { useAddWorkExperienceMutation } from "@/redux/api/workExperienceApi";
 import { Button, message } from "antd";
 
-interface ExperienceModalProps {
-  btnName: string;
-}
-
-const ExperienceModal: React.FC<ExperienceModalProps> = ({ btnName }) => {
+const ExperienceModal = () => {
   const [addWorkExperience] = useAddWorkExperienceMutation();
 
   const onSubmit = async (trainingData: any) => {

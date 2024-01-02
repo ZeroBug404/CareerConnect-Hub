@@ -12,12 +12,12 @@ import { Button, message } from "antd";
 const UpdateEducationModal = ({ id }: any) => {
   const { data } = useEducationQuery(id);
   
-  const [UpdateEducation] = useUpdateEducationMutation()
+  const [updateEducation] = useUpdateEducationMutation()
 
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      const res = await UpdateEducation({ body: data }).unwrap();
+      const res = await updateEducation({ body: data }).unwrap();
       if (res) {
         message.success("education updated successfully");
       }

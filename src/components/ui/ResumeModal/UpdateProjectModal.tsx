@@ -2,21 +2,32 @@
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import { useAddProjectMutation } from "@/redux/api/projectApi";
+import { useProjectQuery, useUpdateProjectMutation } from "@/redux/api/projectApi";
 import { Button, message } from "antd";
 
-const ProjectModal = () => {
-  const [addProject] = useAddProjectMutation();
+const UpdateProjectModal = ({ id }: any) => {
+  const { data } = useProjectQuery(id);
+  const [updateProject] = useUpdateProjectMutation();
 
-  const onSubmit = async (educationData: any) => {
-    message.loading("Adding...");
+  const onSubmit = async (data: any) => {
+    message.loading("Updating...");
     try {
-      await addProject(educationData);
-      message.success("Project added successfully");
+      const res = await updateProject({ body: data }).unwrap();
+      if (res) {
+        message.success("Project updated successfully");
+      }
     } catch (err: any) {
       console.error(err.message);
-      message.error(err.message);
+      message.error("Please try again");
     }
+  };
+
+  const defaultValues = {
+    title: data?.data?.title || "",
+    startYear: data?.data?.startYear || "",
+    endYear: data?.data?.endYear || "",
+    description: data?.data?.description || "",
+    projectLink: data?.data?.projectLink || ""
   };
 
   return (
@@ -32,7 +43,7 @@ const ProjectModal = () => {
       >
         Project details
       </p>
-      <Form submitHandler={onSubmit}>
+      <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <div style={{ width: "100%", marginTop: "-.5rem" }}>
           <FormInput label="Title" name="title" size="large" />
         </div>
@@ -75,4 +86,4 @@ const ProjectModal = () => {
   );
 };
 
-export default ProjectModal;
+export default UpdateProjectModal;
