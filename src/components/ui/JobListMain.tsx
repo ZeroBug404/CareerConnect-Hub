@@ -101,7 +101,7 @@ const JobListMain = async () => {
       key: "Senior",
     },
     {
-      label: "Select Experience Level",
+      label: "Select Experience",
       key: "",
     },
   ];
@@ -177,7 +177,7 @@ const JobListMain = async () => {
             <Space>
               {experienceLevelValue
                 ? experienceLevelValue
-                : "Select Experience Level"}
+                : "Select Experience"}
 
               <DownOutlined />
             </Space>
