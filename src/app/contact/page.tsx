@@ -15,23 +15,6 @@ const Contact = () => {
     }
   };
   return (
-    // <div
-    //   style={{
-    //     minHeight: "100vh",
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //   }}
-    // >
-    //   <h2
-    //     style={{
-    //       color: "green",
-    //     }}
-    //   >
-    //     coming soon....
-    //   </h2>
-    // </div>
-
     <Row
       justify="center"
       align="middle"
@@ -46,10 +29,11 @@ const Contact = () => {
         <div style={{
               margin: "15px 0px",
               textAlign: "center",
-              fontSize: "20px"
             }}>
-          <h1>
-            Get In
+          <h1 style={{
+              fontSize: "30px"
+            }}>
+            Get In 
             <span
               style={{
                 color: "#FC9028",
