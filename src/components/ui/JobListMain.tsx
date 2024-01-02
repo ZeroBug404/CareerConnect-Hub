@@ -84,6 +84,10 @@ const JobListMain = async () => {
       label: "Senior",
       key: "Senior",
     },
+    {
+      label: "Select Experience Level",
+      key: "",
+    },
   ];
 
   const handleJobTypeFilter = (e: any) => {
@@ -102,19 +106,13 @@ const JobListMain = async () => {
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
           marginTop: "16px",
         }}
       >
-        <Space.Compact style={{ width: "40%" }}>
-          <Input placeholder="Search for jobs" onChange={onChangeHandler} />
-          <Button type="primary" onClick={handleSearch}>
-            Search
-          </Button>
-        </Space.Compact>
         <Dropdown
           menu={{
             onClick: handleJobTypeFilter,
@@ -123,7 +121,7 @@ const JobListMain = async () => {
             defaultSelectedKeys: [""],
           }}
         >
-          <Typography.Link>
+          <Typography.Link style={{ marginLeft: '0px'}}>
             <Space>
               {jobTypeValue ? jobTypeValue : "Select Job Type"}
 
@@ -139,14 +137,22 @@ const JobListMain = async () => {
             defaultSelectedKeys: [""],
           }}
         >
-          <Typography.Link>
+          <Typography.Link style={{ marginLeft: '10px'}}>
             <Space>
-              {experienceLevelValue ? experienceLevelValue : "Select Experience Level"}
+              {experienceLevelValue
+                ? experienceLevelValue
+                : "Select Experience Level"}
 
               <DownOutlined />
             </Space>
           </Typography.Link>
         </Dropdown>
+        <Space.Compact style={{ width: "20%", marginLeft: '10px' }}>
+          <Input placeholder="Search for jobs" onChange={onChangeHandler} />
+          <Button type="primary" onClick={handleSearch}>
+            Search
+          </Button>
+        </Space.Compact>
       </div>
       {allData.length > 0 ? (
         <div className={styles.JobList_div_main}>
