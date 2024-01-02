@@ -16,12 +16,13 @@ const JobListMain = async () => {
   const [singleData, setSingleData] = useState([]);
   const [jobTypeValue, setJobTypeValue] = useState("");
   const [experienceLevelValue, setExperienceLevelValue] = useState("");
+  const [sortSalaryValue, setSortSalaryValue] = useState("");
 
   let search = "";
 
   const handleSearch = () => {
     fetch(
-      `https://career-connect-hub-api.vercel.app/api/v1/jobs?searchTerm=${search}&jobType=${jobTypeValue}&experienceLevel=${experienceLevelValue}`
+      `https://career-connect-hub-api.vercel.app/api/v1/jobs?searchTerm=${search}&jobType=${jobTypeValue}&experienceLevel=${experienceLevelValue}&salary=${sortSalaryValue}`
     )
       .then((res) => res.json())
       .then((res) => {
@@ -47,6 +48,21 @@ const JobListMain = async () => {
   useEffect(() => {
     handleSearch();
   }, []);
+
+  const sortSalaryItems: MenuProps["items"] = [
+    {
+      label: "Low to High",
+      key: "asc",
+    },
+    {
+      label: "High to Low",
+      key: "dsc",
+    },
+    {
+      label: "Select Sort Salary",
+      key: "",
+    },
+  ];
 
   const JobTypeItems: MenuProps["items"] = [
     {
@@ -90,6 +106,10 @@ const JobListMain = async () => {
     },
   ];
 
+  const handleSortSalaryFilter = (e: any) => {
+    setSortSalaryValue(e.key);
+  };
+
   const handleJobTypeFilter = (e: any) => {
     setJobTypeValue(e.key);
   };
@@ -115,13 +135,29 @@ const JobListMain = async () => {
       >
         <Dropdown
           menu={{
+            onClick: handleSortSalaryFilter,
+            items: sortSalaryItems,
+            selectable: true,
+            defaultSelectedKeys: [""],
+          }}
+        >
+          <Typography.Link style={{ marginLeft: '0px'}}>
+            <Space>
+              {sortSalaryValue ? sortSalaryValue : "Sort Salary"}
+
+              <DownOutlined />
+            </Space>
+          </Typography.Link>
+        </Dropdown>
+        <Dropdown
+          menu={{
             onClick: handleJobTypeFilter,
             items: JobTypeItems,
             selectable: true,
             defaultSelectedKeys: [""],
           }}
         >
-          <Typography.Link style={{ marginLeft: '0px'}}>
+          <Typography.Link style={{ marginLeft: '10px'}}>
             <Space>
               {jobTypeValue ? jobTypeValue : "Select Job Type"}
 
