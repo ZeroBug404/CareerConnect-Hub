@@ -9,6 +9,7 @@ import SkillModal from "../ui/ResumeModal/SkillModal";
 import UpdateSkillModal from "../ui/ResumeModal/UpdateSkillModal";
 
 
+
 const Skills = () => {
   const [open, setOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -31,48 +32,6 @@ const Skills = () => {
     }
   };
 
-<<<<<<< HEAD
-  return (
-    <Flex
-      wrap="wrap"
-      gap="small"
-      justify="space-between"
-      style={{
-        borderBottom: "1px solid black",
-        padding: "10px 0",
-      }}
-    >
-      <div>
-        <p>Skills</p>
-      </div>
-      <div style={{ width: "50%" }}>
-        <div>
-          <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            {data?.data?.map((skill: any) => {
-              return (
-                <div key={skill.id}>
-                  <p>{skill.skills}</p>
-                </div>
-              );
-            })}
-            <Flex wrap="wrap" gap="middle" justify="end" align="start">
-              <UpdateSkills />
-              <DeleteOutlined />
-            </Flex>
-          </Flex>
-        </div>
-        <div>
-          <Button type="link" onClick={() => setOpen(true)}>
-            <PlusOutlined />
-            Add skill
-          </Button>
-        </div>
-        <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-          <SkillModal btnName={"Save"}></SkillModal>
-        </GlobalModal>
-      </div>
-    </Flex>
-=======
   const handleEditClick = (id: string) => {
     setSelectedId(id);
     setEditModalOpen(true);
@@ -99,11 +58,11 @@ const Skills = () => {
                 align="start"
                 key={skill._id}
               >
-                <div style={{  padding: "5px 0"  }}>
+                <div style={{ padding: "5px 0" }}>
                   <h4>{skill?.skills}</h4>
                 </div>
                 <Flex wrap="wrap" gap="middle" justify="end" align="center">
-                <Button onClick={() => handleEditClick(skill._id)}>
+                  <Button onClick={() => handleEditClick(skill._id)}>
                     <EditOutlined />
                   </Button>
                   <Button onClick={() => deleteHandler(skill?._id)}>
@@ -120,7 +79,7 @@ const Skills = () => {
             </Button>
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-            <SkillModal/>
+            <SkillModal />
           </GlobalModal>
           <GlobalModal
             open={editModalOpen}
@@ -137,7 +96,6 @@ const Skills = () => {
         </Col>
       </Row>
     </>
->>>>>>> bf03791e4460710ce7dfde1f96b26149ad9bf457
   );
 };
 
