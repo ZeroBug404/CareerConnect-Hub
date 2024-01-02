@@ -17,6 +17,25 @@ export const jobTypeOptions = [
   },
 ];
 
+export const eventTypeOptions = [
+  {
+    label: "Full-Time",
+    value: "Full-time",
+  },
+  {
+    label: "Part-Time",
+    value: "Part-time",
+  },
+  {
+    label: "Contract",
+    value: "Contract",
+  },
+  {
+    label: "Freelance",
+    value: "Freelance",
+  },
+];
+
 export const experienceLevelOptions = [
   {
     label: "Entry",

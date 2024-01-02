@@ -12,8 +12,6 @@ const Skills = () => {
 
   const { data } = useGetSkillsQuery({});
 
-  console.log(data?.data);
-
   return (
     <Flex
       wrap="wrap"
@@ -30,10 +28,13 @@ const Skills = () => {
       <div style={{ width: "50%" }}>
         <div>
           <Flex wrap="wrap" gap="middle" justify="space-between" align="start">
-            <div>
-              <h4>React</h4>
-              <p>Intermediate</p>
-            </div>
+            {data?.data?.map((skill: any) => {
+              return (
+                <div key={skill.id}>
+                  <p>{skill.skills}</p>
+                </div>
+              );
+            })}
             <Flex wrap="wrap" gap="middle" justify="end" align="start">
               <UpdateSkills />
               <DeleteOutlined />
