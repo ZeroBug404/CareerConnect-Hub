@@ -10,6 +10,7 @@ import {
   usePortfoliosQuery,
 } from "@/redux/api/portfolioApi";
 import UpdatePortfolioModal from "../ui/ResumeModal/UpdatePortfolioModal";
+import Link from "next/link";
 
 const Portfolio = () => {
   const [open, setOpen] = useState(false);
@@ -59,8 +60,10 @@ const Portfolio = () => {
                 key={portfolio._id}
               >
                 <div style={{ padding: "5px 0" }}>
-                  <h4>{portfolio?.gitHub}</h4>
-                  <p>{portfolio?.other}</p>
+                  <h4 style={{ padding: "5px 0" }}>GitHub portfolio</h4>
+                  <Link href="">{portfolio?.gitHub}</Link>
+                  <h4 style={{ padding: "5px 0" }}>Other portfolio link</h4>
+                  <Link href="">{portfolio?.other}</Link>
                 </div>
                 <Flex wrap="wrap" gap="middle" justify="end" align="center">
                   <Button onClick={() => handleEditClick(portfolio._id)}>
