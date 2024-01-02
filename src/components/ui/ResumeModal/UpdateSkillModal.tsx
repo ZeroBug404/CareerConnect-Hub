@@ -1,10 +1,14 @@
 "use client";
-import { useAddSkillMutation } from "@/redux/api/skillApi";
+import {
+    useSkillQuery,
+  useUpdateSkillMutation,
+} from "@/redux/api/skillApi";
 import type { SelectProps } from "antd";
 import { Select, message } from "antd";
 
-const SkillModal = () => {
-  const [addSkill] = useAddSkillMutation();
+const UpdateSkillModal = ({ id }: any) => {
+  const { data } = useSkillQuery(id);
+  const [updateSkill] = useUpdateSkillMutation();
 
   const options: SelectProps["options"] = [];
 
@@ -12,7 +16,7 @@ const SkillModal = () => {
     const options = {
       skills: value,
     };
-    await addSkill(options);
+    await updateSkill(options);
     message.success("Skills added successfully!");
   };
 
@@ -40,4 +44,4 @@ const SkillModal = () => {
   );
 };
 
-export default SkillModal;
+export default UpdateSkillModal;

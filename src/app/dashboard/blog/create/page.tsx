@@ -6,15 +6,18 @@ import FormTextArea from "@/components/Forms/FormTextArea";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useAddBlogMutation } from "@/redux/api/blogApi";
 import { Button, Col, Row, message } from "antd";
+import { useRouter } from "next/navigation";
 
 const CreateBlog = () => {
   const [addBlog] = useAddBlogMutation();
+  const router = useRouter()
 
   const onSubmit = async (data: any) => {
     message.loading("Adding...");
     try {
       await addBlog(data);
       message.success("Blog added successfully");
+      router.push('/dashboard/blog')
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);

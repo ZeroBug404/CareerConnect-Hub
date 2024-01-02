@@ -1,5 +1,4 @@
 "use client";
-import AdditionalDetails from "@/components/Resume/additionalDetails";
 import Education from "@/components/Resume/education";
 import PersonalInfo from "@/components/Resume/personalInfo";
 import Portfolio from "@/components/Resume/portfolio";
@@ -61,7 +60,6 @@ const ResumePage = () => {
         <Projects />
         <Skills />
         <Portfolio />
-        <AdditionalDetails />
       </div>
     </div>
   );
