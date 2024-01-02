@@ -5,7 +5,7 @@ const PROJECT_URL = "/project";
 
 export const projectApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getProjects: build.query({
+    projects: build.query({
       query: () => ({
         url: `${PROJECT_URL}`,
         method: "GET",
@@ -24,7 +24,7 @@ export const projectApi = baseApi.injectEndpoints({
     }),
 
     // get single jobs by id
-    getSingleProject: build.query({
+    project: build.query({
       query: (id) => ({
         url: `${PROJECT_URL}/${id}`,
         method: "GET",
@@ -54,9 +54,9 @@ export const projectApi = baseApi.injectEndpoints({
 });
 
 export const {
+  useProjectsQuery,
+  useProjectQuery,
   useAddProjectMutation,
   useUpdateProjectMutation,
-  useDeleteProjectMutation,
-  useGetSingleProjectQuery,
-  useGetProjectsQuery,
+  useDeleteProjectMutation
 } = projectApi;

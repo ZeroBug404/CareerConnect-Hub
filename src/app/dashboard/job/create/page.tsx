@@ -12,9 +12,11 @@ import {
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useAddJobMutation } from "@/redux/api/jobApi";
 import { Button, Col, Row, message } from "antd";
+import { useRouter } from "next/navigation";
 
 const CreateJob = () => {
   const [addJob] = useAddJobMutation();
+  const router = useRouter()
 
   const onSubmit = async (jobData: any) => {
     const mRequirements = jobData.requirements;
@@ -36,6 +38,7 @@ const CreateJob = () => {
     try {
       await addJob(options);
       message.success("Job published successfully");
+      router.push('/dashboard/job')
     } catch (err: any) {
       message.error(err.message);
     }
