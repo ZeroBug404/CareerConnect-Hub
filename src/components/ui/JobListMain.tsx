@@ -5,6 +5,7 @@
 import styles from "@/Styles/JobList.module.css";
 import JobDetailView from "@/components/ui/JobDetailView";
 import JobLists from "@/components/ui/JobLists";
+import { baseApi } from "@/redux/api/baseApi";
 import { Button, Input, Space } from "antd"; // Import Spin from Ant Design
 import { useEffect, useState } from "react";
 
@@ -16,7 +17,7 @@ const JobListMain = async () => {
   let search = "";
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/api/v1/jobs?searchTerm=${search}`)
+    fetch(`https://career-connect-hub-api.vercel.app/api/v1/jobs?searchTerm=${search}`)
       .then((res) => res.json())
       .then((res) => {
         setAllData(res?.data?.data);
@@ -31,7 +32,7 @@ const JobListMain = async () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/jobs/${selectedID}`)
+    fetch(`https://career-connect-hub-api.vercel.app/api/v1/jobs/${selectedID}`)
       .then((res) => res.json())
       .then((res) => {
         setSingleData(res.data);
