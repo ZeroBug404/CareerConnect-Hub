@@ -1,6 +1,7 @@
 "use client";
 
 import blueLogo from "@/assets/1-removebg-preview.png";
+import { removeUserInfo } from "@/services/auth.service";
 import {
   MenuOutlined,
   QuestionCircleOutlined,
@@ -18,10 +19,18 @@ import {
 } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const router = useRouter();
+
+  const handleLogout = (accessToken: string) => {
+    removeUserInfo(accessToken);
+    return router.push("/login");
+  };
 
   const items: MenuProps["items"] = [
     {
@@ -37,7 +46,7 @@ const NavBar = () => {
           }}
         >
           <Button
-            // onClick={logOut}
+            onClick={() => handleLogout("accessToken")}
             type="text"
             // size="large"
             danger
