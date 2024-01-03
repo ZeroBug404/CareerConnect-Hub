@@ -115,12 +115,11 @@ const CompanyTable = () => {
 
   return (
     <>
-      <Link href="/dashboard/company/create">
+      {/* <Link href="/dashboard/company/create">
         <Button type="primary" style={{ margin: "10px 0" }}>
           Add a Company?
         </Button>
-      </Link>
-
+      </Link> */}
       <CareerTable
         loading={isLoading}
         columns={columns}

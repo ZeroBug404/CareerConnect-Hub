@@ -11,8 +11,15 @@ const HomePageModal = () => {
   return (
     <div>
       <p style={{ fontSize: "1rem", marginTop: "1rem", marginBottom: ".5rem" }}>
-        Already have an account? <Link href="">Sign in</Link>
+        Dont have an account?? <Link href="/companySignUp">Sign up</Link>
       </p>
+      <p
+        style={{
+          fontSize: "1.2rem",
+          color: "#666",
+          marginBottom: "1rem",
+        }}
+      ></p>
       <Form
         name="myForm"
         onFinish={onFinish}
