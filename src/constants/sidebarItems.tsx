@@ -20,6 +20,17 @@ export const sidebarItems = (role: string) => {
   const adminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
     {
+      label: "Manage Company",
+      key: "company",
+      icon: <AppstoreOutlined />,
+      children: [
+        {
+          label: <Link href="/dashboard/company">View Company</Link>,
+          key: `/${role}/dashboard/company`,
+        },
+      ],
+    },
+    {
       label: "Manage Blog",
       key: "blog",
       icon: <AppstoreOutlined />,
@@ -37,21 +48,6 @@ export const sidebarItems = (role: string) => {
   ];
   const recruiterSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
-    {
-      label: "Manage Company",
-      key: "company",
-      icon: <AppstoreOutlined />,
-      children: [
-        {
-          label: <Link href="/dashboard/company">View Company</Link>,
-          key: `/${role}/dashboard/company`,
-        },
-        {
-          label: <Link href="/dashboard/company/create">Create a Company</Link>,
-          key: `/${role}/dashboard/company/create`,
-        },
-      ],
-    },
     {
       label: "Manage Job",
       key: "management",
@@ -108,6 +104,4 @@ export const sidebarItems = (role: string) => {
   }
 };
 
-
-<p>hello</p>
 

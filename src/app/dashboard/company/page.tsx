@@ -5,9 +5,8 @@ import {
   useCompaniesQuery,
   useDeleteCompanyMutation,
 } from "@/redux/api/companyApi";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
-import Link from "next/link";
+import { DeleteOutlined } from "@ant-design/icons";
+import { Button, Switch, message } from "antd";
 import { useState } from "react";
 
 interface DataType {
@@ -35,7 +34,6 @@ const CompanyTable = () => {
   const { data, isLoading } = useCompaniesQuery({ ...query });
   const companyData = data?.data;
   const [deleteCompany] = useDeleteCompanyMutation();
-  console.log(companyData);
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -89,36 +87,49 @@ const CompanyTable = () => {
       key: "phone",
     },
     {
-      title: "Update",
+      title: "Status",
       dataIndex: "id",
-      key: "update",
-      render: (data: any) => (
-        <Link href={`/dashboard/company/edit/${data}`}>
-          <Button type="primary" onClick={() => console.log(data)}>
-            <EditOutlined />
-          </Button>
-        </Link>
-      ),
+      render: function (data: any) {
+        return (
+          <>
+            <Switch />
+          </>
+        );
+      },
     },
     {
-      title: "Delete",
+      title: "Action",
       dataIndex: "id",
-      render: (data: any) => (
-        <Button type="primary" danger onClick={() => deleteHandler(data)}>
-          <DeleteOutlined />
-        </Button>
-      ),
+      render: function (data: any) {
+        return (
+          <>
+            {/* <Link href={`/dashboard/company/edit/${data}`}>
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                type="primary"
+                onClick={() => console.log(data)}
+              >
+                <EditOutlined />
+              </Button>
+            </Link> */}
+            <Button type="primary" danger onClick={() => deleteHandler(data)}>
+              <DeleteOutlined />
+            </Button>
+          </>
+        );
+      },
     },
-  ] as const;
+  ];
 
   return (
     <>
-      <Link href="/dashboard/company/create">
-        <Button type="primary" style={{ marginBottom: 16 }}>
-          Add Company
+      {/* <Link href="/dashboard/company/create">
+        <Button type="primary" style={{ margin: "10px 0" }}>
+          Add a Company?
         </Button>
-      </Link>
-
+      </Link> */}
       <CareerTable
         loading={isLoading}
         columns={columns}

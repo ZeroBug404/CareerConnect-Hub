@@ -5,7 +5,7 @@ import FormSelectField from "@/components/Forms/FormSelectField";
 import {
   educationYearOptions,
   performanceScale,
-} from "@/components/contants/global";
+} from "@/components/constants/global";
 import { useAddEducationMutation } from "@/redux/api/educationApi";
 import { Button, message } from "antd";
 
