@@ -49,6 +49,15 @@ export const jobApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.jobs],
     }),
+
+    // get filter jobs by id
+    jobSearch: build.query({
+      query: (data) => ({
+        url: `${JOB_URL}?searchTerm=${data.search}&jobType=${data.jobType}&experienceLevel=${data.experienceLevelValue}&salary=${data.sortSalaryValue}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.jobs],
+    }),
   }),
 });
 
@@ -58,4 +67,5 @@ export const {
   useJobQuery,
   useUpdateJobMutation,
   useDeleteJobMutation,
+  useJobSearchQuery,
 } = jobApi;

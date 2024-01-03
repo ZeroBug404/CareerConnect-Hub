@@ -5,30 +5,37 @@
 import styles from "@/Styles/JobList.module.css";
 import JobDetailView from "@/components/ui/JobDetailView";
 import JobLists from "@/components/ui/JobLists";
+import { useJobQuery, useJobSearchQuery } from "@/redux/api/jobApi";
 import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, Input, Space, Typography } from "antd"; // Import Spin from Ant Design
 import { useEffect, useState } from "react";
 
-const JobListMain = async () => {
+const JobListMain = () => {
   const [selectedID, setSelectedID] = useState(null);
-  const [allData, setAllData] = useState([]);
-  const [singleData, setSingleData] = useState([]);
   const [jobTypeValue, setJobTypeValue] = useState("");
   const [experienceLevelValue, setExperienceLevelValue] = useState("");
   const [sortSalaryValue, setSortSalaryValue] = useState("");
+  const [searchSortData, setSearchSortData] = useState({
+    search: "",
+    jobType: "",
+    experienceLevelValue: "",
+    sortSalaryValue: "",
+  });
 
   let search = "";
 
+  const { data, isLoading } = useJobSearchQuery(searchSortData);
+  const { data: singleJobData, isLoading: singleJobDataLoading } =
+    useJobQuery(selectedID);
+
   const handleSearch = () => {
-    fetch(
-      `https://career-connect-hub-api.vercel.app/api/v1/jobs?searchTerm=${search}&jobType=${jobTypeValue}&experienceLevel=${experienceLevelValue}&salary=${sortSalaryValue}`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setAllData(res?.data?.data);
-      })
-      .finally(() => {});
+    setSearchSortData({
+      search: search,
+      jobType: "",
+      experienceLevelValue: "",
+      sortSalaryValue: "",
+    });
   };
 
   const onChangeHandler = (
@@ -36,14 +43,6 @@ const JobListMain = async () => {
   ) => {
     search = e.target.value;
   };
-
-  useEffect(() => {
-    fetch(`https://career-connect-hub-api.vercel.app/api/v1/jobs/${selectedID}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setSingleData(res.data);
-      });
-  }, [selectedID]);
 
   useEffect(() => {
     handleSearch();
@@ -107,14 +106,38 @@ const JobListMain = async () => {
   ];
 
   const handleSortSalaryFilter = (e: any) => {
+    setSearchSortData({
+      search: search,
+      jobType: jobTypeValue,
+      experienceLevelValue: experienceLevelValue,
+      sortSalaryValue: e.key,
+    });
+    setSelectedID(selectedID);
+
     setSortSalaryValue(e.key);
   };
 
   const handleJobTypeFilter = (e: any) => {
+    setSearchSortData({
+      search: search,
+      jobType: e.key,
+      experienceLevelValue: experienceLevelValue,
+      sortSalaryValue: sortSalaryValue,
+    });
+    setSelectedID(selectedID);
+
     setJobTypeValue(e.key);
   };
 
   const handleExperienceLevelFilter = (e: any) => {
+    setSearchSortData({
+      search: search,
+      jobType: jobTypeValue,
+      experienceLevelValue: e.key,
+      sortSalaryValue: sortSalaryValue,
+    });
+    setSelectedID(selectedID);
+
     setExperienceLevelValue(e.key);
   };
   return (
@@ -190,10 +213,10 @@ const JobListMain = async () => {
           </Button>
         </Space.Compact>
       </div>
-      {allData.length > 0 ? (
+      { data && data?.data?.data?.length > 0 ? (
         <div className={styles.JobList_div_main}>
-          <JobLists setSelectedID={setSelectedID} allData={allData} />
-          <JobDetailView singleData={singleData} />
+          <JobLists setSelectedID={setSelectedID} allData={data.data.data} />
+          <JobDetailView singleData={singleJobData?.data} />
         </div>
       ) : (
         <div className={styles.JobList_div_main}>No Data found.</div>
