@@ -68,25 +68,32 @@ const FAQTable = () => {
       key: "name",
     },
     {
-      title: "Update",
+      title: "Action",
       dataIndex: "id",
-      key: "update",
-      render: (data: any) => (
-        <Link href={`/dashboard/faq/edit/${data}`}>
-          <Button type="primary" onClick={() => console.log(data)}>
-            <EditOutlined />
-          </Button>
-        </Link>
-      ),
-    },
-    {
-      title: "Delete",
-      dataIndex: "id",
-      render: (data: any) => (
-        <Button type="primary" danger onClick={() => deleteHandler(data)}>
-          <DeleteOutlined />
-        </Button>
-      ),
+      render: function (data: any) {
+        return (
+          <>
+            <Link href={`/dashboard/faq/edit/${data}`}>
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                type="primary"
+                onClick={() => console.log(data)}
+              >
+                <EditOutlined />
+              </Button>
+            </Link>
+            <Button
+              type="primary"
+              danger
+              onClick={() => deleteHandler(data?.id)}
+            >
+              <DeleteOutlined />
+            </Button>
+          </>
+        );
+      },
     },
   ] as const;
 

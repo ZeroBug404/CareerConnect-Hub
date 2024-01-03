@@ -62,8 +62,8 @@ const CompanyTable = () => {
     }
   };
 
-  const statusChangeHandler = (checked: boolean) => {
-    console.log(`switch to ${checked}`);
+  const statusChangeHandler = (data: string) => {
+    console.log(data);
   };
 
   const columns = [
@@ -95,12 +95,11 @@ const CompanyTable = () => {
     },
     {
       title: "Status",
-      dataIndex: "id",
+      dataIndex: "status",
       render: function (data: any) {
         return (
           <>
-            <Switch onChange={statusChangeHandler}/>
-            {/* onChange={() => statusChangeHandler(data)} */}
+            <Switch onChange={() => statusChangeHandler(data)}/>
           </>
         );
       },
@@ -109,6 +108,7 @@ const CompanyTable = () => {
       title: "Action",
       dataIndex: "id",
       render: function (data: any) {
+        console.log(data);
         return (
           <>
             {/* <Link href={`/dashboard/company/edit/${data}`}>
@@ -122,7 +122,7 @@ const CompanyTable = () => {
                 <EditOutlined />
               </Button>
             </Link> */}
-            <Button type="primary" danger onClick={() => deleteHandler(data)}>
+            <Button type="primary" danger onClick={() => deleteHandler(data?.id)}>
               <DeleteOutlined />
             </Button>
           </>
@@ -133,11 +133,6 @@ const CompanyTable = () => {
 
   return (
     <>
-      {/* <Link href="/dashboard/company/create">
-        <Button type="primary" style={{ margin: "10px 0" }}>
-          Add a Company?
-        </Button>
-      </Link> */}
       <CareerTable
         loading={isLoading}
         columns={columns}
