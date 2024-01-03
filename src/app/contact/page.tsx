@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 "use client";
 
 import Form from "@/components/Forms/Form";
@@ -5,6 +7,7 @@ import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import { Button, Col, Image, Row } from "antd";
 import contactImg from '@/assets/contact.avif';
+>>>>>>> 0330d3f9dc87c958f8fd3f37db84837e73b8610d
 
 const Contact = () => {
   const onSubmit = async (data: any) => {

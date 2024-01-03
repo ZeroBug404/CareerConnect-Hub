@@ -5,16 +5,24 @@ import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
-import { useAddEventMutation } from "@/redux/api/eventApi";
+import {
+  useGetSingleEventQuery,
+  useUpdateEventMutation,
+} from "@/redux/api/eventApi";
 import { Button, Col, Row, TimePicker, message } from "antd";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import { useState } from "react";
 
-const CreateEventPage = () => {
+const UpdateEventPage = ({ params }: any) => {
   const [value, setValue] = useState<Dayjs | null>(null);
 
-  const [addEvent] = useAddEventMutation();
+  const { id } = params;
+
+  const { data, isLoading } = useGetSingleEventQuery(id);
+  console.log(data?.data);
+
+  const [updateEvent] = useUpdateEventMutation();
 
   const format = "HH:mm";
 
@@ -40,20 +48,53 @@ const CreateEventPage = () => {
         },
       ],
     };
-    message.loading("Publishing...");
+    message.loading("Updating...");
     // console.log(options);
-    addEvent(options);
+    updateEvent(options);
 
     message.success("Event Published Successfully!");
   };
 
+  const createdTime =
+    data?.data?.agenda.map((item: any) => {
+      return item.time;
+    }) || "";
+
   const onChange = (time: Dayjs) => {
     if (time) {
       setValue(time);
+    } else {
+      setValue(createdTime);
     }
   };
 
-  // console.log("Value:", value?.format("HH:mm"));
+  const defaultValues = {
+    event: data?.data?.name || "",
+    location: data?.data?.location || "",
+    title:
+      data?.data?.speakers.map((speaker: any) => {
+        return speaker.title;
+      }) || "",
+    image: data?.data?.image || "",
+    description: data?.data?.description || "",
+    // date: data?.data?.date || "",
+    nameOfSpeaker:
+      data?.data?.speakers.map((speaker: any) => {
+        return speaker.name;
+      }) || "",
+    bio:
+      data?.data?.speakers.map((speaker: any) => {
+        return speaker.bio;
+      }) || "",
+    agenda:
+      data?.data?.agenda.map((item: any) => {
+        return item.event;
+      }) || "",
+    time:
+      data?.data?.agenda.map((item: any) => {
+        return item.time;
+      }) || "",
+  };
 
   return (
     <>
@@ -73,8 +114,8 @@ const CreateEventPage = () => {
           width: "100%",
         }}
       >
-        <Form submitHandler={onSubmit}>
-          <h2>Publish a Event</h2>
+        <Form submitHandler={onSubmit} defaultValues={defaultValues}>
+          <h2>Update Event</h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -104,7 +145,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="event"
                   type="text"
-                  size="small"
+                  size="large"
                   label="Name of Event"
                 />
               </Col>
@@ -120,7 +161,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="location"
                   type="text"
-                  size="small"
+                  size="large"
                   label="Location"
                 />
               </Col>
@@ -136,7 +177,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="image"
                   type="text"
-                  size="small"
+                  size="large"
                   label="URL of Image"
                 />
               </Col>
@@ -171,7 +212,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="title"
                   type="text"
-                  size="small"
+                  size="large"
                   label="Title"
                 />
               </Col>
@@ -187,7 +228,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="nameOfSpeaker"
                   type="text"
-                  size="small"
+                  size="large"
                   label="Name of Speaker"
                 />
               </Col>
@@ -200,7 +241,7 @@ const CreateEventPage = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormInput name="bio" type="text" size="small" label="Bio" />
+                <FormInput name="bio" type="text" size="large" label="Bio" />
               </Col>
             </Row>
           </div>
@@ -220,7 +261,11 @@ const CreateEventPage = () => {
             >
               Agenda Information
             </p>
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Row
+              gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
+              //   justify={"center"}
+              //   align={"middle"}
+            >
               <Col
                 xs={24}
                 sm={12}
@@ -233,7 +278,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="agenda"
                   type="text"
-                  size="small"
+                  size="large"
                   label="Agenda Name"
                 />
               </Col>
@@ -252,9 +297,9 @@ const CreateEventPage = () => {
                   size="large"
                   style={{
                     width: "100%",
-                    margin: "6px 0",
+                    margin: "5px 0",
                   }}
-                  // defaultValue={dayjs("12:08", format)}
+                  defaultValue={createdTime}
                   format={format}
                   value={value}
                   onChange={(time: Dayjs | null) => onChange(time || dayjs())}
@@ -310,8 +355,8 @@ const CreateEventPage = () => {
           </div>
 
           <div style={{ margin: "10px 0" }}>
-            <Button type="primary" htmlType="submit" size="small">
-              Add Event
+            <Button type="primary" htmlType="submit" size="large">
+              Update Event
             </Button>
           </div>
         </Form>
@@ -320,4 +365,4 @@ const CreateEventPage = () => {
   );
 };
 
-export default CreateEventPage;
+export default UpdateEventPage;

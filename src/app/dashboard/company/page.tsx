@@ -91,6 +91,12 @@ const CompanyTable = () => {
       key: "phone",
     },
     {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+    },
+
+    {
       title: "Action",
       dataIndex: "id",
       render: function (data: any) {

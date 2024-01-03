@@ -4,15 +4,23 @@
 import Form from "@/components/Forms/Form";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import { status } from "@/constants/global";
+import { useUpdateCompanyMutation } from "@/redux/api/companyApi";
 import { Button, Col, Row, message } from "antd";
+import { useRouter } from "next/router";
 
 const UpdateCompany = ({ params }: any) => {
-
+  const [updateCompany] = useUpdateCompanyMutation();
+  console.log(params.id);
+  const companyId = params.id;
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
       console.log(data);
-      message.success("Status updated successfully");
+      const res = await updateCompany({ data, companyId }).unwrap();
+      console.log(res);
+      if (res?.data.statusCode === 200) {
+        return message.success("Status updated successfully");
+      }
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
