@@ -108,20 +108,8 @@ const CompanyTable = () => {
       title: "Action",
       dataIndex: "id",
       render: function (data: any) {
-        console.log(data);
         return (
           <>
-            {/* <Link href={`/dashboard/company/edit/${data}`}>
-              <Button
-                style={{
-                  margin: "0px 5px",
-                }}
-                type="primary"
-                onClick={() => console.log(data)}
-              >
-                <EditOutlined />
-              </Button>
-            </Link> */}
             <Button type="primary" danger onClick={() => deleteHandler(data?.id)}>
               <DeleteOutlined />
             </Button>
