@@ -36,10 +36,7 @@ const JobDetails = async ({ params }: any) => {
             <RiseOutlined /> <p>Active Hiring</p>
           </Flex>
         </div>
-        <Card
-          title={data?.data?.title}
-          bordered={false}
-        >
+        <Card title={data?.data?.title} bordered={false}>
           <h3>{data?.data?.company}</h3>
           <br />
           <Flex wrap="wrap" gap="small">

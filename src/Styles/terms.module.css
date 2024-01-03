@@ -1,0 +1,32 @@
+.container {
+  padding: 10px 50px;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 1rem;
+}
+
+.title {
+  margin-top: 1rem;
+  color: #484848;
+}
+
+.text {
+  color: #484848;
+  text-align: justify;
+  margin-top: 0.5rem;
+  padding: 0 0.2rem;
+  line-height: 1.5rem;
+}
+
+.list {
+  color: #484848;
+  text-align: justify;
+  margin-top: 0.5rem;
+  padding-left: 2.3rem;
+  line-height: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px 15px;
+  }
+}
