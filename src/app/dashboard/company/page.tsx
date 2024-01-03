@@ -6,7 +6,7 @@ import {
   useDeleteCompanyMutation,
 } from "@/redux/api/companyApi";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { Button, Switch, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -88,12 +88,23 @@ const CompanyTable = () => {
       key: "phone",
     },
     {
+      title: "Status",
+      dataIndex: "id",
+      render: function (data: any) {
+        return (
+          <>
+            <Switch />
+          </>
+        );
+      },
+    },
+    {
       title: "Action",
       dataIndex: "id",
       render: function (data: any) {
         return (
           <>
-            <Link href={`/dashboard/company/edit/${data}`}>
+            {/* <Link href={`/dashboard/company/edit/${data}`}>
               <Button
                 style={{
                   margin: "0px 5px",
@@ -103,7 +114,7 @@ const CompanyTable = () => {
               >
                 <EditOutlined />
               </Button>
-            </Link>
+            </Link> */}
             <Button type="primary" danger onClick={() => deleteHandler(data)}>
               <DeleteOutlined />
             </Button>
