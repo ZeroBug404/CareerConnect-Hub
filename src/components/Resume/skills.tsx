@@ -1,9 +1,18 @@
 "use client";
 
 import { useDeleteSkillMutation, useSkillsQuery } from "@/redux/api/skillApi";
+import { getUserInfo } from "@/services/auth.service";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Flex, Row, message } from "antd";
-import { useState } from "react";
+import {
+  JSXElementConstructor,
+  Key,
+  PromiseLikeOfReactNode,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+  useState,
+} from "react";
 import GlobalModal from "../Shared/GlobalModal";
 import SkillModal from "../ui/ResumeModal/SkillModal";
 import UpdateSkillModal from "../ui/ResumeModal/UpdateSkillModal";
@@ -15,6 +24,8 @@ const Skills = () => {
 
   const query: Record<string, any> = {};
   const { data } = useSkillsQuery({ ...query });
+
+  const { email } = getUserInfo() as any;
 
   const skillData = data?.data;
 
@@ -34,10 +45,11 @@ const Skills = () => {
     }
   };
 
-  const handleEditClick = (id: string) => {
-    setSelectedId(id);
-    setEditModalOpen(true);
-  };
+  const filteredByEmail = skillData?.filter(
+    (skill: any) => skill.userEmail === email
+  );
+
+  // console.log(filteredByEmail);
 
   return (
     <>
@@ -52,7 +64,7 @@ const Skills = () => {
         </Col>
         <Col xs={24} sm={16}>
           <Col>
-            {skillData?.map((skill: any) => (
+            {filteredByEmail?.map((skill: any) => (
               <Flex
                 wrap="wrap"
                 gap="middle"
@@ -60,12 +72,44 @@ const Skills = () => {
                 align="start"
                 key={skill._id}
               >
-                <div style={{ padding: "5px 0" }}>
-                  <h4>{skill?.skills}</h4>
-                </div>
-                <Button onClick={() => deleteHandler(skill?._id)}>
-                  <DeleteOutlined />
-                </Button>
+                {skill?.skills?.map(
+                  (
+                    item:
+                      | string
+                      | number
+                      | boolean
+                      | ReactElement<any, string | JSXElementConstructor<any>>
+                      | Iterable<ReactNode>
+                      | ReactPortal
+                      | PromiseLikeOfReactNode
+                      | null
+                      | undefined,
+                    index: Key | null | undefined
+                  ) => (
+                    <div
+                      key={index}
+                      style={{
+                        padding: "5px 0",
+                        display: "flex",
+                        // justifyContent: "space-between",
+                        flexWrap: "wrap",
+                        width: "100%",
+                      }}
+                    >
+                      <h4
+                        style={{
+                          width: "20%",
+                        }}
+                      >
+                        {item}
+                      </h4>
+                      <Button onClick={() => deleteHandler(skill?._id)}>
+                        <DeleteOutlined />
+                      </Button>
+                    </div>
+                  )
+                )}
+
                 {/* <Flex wrap="wrap" gap="middle" justify="end" align="center">
                 </Flex> */}
               </Flex>

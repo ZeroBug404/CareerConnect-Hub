@@ -1,5 +1,9 @@
 "use client";
-import { useDeleteEducationMutation, useEducationsQuery } from "@/redux/api/educationApi";
+import {
+  useDeleteEducationMutation,
+  useEducationsQuery,
+} from "@/redux/api/educationApi";
+import { getUserInfo } from "@/services/auth.service";
 import { IEducation } from "@/types";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Flex, Row, message } from "antd";
@@ -13,9 +17,14 @@ const Education = () => {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
+  const { email } = getUserInfo() as any;
+
   const query: Record<string, any> = {};
+
   const { data, isLoading } = useEducationsQuery({ ...query });
+
   const educationData = data?.data;
+
   const [deleteEducation] = useDeleteEducationMutation();
 
   const deleteHandler = async (id: string) => {
@@ -35,6 +44,11 @@ const Education = () => {
     setEditModalOpen(true);
   };
 
+  const filteredByEmail = educationData?.filter(
+    (item: any) => item.userEmail === email
+  );
+
+
   return (
     <>
       <Row
@@ -48,7 +62,7 @@ const Education = () => {
         </Col>
         <Col xs={24} sm={16}>
           <Col>
-            {educationData?.map((education: IEducation) => (
+            {filteredByEmail?.map((education: IEducation) => (
               <Flex
                 wrap="wrap"
                 gap="middle"
@@ -56,7 +70,7 @@ const Education = () => {
                 align="start"
                 key={education._id}
               >
-                <div style={{  padding: "5px 0"  }}>
+                <div style={{ padding: "5px 0" }}>
                   <h4>{education?.degree}</h4>
                   <p>{education?.college}</p>
                   <p>
@@ -64,7 +78,7 @@ const Education = () => {
                   </p>
                 </div>
                 <Flex wrap="wrap" gap="middle" justify="end" align="center">
-                <Button onClick={() => handleEditClick(education._id)}>
+                  <Button onClick={() => handleEditClick(education._id)}>
                     <EditOutlined />
                   </Button>
                   <Button onClick={() => deleteHandler(education?._id)}>

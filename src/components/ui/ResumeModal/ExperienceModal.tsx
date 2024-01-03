@@ -3,15 +3,22 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import { useAddWorkExperienceMutation } from "@/redux/api/workExperienceApi";
+import { getUserInfo } from "@/services/auth.service";
 import { Button, message } from "antd";
 
 const ExperienceModal = () => {
   const [addWorkExperience] = useAddWorkExperienceMutation();
 
-  const onSubmit = async (trainingData: any) => {
+  const { email } = getUserInfo() as any;
+
+  const onSubmit = async (experienceData: any) => {
     message.loading("Adding...");
     try {
-      await addWorkExperience(trainingData);
+      const experienceDataWithEmail = {
+        ...experienceData,
+        userEmail: email,
+      };
+      await addWorkExperience(experienceDataWithEmail);
       message.success("Experience added successfully");
     } catch (err: any) {
       console.error(err.message);

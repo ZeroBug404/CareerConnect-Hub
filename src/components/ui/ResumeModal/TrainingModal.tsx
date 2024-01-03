@@ -4,16 +4,23 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import { useAddTrainingMutation } from "@/redux/api/trainingApi";
+import { getUserInfo } from "@/services/auth.service";
 import { Button, message } from "antd";
 
 
 const TrainingModal = () => {
   const [addTraining] = useAddTrainingMutation();
 
+  const { email } = getUserInfo() as any;
+
   const onSubmit = async (trainingData: any) => {
     message.loading("Adding...");
     try {
-      await addTraining(trainingData);
+      const trainingDataWithEmail = {
+        ...trainingData,
+        userEmail: email,
+      };
+      await addTraining(trainingDataWithEmail);
       message.success("Training added successfully");
     } catch (err: any) {
       console.error(err.message);
