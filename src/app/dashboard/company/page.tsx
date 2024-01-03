@@ -6,8 +6,9 @@ import {
   useDeleteCompanyMutation,
   useUpdateCompanyMutation,
 } from "@/redux/api/companyApi";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Switch, message } from "antd";
+import Link from "next/link";
 import { useState } from "react";
 
 interface DataType {
@@ -62,10 +63,6 @@ const CompanyTable = () => {
     }
   };
 
-  const statusChangeHandler = (checked: boolean) => {
-    console.log(`switch to ${checked}`);
-  };
-
   const columns = [
     {
       title: "",
@@ -95,34 +92,32 @@ const CompanyTable = () => {
     },
     {
       title: "Status",
-      dataIndex: "id",
-      render: function (data: any) {
-        return (
-          <>
-            <Switch onChange={statusChangeHandler}/>
-            {/* onChange={() => statusChangeHandler(data)} */}
-          </>
-        );
-      },
+      dataIndex: "status",
+      key: "status",
     },
+
     {
       title: "Action",
       dataIndex: "id",
       render: function (data: any) {
         return (
           <>
-            {/* <Link href={`/dashboard/company/edit/${data}`}>
+            <Link href={`/dashboard/company/edit/${data}`}>
               <Button
                 style={{
                   margin: "0px 5px",
                 }}
-                type="primary"
                 onClick={() => console.log(data)}
+                type="primary"
               >
                 <EditOutlined />
               </Button>
-            </Link> */}
-            <Button type="primary" danger onClick={() => deleteHandler(data)}>
+            </Link>
+            <Button
+              type="primary"
+              danger
+              onClick={() => deleteHandler(data?.id)}
+            >
               <DeleteOutlined />
             </Button>
           </>
@@ -133,11 +128,6 @@ const CompanyTable = () => {
 
   return (
     <>
-      {/* <Link href="/dashboard/company/create">
-        <Button type="primary" style={{ margin: "10px 0" }}>
-          Add a Company?
-        </Button>
-      </Link> */}
       <CareerTable
         loading={isLoading}
         columns={columns}

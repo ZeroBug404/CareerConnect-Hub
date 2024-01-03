@@ -82,7 +82,11 @@ const EventsPage = () => {
                 <EditOutlined />
               </Button>
             </Link>
-            <Button onClick={() => deleteHandler(data)} type="primary" danger>
+            <Button
+              onClick={() => deleteHandler(data?.id)}
+              type="primary"
+              danger
+            >
               <DeleteOutlined />
             </Button>
           </>
