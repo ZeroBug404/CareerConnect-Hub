@@ -1,8 +1,12 @@
+import Footer from "@/components/ui/Footer";
+import NavBar from "@/components/ui/NavBar";
 import Link from "next/link";
 
 const Terms = () => {
   return (
-    <div
+    <>
+      <NavBar />
+      <div
       style={{
         padding: "32px 20px",
       }}
@@ -603,6 +607,8 @@ const Terms = () => {
         and subject to the exclusive jurisdiction of courts in Gurugram.
       </p>
     </div>
+      <Footer />
+    </>
   );
 };
 
