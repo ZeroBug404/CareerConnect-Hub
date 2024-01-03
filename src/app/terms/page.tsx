@@ -1,19 +1,11 @@
+import styles from "@/Styles/terms.module.css";
 import Link from "next/link";
 
 const Terms = () => {
   return (
-    <div
-      style={{
-        padding: "32px 20px",
-      }}
-    >
-      <h2>Terms and Conditions</h2>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+    <div className={styles.container}>
+      <h2 className={styles.title}>Terms and Conditions</h2>
+      <p className={styles.text}>
         Welcome to internshala.com, (hereinafter referred to as the Site or as
         Internshala interchangeably), a portal of Scholiverse Educare Private
         Limited (hereinafter referred to as the SEPL). These terms and
@@ -38,13 +30,8 @@ const Terms = () => {
         Internshala is referred to as Applicant or Applicants as context may
         demand.
       </p>
-      <h3>Registration Data and Account Security</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Registration Data and Account Security</h3>
+      <p className={styles.text}>
         In consideration of your use of the Site, you agree to: (a) provide
         accurate, current and complete information about you as may be prompted
         by any registration forms on the Site (Registration Data); (b) maintain
@@ -56,19 +43,16 @@ const Terms = () => {
         that occur under your account; and (f) accept all risks of unauthorized
         access to the Registration Data and any other information you provide to
         SEPL. Please refer to our{" "}
-        <Link style={{ color: "blue" }} href="https://internshala.com/privacy">
+        <Link style={{ color: "blue" }} href="/privacy">
           Privacy Policy
         </Link>{" "}
         for more details on how we collect, store, use, and retain your data on
         the Site.
       </p>
-      <h3>Most Important Terms & Conditions for Employers</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>
+        Most Important Terms & Conditions for Employers
+      </h3>
+      <p className={styles.text}>
         These Terms, specifically for Employers, are in addition to the other
         generic Terms & Conditions listed on the page which are common to all
         the users of the site and which you are required to go through. Any
@@ -77,13 +61,8 @@ const Terms = () => {
         being permanently blocked and/or appropriate legal action being
         initiated against him/her by SEPL.
       </p>
-      <h5>Job Posting T&Cs:</h5>
-      <ol
-        style={{
-          padding: "10px 30px",
-          color: "#484848",
-        }}
-      >
+      <h4 className={styles.title}>Job Posting T&Cs:</h4>
+      <ol className={styles.list}>
         <li>
           It is your responsibility to ensure that you are authorized to post
           Jobs on your organizations behalf. Any dispute or legal claim arising
@@ -106,13 +85,8 @@ const Terms = () => {
           the Job listing.
         </li>
       </ol>
-      <h5>Internshala does NOT allow:</h5>
-      <ol
-        style={{
-          padding: "10px 30px",
-          color: "#484848",
-        }}
-      >
+      <h4 className={styles.title}>Internshala does NOT allow:</h4>
+      <ol className={styles.list}>
         <li>
           Unpaid internships, except for NGOs/NPOs, government agencies & some
           niche profiles (Law, Experimental Physics, Library Science, and the
@@ -126,13 +100,8 @@ const Terms = () => {
         </li>
         <li>Modeling Jobs/Internships.</li>
       </ol>
-      <h5>Hiring T&Cs:</h5>
-      <ol
-        style={{
-          padding: "10px 30px",
-          color: "#484848",
-        }}
-      >
+      <h4 className={styles.title}>Hiring T&Cs:</h4>
+      <ol className={styles.list}>
         <li>
           It is your responsibility to ensure that there is no material
           difference between the Job details that are advertised on Internshala
@@ -158,13 +127,8 @@ const Terms = () => {
           offensive content.
         </li>
       </ol>
-      <h5>Applicant data usage T&Cs:</h5>
-      <ol
-        style={{
-          padding: "10px 30px",
-          color: "#484848",
-        }}
-      >
+      <h4 className={styles.title}>Applicant data usage T&Cs:</h4>
+      <ol className={styles.list}>
         <li>
           You can use the Applicants data that you receive for your Job solely
           for the purpose of hiring. Any attempt to send any other communication
@@ -179,13 +143,8 @@ const Terms = () => {
           organization.
         </li>
       </ol>
-      <h5>Payment & refund T&Cs:</h5>
-      <ol
-        style={{
-          padding: "10px 30px",
-          color: "#484848",
-        }}
-      >
+      <h4 className={styles.title}>Payment & refund T&Cs:</h4>
+      <ol className={styles.list}>
         <li>
           Payments for the services offered by Internshala shall be on a 100%
           advance basis.
@@ -196,13 +155,8 @@ const Terms = () => {
           the refunds reaching the Employers card/bank accounts.
         </li>
       </ol>
-      <h5>Fair Usage Policy</h5>
-      <ol
-        style={{
-          padding: "10px 30px",
-          color: "#484848",
-        }}
-      >
+      <h4 className={styles.title}>Fair Usage Policy</h4>
+      <ol className={styles.list}>
         <li>
           As per Internshalas Fair Usage Policy, Employers subscribed to our
           Premium Plans can post a maximum of 50 listings (Internships and Jobs
@@ -211,13 +165,10 @@ const Terms = () => {
           basis.
         </li>
       </ol>
-      <h3>Most Important Terms & Conditions for Applicants</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>
+        Most Important Terms & Conditions for Applicants
+      </h3>
+      <p className={styles.text}>
         These Terms, specifically for Applicants, are in addition to the other
         generic Terms & Conditions listed on the page which are common to all
         the users of the site and which you are required to go through. Any
@@ -226,12 +177,7 @@ const Terms = () => {
         blocked and/or suitable legal action being initiated against him/her by
         SEPL.
       </p>
-      <ol
-        style={{
-          padding: "10px 30px",
-          color: "#484848",
-        }}
-      >
+      <ol className={styles.list}>
         <li>
           It is your responsibility to ensure that you are authorized to post
           Jobs on your organizations behalf. Any dispute or legal claim arising
@@ -254,24 +200,14 @@ const Terms = () => {
           the Job listing.
         </li>
       </ol>
-      <h3>Safety Tips for Applicants</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Safety Tips for Applicants</h3>
+      <p className={styles.text}>
         It is our endeavor to provide all our users with a safe and hassle free
         experience on Internshala. Accordingly, we would like to make Applicants
         aware of following safety tips for them.
       </p>
-      <h5>Internshala does NOT allow Employers to:</h5>
-      <ol
-        style={{
-          padding: "10px 30px",
-          color: "#484848",
-        }}
-      >
+      <h4 className={styles.title}>Internshala does NOT allow Employers to:</h4>
+      <ol className={styles.list}>
         <li>
           It is your responsibility to ensure that you are authorized to post
           Jobs on your organizations behalf. Any dispute or legal claim arising
@@ -294,13 +230,10 @@ const Terms = () => {
           the Job listing.
         </li>
       </ol>
-      <h5>Further, it is mandatory for Employers to ensure that :</h5>
-      <ol
-        style={{
-          padding: "10px 30px",
-          color: "#484848",
-        }}
-      >
+      <h4 className={styles.title}>
+        Further, it is mandatory for Employers to ensure that :
+      </h4>
+      <ol className={styles.list}>
         <li>
           It is your responsibility to ensure that you are authorized to post
           Jobs on your organizations behalf. Any dispute or legal claim arising
@@ -324,13 +257,8 @@ const Terms = () => {
         </li>
       </ol>
 
-      <h3>Disclaimers</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Disclaimers</h3>
+      <p className={styles.text}>
         This Site and its content are provided as is and SEPL and its directors,
         employees, content providers, agents and affiliates exclude, to the
         fullest extent permitted by applicable law, any warranty, express or
@@ -354,13 +282,8 @@ const Terms = () => {
         these images may violate copyright laws, trademark laws, the laws of
         privacy and publicity, and other applicable laws.
       </p>
-      <h3>Rights to Website and Contents thereof</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Rights to Website and Contents thereof</h3>
+      <p className={styles.text}>
         This Site is owned and operated by SEPL. All the content featured or
         displayed on this Site, including, but not limited to, text, graphics,
         data, images(photographic and moving), illustrations, software and
@@ -374,13 +297,8 @@ const Terms = () => {
         All related rights shall remain the exclusive property of SEPL, its
         licensors or its third-party image partners.
       </p>
-      <h3>Using the Website</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Using the Website</h3>
+      <p className={styles.text}>
         This Site and its Content are intended for Users of internshala.com, the
         division of SEPL. You may not use this Site or the content for any
         purpose, which is not related to your business with internshala.com. Any
@@ -405,13 +323,8 @@ const Terms = () => {
         the internet, data, e-mail, privacy and the transmission of technical
         data exported from India or the Country in which you reside.
       </p>
-      <h3>Trademarks</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Trademarks</h3>
+      <p className={styles.text}>
         This Site and its Content are intended for Users of internshala.com, the
         division of SEPL. You may not use this Site or the content for any
         purpose, which is not related to your business with internshala.com. Any
@@ -436,13 +349,8 @@ const Terms = () => {
         the internet, data, e-mail, privacy and the transmission of technical
         data exported from India or the Country in which you reside.
       </p>
-      <h3>Indemnity</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Indemnity</h3>
+      <p className={styles.text}>
         This Site and its Content are intended for Users of internshala.com, the
         division of SEPL. You may not use this Site or the content for any
         purpose, which is not related to your business with internshala.com. Any
@@ -467,13 +375,8 @@ const Terms = () => {
         the internet, data, e-mail, privacy and the transmission of technical
         data exported from India or the Country in which you reside.
       </p>
-      <h3>Termination</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Termination</h3>
+      <p className={styles.text}>
         This Site and its Content are intended for Users of internshala.com, the
         division of SEPL. You may not use this Site or the content for any
         purpose, which is not related to your business with internshala.com. Any
@@ -498,13 +401,8 @@ const Terms = () => {
         the internet, data, e-mail, privacy and the transmission of technical
         data exported from India or the Country in which you reside.
       </p>
-      <h3>Changes to Site Terms</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Changes to Site Terms</h3>
+      <p className={styles.text}>
         This Site and its Content are intended for Users of internshala.com, the
         division of SEPL. You may not use this Site or the content for any
         purpose, which is not related to your business with internshala.com. Any
@@ -529,13 +427,8 @@ const Terms = () => {
         the internet, data, e-mail, privacy and the transmission of technical
         data exported from India or the Country in which you reside.
       </p>
-      <h3>Chargeback</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Chargeback</h3>
+      <p className={styles.text}>
         This Site and its Content are intended for Users of internshala.com, the
         division of SEPL. You may not use this Site or the content for any
         purpose, which is not related to your business with internshala.com. Any
@@ -560,13 +453,8 @@ const Terms = () => {
         the internet, data, e-mail, privacy and the transmission of technical
         data exported from India or the Country in which you reside.
       </p>
-      <h3>Severance & Waiver</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Severance & Waiver</h3>
+      <p className={styles.text}>
         This Site and its Content are intended for Users of internshala.com, the
         division of SEPL. You may not use this Site or the content for any
         purpose, which is not related to your business with internshala.com. Any
@@ -591,13 +479,8 @@ const Terms = () => {
         the internet, data, e-mail, privacy and the transmission of technical
         data exported from India or the Country in which you reside.
       </p>
-      <h3>Jurisdiction</h3>
-      <p
-        style={{
-          color: "#484848",
-          padding: "10px 0",
-        }}
-      >
+      <h3 className={styles.title}>Jurisdiction</h3>
+      <p className={styles.text}>
         All license agreements, use or any issues arising out of any activity
         regarding the use of this website will be governed by the laws of India
         and subject to the exclusive jurisdiction of courts in Gurugram.

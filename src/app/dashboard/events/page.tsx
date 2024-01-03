@@ -1,13 +1,16 @@
 "use client";
 
 import CareerTable from "@/components/ui/CareerTable";
-import { useDeleteJobMutation, useJobsQuery } from "@/redux/api/jobApi";
+import {
+  useDeleteEventMutation,
+  useGetEventsQuery,
+} from "@/redux/api/eventApi";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 
-const JobPage = () => {
+const EventsPage = () => {
   const query: Record<string, any> = {};
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
@@ -19,10 +22,11 @@ const JobPage = () => {
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
 
-  const { data, isLoading } = useJobsQuery({ ...query });
-  const jobData = data?.data?.data;
-  const [deleteJob] = useDeleteJobMutation();
-  // console.log("jobData", jobData);
+  const { data, isLoading } = useGetEventsQuery({ ...query });
+  // console.log("Data:", data?.data);
+
+  const EventData = data?.data;
+  const [deleteEvent] = useDeleteEventMutation();
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -39,9 +43,9 @@ const JobPage = () => {
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
     try {
-      const res = await deleteJob(id);
+      const res = await deleteEvent(id);
       if (res) {
-        message.success("Job Deleted successfully");
+        message.success("Event Deleted successfully");
       }
     } catch (err: any) {
       message.error(err.message);
@@ -51,24 +55,15 @@ const JobPage = () => {
   const columns = [
     {
       title: "Title",
-      dataIndex: "title",
-    },
-    {
-      title: "Company",
-      dataIndex: "company",
+      dataIndex: "name",
     },
     {
       title: "Location",
       dataIndex: "location",
     },
     {
-      title: "Salary",
-      dataIndex: "salary",
-      sorter: true,
-    },
-    {
-      title: "Job Type",
-      dataIndex: "jobType",
+      title: "Date",
+      dataIndex: "date",
     },
     {
       title: "Action",
@@ -76,7 +71,7 @@ const JobPage = () => {
       render: function (data: any) {
         return (
           <>
-            <Link href={`/dashboard/job/edit/${data}`}>
+            <Link href={`/dashboard/events/edit/${data}`}>
               <Button
                 style={{
                   margin: "0px 5px",
@@ -98,15 +93,15 @@ const JobPage = () => {
 
   return (
     <div>
-      <Link href="/dashboard/job/create">
+      <Link href="/dashboard/events/create">
         <Button type="primary" style={{ margin: "10px 0" }}>
-          Publish a job?
+          Publish an event?
         </Button>
       </Link>
       <CareerTable
         loading={isLoading}
         columns={columns}
-        dataSource={jobData}
+        dataSource={EventData}
         showSizeChanger={true}
         showPagination={true}
         pageSize={size}
@@ -117,4 +112,4 @@ const JobPage = () => {
   );
 };
 
-export default JobPage;
+export default EventsPage;

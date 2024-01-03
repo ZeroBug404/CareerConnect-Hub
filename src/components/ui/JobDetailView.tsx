@@ -15,7 +15,7 @@ const JobDetailView = async (props: any) => {
 
   useEffect(() => {
     fetch(
-      `https://career-connect-hub-api-five.vercel.app/api/v1/jobs/${selectedID}`
+      `https://career-connect-hub-api.vercel.app/api/v1/api/v1/jobs/${selectedID}`
     )
       .then((res) => res.json())
       .then((res) => {

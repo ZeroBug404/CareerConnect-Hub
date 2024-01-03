@@ -1,11 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import CareerTable from "@/components/ui/CareerTable";
-import {
-  useCompaniesQuery,
-  useDeleteCompanyMutation,
-} from "@/redux/api/companyApi";
-import { useDeleteFAQMutation, useFAQsQuery } from "@/redux/api/faq";
+import { useDeleteFAQMutation, useFAQsQuery } from "@/redux/api/faqApi";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import Link from "next/link";
