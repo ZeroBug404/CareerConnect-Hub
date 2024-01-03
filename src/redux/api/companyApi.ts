@@ -32,7 +32,7 @@ export const companyApi = baseApi.injectEndpoints({
       query: ({ data, companyId }) => ({
         url: `${COMPANY_URL}/${companyId}`,
         method: "PATCH",
-        data: data,
+        body: data,
       }),
       invalidatesTags: [tagTypes.company],
     }),

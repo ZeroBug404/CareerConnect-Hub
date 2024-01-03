@@ -15,12 +15,21 @@ const UpdateCompany = ({ params }: any) => {
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      console.log(data);
-      const res = await updateCompany({ data, companyId }).unwrap();
-      console.log(res);
-      if (res?.data.statusCode === 200) {
-        return message.success("Status updated successfully");
-      }
+      console.log("data", data);
+      fetch(`http://localhost:5000/api/v1/company/${companyId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          if (res.statusCode === 200) {
+            message.success(res.message);
+          }
+        });
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
