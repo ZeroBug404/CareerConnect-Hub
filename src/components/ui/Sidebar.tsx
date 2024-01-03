@@ -5,6 +5,7 @@ import { Layout, Menu } from "antd";
 import { sidebarItems } from "@/constants/sidebarItems";
 import { USER_ROLE } from "@/constants/role";
 import { getUserInfo } from "@/services/auth.service";
+import Link from "next/link";
 
 const { Sider } = Layout;
 
@@ -39,7 +40,7 @@ const SideBar = () => {
           padding: "10px 0px",
         }}
       >
-        CareerConnect Hub
+        <Link href="/">CareerConnect Hub</Link>
       </div>
       <Menu
         theme="dark"
