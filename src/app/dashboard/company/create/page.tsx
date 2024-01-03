@@ -5,8 +5,8 @@
 // import FormInput from "@/components/Forms/FormInput";
 // import FormSelectField from "@/components/Forms/FormSelectField";
 // import FormTextArea from "@/components/Forms/FormTextArea";
-// import { sizes } from "@/components/contants/global";
 // import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
+// import { sizes } from "@/constants/global";
 // import { useAddCompanyMutation } from "@/redux/api/companyApi";
 // import { Button, Col, Row, message } from "antd";
 // import { useRouter } from "next/navigation";

@@ -8,7 +8,7 @@ import FormTextArea from "@/components/Forms/FormTextArea";
 import {
   experienceLevelOptions,
   jobTypeOptions,
-} from "@/components/contants/global";
+} from "@/components/constants/global";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useJobQuery, useUpdateJobMutation } from "@/redux/api/jobApi";
 import { IJobData } from "@/types";

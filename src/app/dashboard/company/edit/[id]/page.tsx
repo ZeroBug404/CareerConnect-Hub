@@ -5,7 +5,7 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import { sizes } from "@/components/contants/global";
+import { sizes } from "@/constants/global";
 import { useCompanyQuery } from "@/redux/api/companyApi";
 import { Button, Col, Row, message } from "antd";
 

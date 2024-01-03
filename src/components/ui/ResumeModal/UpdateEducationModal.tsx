@@ -5,14 +5,17 @@ import FormSelectField from "@/components/Forms/FormSelectField";
 import {
   educationYearOptions,
   performanceScale,
-} from "@/components/contants/global";
-import { useEducationQuery, useUpdateEducationMutation } from "@/redux/api/educationApi";
+} from "@/components/constants/global";
+import {
+  useEducationQuery,
+  useUpdateEducationMutation,
+} from "@/redux/api/educationApi";
 import { Button, message } from "antd";
 
 const UpdateEducationModal = ({ id }: any) => {
   const { data } = useEducationQuery(id);
-  
-  const [updateEducation] = useUpdateEducationMutation()
+
+  const [updateEducation] = useUpdateEducationMutation();
 
   const onSubmit = async (data: any) => {
     message.loading("Updating...");

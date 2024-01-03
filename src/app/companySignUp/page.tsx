@@ -5,8 +5,8 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import { sizes } from "@/components/contants/global";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
+import { sizes } from "@/constants/global";
 import { useAddCompanyMutation } from "@/redux/api/companyApi";
 import { Button, Col, Row, message } from "antd";
 import { useRouter } from "next/navigation";
@@ -39,7 +39,7 @@ const AddCompany = () => {
     };
     message.loading("Publishing...");
     try {
-      // console.log(options);
+      console.log(options);
       await addCompany(options);
       message.success("Company published successfully");
     } catch (err: any) {
