@@ -32,8 +32,11 @@ const JobDetails = async ({ params }: any) => {
             color: "blue",
           }}
         >
-          <Flex wrap="wrap" gap="small">
-            <RiseOutlined /> <p>Active Hiring</p>
+          <Flex wrap="wrap" gap="small" justify="space-between">
+            <Flex wrap="wrap" gap="small">
+              <RiseOutlined /> <p>Active Hiring</p>
+            </Flex>
+            <Link href="/job-list">Previous Page</Link>
           </Flex>
         </div>
         <Card title={data?.data?.title} bordered={false}>

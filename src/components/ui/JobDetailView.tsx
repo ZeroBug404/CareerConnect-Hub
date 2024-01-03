@@ -6,23 +6,8 @@ import { RiseOutlined } from "@ant-design/icons";
 import { Button, Card, Flex, List } from "antd";
 import Title from "antd/es/typography/Title";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 const JobDetailView = async (props: any) => {
-  const { selectedID } = props;
-
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    fetch(
-      `https://career-connect-hub-api.vercel.app/api/v1/api/v1/jobs/${selectedID}`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        console.log("setData", res.data);
-        setData(res?.data);
-      });
-  }, [selectedID]);
 
   const { singleData } = props;
 
