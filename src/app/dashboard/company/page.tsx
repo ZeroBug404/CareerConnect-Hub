@@ -6,8 +6,9 @@ import {
   useDeleteCompanyMutation,
   useUpdateCompanyMutation,
 } from "@/redux/api/companyApi";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Switch, message } from "antd";
+import Link from "next/link";
 import { useState } from "react";
 
 interface DataType {
@@ -62,10 +63,6 @@ const CompanyTable = () => {
     }
   };
 
-  const statusChangeHandler = (data: string) => {
-    console.log(data);
-  };
-
   const columns = [
     {
       title: "",
@@ -94,23 +91,27 @@ const CompanyTable = () => {
       key: "phone",
     },
     {
-      title: "Status",
-      dataIndex: "status",
-      render: function (data: any) {
-        return (
-          <>
-            <Switch onChange={() => statusChangeHandler(data)}/>
-          </>
-        );
-      },
-    },
-    {
       title: "Action",
       dataIndex: "id",
       render: function (data: any) {
         return (
           <>
-            <Button type="primary" danger onClick={() => deleteHandler(data?.id)}>
+            <Link href={`/dashboard/company/edit/${data}`}>
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                onClick={() => console.log(data)}
+                type="primary"
+              >
+                <EditOutlined />
+              </Button>
+            </Link>
+            <Button
+              type="primary"
+              danger
+              onClick={() => deleteHandler(data?.id)}
+            >
               <DeleteOutlined />
             </Button>
           </>
