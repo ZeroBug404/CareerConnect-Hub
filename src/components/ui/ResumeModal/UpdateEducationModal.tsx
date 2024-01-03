@@ -5,7 +5,8 @@ import FormSelectField from "@/components/Forms/FormSelectField";
 import {
   educationYearOptions,
   performanceScale,
-} from "@/components/constants/global";
+} from "../../../constants/global"
+
 import {
   useEducationQuery,
   useUpdateEducationMutation,

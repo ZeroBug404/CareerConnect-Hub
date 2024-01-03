@@ -7,11 +7,18 @@ import Skills from "@/components/Resume/skills";
 import Training from "@/components/Resume/training";
 import WorkExperience from "@/components/Resume/workExperience";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
+import Footer from "@/components/ui/Footer";
+import NavBar from "@/components/ui/NavBar";
+import {
+  ArrowLeftOutlined,
+  ExclamationCircleOutlined,
+} from "@ant-design/icons";
+import Link from "next/link";
 
 const ResumePage = () => {
   return (
     <div>
+      <NavBar />
       <div
         style={{
           margin: "32px",
@@ -61,6 +68,7 @@ const ResumePage = () => {
         <Skills />
         <Portfolio />
       </div>
+      <Footer />
     </div>
   );
 };
