@@ -6,10 +6,6 @@ import {
   educationYearOptions,
   performanceScale,
 } from "../../../constants/global";
-// import {
-//   educationYearOptions,
-//   performanceScale,
-// } from "@/components/constants/global";
 import { useAddEducationMutation } from "@/redux/api/educationApi";
 import { Button, message } from "antd";
 

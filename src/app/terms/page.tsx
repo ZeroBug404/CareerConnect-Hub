@@ -1,7 +1,6 @@
 import styles from "@/Styles/terms.module.css";
 import NavBar from "@/components/ui/NavBar";
 import { Footer } from "antd/es/layout/layout";
-
 import Link from "next/link";
 
 const Terms = () => {

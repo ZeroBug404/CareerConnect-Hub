@@ -2,12 +2,8 @@
 "use client";
 
 const Dashboard = async () => {
-
-
   return (
-    <div>
-      
-    </div>
+    <div></div>
   );
 };
 
