@@ -1,14 +1,24 @@
 "use client";
-import { Button, Form, Input } from "antd";
-import TextArea from "antd/es/input/TextArea";
 
-interface TrainingModalProps {
-  btnName: string;
-}
+import Form from "@/components/Forms/Form";
+import FormInput from "@/components/Forms/FormInput";
+import FormTextArea from "@/components/Forms/FormTextArea";
+import { useAddTrainingMutation } from "@/redux/api/trainingApi";
+import { Button, message } from "antd";
 
-const TrainingModal: React.FC<TrainingModalProps> = ({ btnName }) => {
-  const onFinish = (values: any) => {
-    console.log("Form values:", values);
+
+const TrainingModal = () => {
+  const [addTraining] = useAddTrainingMutation();
+
+  const onSubmit = async (trainingData: any) => {
+    message.loading("Adding...");
+    try {
+      await addTraining(trainingData);
+      message.success("Training added successfully");
+    } catch (err: any) {
+      console.error(err.message);
+      message.error(err.message);
+    }
   };
 
   return (
@@ -24,21 +34,16 @@ const TrainingModal: React.FC<TrainingModalProps> = ({ btnName }) => {
       >
         Training details
       </p>
-      <Form
-        name="myForm"
-        onFinish={onFinish}
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-      >
-        <Form.Item label="Training program" name="trainingprogram">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <Form.Item label="Organization" name="organization">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <Form.Item label="Location" name="location">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
+      <Form submitHandler={onSubmit}>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput name="title" type="text" label="Training program" />
+        </div>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput name="organization" type="text" label="Organization" />
+        </div>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput name="location" type="text" label="Location" />
+        </div>
         <div
           style={{
             display: "flex",
@@ -46,41 +51,24 @@ const TrainingModal: React.FC<TrainingModalProps> = ({ btnName }) => {
             gap: ".6rem",
           }}
         >
-          <Form.Item
-            style={{ width: "50%" }}
-            label="Start date"
-            name="startdate"
-          >
-            <Input
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              size="large"
-              type="date"
-            />
-          </Form.Item>
-          <Form.Item style={{ width: "50%" }} label="End date" name="end date">
-            <Input
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              size="large"
-              type="date"
-            />
-          </Form.Item>
+          <div style={{ width: "50%", marginTop: "-.5rem" }}>
+            <FormInput name="startDate" type="date" label="Start Date" />
+          </div>
+          <div style={{ width: "50%", marginTop: "-.5rem" }}>
+            <FormInput name="endDate" type="date" label="End Date" />
+          </div>
         </div>
-        <Form.Item
-          style={{ width: "100%" }}
-          label="Description (Optional)"
-          name="description"
+        <div
+          style={{
+            width: "100%",
+            height: "100%", minHeight: "10rem", resize: "none"
+          }}
         >
-          <TextArea
-            // showCount
-            placeholder="Description"
-            size="large"
-            style={{ height: "100%", minHeight: "10rem", resize: "none" }}
-            maxLength={250}
-          />
-        </Form.Item>
-        <div style={{ display: "flex", justifyContent: "end" }}>
+          <FormTextArea name="description" label="Description (Optional)"/>
+        </div>
+        <div style={{ display: "flex", justifyContent: "end", marginTop: "10px"  }}>
           <Button type="primary" htmlType="submit">
-            {btnName}
+            Save
           </Button>
         </div>
       </Form>

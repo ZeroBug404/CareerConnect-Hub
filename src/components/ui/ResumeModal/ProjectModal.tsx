@@ -1,28 +1,22 @@
 "use client";
+import Form from "@/components/Forms/Form";
+import FormInput from "@/components/Forms/FormInput";
+import FormTextArea from "@/components/Forms/FormTextArea";
 import { useAddProjectMutation } from "@/redux/api/projectApi";
-import { Button, Form, Input, message } from "antd";
-import TextArea from "antd/es/input/TextArea";
+import { Button, message } from "antd";
 
-interface ProjectModalProps {
-  btnName: string;
-}
-
-const ProjectModal: React.FC<ProjectModalProps> = ({ btnName }) => {
+const ProjectModal = () => {
   const [addProject] = useAddProjectMutation();
 
-  const onFinish = async (values: any) => {
-
-    const options = {
-      title: values.title,
-      description: values.description,
-      projectLink: values.projectLink,
-      startMonth: values.startMonth,
-      endMonth: values.endMonth,
-    };
-
-    await addProject(options);
-
-    await message.success("Project Added successfully!");
+  const onSubmit = async (educationData: any) => {
+    message.loading("Adding...");
+    try {
+      await addProject(educationData);
+      message.success("Project added successfully");
+    } catch (err: any) {
+      console.error(err.message);
+      message.error(err.message);
+    }
   };
 
   return (
@@ -38,60 +32,42 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ btnName }) => {
       >
         Project details
       </p>
-      <Form
-        name="myForm"
-        onFinish={onFinish}
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-      >
-        <Form.Item label="Title" name="title">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
+      <Form submitHandler={onSubmit}>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput label="Title" name="title" size="large" />
+        </div>
+        <div style={{ display: "flex", width: "100%", gap: ".6rem" }}>
+          <div style={{ width: "50%" }}>
+            <FormInput name="startYear" label="Start year" type="date" />
+          </div>
+          <div style={{ width: "50%" }}>
+            <FormInput name="endYear" label="End year" type="date" />
+          </div>
+        </div>
         <div
           style={{
-            display: "flex",
             width: "100%",
-            gap: ".6rem",
+            height: "100%",
+            minHeight: "10rem",
+            resize: "none",
           }}
         >
-          <Form.Item
-            style={{ width: "50%" }}
-            label="Start date"
-            name="startMonth"
-          >
-            <Input
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              size="large"
-              type="date"
-            />
-          </Form.Item>
-          <Form.Item style={{ width: "50%" }} label="End date" name="endMonth">
-            <Input
-              style={{ width: "100%", marginTop: "-.5rem" }}
-              size="large"
-              type="date"
-            />
-          </Form.Item>
-        </div>
-        <Form.Item
-          style={{ width: "100%" }}
-          label="Description (Optional)"
-          name="description"
-        >
-          <TextArea
-            // showCount
+          <FormTextArea
+            label="Description (Optional)"
+            name="description"
             placeholder="Description"
-            size="large"
-            style={{ height: "100%", minHeight: "10rem", resize: "none" }}
-            maxLength={250}
           />
-        </Form.Item>
-        <Form.Item label="Project link (Optional)" name="projectLink">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <div style={{ display: "flex", justifyContent: "end" }}>
+        </div>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput
+            label="Project link (Optional)"
+            name="projectLink"
+            size="large"
+          />
+        </div>
+        <div style={{ display: "flex", justifyContent: "end", marginTop: "10px" }}>
           <Button type="primary" htmlType="submit">
-            {btnName}
+            Save
           </Button>
         </div>
       </Form>

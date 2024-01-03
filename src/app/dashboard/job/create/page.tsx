@@ -1,21 +1,19 @@
 "use client";
 
 import Form from "@/components/Forms/Form";
-import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import {
-  experienceLevelOptions,
-  jobTypeOptions,
-} from "@/components/contants/global";
 
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
+import { experienceLevelOptions, jobTypeOptions } from "@/constants/global";
 import { useAddJobMutation } from "@/redux/api/jobApi";
 import { Button, Col, Row, message } from "antd";
+import { useRouter } from "next/navigation";
 
 const CreateJob = () => {
   const [addJob] = useAddJobMutation();
+  const router = useRouter();
 
   const onSubmit = async (jobData: any) => {
     const mRequirements = jobData.requirements;
@@ -24,38 +22,23 @@ const CreateJob = () => {
     const mSalary = parseInt(jobData.salary);
     const mOpeningsData = jobData.numberOfOpenings.toString();
     const options = {
-      title: jobData.title,
-      company: jobData.company,
-      location: jobData.location,
-      companyDescription: jobData.companyDescription,
-      jobDescription: jobData.jobDescription,
+      ...jobData,
       requirements: [mRequirements],
       salary: mSalary,
-      deadline: "29-12-14",
-      category: jobData.category,
-      jobType: jobData.jobType,
-      experienceLevel: jobData.experienceLevel,
       skills: [mSkills],
       benefits: [mBenefits],
-      contactEmail: jobData.contactEmail,
-      joiningDate: "29-12-14",
-      keyResponsibilities: jobData.keyResponsibilities,
       numberOfOpenings: mOpeningsData,
       companyId: "6587f647a3d02b0cf0caa3aa",
     };
     message.loading("Publishing...");
-    // console.log("options", options);
-    fetch("https://career-connect-hub-api.vercel.app/api/v1/jobs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(options),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+
+    try {
+      await addJob(options);
+      message.success("Job published successfully");
+      router.push("/dashboard/job");
+    } catch (err: any) {
+      message.error(err.message);
+    }
   };
 
   return (
@@ -389,7 +372,11 @@ const CreateJob = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="joiningDate" label="Joining Date" />
+                <FormInput
+                  name="joiningDate"
+                  type="date"
+                  label="Joining Date"
+                />
               </Col>
               <Col
                 xs={24}
@@ -400,7 +387,7 @@ const CreateJob = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="deadline" label="Deadline" />
+                <FormInput name="deadline" type="date" label="Deadline" />
               </Col>
             </Row>
           </div>

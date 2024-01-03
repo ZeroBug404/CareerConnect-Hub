@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .top_section {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(247, 246, 246);
   width: 45vw;
 }
 
@@ -54,7 +56,7 @@
 }
 .profile_section {
   width: 45vw;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(247, 246, 246);
   padding-bottom: 5px;
 }
 .profile_section_container {
@@ -66,7 +68,7 @@
   justify-content: space-between;
 }
 .profile_section_info_Name {
-  background: #ffffff;
+  /* background: #ffffff; */
   font-size: 18px;
   font-weight: bold;
   color: #0b5f8a;

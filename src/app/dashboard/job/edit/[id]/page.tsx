@@ -8,7 +8,7 @@ import FormTextArea from "@/components/Forms/FormTextArea";
 import {
   experienceLevelOptions,
   jobTypeOptions,
-} from "@/components/contants/global";
+} from "@/components/constants/global";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useJobQuery, useUpdateJobMutation } from "@/redux/api/jobApi";
 import { IJobData } from "@/types";
@@ -23,9 +23,9 @@ const EditJobPage = ({ params }: any) => {
     message.loading("Updating...");
     try {
       console.log(data);
-      const res = await updateJob({ id: params?.id, body: data }).unwrap();
+      const res = await updateJob({ body: data }).unwrap();
 
-      if (res?.id) {
+      if (res) {
         message.success("Jobs updated successfully");
       }
     } catch (err: any) {

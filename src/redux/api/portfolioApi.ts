@@ -5,8 +5,8 @@ const PORTFOLIO_URL = "/portfolio";
 
 export const portfolioApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    // get single jobs by id
-    getPortfolios: build.query({
+    // get
+    portfolios: build.query({
         query: () => ({
           url: `${PORTFOLIO_URL}`,
           method: "GET",
@@ -55,9 +55,9 @@ export const portfolioApi = baseApi.injectEndpoints({
 });
 
 export const {
+  usePortfoliosQuery,
   useAddPortfolioMutation,
   useDeletePortfolioMutation,
   usePortfolioQuery,
   useUpdatePortfolioMutation,
-  useGetPortfoliosQuery,
 } = portfolioApi;

@@ -3,11 +3,7 @@ import { useAddSkillMutation, useGetSkillsQuery } from "@/redux/api/skillApi";
 import type { SelectProps } from "antd";
 import { Select, message } from "antd";
 
-interface SkillModalProps {
-  btnName: string;
-}
-
-const SkillModal: React.FC<SkillModalProps> = ({ btnName }) => {
+const SkillModal = () => {
   const [addSkill] = useAddSkillMutation();
 
   const { data } = useGetSkillsQuery({});
@@ -26,9 +22,7 @@ const SkillModal: React.FC<SkillModalProps> = ({ btnName }) => {
     const options = {
       skills: value,
     };
-
     await addSkill(options);
-
     message.success("Skills added successfully!");
   };
 
@@ -45,15 +39,6 @@ const SkillModal: React.FC<SkillModalProps> = ({ btnName }) => {
       >
         Skills
       </p>
-      {/* <Form
-        name="myForm"
-        onFinish={onFinish}
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-      >
-        <Form.Item label="Add skills" name="skills"> */}
-      {/* <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" /> */}
-
       <Select
         mode="tags"
         style={{ width: "100%" }}
@@ -63,16 +48,6 @@ const SkillModal: React.FC<SkillModalProps> = ({ btnName }) => {
         tokenSeparators={[","]}
         options={options}
       />
-      {/* <Button type="primary">
-            {btnName}
-          </Button> */}
-      {/* </Form.Item>
-        <div style={{ display: "flex", justifyContent: "end" }}>
-          <Button type="primary" htmlType="submit">
-            {btnName}
-          </Button>
-        </div>
-      </Form> */}
     </div>
   );
 };

@@ -1,13 +1,12 @@
 "use client";
-import AdditionalDetails from "@/components/Resume/additionalDetails";
 import Education from "@/components/Resume/education";
-import JobResponsibilities from "@/components/Resume/jobResponsibilities";
 import PersonalInfo from "@/components/Resume/personalInfo";
 import Portfolio from "@/components/Resume/portfolio";
 import Projects from "@/components/Resume/projects";
 import Skills from "@/components/Resume/skills";
 import Training from "@/components/Resume/training";
 import WorkExperience from "@/components/Resume/workExperience";
+import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import Footer from "@/components/ui/Footer";
 import NavBar from "@/components/ui/NavBar";
 import {
@@ -25,14 +24,14 @@ const ResumePage = () => {
           margin: "32px",
         }}
       >
-        <Link
-          href="/"
-          style={{
-            color: "blue",
-          }}
-        >
-          <ArrowLeftOutlined /> Back
-        </Link>
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "Back",
+              link: "/",
+            },
+          ]}
+        />
       </div>
       <div
         style={{
@@ -64,12 +63,10 @@ const ResumePage = () => {
         <PersonalInfo />
         <Education />
         <WorkExperience />
-        <JobResponsibilities />
         <Training />
         <Projects />
         <Skills />
         <Portfolio />
-        <AdditionalDetails />
       </div>
       <Footer />
     </div>

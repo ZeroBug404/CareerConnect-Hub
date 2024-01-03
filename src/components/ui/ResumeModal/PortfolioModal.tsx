@@ -1,25 +1,21 @@
 "use client";
+import Form from "@/components/Forms/Form";
+import FormInput from "@/components/Forms/FormInput";
 import { useAddPortfolioMutation } from "@/redux/api/portfolioApi";
-import { Button, Form, Input, message } from "antd";
+import { Button, message } from "antd";
 
-interface PortfolioModalProps {
-  btnName: string;
-}
-
-const PortfolioModal: React.FC<PortfolioModalProps> = ({ btnName }) => {
+const PortfolioModal = () => {
   const [addPortfolio] = useAddPortfolioMutation();
 
-  const onFinish = async (values: any) => {
-    // console.log("Form values:", values);
-
-    const options = {
-      gitHub: values.gitHub,
-      other: values.other,    
+  const onSubmit = async (trainingData: any) => {
+    message.loading("Adding...");
+    try {
+      await addPortfolio(trainingData);
+      message.success("Portfolio added successfully");
+    } catch (err: any) {
+      console.error(err.message);
+      message.error(err.message);
     }
-
-    await addPortfolio(options);
-
-    message.success("Portfolio added successfully");
   };
 
   return (
@@ -35,33 +31,16 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ btnName }) => {
       >
         Work samples
       </p>
-      <Form
-        name="myForm"
-        onFinish={onFinish}
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-      >
-        {/* <Form.Item label="Blog link" name="Blog link">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item> */}
-        <Form.Item label="GitHub profile" name="gitHub">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        {/* <Form.Item
-          label="Play store developer A/c (public link)"
-          name="PlayStoreDeveloper"
-        >
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item> */}
-        {/* <Form.Item label="Behance portfolio link" name="BehancePortfolioLink">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item> */}
-        <Form.Item label="Other work sample link" name="other">
-          <Input style={{ width: "100%", marginTop: "-.5rem" }} size="large" />
-        </Form.Item>
-        <div style={{ display: "flex", justifyContent: "end" }}>
+      <Form submitHandler={onSubmit}>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput label="GitHub profile" name="gitHub" size="large" />
+        </div>
+        <div style={{ width: "100%", marginTop: "-.5rem" }}>
+          <FormInput label="Other work sample link" name="other" size="large" />
+        </div>
+        <div style={{ display: "flex", justifyContent: "end", marginTop: "10px" }}>
           <Button type="primary" htmlType="submit">
-            {btnName}
+            Save
           </Button>
         </div>
       </Form>
