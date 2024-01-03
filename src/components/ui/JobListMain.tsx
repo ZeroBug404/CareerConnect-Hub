@@ -146,77 +146,74 @@ const JobListMain = () => {
         marginBottom: "2vw",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          marginTop: "16px",
-        }}
-      >
-        <Dropdown
-          menu={{
-            onClick: handleSortSalaryFilter,
-            items: sortSalaryItems,
-            selectable: true,
-            defaultSelectedKeys: [""],
-          }}
-        >
-          <Typography.Link style={{ marginLeft: "0px" }}>
-            <Space>
-              {sortSalaryValue ? sortSalaryValue : "Sort Salary"}
+      <div className={styles.JobList_search_filter_main}>
+        <div>
+          <Dropdown
+            menu={{
+              onClick: handleSortSalaryFilter,
+              items: sortSalaryItems,
+              selectable: true,
+              defaultSelectedKeys: [""],
+            }}
+          >
+            <Typography.Link style={{ marginLeft: "0px" }}>
+              <Space>
+                {sortSalaryValue ? sortSalaryValue : "Sort Salary"}
 
-              <DownOutlined />
-            </Space>
-          </Typography.Link>
-        </Dropdown>
-        <Dropdown
-          menu={{
-            onClick: handleJobTypeFilter,
-            items: JobTypeItems,
-            selectable: true,
-            defaultSelectedKeys: [""],
-          }}
-        >
-          <Typography.Link style={{ marginLeft: "10px" }}>
-            <Space>
-              {jobTypeValue ? jobTypeValue : "Select Job Type"}
+                <DownOutlined />
+              </Space>
+            </Typography.Link>
+          </Dropdown>
+          <Dropdown
+            menu={{
+              onClick: handleJobTypeFilter,
+              items: JobTypeItems,
+              selectable: true,
+              defaultSelectedKeys: [""],
+            }}
+          >
+            <Typography.Link style={{ marginLeft: "10px" }}>
+              <Space>
+                {jobTypeValue ? jobTypeValue : "Select Job Type"}
 
-              <DownOutlined />
-            </Space>
-          </Typography.Link>
-        </Dropdown>
-        <Dropdown
-          menu={{
-            onClick: handleExperienceLevelFilter,
-            items: experienceLevelItems,
-            selectable: true,
-            defaultSelectedKeys: [""],
-          }}
-        >
-          <Typography.Link style={{ marginLeft: "10px" }}>
-            <Space>
-              {experienceLevelValue
-                ? experienceLevelValue
-                : "Select Experience"}
+                <DownOutlined />
+              </Space>
+            </Typography.Link>
+          </Dropdown>
+          <Dropdown
+            menu={{
+              onClick: handleExperienceLevelFilter,
+              items: experienceLevelItems,
+              selectable: true,
+              defaultSelectedKeys: [""],
+            }}
+          >
+            <Typography.Link style={{ marginLeft: "10px" }}>
+              <Space>
+                {experienceLevelValue
+                  ? experienceLevelValue
+                  : "Select Experience"}
 
-              <DownOutlined />
-            </Space>
-          </Typography.Link>
-        </Dropdown>
-        <Space.Compact style={{ width: "20%", marginLeft: "10px" }}>
+                <DownOutlined />
+              </Space>
+            </Typography.Link>
+          </Dropdown>
+        </div>
+        <Space.Compact className={styles.JobList_search_box_main}>
           <Input placeholder="Search for jobs" onChange={onChangeHandler} />
           <Button type="primary" onClick={handleSearch}>
             Search
           </Button>
         </Space.Compact>
       </div>
-      { data && data?.data?.data?.length > 0 ? (
+      {data && data?.data?.data?.length > 0 ? (
         <div className={styles.JobList_div_main}>
-          <JobLists setSelectedID={setSelectedID} allData={data.data.data} />
-          <JobDetailView singleData={singleJobData?.data} />
+          <div className={styles.JobList_div_left}>
+            <JobLists setSelectedID={setSelectedID} allData={data.data.data} />
+          </div>
+          <div className={styles.JobList_div_right}>
+            <JobDetailView singleData={singleJobData?.data} />
+          </div>
         </div>
       ) : (
         <div className={styles.JobList_div_main}>No Data found.</div>
