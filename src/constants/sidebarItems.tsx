@@ -61,6 +61,10 @@ export const sidebarItems = (role: string) => {
           label: <Link href="/dashboard/job/create">Publish a Job</Link>,
           key: `/${role}/dashboard/job/create`,
         },
+        {
+          label: <Link href="/dashboard/job/appliedJob">Applied Job</Link>,
+          key: `/${role}/dashboard/job/appliedJob`,
+        },
       ],
     },
 
