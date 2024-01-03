@@ -22,7 +22,6 @@ const JobPage = () => {
   const { data, isLoading } = useJobsQuery({ ...query });
   const jobData = data?.data?.data;
   const [deleteJob] = useDeleteJobMutation();
-  console.log("jobData", jobData);
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);

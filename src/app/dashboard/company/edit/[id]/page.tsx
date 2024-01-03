@@ -12,7 +12,6 @@ import { Button, Col, Row, message } from "antd";
 const UpdateCompany = ({ params }: any) => {
   const { id } = params;
   const { data, isLoading } = useCompanyQuery(id);
-  console.log(data);
 
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
@@ -51,8 +50,22 @@ const UpdateCompany = ({ params }: any) => {
         >
           Update Company
         </h2>
-
-        <div style={{ width: "100%" }}>
+        <div
+          style={{
+            border: "1px solid #d9d9d9",
+            borderRadius: "5px",
+            padding: "15px",
+            margin: "10px 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "18px",
+              marginBottom: "10px",
+            }}
+          >
+            Company Information
+          </p>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col
               xs={24}
@@ -60,10 +73,10 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormInput name="name" type="text" label="Name" />
+              <FormInput name="name" type="text" label="Name" size="small" />
             </Col>
             <Col
               xs={24}
@@ -71,10 +84,15 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormInput name="industry" type="text" label="Industry" />
+              <FormInput
+                name="industry"
+                type="text"
+                label="Industry"
+                size="small"
+              />
             </Col>
             <Col
               xs={24}
@@ -82,10 +100,15 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormInput name="location" type="text" label="Location" />
+              <FormInput
+                name="location"
+                type="text"
+                label="Location"
+                size="small"
+              />
             </Col>
             <Col
               xs={24}
@@ -93,10 +116,15 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormInput name="email" type="text" label="Email" />
+              <FormInput
+                name="address"
+                type="text"
+                label="Address"
+                size="small"
+              />
             </Col>
             <Col
               xs={24}
@@ -104,10 +132,45 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormInput name="phone" type="text" label="Phone" />
+              <FormSelectField
+                name="size"
+                label="size"
+                size="small"
+                options={sizes}
+              />
+            </Col>
+          </Row>
+        </div>
+        <div
+          style={{
+            border: "1px solid #d9d9d9",
+            borderRadius: "5px",
+            padding: "15px",
+            margin: "10px 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "18px",
+              marginBottom: "10px",
+            }}
+          >
+            Contact Information
+          </p>
+          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "5px 0",
+              }}
+            >
+              <FormInput name="email" type="text" label="Email" size="small" />
             </Col>
             <Col
               xs={24}
@@ -115,22 +178,10 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormInput name="address" type="text" label="Address" />
-            </Col>
-
-            <Col
-              xs={24}
-              sm={12}
-              md={8}
-              lg={8}
-              style={{
-                margin: "10px 0",
-              }}
-            >
-              <FormInput name="website" type="text" label="Website" />
+              <FormInput name="phone" type="text" label="Phone" size="small" />
             </Col>
             <Col
               xs={24}
@@ -138,10 +189,15 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormInput name="logoUrl" type="text" label="LogoUrl" />
+              <FormInput
+                name="twitter"
+                type="text"
+                size="small"
+                label="Twitter"
+              />
             </Col>
             <Col
               xs={24}
@@ -149,10 +205,15 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormSelectField name="size" label="size" options={sizes} />
+              <FormInput
+                name="linkedin"
+                type="text"
+                size="small"
+                label="Linkedin"
+              />
             </Col>
             <Col
               xs={24}
@@ -160,10 +221,50 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormInput name="twitter" type="text" label="Twitter" />
+              <FormInput
+                name="facebook"
+                type="text"
+                size="small"
+                label="Facebook"
+              />
+            </Col>
+          </Row>
+        </div>
+        <div
+          style={{
+            border: "1px solid #d9d9d9",
+            borderRadius: "5px",
+            padding: "15px",
+            margin: "10px 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "18px",
+              marginBottom: "10px",
+            }}
+          >
+            Others
+          </p>
+          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              style={{
+                margin: "5px 0",
+              }}
+            >
+              <FormInput
+                name="website"
+                type="text"
+                size="small"
+                label="Website"
+              />
             </Col>
             <Col
               xs={24}
@@ -171,21 +272,15 @@ const UpdateCompany = ({ params }: any) => {
               md={8}
               lg={8}
               style={{
-                margin: "10px 0",
+                margin: "5px 0",
               }}
             >
-              <FormInput name="linkedin" type="text" label="Linkedin" />
-            </Col>
-            <Col
-              xs={24}
-              sm={12}
-              md={8}
-              lg={8}
-              style={{
-                margin: "10px 0",
-              }}
-            >
-              <FormInput name="facebook" type="text" label="Facebook" />
+              <FormInput
+                name="logoUrl"
+                type="text"
+                size="small"
+                label="LogoUrl"
+              />
             </Col>
             <Col
               xs={24}
@@ -200,8 +295,8 @@ const UpdateCompany = ({ params }: any) => {
             </Col>
           </Row>
         </div>
-        <div style={{ textAlign: "center", paddingBottom: "1.5rem" }}>
-          <Button style={{ float: "right" }} type="primary" htmlType="submit">
+        <div style={{ margin: "10px 0" }}>
+          <Button type="primary" htmlType="submit" size="large">
             Submit
           </Button>
         </div>
