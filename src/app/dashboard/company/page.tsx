@@ -4,6 +4,7 @@ import CareerTable from "@/components/ui/CareerTable";
 import {
   useCompaniesQuery,
   useDeleteCompanyMutation,
+  useUpdateCompanyMutation,
 } from "@/redux/api/companyApi";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Switch, message } from "antd";
@@ -35,6 +36,7 @@ const CompanyTable = () => {
   const companyData = data?.data;
   console.log(companyData);
   const [deleteCompany] = useDeleteCompanyMutation();
+  const [updateCompany] = useUpdateCompanyMutation();
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);

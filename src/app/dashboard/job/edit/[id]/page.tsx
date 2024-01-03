@@ -5,11 +5,8 @@ import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import {
-  experienceLevelOptions,
-  jobTypeOptions,
-} from "@/components/constants/global";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
+import { experienceLevelOptions, jobTypeOptions } from "@/constants/global";
 import { useJobQuery, useUpdateJobMutation } from "@/redux/api/jobApi";
 import { IJobData } from "@/types";
 import { Button, Col, Row, message } from "antd";
