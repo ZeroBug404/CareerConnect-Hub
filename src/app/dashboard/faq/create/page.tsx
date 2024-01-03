@@ -5,7 +5,7 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
-import { useAddFAQMutation } from "@/redux/api/faq";
+import { useAddFAQMutation } from "@/redux/api/faqApi";
 import { Button, Col, Row, message } from "antd";
 
 const AddFAQ = () => {

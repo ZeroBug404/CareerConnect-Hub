@@ -5,18 +5,25 @@
 import styles from "@/Styles/JobList.module.css";
 import JobDetailView from "@/components/ui/JobDetailView";
 import JobLists from "@/components/ui/JobLists";
-import { Button, Input, Space } from "antd"; // Import Spin from Ant Design
+import { DownOutlined } from "@ant-design/icons";
+import type { MenuProps } from "antd";
+import { Button, Dropdown, Input, Space, Typography } from "antd"; // Import Spin from Ant Design
 import { useEffect, useState } from "react";
 
 const JobListMain = async () => {
   const [selectedID, setSelectedID] = useState(null);
   const [allData, setAllData] = useState([]);
   const [singleData, setSingleData] = useState([]);
+  const [jobTypeValue, setJobTypeValue] = useState("");
+  const [experienceLevelValue, setExperienceLevelValue] = useState("");
+  const [sortSalaryValue, setSortSalaryValue] = useState("");
 
   let search = "";
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/api/v1/jobs?searchTerm=${search}`)
+    fetch(
+      `https://career-connect-hub-api.vercel.app/api/v1/jobs?searchTerm=${search}&jobType=${jobTypeValue}&experienceLevel=${experienceLevelValue}&salary=${sortSalaryValue}`
+    )
       .then((res) => res.json())
       .then((res) => {
         setAllData(res?.data?.data);
@@ -31,7 +38,7 @@ const JobListMain = async () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/jobs/${selectedID}`)
+    fetch(`https://career-connect-hub-api.vercel.app/api/v1/jobs/${selectedID}`)
       .then((res) => res.json())
       .then((res) => {
         setSingleData(res.data);
@@ -42,6 +49,74 @@ const JobListMain = async () => {
     handleSearch();
   }, []);
 
+  const sortSalaryItems: MenuProps["items"] = [
+    {
+      label: "Low to High",
+      key: "asc",
+    },
+    {
+      label: "High to Low",
+      key: "desc",
+    },
+    {
+      label: "Select Sort Salary",
+      key: "",
+    },
+  ];
+
+  const JobTypeItems: MenuProps["items"] = [
+    {
+      label: "Full-Time",
+      key: "Full-time",
+    },
+    {
+      label: "Part-Time",
+      key: "Part-time",
+    },
+    {
+      label: "Contract",
+      key: "Contract",
+    },
+    {
+      label: "Freelance",
+      key: "Freelance",
+    },
+    {
+      label: "Select Job Type",
+      key: "",
+    },
+  ];
+
+  const experienceLevelItems: MenuProps["items"] = [
+    {
+      label: "Entry",
+      key: "Entry",
+    },
+    {
+      label: "Intermediate",
+      key: "Intermediate",
+    },
+    {
+      label: "Senior",
+      key: "Senior",
+    },
+    {
+      label: "Select Experience",
+      key: "",
+    },
+  ];
+
+  const handleSortSalaryFilter = (e: any) => {
+    setSortSalaryValue(e.key);
+  };
+
+  const handleJobTypeFilter = (e: any) => {
+    setJobTypeValue(e.key);
+  };
+
+  const handleExperienceLevelFilter = (e: any) => {
+    setExperienceLevelValue(e.key);
+  };
   return (
     <div
       style={{
@@ -51,14 +126,64 @@ const JobListMain = async () => {
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
           marginTop: "16px",
         }}
       >
-        <Space.Compact style={{ width: "40%" }}>
+        <Dropdown
+          menu={{
+            onClick: handleSortSalaryFilter,
+            items: sortSalaryItems,
+            selectable: true,
+            defaultSelectedKeys: [""],
+          }}
+        >
+          <Typography.Link style={{ marginLeft: "0px" }}>
+            <Space>
+              {sortSalaryValue ? sortSalaryValue : "Sort Salary"}
+
+              <DownOutlined />
+            </Space>
+          </Typography.Link>
+        </Dropdown>
+        <Dropdown
+          menu={{
+            onClick: handleJobTypeFilter,
+            items: JobTypeItems,
+            selectable: true,
+            defaultSelectedKeys: [""],
+          }}
+        >
+          <Typography.Link style={{ marginLeft: "10px" }}>
+            <Space>
+              {jobTypeValue ? jobTypeValue : "Select Job Type"}
+
+              <DownOutlined />
+            </Space>
+          </Typography.Link>
+        </Dropdown>
+        <Dropdown
+          menu={{
+            onClick: handleExperienceLevelFilter,
+            items: experienceLevelItems,
+            selectable: true,
+            defaultSelectedKeys: [""],
+          }}
+        >
+          <Typography.Link style={{ marginLeft: "10px" }}>
+            <Space>
+              {experienceLevelValue
+                ? experienceLevelValue
+                : "Select Experience"}
+
+              <DownOutlined />
+            </Space>
+          </Typography.Link>
+        </Dropdown>
+        <Space.Compact style={{ width: "20%", marginLeft: "10px" }}>
           <Input placeholder="Search for jobs" onChange={onChangeHandler} />
           <Button type="primary" onClick={handleSearch}>
             Search

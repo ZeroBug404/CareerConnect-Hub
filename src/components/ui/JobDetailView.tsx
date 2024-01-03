@@ -14,7 +14,9 @@ const JobDetailView = async (props: any) => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/api/v1/jobs/${selectedID}`)
+    fetch(
+      `https://career-connect-hub-api.vercel.app/api/v1/api/v1/jobs/${selectedID}`
+    )
       .then((res) => res.json())
       .then((res) => {
         console.log("setData", res.data);

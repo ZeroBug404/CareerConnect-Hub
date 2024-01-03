@@ -9,6 +9,7 @@ import SkillModal from "../ui/ResumeModal/SkillModal";
 import UpdateSkillModal from "../ui/ResumeModal/UpdateSkillModal";
 
 
+
 const Skills = () => {
   const [open, setOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -57,11 +58,11 @@ const Skills = () => {
                 align="start"
                 key={skill._id}
               >
-                <div style={{  padding: "5px 0"  }}>
+                <div style={{ padding: "5px 0" }}>
                   <h4>{skill?.skills}</h4>
                 </div>
                 <Flex wrap="wrap" gap="middle" justify="end" align="center">
-                <Button onClick={() => handleEditClick(skill._id)}>
+                  <Button onClick={() => handleEditClick(skill._id)}>
                     <EditOutlined />
                   </Button>
                   <Button onClick={() => deleteHandler(skill?._id)}>
@@ -78,7 +79,7 @@ const Skills = () => {
             </Button>
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-            <SkillModal/>
+            <SkillModal />
           </GlobalModal>
           <GlobalModal
             open={editModalOpen}

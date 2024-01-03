@@ -1,5 +1,5 @@
-import type { MenuProps } from "antd";
 import { AppstoreOutlined, ProfileOutlined } from "@ant-design/icons";
+import type { MenuProps } from "antd";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 
@@ -63,6 +63,38 @@ export const sidebarItems = (role: string) => {
         },
       ],
     },
+
+    {
+      label: "Manage Blog",
+      key: "blog",
+      icon: <AppstoreOutlined />,
+      children: [
+        {
+          label: <Link href="/dashboard/blog">View Blog</Link>,
+          key: `/${role}/dashboard/blog`,
+        },
+        {
+          label: <Link href="/dashboard/blog/create">Publish a Blog</Link>,
+          key: `/${role}/dashboard/blog/create`,
+        },
+      ],
+    },
+    {
+      label: "Manage Events",
+      key: "events",
+      icon: <AppstoreOutlined />,
+      children: [
+        {
+          label: <Link href="/dashboard/events">View Events</Link>,
+          key: `/${role}/dashboard/events`,
+        },
+        {
+          label: <Link href="/dashboard/events/create">Manage events</Link>,
+          key: `/${role}/dashboard/events/create`,
+        },
+      ],
+    },
+
   ];
 
   if (role === USER_ROLE.ADMIN) return adminSidebarItems;
@@ -71,3 +103,5 @@ export const sidebarItems = (role: string) => {
     return defaultSidebarItems;
   }
 };
+
+
