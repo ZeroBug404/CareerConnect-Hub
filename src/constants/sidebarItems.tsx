@@ -55,7 +55,7 @@ export const sidebarItems = (role: string) => {
           key: `/${role}/dashboard/events`,
         },
         {
-          label: <Link href="/dashboard/events/create">Manage events</Link>,
+          label: <Link href="/dashboard/events/create">Create an event</Link>,
           key: `/${role}/dashboard/events/create`,
         },
       ],
