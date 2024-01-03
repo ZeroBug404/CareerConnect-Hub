@@ -42,16 +42,6 @@ const JobLists = async (props: any) => {
                 borderRadius: "10px",
               }}
             >
-              {/* <div
-                style={{
-                  padding: "10px",
-                  color: "blue",
-                }}
-              >
-                <Flex wrap="wrap" gap="small">
-                  <RiseOutlined /> <p>Active Hiring</p>
-                </Flex>
-              </div> */}
               <Card
                 title={<Title level={4}>{job.title}</Title>}
                 bordered={false}
