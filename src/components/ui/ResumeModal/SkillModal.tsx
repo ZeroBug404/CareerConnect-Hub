@@ -1,12 +1,12 @@
 "use client";
-import { useAddSkillMutation, useGetSkillsQuery } from "@/redux/api/skillApi";
+import { useAddSkillMutation, useSkillsQuery } from "@/redux/api/skillApi";
 import type { SelectProps } from "antd";
 import { Select, message } from "antd";
 
 const SkillModal = () => {
   const [addSkill] = useAddSkillMutation();
 
-  const { data } = useGetSkillsQuery({});
+  const { data } = useSkillsQuery({});
 
   // console.log(data?.data);
 
