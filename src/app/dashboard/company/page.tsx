@@ -33,6 +33,7 @@ const CompanyTable = () => {
 
   const { data, isLoading } = useCompaniesQuery({ ...query });
   const companyData = data?.data;
+  console.log(companyData);
   const [deleteCompany] = useDeleteCompanyMutation();
 
   const onPaginationChange = (page: number, pageSize: number) => {
@@ -57,6 +58,10 @@ const CompanyTable = () => {
     } catch (err: any) {
       message.error(err.message);
     }
+  };
+
+  const statusChangeHandler = (checked: boolean) => {
+    console.log(`switch to ${checked}`);
   };
 
   const columns = [
@@ -92,7 +97,8 @@ const CompanyTable = () => {
       render: function (data: any) {
         return (
           <>
-            <Switch />
+            <Switch onChange={statusChangeHandler}/>
+            {/* onChange={() => statusChangeHandler(data)} */}
           </>
         );
       },
