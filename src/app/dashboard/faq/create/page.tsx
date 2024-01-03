@@ -60,7 +60,7 @@ const AddFAQ = () => {
                   margin: "10px 0",
                 }}
               >
-                <FormInput name="name" type="text" label="Name" />
+                <FormInput name="name" type="text" label="Name" size="small"/>
               </Col>
               <Col
                 xs={24}

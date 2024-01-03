@@ -104,7 +104,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="event"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Name of Event"
                 />
               </Col>
@@ -120,7 +120,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="location"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Location"
                 />
               </Col>
@@ -136,7 +136,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="image"
                   type="text"
-                  size="large"
+                  size="small"
                   label="URL of Image"
                 />
               </Col>
@@ -171,7 +171,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="title"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Title"
                 />
               </Col>
@@ -187,7 +187,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="nameOfSpeaker"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Name of Speaker"
                 />
               </Col>
@@ -200,7 +200,7 @@ const CreateEventPage = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormInput name="bio" type="text" size="large" label="Bio" />
+                <FormInput name="bio" type="text" size="small" label="Bio" />
               </Col>
             </Row>
           </div>
@@ -233,7 +233,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="agenda"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Agenda Name"
                 />
               </Col>
@@ -247,7 +247,7 @@ const CreateEventPage = () => {
                 }}
               ><TimePicker
               // name="time"
-              size="large"
+              size="small"
               style={{
                 width: "100%",
                 margin: "10px 0",
@@ -309,7 +309,7 @@ const CreateEventPage = () => {
           </div>
 
           <div style={{ margin: "10px 0" }}>
-            <Button type="primary" htmlType="submit" size="large">
+            <Button type="primary" htmlType="submit" size="small">
               Add Event
             </Button>
           </div>
