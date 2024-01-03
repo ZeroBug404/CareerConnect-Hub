@@ -42,7 +42,6 @@ const AddCompany = () => {
       // console.log(options);
       await addCompany(options);
       message.success("Company published successfully");
-      router.push("/dashboard/job");
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);

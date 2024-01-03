@@ -5,9 +5,8 @@ import {
   useCompaniesQuery,
   useDeleteCompanyMutation,
 } from "@/redux/api/companyApi";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Switch, message } from "antd";
-import Link from "next/link";
 import { useState } from "react";
 
 interface DataType {

@@ -42,7 +42,7 @@
 //       // console.log(options);
 //       await addCompany(options);
 //       message.success("Company published successfully");
-//       router.push('/dashboard/job')
+//       router.push('/dashboard/company')
 //     } catch (err: any) {
 //       console.error(err.message);
 //       message.error(err.message);
