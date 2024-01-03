@@ -24,3 +24,17 @@ export const isLoggedIn = () => {
 export const removeUserInfo = (key: string) => {
   return localStorage.removeItem(key);
 };
+
+export const storeUserEmail = ({ userEmail }: { userEmail: string }) => {
+  return setToLocalStorage("userEmail", userEmail as string);
+};
+
+
+export const getUserEmail = () => {
+  const userEmailId = getFromLocalStorage("userEmail");
+  if (userEmailId) {
+    return userEmailId;
+  } else {
+    return "";
+  }
+};
