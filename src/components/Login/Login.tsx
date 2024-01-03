@@ -9,7 +9,7 @@ import { SubmitHandler } from "react-hook-form";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import { storeUserEmail, storeUserInfo } from "@/services/auth.service";
+import { storeUserInfo } from "@/services/auth.service";
 
 type FormValues = {
   email: string;
@@ -46,8 +46,6 @@ const LoginPage = () => {
 
       //@ts-ignore
       storeUserInfo({ accessToken: res?.data?.data?.accessToken });
-      //@ts-ignore
-      storeUserEmail({ userEmail: res?.data?.data?.emailId });
     } catch (err: any) {
       console.error(err.message);
     }

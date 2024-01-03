@@ -2,13 +2,13 @@
 "use client";
 import styles from "@/Styles/UserProfile.module.css";
 import userImage from "@/assets/user-img.jpg";
+import { getUserInfo } from "@/services/auth.service";
 import { Progress } from "antd";
 import Image from "next/image";
-import { getUserEmail } from "@/services/auth.service";
 
 const page = () => {
-  const userEmailId = getUserEmail() as any;
-  console.log('userEmailId:',userEmailId)
+  const { email } = getUserInfo() as any;
+  console.log("userEmailId:", email);
 
   return (
     <div className={styles.main_body}>
