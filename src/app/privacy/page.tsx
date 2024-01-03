@@ -1,8 +1,12 @@
+import Footer from "@/components/ui/Footer";
+import NavBar from "@/components/ui/NavBar";
 import Link from "next/link";
 
 const PrivacyPage = () => {
   return (
-    <div
+    <>
+      <NavBar />
+      <div
       style={{
         padding: "32px 20px",
       }}
@@ -397,6 +401,8 @@ const PrivacyPage = () => {
         </Link>
       </p>
     </div>
+      <Footer />
+    </>
   );
 };
 

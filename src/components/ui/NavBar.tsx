@@ -38,8 +38,9 @@ const NavBar = () => {
         >
           <Button
             // onClick={logOut}
-            type="text"
             // size="large"
+            type="primary"
+            size="large"
             danger
             style={{
               fontSize: "1.2rem",
@@ -48,7 +49,7 @@ const NavBar = () => {
               alignItems: "center",
             }}
           >
-            LogOut
+            Log out
           </Button>
         </div>
       ),
@@ -58,10 +59,13 @@ const NavBar = () => {
       label: (
         <Link href={`/dashboard`}>
           <Button
-            type="text"
-            danger
+            type="primary"
+            size="large"
             style={{
               fontSize: "1.2rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             Dashboard

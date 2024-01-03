@@ -8,6 +8,8 @@ import Projects from "@/components/Resume/projects";
 import Skills from "@/components/Resume/skills";
 import Training from "@/components/Resume/training";
 import WorkExperience from "@/components/Resume/workExperience";
+import Footer from "@/components/ui/Footer";
+import NavBar from "@/components/ui/NavBar";
 import {
   ArrowLeftOutlined,
   ExclamationCircleOutlined,
@@ -17,6 +19,7 @@ import Link from "next/link";
 const ResumePage = () => {
   return (
     <div>
+      <NavBar />
       <div
         style={{
           margin: "32px",
@@ -68,6 +71,7 @@ const ResumePage = () => {
         <Portfolio />
         <AdditionalDetails />
       </div>
+      <Footer />
     </div>
   );
 };
