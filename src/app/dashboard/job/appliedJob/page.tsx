@@ -1,11 +1,14 @@
 "use client";
 
 import CareerTable from "@/components/ui/CareerTable";
+import { getUserInfo } from "@/services/auth.service";
 import { Button } from "antd";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AppliedJobPage = () => {
+  const {email} = getUserInfo() as any;;
+  console.log(email);
   const query: Record<string, any> = {};
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
@@ -16,7 +19,6 @@ const AppliedJobPage = () => {
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
-
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -30,25 +32,44 @@ const AppliedJobPage = () => {
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://career-connect-hub-api.vercel.app/api/v1/company/${email}`,
+          {
+            cache: "no-store",
+          }
+        );
+        const data = await res.json();
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching job details:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const columns = [
     {
       title: "Title",
       dataIndex: "title",
     },
     {
-      title: "userId ",
+      title: "User Id ",
       dataIndex: "userId",
     },
     {
-      title: "companyId",
+      title: "Company Id",
       dataIndex: "companyId",
     },
     {
-      title: "email",
+      title: "Email",
       dataIndex: "email",
     },
     {
-      title: "Action",
+      title: "View Details",
       dataIndex: "id",
       render: function (data: any) {
         return (
