@@ -1,3 +1,4 @@
+//
 "use client";
 import styles from "@/Styles/AdminDashboard.module.css";
 import {
@@ -13,7 +14,7 @@ import {
 } from "@/assets/data/dashboardData";
 import { Chart } from "react-google-charts";
 
-const AdminDashboard = () => {
+const ApplicantDashboard = () => {
   return (
     <div>
       <p
@@ -25,8 +26,28 @@ const AdminDashboard = () => {
           textAlign: "center",
         }}
       >
-        Admin Dashboard
+        Applicant Dashboard
       </p>
+      <div className={styles.dashboard_container}>
+        <div style={{ width: "100%", margin: "5px" }}>
+          <Chart
+            chartType="Bar"
+            // width="100%"
+            height="400px"
+            data={dataBar}
+            options={optionsBar}
+          />
+        </div>
+        <div style={{ width: "100%", margin: "5px" }}>
+          <Chart
+            chartType="PieChart"
+            data={dataPieChart}
+            options={optionsPieChart}
+            width={"100%"}
+            height={"400px"}
+          />
+        </div>
+      </div>
       <div className={styles.dashboard_container}>
         <div style={{ width: "100%", margin: "5px" }}>
           <Chart
@@ -46,26 +67,6 @@ const AdminDashboard = () => {
             width="100%"
             height="300px"
             data={dataGeoChart}
-          />
-        </div>
-      </div>
-      <div className={styles.dashboard_container}>
-        <div style={{ width: "100%", margin: "5px" }}>
-          <Chart
-            chartType="Bar"
-            // width="100%"
-            height="400px"
-            data={dataBar}
-            options={optionsBar}
-          />
-        </div>
-        <div style={{ width: "100%", margin: "5px" }}>
-          <Chart
-            chartType="PieChart"
-            data={dataPieChart}
-            options={optionsPieChart}
-            width={"100%"}
-            height={"400px"}
           />
         </div>
       </div>
@@ -93,4 +94,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default ApplicantDashboard;
