@@ -1,19 +1,23 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import styles from "@/Styles/UserProfile.module.css";
-import userImage from "@/assets/user-img.jpg";
 import { useEducationQuery } from "@/redux/api/educationApi";
 import { usePortfolioQuery } from "@/redux/api/portfolioApi";
 import { useProjectQuery } from "@/redux/api/projectApi";
 import { useSkillQuery } from "@/redux/api/skillApi";
 import { useTrainingQuery } from "@/redux/api/trainingApi";
+import { useUserProfileQuery } from "@/redux/api/userApi";
 import { useWorkExperienceQuery } from "@/redux/api/workExperienceApi";
-import { getUserInfo } from "@/services/auth.service";
+import { getUserInfo, getUserToken } from "@/services/auth.service";
 import { Progress } from "antd";
 import Image from "next/image";
 
 const UserProfile = () => {
   const { email } = getUserInfo() as any;
+  const authToken = getUserToken() as any;
+
+  const { data: UserProfileData, isLoading: UserProfileIsLoading } =
+    useUserProfileQuery(authToken);
 
   const { data: EducationData, isLoading: EducationIsLoading } =
     useEducationQuery(email);
@@ -27,12 +31,13 @@ const UserProfile = () => {
   const { data: ExperienceData, isLoading: ExperienceIsLoading } =
     useWorkExperienceQuery(email);
 
-  console.log("EducationData", EducationData?.data);
-  console.log("ProjectData", ProjectData?.data);
-  console.log("PortfolioData", PortfolioData?.data);
-  console.log("TrainingData", TrainingData?.data);
-  console.log("SkillData", SkillData?.data);
-  console.log("ExperienceData", ExperienceData?.data);
+  // console.log("EducationData", EducationData?.data);
+  // console.log("ProjectData", ProjectData?.data);
+  // console.log("PortfolioData", PortfolioData?.data);
+  // console.log("TrainingData", TrainingData?.data);
+  console.log("SkillData", SkillData?.data[0]?.skills);
+  // console.log("ExperienceData", ExperienceData?.data);
+  // console.log("UserProfileData", UserProfileData?.data);
 
   return (
     <div className={styles.main_body}>
@@ -65,16 +70,23 @@ const UserProfile = () => {
         <div className={styles.profile_section_container}>
           <div className={styles.profile_section_info_pic}>
             <div>
-              <p className={styles.profile_section_info_Name}>User Name</p>
+              <p className={styles.profile_section_info_Name}>
+                {UserProfileData?.data?.name?.firstName}{" "}
+                {UserProfileData?.data?.name?.lastName}
+              </p>
               <p className={styles.profile_section_info_address}>
                 Detail Address
               </p>
-              <p className={styles.profile_section_info_contact}>
-                0123456789, 0134567890
-              </p>
-              <p className={styles.profile_section_info_email}>
-                user@gmail.com
-              </p>
+              {UserProfileData?.data?.phoneNumber && (
+                <p className={styles.profile_section_info_contact}>
+                  {UserProfileData?.data?.phoneNumber}
+                </p>
+              )}
+              {UserProfileData?.data?.email && (
+                <p className={styles.profile_section_info_email}>
+                  {UserProfileData?.data?.email}
+                </p>
+              )}
               <p className={styles.profile_section_info_fb}>Facebook Links</p>
               <p className={styles.profile_section_info_linkedin}>
                 Linkedin Links
@@ -82,13 +94,15 @@ const UserProfile = () => {
               <p className={styles.profile_section_info_github}>Github Links</p>
             </div>
             <div>
-              <Image
-                src={userImage}
-                alt={"User Image"}
-                className=""
-                width={124}
-                height={135}
-              />
+              {UserProfileData?.data?.profileImg && (
+                <Image
+                  src={UserProfileData?.data?.profileImg}
+                  alt={"User Image"}
+                  className=""
+                  width={124}
+                  height={135}
+                />
+              )}
             </div>
           </div>
           <div className={styles.profile_section_objective}>
@@ -121,46 +135,49 @@ const UserProfile = () => {
             <h3 className={styles.profile_section_title_header}>
               Employment History:
             </h3>
-            <p className={styles.profile_section_Employment_History_body}>
-              <p className={styles.profile_section_head}>
-                Total Year of Experience:{" "}
-                <span className={styles.profile_section_head_value}>
-                  2.1 yrs{" "}
-                </span>
-              </p>
-            </p>
-            <div>
-              <p className={styles.profile_section_Employment_History_body}>
-                <p className={styles.profile_section_head}>
-                  1. Executive (2.1 yrs)
+            {ExperienceData?.data?.map((data: any, key: any) => (
+              <>
+                <p className={styles.profile_section_Employment_History_body}>
+                  <p className={styles.profile_section_head}>
+                    Total Year of Experience:{" "}
+                    <span className={styles.profile_section_head_value}>
+                      2.1 yrs{" "}
+                    </span>
+                  </p>
                 </p>
-                <p className={styles.profile_section_head_value}>
-                  (11 Dec 2021 - Continuing)
-                </p>
-                <p
-                  className={styles.profile_section_head}
-                  style={{ marginTop: "20px" }}
-                >
-                  SaRa Lifestyle Ltd.
-                </p>
-                <p className={styles.profile_section_head_value}>
-                  Area of Expertise:
-                </p>
-                <p className={styles.profile_section_head_value}>
-                  HTML5 & CSS3 (1 yr), NextJs (1 yr), ReactJS (1 yr){" "}
-                </p>
-                <p
-                  className={styles.profile_section_head_value}
-                  style={{ marginTop: "20px" }}
-                >
-                  Duties/Responsibilities:{" "}
-                </p>
-                <p className={styles.profile_section_head_value}>
-                  Front-End development of both Admin and customer panel of the
-                  SaRa Lifestyle Marketplace website.{" "}
-                </p>
-              </p>
-            </div>
+                <div>
+                  <p className={styles.profile_section_Employment_History_body}>
+                    <p className={styles.profile_section_head}>
+                      {key + 1}. {data?.profile} (2.1 yrs)
+                    </p>
+                    <p className={styles.profile_section_head_value}>
+                      ({data?.startDate} - {data?.endDate})
+                    </p>
+                    <p
+                      className={styles.profile_section_head}
+                      style={{ marginTop: "20px" }}
+                    >
+                      {data?.organization}
+                    </p>
+                    <p className={styles.profile_section_head_value}>
+                      Area of Expertise:
+                    </p>
+                    <p className={styles.profile_section_head_value}>
+                      {data?.description}{" "}
+                    </p>
+                    <p
+                      className={styles.profile_section_head_value}
+                      style={{ marginTop: "20px" }}
+                    >
+                      Duties/Responsibilities:{" "}
+                    </p>
+                    <p className={styles.profile_section_head_value}>
+                      {data?.responsibility}{" "}
+                    </p>
+                  </p>
+                </div>
+              </>
+            ))}
           </div>
           <div className={styles.profile_section_Academic_Qualification}>
             <h3 className={styles.profile_section_title_header}>
@@ -181,35 +198,19 @@ const UserProfile = () => {
                   <th style={{ width: "13%" }}>Result</th>
                   <th style={{ width: "12%" }}>Pass.Year</th>
                 </tr>
-                
-                <tr>
-                  <td>Master of Science (MSc)</td>
-                  <td>Computer Science</td>
-                  <td>Jahangirnagar University</td>
-                  <td>Enrolled</td>
-                  <td>2022</td>
-                </tr>
-                <tr>
-                  <td>Bachelor of Science (BSc) </td>
-                  <td>Computer Science & Engineering </td>
-                  <td>University of Barishal</td>
-                  <td>CGPA:3.39 out of 4 </td>
-                  <td>2017</td>
-                </tr>
-                <tr>
-                  <td>HSC</td>
-                  <td>Science</td>
-                  <td>Government Syed Hatem Ali College, Barisal </td>
-                  <td>CGPA:4.7 out of 5 </td>
-                  <td>2012</td>
-                </tr>
-                <tr>
-                  <td>SSC</td>
-                  <td>Science</td>
-                  <td>Barisal Zilla School, Barisal </td>
-                  <td>CGPA:5 out of 5 </td>
-                  <td>2010</td>
-                </tr>
+                {EducationData?.data.map((data: any, key: any) => (
+                  <>
+                    <tr>
+                      <td>{data?.degree}</td>
+                      <td>Computer Science</td>
+                      <td>{data?.college}</td>
+                      <td>
+                        {data?.performanceScale}:{data?.cgpa}{" "}
+                      </td>
+                      <td>{data?.endYear}</td>
+                    </tr>
+                  </>
+                ))}
               </table>
             </div>
           </div>
@@ -232,27 +233,22 @@ const UserProfile = () => {
                   <th style={{ width: "10%" }}>Year</th>
                   <th style={{ width: "10%" }}>Duration</th>
                 </tr>
-                <tr>
-                  <td>
-                    Advanced Mobile Game Development and Mobile Game Graphics
-                    Design organized by ICT division{" "}
-                  </td>
-                  <td></td>
-                  <td>University of Barisal</td>
-                  <td>Bangladesh</td>
-                  <td>Barisal</td>
-                  <td>2016</td>
-                  <td>2016</td>
-                </tr>
-                <tr>
-                  <td>Mobile Application Development</td>
-                  <td></td>
-                  <td>University of Barisal</td>
-                  <td>Bangladesh</td>
-                  <td>Barisal</td>
-                  <td>2014</td>
-                  <td>2014</td>
-                </tr>
+
+                {TrainingData?.data.map((data: any, key: any) => (
+                  <>
+                    <tr>
+                      <td>{data?.title} </td>
+                      <td></td>
+                      <td>{data?.organization}</td>
+                      <td>Bangladesh</td>
+                      <td>{data?.location}</td>
+                      <td>{data?.endDate}</td>
+                      <td>
+                        {data?.startDate}-{data?.endDate}
+                      </td>
+                    </tr>
+                  </>
+                ))}
               </table>
             </div>
           </div>
@@ -328,12 +324,12 @@ const UserProfile = () => {
                 <tr>
                   <td>
                     <ul style={{ paddingLeft: "1vw" }}>
-                      <li>JavaScript ES6</li>
-                      <li>Python</li>
-                      <li>ReactJS</li>
-                      <li>HTML5 & CSS3</li>
-                      <li>Firebase</li>
-                      <li>NextJs</li>
+                      {SkillData?.data[0]?.skills?.map((data: any, key: any) => (
+                        <>
+                        {console.log('dt',data)}
+                          <li>{data}</li>
+                        </>
+                      ))}
                     </ul>
                   </td>
                   <td>
