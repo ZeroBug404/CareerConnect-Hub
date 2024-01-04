@@ -2,13 +2,37 @@
 "use client";
 import styles from "@/Styles/UserProfile.module.css";
 import userImage from "@/assets/user-img.jpg";
+import { useEducationQuery } from "@/redux/api/educationApi";
+import { usePortfolioQuery } from "@/redux/api/portfolioApi";
+import { useProjectQuery } from "@/redux/api/projectApi";
+import { useSkillQuery } from "@/redux/api/skillApi";
+import { useTrainingQuery } from "@/redux/api/trainingApi";
+import { useWorkExperienceQuery } from "@/redux/api/workExperienceApi";
 import { getUserInfo } from "@/services/auth.service";
 import { Progress } from "antd";
 import Image from "next/image";
 
-const page = () => {
+const UserProfile = () => {
   const { email } = getUserInfo() as any;
-  console.log("userEmailId:", email);
+
+  const { data: EducationData, isLoading: EducationIsLoading } =
+    useEducationQuery(email);
+  const { data: ProjectData, isLoading: ProjectIsLoading } =
+    useProjectQuery(email);
+  const { data: PortfolioData, isLoading: PortfolioIsLoading } =
+    usePortfolioQuery(email);
+  const { data: TrainingData, isLoading: TrainingIsLoading } =
+    useTrainingQuery(email);
+  const { data: SkillData, isLoading: SkillIsLoading } = useSkillQuery(email);
+  const { data: ExperienceData, isLoading: ExperienceIsLoading } =
+    useWorkExperienceQuery(email);
+
+  console.log("EducationData", EducationData);
+  console.log("ProjectData", ProjectData);
+  console.log("PortfolioData", PortfolioData);
+  console.log("TrainingData", TrainingData);
+  console.log("SkillData", SkillData);
+  console.log("ExperienceData", ExperienceData);
 
   return (
     <div className={styles.main_body}>
@@ -518,4 +542,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default UserProfile;
