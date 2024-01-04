@@ -86,7 +86,7 @@ const WorkExperience = () => {
             </Button>
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-            <ExperienceModal btnName={"Save"}></ExperienceModal>
+            <ExperienceModal></ExperienceModal>
           </GlobalModal>
           <GlobalModal
             open={editModalOpen}
@@ -97,7 +97,7 @@ const WorkExperience = () => {
             width={650}
             title={""}
           >
-            {/* Pass the selected ID to the UpdateExperienceModal */}
+            {/* Pass the selected ID*/}
             <UpdateExperienceModal id={selectedId} />
           </GlobalModal>
         </Col>

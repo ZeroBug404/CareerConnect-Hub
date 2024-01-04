@@ -4,22 +4,12 @@ import CareerTable from "@/components/ui/CareerTable";
 import {
   useCompaniesQuery,
   useDeleteCompanyMutation,
-  useUpdateCompanyMutation,
 } from "@/redux/api/companyApi";
+import { DataType } from "@/types";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Button, Switch, message } from "antd";
+import { Button, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
-
-interface DataType {
-  index: number;
-  industry: string;
-  name: string;
-  email: string;
-  phone: string;
-  update: string;
-  delete: string;
-}
 
 const CompanyTable = () => {
   const query: Record<string, any> = {};
@@ -35,9 +25,7 @@ const CompanyTable = () => {
 
   const { data, isLoading } = useCompaniesQuery({ ...query });
   const companyData = data?.data;
-  console.log(companyData);
   const [deleteCompany] = useDeleteCompanyMutation();
-  const [updateCompany] = useUpdateCompanyMutation();
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);

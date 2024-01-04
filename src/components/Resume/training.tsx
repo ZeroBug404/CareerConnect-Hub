@@ -84,7 +84,7 @@ const Training = () => {
             </Button>
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-            <TrainingModal btnName={"Save"}></TrainingModal>
+            <TrainingModal></TrainingModal>
           </GlobalModal>
           <GlobalModal
             open={editModalOpen}
@@ -95,7 +95,7 @@ const Training = () => {
             width={650}
             title={""}
           >
-            {/* Pass the selected ID to the UpdateExperienceModal */}
+            {/* Pass the selected ID */}
             <UpdateTrainingModal id={selectedId} />
           </GlobalModal>
         </Col>

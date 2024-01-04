@@ -1,24 +1,10 @@
-import { AppstoreOutlined, ProfileOutlined } from "@ant-design/icons";
+import { AppstoreOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 
 export const sidebarItems = (role: string) => {
-  const defaultSidebarItems: MenuProps["items"] = [
-    {
-      label: "Profile",
-      key: "profile",
-      icon: <ProfileOutlined />,
-      children: [
-        {
-          label: <Link href="/resume">My Profile</Link>,
-          key: `/${role}/resume`,
-        },
-      ],
-    },
-  ];
   const adminSidebarItems: MenuProps["items"] = [
-    ...defaultSidebarItems,
     {
       label: "Manage Company",
       key: "company",
@@ -62,7 +48,6 @@ export const sidebarItems = (role: string) => {
     },
   ];
   const recruiterSidebarItems: MenuProps["items"] = [
-    ...defaultSidebarItems,
     {
       label: "Manage Job",
       key: "management",
@@ -83,9 +68,6 @@ export const sidebarItems = (role: string) => {
 
   if (role === USER_ROLE.ADMIN) return adminSidebarItems;
   else if (role === USER_ROLE.RECRUITER) return recruiterSidebarItems;
-  else {
-    return defaultSidebarItems;
-  }
 };
 
 
