@@ -15,7 +15,7 @@ import { Chart } from "react-google-charts";
 
 const CompanyDashboard = () => {
   return (
-    <div>
+    <div style={{background: '#dff2e4'}}>
       <p
         style={{
           padding: "10px 5px",
