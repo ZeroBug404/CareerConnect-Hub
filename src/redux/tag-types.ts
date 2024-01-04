@@ -12,11 +12,7 @@ export enum tagTypes {
   skill = "skill",
   portfolio = "portfolio",
   event = "event",
-<<<<<<< HEAD
-  users = "users",
-=======
   myApplication = "applied-job",
->>>>>>> mariful-islam
 }
 
 export const tagTypesList = [
@@ -33,9 +29,5 @@ export const tagTypesList = [
   tagTypes.skill,
   tagTypes.portfolio,
   tagTypes.event,
-<<<<<<< HEAD
-  tagTypes.users,
-=======
   tagTypes.myApplication,
->>>>>>> mariful-islam
 ];
