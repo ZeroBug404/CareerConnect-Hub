@@ -29,10 +29,10 @@ export const companyApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.company],
     }),
     updateCompany: build.mutation({
-      query: ({ data, companyId }) => ({
-        url: `${COMPANY_URL}/${companyId}`,
+      query: (data) => ({
+        url: `${COMPANY_URL}/${data.id}`,
         method: "PATCH",
-        body: data,
+        data,
       }),
       invalidatesTags: [tagTypes.company],
     }),
