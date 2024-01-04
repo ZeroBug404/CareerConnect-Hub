@@ -12,6 +12,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  Scatter,
 } from "recharts";
 
 const CompanyChartCompany = () => {
@@ -26,36 +27,42 @@ const CompanyChartCompany = () => {
       numberOfEmployees: 590,
       createdAt: 800,
       size: 1400,
+      location: "Dhaka"
     },
     {
       name: "Company B",
       numberOfEmployees: 868,
       createdAt: 967,
       size: 1506,
+      location: "Chittagong"
     },
     {
       name: "Company C",
       numberOfEmployees: 1397,
       createdAt: 1098,
       size: 989,
+      location: "Khulna"
     },
     {
       name: "Company D",
       numberOfEmployees: 1480,
       createdAt: 1200,
       size: 1228,
+      location: "Barishal"
     },
     {
       name: "Company E",
       numberOfEmployees: 1520,
       createdAt: 1108,
       size: 1100,
+      location: "Rangpur"
     },
     {
       name: "Company F",
       numberOfEmployees: 1400,
       createdAt: 680,
       size: 1700,
+      location: "Jessore"
     },
   ];
 
@@ -94,6 +101,7 @@ const CompanyChartCompany = () => {
           />
           <Bar dataKey="createdAt" barSize={20} fill="#413ea0" />
           <Line type="monotone" dataKey="numberOfEmployees" stroke="#ff7300" />
+          <Scatter dataKey="location" fill="red" />
         </ComposedChart>
       </ResponsiveContainer>
     </div>
