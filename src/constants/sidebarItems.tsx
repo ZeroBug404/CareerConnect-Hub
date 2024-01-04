@@ -11,6 +11,10 @@ export const sidebarItems = (role: string) => {
       icon: <AppstoreOutlined />,
       children: [
         {
+          label: <Link href="/dashboard/company-chart">Company Chart</Link>,
+          key: `/${role}/dashboard/company-chart`,
+        },
+        {
           label: <Link href="/dashboard/company">View Company</Link>,
           key: `/${role}/dashboard/company`,
         },
