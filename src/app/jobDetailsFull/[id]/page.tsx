@@ -16,7 +16,6 @@ interface JobData {
 
 const JobDetailsFull = ({ params }: any) => {
   const [jobData, setJobData] = useState<JobData | null>(null);
-  console.log(jobData);
 
   const onChange = (key: string) => {
     console.log(key);
