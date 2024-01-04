@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const AppliedJobPage = () => {
-  const {email} = getUserInfo() as any;;
+  const {email} = getUserInfo() as any;
   const query: Record<string, any> = {};
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
