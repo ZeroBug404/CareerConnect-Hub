@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import styles from "@/components/Login/login.module.css";
-import { useState } from "react";
+import { useUserLoginMutation } from "@/redux/api/authApi";
+import { storeUserInfo } from "@/services/auth.service";
 import { Button, Col, Row, message } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
-import { useUserLoginMutation } from "@/redux/api/authApi";
-import { storeUserInfo } from "@/services/auth.service";
 
 type FormValues = {
   email: string;
@@ -47,15 +47,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Row
-      justify="center"
-      align="middle"
-      style={{
-        minHeight: "100vh",
-        flexDirection: "column",
-        margin: "2.4rem 0",
-      }}
-    >
+    <Row justify="center" align="middle" className={styles.container}>
       <Col
         sm={22}
         md={14}
@@ -144,6 +136,114 @@ const LoginPage = () => {
             <Link href={"/register"}>
               <span>Register</span>
             </Link>
+          </p>
+        </div>
+      </Col>
+      <Col
+        sm={22}
+        md={14}
+        lg={8}
+        style={{
+          backgroundColor: "white",
+          padding: "30px 40px",
+          borderRadius: "10px",
+          width: "100%",
+        }}
+        className={styles.colDesign}
+      >
+        <h2
+          style={{
+            margin: "12px 0px",
+            textAlign: "center",
+          }}
+        >
+          All User Login Info.
+        </h2>
+        <div style={{ marginTop: "1rem" }}>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#666",
+              margin: ".5rem 0",
+              fontWeight: "bold",
+            }}
+          >
+            Admin
+          </p>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#666",
+              margin: ".2rem 0",
+            }}
+          >
+            Email: admin@careerconnect.com
+          </p>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#666",
+            }}
+          >
+            password: admin124
+          </p>
+        </div>
+        <div style={{ marginTop: "1.2rem" }}>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#666",
+              margin: ".5rem 0",
+              fontWeight: "bold",
+            }}
+          >
+            Applicant
+          </p>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#666",
+              margin: ".2rem 0",
+            }}
+          >
+            Email: applicant@gmail.com
+          </p>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#666",
+            }}
+          >
+            password: applicant98765
+          </p>
+        </div>
+        <div style={{ marginTop: "1.2rem" }}>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#666",
+              margin: ".5rem 0",
+              fontWeight: "bold",
+            }}
+          >
+            Company
+          </p>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#666",
+              margin: ".2rem 0",
+            }}
+          >
+            Email: contact@abccompany.com
+          </p>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              color: "#666",
+            }}
+          >
+            password: 0987Api
           </p>
         </div>
       </Col>
