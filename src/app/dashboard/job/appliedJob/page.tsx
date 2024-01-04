@@ -77,7 +77,7 @@ const AppliedJobPage = () => {
       render: function (data: any) {
         return (
           <>
-            <Link href={`/resume/${data?.id}`}>
+            <Link href={`/${data?.id}`}>
             <EyeOutlined style={{
                   fontSize: "20px",
                   margin: "0px 5px",
