@@ -1,7 +1,7 @@
 "use client";
 
 import blueLogo from "@/assets/1-removebg-preview.png";
-import { removeUserInfo } from "@/services/auth.service";
+import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import {
   MenuOutlined,
   QuestionCircleOutlined,
@@ -21,48 +21,44 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [role, setRole] = useState(null);
+
   const router = useRouter();
+
+  useEffect(() => {
+    // Fetch user role on mount
+    const { role } = getUserInfo() as any;
+    setRole(role);
+  }, []);
 
   const handleLogout = (accessToken: string) => {
     removeUserInfo(accessToken);
     return router.push("/login");
   };
 
+  console.log(role);
+
   const items: MenuProps["items"] = [
-    {
-      key: "0",
-      label: (
-        <div
-          style={{
-            // fontSize: "1.2rem",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            onClick={() => handleLogout("accessToken")}
-            // size="large"
-            type="primary"
-            size="large"
-            danger
-            style={{
-              fontSize: "1.2rem",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            Log out
-          </Button>
-        </div>
-      ),
-    },
+    // {
+    //   key: "0",
+    //   label: (
+    //     <div
+    //       style={{
+    //         // fontSize: "1.2rem",
+    //         width: "100%",
+    //         display: "flex",
+    //         justifyContent: "center",
+    //         alignItems: "center",
+    //       }}
+    //     >
+
+    //     </div>
+    //   ),
+    // },
     {
       key: "1",
       label: (
@@ -164,27 +160,47 @@ const NavBar = () => {
               margin: "0 1.5rem",
             }}
           />
-          <Link
-            href={"/login"}
-            style={{
-              cursor: "pointer",
-            }}
-          >
-            <button
+
+          {role ? (
+            <Button
+              onClick={() => handleLogout("accessToken")}
+              size="large"
+              type="primary"
+              danger
               style={{
-                backgroundColor: "#2557a7",
-                color: "white",
                 fontSize: "1rem",
                 fontWeight: "bold",
-                padding: "0.6rem 1rem",
                 borderRadius: "5px",
                 border: "none",
                 cursor: "pointer",
               }}
             >
-              Login
-            </button>
-          </Link>
+              Log out
+            </Button>
+          ) : (
+            <Link
+              href={"/login"}
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              <button
+                style={{
+                  backgroundColor: "#2557a7",
+                  color: "white",
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                  padding: "0.6rem 1rem",
+                  borderRadius: "5px",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Login
+              </button>
+            </Link>
+          )}
+
           <Divider
             type="vertical"
             style={{
@@ -208,16 +224,18 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <Space size={16} wrap>
-          <Dropdown menu={{ items }}>
-            <Space wrap size={16}>
-              <Avatar
-                style={{ backgroundColor: "#87d068" }}
-                icon={<UserOutlined />}
-              />
-            </Space>
-          </Dropdown>
-        </Space>
+        {role && (
+          <Space size={16} wrap>
+            <Dropdown menu={{ items }}>
+              <Space wrap size={16}>
+                <Avatar
+                  style={{ backgroundColor: "#87d068" }}
+                  icon={<UserOutlined />}
+                />
+              </Space>
+            </Dropdown>
+          </Space>
+        )}
       </div>
       <Drawer
         // placement="left"

@@ -7,24 +7,22 @@ import {
   performanceScale,
 } from "../../../constants/global";
 import { useAddEducationMutation } from "@/redux/api/educationApi";
+
 import { Button, message } from "antd";
 import { getUserInfo } from "@/services/auth.service";
 
 const EducationModal = () => {
   const [addEducation] = useAddEducationMutation();
-  const { email } = getUserInfo() as any;
-  console.log(email);
 
   const onSubmit = async (educationData: any) => {
     message.loading("Adding...");
-    console.log(educationData);
-    // try {
-    //   await addEducation(educationData);
-    //   message.success("Education added successfully");
-    // } catch (err: any) {
-    //   console.error(err.message);
-    //   message.error(err.message);
-    // }
+    try {
+      await addEducation(educationData);
+      message.success("Education added successfully");
+    } catch (err: any) {
+      console.error(err.message);
+      message.error(err.message);
+    }
   };
 
   return (

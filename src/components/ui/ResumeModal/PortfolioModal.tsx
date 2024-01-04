@@ -2,15 +2,22 @@
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import { useAddPortfolioMutation } from "@/redux/api/portfolioApi";
+import { getUserInfo } from "@/services/auth.service";
 import { Button, message } from "antd";
 
 const PortfolioModal = () => {
   const [addPortfolio] = useAddPortfolioMutation();
 
+  const { email } = getUserInfo() as any;
+
   const onSubmit = async (trainingData: any) => {
     message.loading("Adding...");
     try {
-      await addPortfolio(trainingData);
+      const trainingDataWithEmail = {
+        ...trainingData,
+        userEmail: email,
+      };
+      await addPortfolio(trainingDataWithEmail);
       message.success("Portfolio added successfully");
     } catch (err: any) {
       console.error(err.message);

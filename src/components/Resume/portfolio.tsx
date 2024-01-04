@@ -11,6 +11,7 @@ import {
 } from "@/redux/api/portfolioApi";
 import UpdatePortfolioModal from "../ui/ResumeModal/UpdatePortfolioModal";
 import Link from "next/link";
+import { getUserInfo } from "@/services/auth.service";
 
 const Portfolio = () => {
   const [open, setOpen] = useState(false);
@@ -21,6 +22,8 @@ const Portfolio = () => {
   const { data, isLoading } = usePortfoliosQuery({ ...query });
   const portfolioData = data?.data;
   const [deletePortfolio] = useDeletePortfolioMutation();
+
+  const { email } = getUserInfo() as any;
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
@@ -39,6 +42,10 @@ const Portfolio = () => {
     setEditModalOpen(true);
   };
 
+  const filteredByEmail = portfolioData?.filter(
+    (item: any) => item.userEmail === email
+  );
+
   return (
     <>
       <Row
@@ -51,7 +58,7 @@ const Portfolio = () => {
         </Col>
         <Col xs={24} sm={16}>
           <Col>
-            {portfolioData?.map((portfolio: any) => (
+            {filteredByEmail?.map((portfolio: any) => (
               <Flex
                 wrap="wrap"
                 gap="middle"
