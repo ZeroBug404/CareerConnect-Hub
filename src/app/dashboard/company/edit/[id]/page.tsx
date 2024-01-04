@@ -16,7 +16,6 @@ const UpdateCompany = ({ params }: any) => {
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      console.log("data", data);
       fetch(`https://career-connect-hub-api.vercel.app/api/v1/company/${companyId}`, {
         method: "PATCH",
         headers: {

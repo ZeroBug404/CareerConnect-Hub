@@ -109,22 +109,6 @@ const CreateBlog = () => {
                   label="Publish Date"
                 />
               </Col>
-              {/* <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="views"
-                  type="number"
-                  size="small"
-                  label="Views"
-                />
-              </Col>
               <Col
                 xs={24}
                 sm={12}
@@ -135,44 +119,12 @@ const CreateBlog = () => {
                 }}
               >
                 <FormInput
-                  name="likes"
-                  type="number"
-                  size="small"
-                  label="Likes"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="commentText"
+                  name="img"
                   type="text"
                   size="small"
-                  label="Comment Text"
+                  label="Image Link"
                 />
               </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="commentDate"
-                  type="date"
-                  size="small"
-                  label="Comment Date"
-                />
-              </Col> */}
               <Col
                 xs={24}
                 sm={12}
