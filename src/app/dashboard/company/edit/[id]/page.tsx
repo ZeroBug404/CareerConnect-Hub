@@ -6,17 +6,17 @@ import FormSelectField from "@/components/Forms/FormSelectField";
 import { status } from "@/constants/global";
 import { useUpdateCompanyMutation } from "@/redux/api/companyApi";
 import { Button, Col, Row, message } from "antd";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const UpdateCompany = ({ params }: any) => {
   const [updateCompany] = useUpdateCompanyMutation();
-  console.log(params.id);
   const companyId = params.id;
+  const router = useRouter()
+
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      console.log("data", data);
-      fetch(`http://localhost:5000/api/v1/company/${companyId}`, {
+      fetch(`https://career-connect-hub-api.vercel.app/api/v1/company/${companyId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -25,9 +25,9 @@ const UpdateCompany = ({ params }: any) => {
       })
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           if (res.statusCode === 200) {
             message.success(res.message);
+            router.push('/dashboard/company')
           }
         });
     } catch (err: any) {

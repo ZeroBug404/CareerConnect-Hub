@@ -36,7 +36,7 @@ const LoginPage = () => {
         message.success("User logged in successfully!");
         //@ts-ignore
         if (res?.data?.data?.role === "admin") {
-          router.push("/dashboard/company");
+          router.push("/dashboard/company-chart");
         } else {
           router.push("/dashboard/job");
         }

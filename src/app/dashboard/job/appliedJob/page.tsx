@@ -2,18 +2,20 @@
 
 import CareerTable from "@/components/ui/CareerTable";
 import { getUserInfo } from "@/services/auth.service";
+import { EyeOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const AppliedJobPage = () => {
-  const {email} = getUserInfo() as any;;
-  console.log(email);
+  const {email} = getUserInfo() as any;
   const query: Record<string, any> = {};
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
+  const [appliedJob, setAppliedJob] = useState([])
+
 
   query["limit"] = size;
   query["page"] = page;
@@ -36,59 +38,57 @@ const AppliedJobPage = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://career-connect-hub-api.vercel.app/api/v1/company/${email}`,
+          `https://career-connect-hub-api.vercel.app/api/v1/applied-job/company/${email}`,
           {
             cache: "no-store",
           }
         );
         const data = await res.json();
-        console.log(data);
+        setAppliedJob(data.data)
+        console.log(data.data);
       } catch (error) {
         console.error("Error fetching job details:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [email]);
 
   const columns = [
     {
       title: "Title",
-      dataIndex: "title",
+      dataIndex: "jobId",
     },
     {
       title: "User Id ",
-      dataIndex: "userId",
+      dataIndex: "id",
     },
     {
-      title: "Company Id",
-      dataIndex: "companyId",
+      title: "Job Seeker Email",
+      dataIndex: "jobSeekerEmail",
     },
     {
-      title: "Email",
-      dataIndex: "email",
+      title: "Company Email",
+      dataIndex: "companyEmail",
     },
     {
-      title: "View Details",
+      title: "View Resume",
       dataIndex: "id",
       render: function (data: any) {
         return (
           <>
-            <Link href={`/resume/${data?.id}`}>
-              <Button
-                style={{
+            <Link href={`/${data?.id}`}>
+            <EyeOutlined style={{
+                  fontSize: "20px",
                   margin: "0px 5px",
-                }}
-                type="primary"
-              >
-                View details
-              </Button>
+                }}/>
             </Link>
           </>
         );
       },
     },
   ];
+  
   return (
     <div>
         <Button type="primary" style={{ margin: "10px 0" }}>
@@ -96,7 +96,7 @@ const AppliedJobPage = () => {
         </Button>
       <CareerTable
         
-        dataSource={""}
+        dataSource={appliedJob}
         columns={columns}
         showSizeChanger={true}
         showPagination={true}
