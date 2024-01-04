@@ -27,12 +27,12 @@ const UserProfile = () => {
   const { data: ExperienceData, isLoading: ExperienceIsLoading } =
     useWorkExperienceQuery(email);
 
-  console.log("EducationData", EducationData);
-  console.log("ProjectData", ProjectData);
-  console.log("PortfolioData", PortfolioData);
-  console.log("TrainingData", TrainingData);
-  console.log("SkillData", SkillData);
-  console.log("ExperienceData", ExperienceData);
+  console.log("EducationData", EducationData?.data);
+  console.log("ProjectData", ProjectData?.data);
+  console.log("PortfolioData", PortfolioData?.data);
+  console.log("TrainingData", TrainingData?.data);
+  console.log("SkillData", SkillData?.data);
+  console.log("ExperienceData", ExperienceData?.data);
 
   return (
     <div className={styles.main_body}>
@@ -181,6 +181,7 @@ const UserProfile = () => {
                   <th style={{ width: "13%" }}>Result</th>
                   <th style={{ width: "12%" }}>Pass.Year</th>
                 </tr>
+                
                 <tr>
                   <td>Master of Science (MSc)</td>
                   <td>Computer Science</td>
