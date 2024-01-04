@@ -282,3 +282,64 @@
   font-size: 14px;
   color: #666;
 }
+.profile_section_table_name_width {
+  width: 22%;
+}
+
+.profile_section_table_value_width {
+  width: 76%;
+}
+@media screen and (max-width: 768px) {
+  .top_section {
+    background-color: rgb(247, 246, 246);
+    width: 90vw;
+  }
+  .profile_section {
+    width: 90vw;
+    background-color: rgb(247, 246, 246);
+    padding-bottom: 5px;
+  }
+  .profile_section_Academic_Qualification_table {
+    border-collapse: collapse;
+    border: 1px solid #dddddd;
+    width: 95%;
+  }
+  .profile_section_Training_Summary_table {
+    border-collapse: collapse;
+    border: 1px solid #dddddd;
+    width: 95%;
+  }
+  .profile_section_Skills_table {
+    border-collapse: collapse;
+    border: 1px solid #dddddd;
+    width: 95%;
+  }
+  .profile_section_Language_table {
+    border-collapse: collapse;
+    border: 1px solid #dddddd;
+    width: 95%;
+  }
+  .profile_section_Reference_table {
+    border-bottom: 1px solid #666;
+    padding-bottom: 10px;
+    width: 95%;
+  }
+  .profile_section_table_name_width {
+    width: 45%;
+  }
+  
+  .profile_section_table_value_width {
+    width: 53%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .top_section {
+    background-color: rgb(247, 246, 246);
+    width: 90vw;
+  }
+  .profile_section {
+    width: 90vw;
+    background-color: rgb(247, 246, 246);
+    padding-bottom: 5px;
+  }
+}
