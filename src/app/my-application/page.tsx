@@ -4,7 +4,7 @@ import CareerTable from "@/components/ui/CareerTable";
 import { FileTextOutlined, ImportOutlined } from "@ant-design/icons";
 import { Button, Col, Row } from "antd";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface DataType {
   company: string;
@@ -21,11 +21,37 @@ const MyApplicationPage = () => {
   const [size, setSize] = useState<number>(10);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
+  const [applicationData, setApplicationData] = useState();
 
   query["limit"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://career-connect-hub-api.vercel.app/api/v1/applied-job/applicant/applicant@gmail.com`,
+          {
+            cache: "no-store",
+          }
+        );
+        const data = await res.json();
+        setApplicationData(data?.data);
+      } catch (error) {
+        console.error("Error fetching Blog details:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!applicationData) {
+    return <p>Loading...</p>;
+  }
+
+  console.log(applicationData);
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -39,7 +65,7 @@ const MyApplicationPage = () => {
     setSortOrder(order === "ascend" ? "asc" : "desc");
   };
 
-  const applicationData = [
+  const appData = [
     {
       company: "Seequenze Technologies",
       profile: "Web Development",
@@ -49,16 +75,6 @@ const MyApplicationPage = () => {
       applicationStatus: "Applied",
       reviewApplication:
         "https://internshala.com/application/view/180312582?referral=dashboard",
-    },
-    {
-      company: "Runon Private Limited",
-      profile: "Front End Development",
-      jobDetail:
-        "https://internshala.com/internship/detail/front-end-development-work-from-home-job-internship-at-runon-private-limited1703666209",
-      date: "30/12/2023",
-      applicationStatus: "Applied",
-      reviewApplication:
-        "https://internshala.com/application/view/180311681?referral=dashboard",
     },
   ];
 
@@ -123,7 +139,7 @@ const MyApplicationPage = () => {
         <CareerTable
           // loading={isLoading}
           columns={columns}
-          dataSource={applicationData}
+          dataSource={appData}
           showSizeChanger={true}
           showPagination={true}
           pageSize={size}
