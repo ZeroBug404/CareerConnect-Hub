@@ -11,14 +11,14 @@ import { useRouter } from "next/navigation";
 
 const CreateBlog = () => {
   const [addBlog] = useAddBlogMutation();
-  const router = useRouter()
+  const router = useRouter();
 
   const onSubmit = async (data: IBlogData) => {
     message.loading("Adding...");
     try {
       await addBlog(data);
       message.success("Blog added successfully");
-      router.push('/dashboard/blog')
+      router.push("/dashboard/blog");
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
@@ -27,14 +27,6 @@ const CreateBlog = () => {
 
   return (
     <>
-      <CareerBreadCrumb
-        items={[
-          {
-            label: "View Blog",
-            link: "/dashboard/blog",
-          },
-        ]}
-      />
       <div
         style={{
           padding: "20px",
@@ -43,8 +35,24 @@ const CreateBlog = () => {
           width: "100%",
         }}
       >
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "View Blog",
+              link: "/dashboard/blog",
+            },
+          ]}
+        />
         <Form submitHandler={onSubmit}>
-          <h2>Publish a blog</h2>
+          <h2
+            style={{
+              padding: "15px",
+              color: "#1F2B6C",
+              textAlign: "center",
+            }}
+          >
+            Publish a blog
+          </h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -135,11 +143,7 @@ const CreateBlog = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormTextArea
-                  name="content"
-                  label="Content"
-                  rows={4}
-                />
+                <FormTextArea name="content" label="Content" rows={4} />
               </Col>
             </Row>
           </div>

@@ -29,7 +29,7 @@ const FormTextArea = ({
         control={control}
         render={({ field }) => (
           <Input.TextArea
-            style={{ margin: ".3rem 0" }}
+            style={{ margin: ".3rem 0", border: "1px solid #159EEC" }}
             rows={rows}
             cols={cols}
             placeholder={placeholder}

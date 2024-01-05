@@ -92,11 +92,15 @@ const BlogPage = () => {
 
   return (
     <div>
-      <Link href="/dashboard/blog/create">
-        <Button type="primary" style={{ margin: "10px 0" }}>
-          Publish a blog?
-        </Button>
-      </Link>
+      <h2
+        style={{
+          padding: "15px",
+          color: "#1F2B6C",
+          textAlign: "center",
+        }}
+      >
+        Blog Details
+      </h2>
       <CareerTable
         loading={isLoading}
         columns={columns}

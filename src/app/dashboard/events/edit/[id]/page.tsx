@@ -98,14 +98,6 @@ const UpdateEventPage = ({ params }: any) => {
 
   return (
     <>
-      <CareerBreadCrumb
-        items={[
-          {
-            label: "View Events",
-            link: "/dashboard/events",
-          },
-        ]}
-      />
       <div
         style={{
           padding: "20px",
@@ -114,8 +106,24 @@ const UpdateEventPage = ({ params }: any) => {
           width: "100%",
         }}
       >
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "View Events",
+              link: "/dashboard/events",
+            },
+          ]}
+        />
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
-          <h2>Update Event</h2>
+          <h2
+            style={{
+              padding: "15px",
+              color: "#1F2B6C",
+              textAlign: "center",
+            }}
+          >
+            Update Event
+          </h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -145,7 +153,7 @@ const UpdateEventPage = ({ params }: any) => {
                 <FormInput
                   name="event"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Name of Event"
                 />
               </Col>
@@ -161,7 +169,7 @@ const UpdateEventPage = ({ params }: any) => {
                 <FormInput
                   name="location"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Location"
                 />
               </Col>
@@ -177,7 +185,7 @@ const UpdateEventPage = ({ params }: any) => {
                 <FormInput
                   name="image"
                   type="text"
-                  size="large"
+                  size="small"
                   label="URL of Image"
                 />
               </Col>
@@ -212,7 +220,7 @@ const UpdateEventPage = ({ params }: any) => {
                 <FormInput
                   name="title"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Title"
                 />
               </Col>
@@ -228,7 +236,7 @@ const UpdateEventPage = ({ params }: any) => {
                 <FormInput
                   name="nameOfSpeaker"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Name of Speaker"
                 />
               </Col>
@@ -241,7 +249,7 @@ const UpdateEventPage = ({ params }: any) => {
                   margin: "5px 0",
                 }}
               >
-                <FormInput name="bio" type="text" size="large" label="Bio" />
+                <FormInput name="bio" type="text" size="small" label="Bio" />
               </Col>
             </Row>
           </div>
@@ -262,10 +270,7 @@ const UpdateEventPage = ({ params }: any) => {
               Agenda Information
             </p>
             <Row
-              gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
-              //   justify={"center"}
-              //   align={"middle"}
-            >
+              gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               <Col
                 xs={24}
                 sm={12}
@@ -278,7 +283,7 @@ const UpdateEventPage = ({ params }: any) => {
                 <FormInput
                   name="agenda"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Agenda Name"
                 />
               </Col>
@@ -294,10 +299,11 @@ const UpdateEventPage = ({ params }: any) => {
                 <p>Time</p>
                 <TimePicker
                   // name="time"
-                  size="large"
+                  size="small"
                   style={{
                     width: "100%",
                     margin: "5px 0",
+                    border: "1px solid #159EEC"
                   }}
                   defaultValue={createdTime}
                   format={format}
@@ -349,13 +355,13 @@ const UpdateEventPage = ({ params }: any) => {
                   margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="date" label="Date & Time" />
+                <FormDatePicker name="date" label="Date & Time"  size="small"/>
               </Col>
             </Row>
           </div>
 
           <div style={{ margin: "10px 0" }}>
-            <Button type="primary" htmlType="submit" size="large">
+            <Button type="primary" htmlType="submit" size="small">
               Update Event
             </Button>
           </div>

@@ -11,23 +11,26 @@ import { useRouter } from "next/navigation";
 const UpdateCompany = ({ params }: any) => {
   const [updateCompany] = useUpdateCompanyMutation();
   const companyId = params.id;
-  const router = useRouter()
+  const router = useRouter();
 
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      fetch(`https://career-connect-hub-api.vercel.app/api/v1/company/${companyId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
+      fetch(
+        `https://career-connect-hub-api.vercel.app/api/v1/company/${companyId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      )
         .then((res) => res.json())
         .then((res) => {
           if (res.statusCode === 200) {
             message.success(res.message);
-            router.push('/dashboard/company')
+            router.push("/dashboard/company");
           }
         });
     } catch (err: any) {
@@ -41,6 +44,9 @@ const UpdateCompany = ({ params }: any) => {
       <Form submitHandler={onSubmit}>
         <h2
           style={{
+            padding: "15px",
+            color: "#1F2B6C",
+            textAlign: "center",
             marginBottom: "20px",
           }}
         >
@@ -54,14 +60,6 @@ const UpdateCompany = ({ params }: any) => {
             margin: "10px 0",
           }}
         >
-          <p
-            style={{
-              fontSize: "18px",
-              marginBottom: "10px",
-            }}
-          >
-            Update Status
-          </p>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col
               xs={24}
@@ -74,7 +72,7 @@ const UpdateCompany = ({ params }: any) => {
             >
               <FormSelectField
                 name="status"
-                label=""
+                label="Update Status"
                 size="small"
                 options={status}
               />

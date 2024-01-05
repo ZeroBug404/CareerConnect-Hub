@@ -116,6 +116,15 @@ const CompanyTable = () => {
 
   return (
     <>
+      <h2
+        style={{
+          padding: "15px",
+          color: "#1F2B6C",
+          textAlign: "center",
+        }}
+      >
+        Company Details
+      </h2>
       <CareerTable
         loading={isLoading}
         columns={columns}

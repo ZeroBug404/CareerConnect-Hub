@@ -42,7 +42,7 @@ const FormInput = ({
             />
           ) : (
             <Input
-              style={{ margin: ".3rem 0" }}
+              style={{ margin: ".3rem 0", border: "1px solid #159EEC" }}
               type={type}
               size={size}
               placeholder={placeholder}

@@ -8,14 +8,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const AppliedJobPage = () => {
-  const {email} = getUserInfo() as any;
+  const { email } = getUserInfo() as any;
   const query: Record<string, any> = {};
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
-  const [appliedJob, setAppliedJob] = useState([])
-
+  const [appliedJob, setAppliedJob] = useState([]);
 
   query["limit"] = size;
   query["page"] = page;
@@ -44,7 +43,7 @@ const AppliedJobPage = () => {
           }
         );
         const data = await res.json();
-        setAppliedJob(data.data)
+        setAppliedJob(data.data);
         console.log(data.data);
       } catch (error) {
         console.error("Error fetching job details:", error);
@@ -78,24 +77,31 @@ const AppliedJobPage = () => {
         return (
           <>
             <Link href={`/${data?.id}`}>
-            <EyeOutlined style={{
+              <EyeOutlined
+                style={{
                   fontSize: "20px",
                   margin: "0px 5px",
-                }}/>
+                }}
+              />
             </Link>
           </>
         );
       },
     },
   ];
-  
+
   return (
     <div>
-        <Button type="primary" style={{ margin: "10px 0" }}>
-          Applied job
-        </Button>
+      <h2
+        style={{
+          padding: "15px",
+          color: "#1F2B6C",
+          textAlign: "center",
+        }}
+      >
+        Applied Job Information
+      </h2>
       <CareerTable
-        
         dataSource={appliedJob}
         columns={columns}
         showSizeChanger={true}

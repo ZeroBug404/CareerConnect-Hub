@@ -27,42 +27,42 @@ const CompanyChartCompany = () => {
       numberOfEmployees: 590,
       createdAt: 800,
       size: 1400,
-      location: "Dhaka"
+      location: "Dhaka",
     },
     {
       name: "Company B",
       numberOfEmployees: 868,
       createdAt: 967,
       size: 1506,
-      location: "Chittagong"
+      location: "Chittagong",
     },
     {
       name: "Company C",
       numberOfEmployees: 1397,
       createdAt: 1098,
       size: 989,
-      location: "Khulna"
+      location: "Khulna",
     },
     {
       name: "Company D",
       numberOfEmployees: 1480,
       createdAt: 1200,
       size: 1228,
-      location: "Barishal"
+      location: "Barishal",
     },
     {
       name: "Company E",
       numberOfEmployees: 1520,
       createdAt: 1108,
       size: 1100,
-      location: "Rangpur"
+      location: "Rangpur",
     },
     {
       name: "Company F",
       numberOfEmployees: 1400,
       createdAt: 680,
       size: 1700,
-      location: "Jessore"
+      location: "Jessore",
     },
   ];
 
@@ -75,7 +75,15 @@ const CompanyChartCompany = () => {
         padding: "20px",
       }}
     >
-      <h1 style={{ marginBottom: "20px" }}>Company Chart</h1>
+      <h2
+        style={{
+          padding: "15px",
+          color: "#1F2B6C",
+          textAlign: "center",
+        }}
+      >
+        Company Chart
+      </h2>
       <ResponsiveContainer>
         <ComposedChart
           width={500}

@@ -53,18 +53,6 @@ const EditJobPage = ({ params }: any) => {
 
   return (
     <>
-      <CareerBreadCrumb
-        items={[
-          {
-            label: "Publish Job",
-            link: "/dashboard/job/create",
-          },
-          {
-            label: "View Jobs",
-            link: "/dashboard/job",
-          },
-        ]}
-      />
       <div
         style={{
           padding: "20px",
@@ -73,8 +61,28 @@ const EditJobPage = ({ params }: any) => {
           width: "100%",
         }}
       >
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "Publish Job",
+              link: "/dashboard/job/create",
+            },
+            {
+              label: "View Jobs",
+              link: "/dashboard/job",
+            },
+          ]}
+        />
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
-          <h2>Update a job</h2>
+          <h2
+            style={{
+              padding: "15px",
+              color: "#1F2B6C",
+              textAlign: "center",
+            }}
+          >
+            Update Job
+          </h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -386,7 +394,7 @@ const EditJobPage = ({ params }: any) => {
                   margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="joiningDate" label="Joining Date" />
+                <FormDatePicker name="joiningDate" label="Joining Date" size="small"/>
               </Col>
               <Col
                 xs={24}
@@ -397,7 +405,7 @@ const EditJobPage = ({ params }: any) => {
                   margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="deadline" label="Deadline" />
+                <FormDatePicker name="deadline" label="Deadline" size="small" />
               </Col>
             </Row>
           </div>

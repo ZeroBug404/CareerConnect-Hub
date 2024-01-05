@@ -37,18 +37,6 @@ const EditBlogPage = ({ params }: any) => {
 
   return (
     <>
-      <CareerBreadCrumb
-        items={[
-          {
-            label: "Publish Blog",
-            link: "/dashboard/blog/create",
-          },
-          {
-            label: "View Blogs",
-            link: "/dashboard/blog",
-          },
-        ]}
-      />
       <div
         style={{
           padding: "20px",
@@ -57,8 +45,28 @@ const EditBlogPage = ({ params }: any) => {
           width: "100%",
         }}
       >
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "Publish Blog",
+              link: "/dashboard/blog/create",
+            },
+            {
+              label: "View Blogs",
+              link: "/dashboard/blog",
+            },
+          ]}
+        />
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
-          <h2>Update a blog</h2>
+          <h2
+            style={{
+              padding: "15px",
+              color: "#1F2B6C",
+              textAlign: "center",
+            }}
+          >
+            Update Blog
+          </h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -133,11 +141,7 @@ const EditBlogPage = ({ params }: any) => {
                   margin: "5px 0",
                 }}
               >
-                <FormTextArea
-                  name="content"
-                  label="Content"
-                  rows={4}
-                />
+                <FormTextArea name="content" label="Content" rows={4} />
               </Col>
             </Row>
           </div>
