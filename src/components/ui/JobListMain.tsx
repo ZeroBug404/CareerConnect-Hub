@@ -12,7 +12,7 @@ import { Button, Dropdown, Input, Space, Typography } from "antd"; // Import Spi
 import { useEffect, useState } from "react";
 
 const JobListMain = () => {
-  const [selectedID, setSelectedID] = useState(null);
+  const [selectedID, setSelectedID] = useState("");
   const [jobTypeValue, setJobTypeValue] = useState("");
   const [experienceLevelValue, setExperienceLevelValue] = useState("");
   const [sortSalaryValue, setSortSalaryValue] = useState("");

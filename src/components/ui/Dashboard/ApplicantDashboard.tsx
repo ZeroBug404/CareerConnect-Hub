@@ -2,15 +2,17 @@
 "use client";
 import styles from "@/Styles/AdminDashboard.module.css";
 import {
-  dataBar,
+  dataAreaChart,
+  dataBarChart2,
   dataGeoChart,
   dataLineChart,
-  dataLineChart1,
-  dataPieChart,
-  optionsBar,
+  dataPieChart2,
+  dataScatterChart,
+  optionsAreaChart,
+  optionsBarChart2,
   optionsLineChart,
-  optionsLineChart1,
-  optionsPieChart,
+  optionsPieChart2,
+  optionsScatterChart,
 } from "@/assets/data/dashboardData";
 import { Chart } from "react-google-charts";
 
@@ -31,20 +33,62 @@ const ApplicantDashboard = () => {
       <div className={styles.dashboard_container}>
         <div style={{ width: "100%", margin: "5px" }}>
           <Chart
-            chartType="Bar"
-            // width="100%"
-            height="400px"
-            data={dataBar}
-            options={optionsBar}
+            chartType="PieChart"
+            data={dataPieChart2}
+            options={optionsPieChart2}
+            // width={"100%"}
+            height={"400px"}
           />
         </div>
         <div style={{ width: "100%", margin: "5px" }}>
           <Chart
-            chartType="PieChart"
-            data={dataPieChart}
-            options={optionsPieChart}
-            width={"100%"}
-            height={"400px"}
+            chartType="AreaChart"
+            // width="100%"
+            height="400px"
+            data={dataAreaChart}
+            options={optionsAreaChart}
+          />
+        </div>
+      </div>
+      <div className={styles.dashboard_container}>
+        <div style={{ width: "100%", margin: "5px" }}>
+          <Chart
+            chartType="BarChart"
+            width="100%"
+            height="400px"
+            data={dataBarChart2}
+            options={optionsBarChart2}
+            chartPackages={["corechart", "controls"]}
+            controls={[
+              {
+                controlType: "NumberRangeFilter",
+                options: {
+                  filterColumnIndex: 1,
+                  minValue: 0,
+                  maxValue: 60,
+                },
+              },
+            ]}
+          />
+        </div>
+      </div>
+      <div className={styles.dashboard_container}>
+        <div style={{ width: "100%", margin: "5px" }}>
+          <Chart
+            chartType="LineChart"
+            width="100%"
+            height="400px"
+            data={dataLineChart}
+            options={optionsLineChart}
+          />
+        </div>
+        <div style={{ width: "100%", margin: "5px" }}>
+          <Chart
+            chartType="ScatterChart"
+            width="100%"
+            height="400px"
+            data={dataScatterChart}
+            options={optionsScatterChart}
           />
         </div>
       </div>
@@ -67,26 +111,6 @@ const ApplicantDashboard = () => {
             width="100%"
             height="300px"
             data={dataGeoChart}
-          />
-        </div>
-      </div>
-      <div className={styles.dashboard_container}>
-        <div style={{ width: "100%", margin: "5px" }}>
-          <Chart
-            chartType="LineChart"
-            width="100%"
-            height="400px"
-            data={dataLineChart}
-            options={optionsLineChart}
-          />
-        </div>
-        <div style={{ width: "100%", margin: "5px" }}>
-          <Chart
-            chartType="LineChart"
-            width="100%"
-            height="400px"
-            data={dataLineChart1}
-            options={optionsLineChart1}
           />
         </div>
       </div>
