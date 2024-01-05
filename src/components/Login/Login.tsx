@@ -34,7 +34,12 @@ const LoginPage = () => {
       //@ts-ignore
       if (res?.data?.data?.accessToken) {
         message.success("User logged in successfully!");
-        router.push("/dashboard");
+        //@ts-ignore
+        if (res?.data?.data?.role === "admin") {
+          router.push("/dashboard/company-chart");
+        } else {
+          router.push("/dashboard/job");
+        }
       } else {
         return message.error("Wrong credential!");
       }

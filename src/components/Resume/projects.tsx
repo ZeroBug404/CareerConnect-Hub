@@ -10,6 +10,7 @@ import {
 } from "@/redux/api/projectApi";
 import UpdateProjectModal from "../ui/ResumeModal/UpdateProjectModal";
 import ProjectModal from "../ui/ResumeModal/ProjectModal";
+import { getUserInfo } from "@/services/auth.service";
 
 const Projects = () => {
   const [open, setOpen] = useState(false);
@@ -20,6 +21,8 @@ const Projects = () => {
   const { data, isLoading } = useProjectsQuery({ ...query });
   const projectData = data?.data;
   const [deleteProject] = useDeleteProjectMutation();
+
+  const { email } = getUserInfo() as any;
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
@@ -38,6 +41,10 @@ const Projects = () => {
     setEditModalOpen(true);
   };
 
+  const filteredByEmail = projectData?.filter(
+    (item: any) => item.userEmail === email
+  );
+
   return (
     <>
       <Row
@@ -51,7 +58,7 @@ const Projects = () => {
         </Col>
         <Col xs={24} sm={16}>
           <Col>
-            {projectData?.map((project: any) => (
+            {filteredByEmail?.map((project: any) => (
               <Flex
                 wrap="wrap"
                 gap="middle"

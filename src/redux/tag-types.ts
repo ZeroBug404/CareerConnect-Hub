@@ -12,7 +12,6 @@ export enum tagTypes {
   skill = "skill",
   portfolio = "portfolio",
   event = "event",
-  myApplication = "applied-job",
 }
 
 export const tagTypesList = [
@@ -29,5 +28,4 @@ export const tagTypesList = [
   tagTypes.skill,
   tagTypes.portfolio,
   tagTypes.event,
-  tagTypes.myApplication,
 ];

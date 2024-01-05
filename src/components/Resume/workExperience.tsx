@@ -7,6 +7,7 @@ import { useDeleteWorkExperienceMutation, useWorkExperiencesQuery } from "@/redu
 import ExperienceModal from "../ui/ResumeModal/ExperienceModal";
 import { IWorkExperience } from "@/types";
 import UpdateExperienceModal from "../ui/ResumeModal/UpdateExperienceModal";
+import { getUserInfo } from "@/services/auth.service";
 
 const WorkExperience = () => {
   const [open, setOpen] = useState(false);
@@ -17,6 +18,8 @@ const WorkExperience = () => {
   const { data, isLoading } = useWorkExperiencesQuery({ ...query });
   const experiencesData = data?.data;
   const [deleteWorkExperience] = useDeleteWorkExperienceMutation();
+
+  const { email } = getUserInfo() as any;
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
@@ -35,6 +38,10 @@ const WorkExperience = () => {
     setEditModalOpen(true);
   };
 
+  const filteredByEmail = experiencesData?.filter(
+    (item: any) => item.userEmail === email
+  );
+
   return (
     <>
       <Row
@@ -51,7 +58,7 @@ const WorkExperience = () => {
         </Col>
         <Col xs={24} sm={16}>
           <Col>
-            {experiencesData?.map((exp: IWorkExperience) => (
+            {filteredByEmail?.map((exp: IWorkExperience) => (
               <Flex
                 wrap="wrap"
                 gap="large"
@@ -86,7 +93,7 @@ const WorkExperience = () => {
             </Button>
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-            <ExperienceModal btnName={"Save"}></ExperienceModal>
+            <ExperienceModal></ExperienceModal>
           </GlobalModal>
           <GlobalModal
             open={editModalOpen}
@@ -97,7 +104,7 @@ const WorkExperience = () => {
             width={650}
             title={""}
           >
-            {/* Pass the selected ID to the UpdateExperienceModal */}
+            {/* Pass the selected ID*/}
             <UpdateExperienceModal id={selectedId} />
           </GlobalModal>
         </Col>

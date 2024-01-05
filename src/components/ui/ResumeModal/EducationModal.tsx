@@ -5,9 +5,11 @@ import FormSelectField from "@/components/Forms/FormSelectField";
 import {
   educationYearOptions,
   performanceScale,
-} from "@/components/contants/global";
+} from "../../../constants/global";
 import { useAddEducationMutation } from "@/redux/api/educationApi";
+
 import { Button, message } from "antd";
+import { getUserInfo } from "@/services/auth.service";
 
 const EducationModal = () => {
   const [addEducation] = useAddEducationMutation();

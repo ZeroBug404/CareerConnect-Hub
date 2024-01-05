@@ -11,6 +11,7 @@ import GlobalModal from "../Shared/GlobalModal";
 import TrainingModal from "../ui/ResumeModal/TrainingModal";
 import { ITraining } from "@/types";
 import UpdateTrainingModal from "../ui/ResumeModal/UpdateTrainingModal";
+import { getUserInfo } from "@/services/auth.service";
 
 const Training = () => {
   const [open, setOpen] = useState(false);
@@ -21,6 +22,8 @@ const Training = () => {
   const { data, isLoading } = useTrainingsQuery({ ...query });
   const trainingData = data?.data;
   const [deleteTraining] = useDeleteTrainingMutation();
+
+  const { email } = getUserInfo() as any;
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting.....");
@@ -39,6 +42,10 @@ const Training = () => {
     setEditModalOpen(true);
   };
 
+  const filteredByEmail = trainingData?.filter(
+    (item: any) => item.userEmail === email
+  );
+
   return (
     <>
       <Row
@@ -52,7 +59,7 @@ const Training = () => {
         </Col>
         <Col xs={24} sm={16}>
           <Col>
-            {trainingData?.map((training: ITraining) => (
+            {filteredByEmail?.map((training: ITraining) => (
               <Flex
                 wrap="wrap"
                 gap="middle"
@@ -84,7 +91,7 @@ const Training = () => {
             </Button>
           </div>
           <GlobalModal open={open} setOpen={setOpen} width={650} title={""}>
-            <TrainingModal btnName={"Save"}></TrainingModal>
+            <TrainingModal></TrainingModal>
           </GlobalModal>
           <GlobalModal
             open={editModalOpen}
@@ -95,7 +102,7 @@ const Training = () => {
             width={650}
             title={""}
           >
-            {/* Pass the selected ID to the UpdateExperienceModal */}
+            {/* Pass the selected ID */}
             <UpdateTrainingModal id={selectedId} />
           </GlobalModal>
         </Col>

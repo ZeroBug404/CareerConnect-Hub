@@ -4,14 +4,21 @@ import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import { useAddProjectMutation } from "@/redux/api/projectApi";
 import { Button, message } from "antd";
+import { getUserInfo } from "@/services/auth.service";
 
 const ProjectModal = () => {
   const [addProject] = useAddProjectMutation();
 
-  const onSubmit = async (educationData: any) => {
+  const { email } = getUserInfo() as any;
+
+  const onSubmit = async (projectData: any) => {
     message.loading("Adding...");
     try {
-      await addProject(educationData);
+      const projectDataWithEmail = {
+        ...projectData,
+        userEmail: email,
+      };
+      await addProject(projectDataWithEmail);
       message.success("Project added successfully");
     } catch (err: any) {
       console.error(err.message);

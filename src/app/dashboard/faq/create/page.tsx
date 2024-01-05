@@ -3,9 +3,7 @@
 
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
-import FormSelectField from "@/components/Forms/FormSelectField";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import { sizes } from "@/components/contants/global";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useAddFAQMutation } from "@/redux/api/faqApi";
 import { Button, Col, Row, message } from "antd";
@@ -62,7 +60,7 @@ const AddFAQ = () => {
                   margin: "10px 0",
                 }}
               >
-                <FormInput name="name" type="text" label="Name" />
+                <FormInput name="name" type="text" label="Name" size="small"/>
               </Col>
               <Col
                 xs={24}

@@ -61,3 +61,13 @@ export interface IMeta {
   page: number;
   total: number;
 }
+
+export interface DataType {
+  index: number;
+  industry: string;
+  name: string;
+  email: string;
+  phone: string;
+  update: string;
+  delete: string;
+}

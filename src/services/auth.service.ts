@@ -24,3 +24,12 @@ export const isLoggedIn = () => {
 export const removeUserInfo = (key: string) => {
   return localStorage.removeItem(key);
 };
+
+export const getUserToken = () => {
+  const authToken = getFromLocalStorage("accessToken");
+  if (authToken) {
+    return authToken;
+  } else {
+    return "";
+  }
+};
