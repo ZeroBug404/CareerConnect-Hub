@@ -4,22 +4,20 @@
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
-<<<<<<< HEAD
 import { useFAQQuery } from "@/redux/api/faqApi";
-=======
-import { useFAQQuery } from "@/redux/api/faq";
->>>>>>> shapna-akter
+
+
+
+
 import { Button, Col, Row, message } from "antd";
 
 const UpdateFAQ = ({ params }: any) => {
   const { id } = params;
   const { data, isLoading } = useFAQQuery(id);
-  console.log(data);
 
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      console.log(data);
       message.success("FAQ updated successfully");
     } catch (err: any) {
       console.error(err.message);

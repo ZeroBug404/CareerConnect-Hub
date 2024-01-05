@@ -1,5 +1,4 @@
-import Footer from "@/components/ui/Footer";
-import NavBar from "@/components/ui/NavBar";
+
 import Providers from "@/lib/Providers";
 import type { Metadata } from "next";
 import { Roboto, Work_Sans } from "next/font/google";

@@ -31,14 +31,6 @@ const UserProfile = () => {
   const { data: ExperienceData, isLoading: ExperienceIsLoading } =
     useWorkExperienceQuery(email);
 
-  // console.log("EducationData", EducationData?.data);
-  // console.log("ProjectData", ProjectData?.data);
-  // console.log("PortfolioData", PortfolioData?.data);
-  // console.log("TrainingData", TrainingData?.data);
-  // console.log("SkillData", SkillData?.data[0]?.skills);
-  // console.log("ExperienceData", ExperienceData?.data);
-  // console.log("UserProfileData", UserProfileData?.data);
-
   return (
     <div className={styles.main_body}>
       <div className={styles.top_section}>

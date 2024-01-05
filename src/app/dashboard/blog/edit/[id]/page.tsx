@@ -5,6 +5,7 @@ import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useBlogQuery, useUpdateBlogMutation } from "@/redux/api/blogApi";
+import { IBlogData } from "@/types";
 import { Button, Col, Row, message } from "antd";
 
 const EditBlogPage = ({ params }: any) => {
@@ -12,7 +13,7 @@ const EditBlogPage = ({ params }: any) => {
   const { data, isLoading } = useBlogQuery(id);
   const [updateBlog] = useUpdateBlogMutation();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: IBlogData) => {
     message.loading("Updating...");
     try {
       console.log(data);
@@ -32,10 +33,6 @@ const EditBlogPage = ({ params }: any) => {
     author: data?.data?.author || "",
     publishDate: data?.data?.publishDate || "",
     content: data?.data?.content || "",
-    // views: data?.data?.views || "",
-    // likes: data?.data?.likes || "",
-    // commentText: data?.data?.commentText || "",
-    // commentDate: data?.data?.commentDate || "",
   };
 
   return (
@@ -127,70 +124,6 @@ const EditBlogPage = ({ params }: any) => {
                   label="Publish Date"
                 />
               </Col>
-              {/* <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="views"
-                  type="number"
-                  size="small"
-                  label="Views"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="likes"
-                  type="number"
-                  size="small"
-                  label="Likes"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="commentText"
-                  type="text"
-                  size="small"
-                  label="Comment Text"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="commentDate"
-                  type="date"
-                  size="small"
-                  label="Comment Date"
-                />
-              </Col> */}
               <Col
                 xs={24}
                 sm={12}

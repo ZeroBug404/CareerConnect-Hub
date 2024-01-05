@@ -1,15 +1,21 @@
 "use client";
 import styles from "@/Styles/AdminDashboard.module.css";
 import {
+  dataAreaChart,
   dataBar,
+  dataBarChart2,
   dataGeoChart,
   dataLineChart,
   dataLineChart1,
   dataPieChart,
+  dataPieChart2,
+  optionsAreaChart,
   optionsBar,
+  optionsBarChart2,
   optionsLineChart,
   optionsLineChart1,
   optionsPieChart,
+  optionsPieChart2,
 } from "@/assets/data/dashboardData";
 import { Chart } from "react-google-charts";
 
@@ -72,6 +78,48 @@ const AdminDashboard = () => {
       <div className={styles.dashboard_container}>
         <div style={{ width: "100%", margin: "5px" }}>
           <Chart
+            chartType="PieChart"
+            data={dataPieChart2}
+            options={optionsPieChart2}
+            // width={"100%"}
+            height={"400px"}
+          />
+        </div>
+        <div style={{ width: "100%", margin: "5px" }}>
+          <Chart
+            chartType="AreaChart"
+            // width="100%"
+            height="400px"
+            data={dataAreaChart}
+            options={optionsAreaChart}
+          />
+        </div>
+      </div>
+      <div className={styles.dashboard_container}>
+        <div style={{ width: "100%", margin: "5px" }}>
+          <Chart
+            chartType="BarChart"
+            width="100%"
+            height="400px"
+            data={dataBarChart2}
+            options={optionsBarChart2}
+            chartPackages={["corechart", "controls"]}
+            controls={[
+              {
+                controlType: "NumberRangeFilter",
+                options: {
+                  filterColumnIndex: 1,
+                  minValue: 0,
+                  maxValue: 60,
+                },
+              },
+            ]}
+          />
+        </div>
+      </div>
+      <div className={styles.dashboard_container}>
+        <div style={{ width: "100%", margin: "5px" }}>
+          <Chart
             chartType="LineChart"
             width="100%"
             height="400px"
@@ -94,3 +142,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

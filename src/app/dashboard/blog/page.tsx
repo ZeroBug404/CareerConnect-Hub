@@ -60,14 +60,6 @@ const BlogPage = () => {
       title: "PublishDate",
       dataIndex: "publishDate",
     },
-    // {
-    //   title: "Views",
-    //   dataIndex: "views",
-    // },
-    // {
-    //   title: "Likes",
-    //   dataIndex: "likes",
-    // },
     {
       title: "Action",
       dataIndex: "id",

@@ -1,18 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+
 import CareerTable from "@/components/ui/CareerTable";
 import { useDeleteFAQMutation, useFAQsQuery } from "@/redux/api/faqApi";
+import { IFaqData } from "@/types";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
-
-interface DataType {
-  index: number;
-  name: string;
-  update: string;
-  delete: string;
-}
 
 const FAQTable = () => {
   const query: Record<string, any> = {};
@@ -60,7 +55,7 @@ const FAQTable = () => {
       title: "",
       dataIndex: "index",
       key: "index",
-      render: (_: any, record: DataType) => record.index,
+      render: (_: any, record: IFaqData) => record.index,
     },
     {
       title: "Name",

@@ -71,3 +71,29 @@ export interface DataType {
   update: string;
   delete: string;
 }
+
+export interface IBlogData {
+  _id: string;
+  title: string;
+  content: string;
+  publishDate: string;
+  author: string;
+  img: string;
+}
+
+export interface IJobDetailsData {
+  company: string;
+  title: string;
+  deadline: string;
+  numberOfOpenings: string;
+  location: string;
+  salary: string;
+  createdAt: string;
+}
+
+export interface IFaqData {
+  index: number;
+  name: string;
+  update: string;
+  delete: string;
+}
