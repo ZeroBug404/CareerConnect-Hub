@@ -5,6 +5,7 @@ import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useAddBlogMutation } from "@/redux/api/blogApi";
+import { IBlogData } from "@/types";
 import { Button, Col, Row, message } from "antd";
 import { useRouter } from "next/navigation";
 
@@ -12,7 +13,7 @@ const CreateBlog = () => {
   const [addBlog] = useAddBlogMutation();
   const router = useRouter()
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: IBlogData) => {
     message.loading("Adding...");
     try {
       await addBlog(data);
