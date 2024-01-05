@@ -4,23 +4,13 @@ import styles from "@/Styles/blog.module.css";
 import Footer from "@/components/ui/Footer";
 import NavBar from "@/components/ui/NavBar";
 import { useBlogsQuery } from "@/redux/api/blogApi";
+import { IBlogData } from "@/types";
 import { CalendarOutlined, UserOutlined } from "@ant-design/icons";
 import { Col, Row } from "antd";
-
-interface BlogData {
-  _id: string;
-  title: string;
-  content: string;
-  publishDate: string;
-  author: string;
-  img: string;
-}
 
 const Blog = () => {
   const { data } = useBlogsQuery({});
   const blogData = data?.data;
-
-  console.log(blogData);
 
   return (
     <>
@@ -51,7 +41,7 @@ const Blog = () => {
             Latest Blogs
           </h1>
           <div className={styles.CardContainer}>
-            {blogData?.map((blog: BlogData) => (
+            {blogData?.map((blog: IBlogData) => (
               <div key={blog?._id} className={styles.CardDesign}>
                 <div>
                   <img

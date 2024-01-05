@@ -1,21 +1,13 @@
 "use client";
 import styles from "@/Styles/jobDetailsFull.module.css";
+import { IJobDetailsData } from "@/types";
 import type { TabsProps } from "antd";
 import { Button, Col, Divider, Flex, Row, Tabs } from "antd";
 import { useEffect, useState } from "react";
 
-interface JobData {
-  company: string;
-  title: string;
-  deadline: string;
-  numberOfOpenings: string;
-  location: string;
-  salary: string;
-  createdAt: string;
-}
 
 const JobDetailsFull = ({ params }: any) => {
-  const [jobData, setJobData] = useState<JobData | null>(null);
+  const [jobData, setJobData] = useState<IJobDetailsData | null>(null);
 
   const onChange = (key: string) => {
     console.log(key);

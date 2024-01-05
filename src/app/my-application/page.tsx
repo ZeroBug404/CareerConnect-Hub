@@ -6,15 +6,6 @@ import { Button, Col, Row } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-interface DataType {
-  company: string;
-  profile: string;
-  jobDetail: string;
-  date: string;
-  applicationStatus: string;
-  reviewApplication: string;
-}
-
 const MyApplicationPage = () => {
   const query: Record<string, any> = {};
   const [page, setPage] = useState<number>(1);

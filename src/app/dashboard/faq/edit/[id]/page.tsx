@@ -14,12 +14,10 @@ import { Button, Col, Row, message } from "antd";
 const UpdateFAQ = ({ params }: any) => {
   const { id } = params;
   const { data, isLoading } = useFAQQuery(id);
-  console.log(data);
 
   const onSubmit = async (data: any) => {
     message.loading("Updating...");
     try {
-      console.log(data);
       message.success("FAQ updated successfully");
     } catch (err: any) {
       console.error(err.message);
