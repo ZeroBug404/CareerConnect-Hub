@@ -38,7 +38,7 @@ const LoginPage = () => {
         if (res?.data?.data?.role === "admin") {
           router.push("/dashboard/company-chart");
         } else {
-          router.push("/dashboard/job");
+          router.push("/dashboard/job-list");
         }
       } else {
         return message.error("Wrong credential!");
