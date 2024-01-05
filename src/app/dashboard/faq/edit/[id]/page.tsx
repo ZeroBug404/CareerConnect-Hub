@@ -4,11 +4,11 @@
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
-<<<<<<< HEAD
 import { useFAQQuery } from "@/redux/api/faqApi";
-=======
-import { useFAQQuery } from "@/redux/api/faq";
->>>>>>> shapna-akter
+
+
+
+
 import { Button, Col, Row, message } from "antd";
 
 const UpdateFAQ = ({ params }: any) => {
