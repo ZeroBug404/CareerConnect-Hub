@@ -65,7 +65,7 @@ const HomePageBanner = () => {
       <Row
         justify="center"
         align="middle"
-        className="px-4 bg-[#123770] text-white"
+        className="px-4 bg-[#123770] text-white min-h-screen"
       >
         <Col xs={24} sm={12} data-aos="zoom-in-right" data-aos-duration="3000">
           <p>CareerConnect Hub FOR EMPLOYERS</p>
