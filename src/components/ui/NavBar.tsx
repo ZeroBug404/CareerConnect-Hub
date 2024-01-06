@@ -40,7 +40,7 @@ const NavBar = () => {
     return router.push("/login");
   };
 
-  console.log(role);
+  // console.log(role);
 
   const items: MenuProps["items"] = [
     // {

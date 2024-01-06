@@ -3,66 +3,65 @@
 "use client";
 
 import styles from "@/Styles/HomeBlog.module.css";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import { useBlogsQuery } from "@/redux/api/blogApi";
+import { IBlogData } from "@/types";
+import { CalendarOutlined, UserOutlined } from "@ant-design/icons";
 import { Col, Row } from "antd";
 import Link from "next/link";
 
-const blogData = [
-  {
-    _id: "1",
-    img: "/assets/blog-1.webp",
-    title: "Guide",
-    color: "#FDF8FA",
-    desc: "Onboarding Guide: Setting Your Job Up for Success on CareerConnect Hub",
-  },
-  {
-    _id: "2",
-    img: "/assets/blog-2.webp",
-    title: "Article",
-    color: "#E6F5F1",
-    desc: "What is an Includes Workplace ",
-  },
-  {
-    _id: "3",
-    img: "/assets/blog-3.webp",
-    title: "Guide",
-    color: "#F2F1FE",
-    desc: "Divercity And Includes Training",
-  },
-  {
-    _id: "4",
-    img: "/assets/blog-4.webp",
-    title: "Article",
-    color: "#FDF8FA",
-    desc: "The CareerConnect Hub Guide To Workplace Allyship",
-  },
-];
-
 const HomeBlog = () => {
+  const { data } = useBlogsQuery({});
+  const blogData = data?.data;
+  console.log(blogData);
+
   return (
     <Row
       justify="center"
       align="middle"
       style={{
-        backgroundColor: "white",
+        backgroundColor: "#ECEDF2",
+        padding: "3em 0",
       }}
     >
       <Col
         sm={23}
         md={23}
-        lg={20}
+        lg={23}
         style={{
           borderRadius: ".5rem",
           margin: "1rem 0",
         }}
       >
-        <h1 className={styles.title}>
-          Hiring resources for inclusivity and allyship
-        </h1>
+        <div
+          style={{
+            padding: "1.5rem 0",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
+            Recent News Blogs
+          </h1>
+          <p
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+            style={{
+              padding: "1rem 0",
+            }}
+          >
+            Fresh job related news content posted each day.
+          </p>
+        </div>
         <div className={styles.CardContainer}>
-          {blogData?.map((blog) => (
+          {blogData?.slice(0, 3).map((blog: IBlogData) => (
             <div
-              style={{ backgroundColor: `${blog?.color}` }}
+              data-aos="zoom-in"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="1000"
               key={blog?._id}
               className={styles.CardDesign}
             >
@@ -70,16 +69,23 @@ const HomeBlog = () => {
                 <img src={blog?.img} alt="Image" className={styles.cardImage} />
               </div>
               <div className={styles.cardTextContainer}>
-                <div className="">
-                  <p className={styles.cardTitle}>{blog?.title}</p>
-                  <p className={styles.cardText}>{blog?.desc?.slice(0, 143)}</p>
+                <div className={styles.small}>
+                  <p>
+                    <CalendarOutlined />{" "}
+                    <span style={{ marginLeft: ".4rem" }}>
+                      {blog?.publishDate}
+                    </span>
+                  </p>
+                  <p>
+                    <UserOutlined />
+                    <span style={{ marginLeft: ".4rem" }}>{blog?.author}</span>
+                  </p>
                 </div>
-                <Link
-                  style={{ fontSize: "1.1rem", marginRight: ".2rem" }}
-                  href="/blog"
-                >
-                  Read The Article <ArrowRightOutlined />
-                </Link>
+                <p className={styles.cardTitle}>{blog?.title}</p>
+                <p className={styles.cardText}>
+                  {blog?.content?.slice(0, 143)}
+                </p>
+                <Link href="/">Read more</Link>
               </div>
             </div>
           ))}
