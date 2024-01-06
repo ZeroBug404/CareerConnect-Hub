@@ -24,7 +24,7 @@ const HomePageBanner = () => {
           <p className={styles.bannerText1} style={{ color: "#93aaec" }}>
             CareerConnect Hub FOR EMPLOYERS
           </p>
-          <h1 className={styles.bannerTitle}>
+          <h1 className="text-black">
             Find Your Next Job with CareerConnect Hub
           </h1>
           <p className={styles.bannerText2}>
