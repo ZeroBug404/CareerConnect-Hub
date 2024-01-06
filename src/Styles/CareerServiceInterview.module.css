@@ -1,0 +1,206 @@
+.container {
+  width: 75%;
+  margin: 3rem auto;
+}
+
+.headerText1 {
+  color: #3f73d3;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.headerText2 {
+  color: hsl(0, 0%, 50%);
+  font-size: 1.3rem;
+}
+
+.headerTitle {
+  font-size: 3.3rem;
+  margin-bottom: 1rem;
+}
+
+.textCard {
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageCard {
+  width: 50%;
+  background-color: #eef1fe;
+  padding-top: 3rem;
+  border-radius: 0 3rem;
+}
+
+.headerImage {
+  height: 18rem;
+  width: 100%;
+  border-radius: 0 3rem;
+}
+
+.cardSection {
+  width: 50%;
+}
+
+.CardContainer {
+  width: 100%;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem;
+}
+
+.CardDesign {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.CardDesign:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cardImage {
+  width: 10rem;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.cardText {
+  text-align: center;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%;
+    margin: 4rem auto;
+  }
+
+  .imageCard {
+    width: 45%;
+    padding-top: 1rem;
+  }
+
+  .headerImage {
+    height: 20rem;
+  }
+  .CardContainer {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+
+  .cardSection {
+    width: 55%;
+  }
+
+  .cardContent {
+    padding: 0.2rem;
+  }
+
+  .cardImage {
+    width: 100%;
+    margin: auto;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+
+  .cardText {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+
+  .headerText1 {
+    font-size: 1rem;
+  }
+
+  .headerText2 {
+    font-size: 1rem;
+  }
+
+  .headerTitle {
+    font-size: 2.3rem;
+  }
+
+  .textCard {
+    width: 80%;
+    margin: 2rem auto;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .imageCard {
+    width: 90%;
+    padding-top: 1rem;
+    border-radius: 0 1rem;
+  }
+
+  .headerImage {
+    height: 100%;
+    width: 100%;
+  }
+
+  .cardSection {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .CardContainer {
+    width: 95%;
+    margin: auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .cardContent {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .cardImage {
+    width: 7.5rem;
+  }
+
+  .cardTextContainer {
+    padding: 0 1rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    text-align: start;
+  }
+
+  .cardText {
+    text-align: start;
+    font-size: 0.9rem;
+  }
+}

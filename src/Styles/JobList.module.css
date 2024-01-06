@@ -1,0 +1,94 @@
+.JobList_search_filter_main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 16px;
+}
+.JobList_search_box_main {
+  width: 20%;
+  margin-left: 10px;
+}
+.JobList_div_main {
+  display: flex;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding: 10px 0;
+  justify-content: space-between;
+}
+
+.JobLists_div_main {
+  width: 100%;
+  height: 80vh;
+  overflow: auto;
+}
+.JobDetailView_div_main {
+  width: 100%;
+}
+
+.JobList_div_left {
+  width: 100%;
+  display: block;
+}
+.JobList_div_right {
+  width: 100%;
+  display: block;
+}
+.JobLists_div_desktop {
+  display: block;
+}
+.JobLists_div_mobile {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .JobList_search_filter_main {
+    flex-direction: column-reverse;
+  }
+  .JobList_search_box_main {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+  .JobList_div_main {
+    margin-left: 0vw;
+    margin-right: 0vw;
+  }
+  .JobLists_div_desktop {
+    display: none;
+  }
+  .JobLists_div_mobile {
+    display: block;
+  }
+  .JobList_div_left {
+    display: block;
+  }
+  .JobList_div_right {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .JobList_search_filter_main {
+    flex-direction: column-reverse;
+  }
+  .JobList_search_box_main {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+  .JobList_div_main {
+    margin-left: 0vw;
+    margin-right: 0vw;
+  }
+  .JobLists_div_desktop {
+    display: none;
+  }
+  .JobLists_div_mobile {
+    display: block;
+  }
+  .JobList_div_left {
+    display: block;
+  }
+  .JobList_div_right {
+    display: none;
+  }
+}

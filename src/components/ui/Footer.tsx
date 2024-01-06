@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/components/ui/footer.module.css";
+import styles from "@/Styles/footer.module.css";
 import {
   FacebookFilled,
   LinkedinFilled,
@@ -15,22 +15,40 @@ const Footer = () => {
     <div className={styles.footer_div_main}>
       <div className={styles.top_section}>
         <div className={styles.left_section}>
-          <h3>We are here to help</h3>
-          <p>
+          <h3
+            style={{
+              color: "#2d2d2d",
+              fontSize: "24px",
+              fontWeight: "bold",
+              marginBottom: "10px",
+            }}
+          >
+            We are here to help
+          </h3>
+          <p
+            style={{
+              color: "#2d2d2d",
+              marginBottom: "10px",
+            }}
+          >
             Visit our Help Center for answers to common questions or contact us
             directly.
           </p>
           <Flex gap="small" wrap="wrap" style={{ marginTop: "10px" }}>
-            <Button>Help center</Button>
-            <Button>Contact Support</Button>
+            <Button size="large" type="primary" ghost>
+              Help center
+            </Button>
+            <Button size="large" type="primary" ghost>
+              Contact Support
+            </Button>
           </Flex>
         </div>
         <div className={styles.right_section}>
           <div className={styles.right_section_buttons}>
-            <p style={{ marginBottom: "10px" }}>Indeed</p>
+            <p style={{ marginBottom: "10px" }}>Career Connect Hub</p>
             <ul>
               <li>
-                <Link href="/">About Indeed</Link>
+                <Link href="/">About Career Connect Hub</Link>
               </li>
               <li>
                 <Link href="/">Press</Link>
@@ -39,22 +57,22 @@ const Footer = () => {
                 <Link href="/">Security</Link>
               </li>
               <li>
-                <Link href="/">Terms</Link>
+                <Link href="/terms">Terms</Link>
               </li>
               <li>
                 <Link href="/">Privacy Center and Ad Choices</Link>
               </li>
               <li>
-                <Link href="/">Accessibility at Indeed</Link>
+                <Link href="/">Accessibility at Career Connect Hub</Link>
               </li>
               <li>
-                <Link href="/">Work at Indeed</Link>
+                <Link href="/">Work at Career Connect Hub</Link>
               </li>
               <li>
                 <Link href="/">Countries</Link>
               </li>
               <li>
-                <Link href="/">Work at Indeed</Link>
+                <Link href="/">Work at Career Connect Hub</Link>
               </li>
             </ul>
           </div>
@@ -77,7 +95,7 @@ const Footer = () => {
                 <Link href="/">Skills test</Link>
               </li>
               <li>
-                <Link href="/">LEAD with Indeed</Link>
+                <Link href="/">LEAD with Career Connect Hub</Link>
               </li>
             </ul>
           </div>
@@ -94,7 +112,7 @@ const Footer = () => {
                 <Link href="/">How to write job descriptions</Link>
               </li>
               <li>
-                <Link href="/">Guide to hiring with Indeed</Link>
+                <Link href="/">Guide to hiring with Career Connect Hub</Link>
               </li>
               <li>
                 <Link href="/">Interview questions guide</Link>
@@ -106,10 +124,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className={styles.bottom_section}>
+      <div
+        className={styles.bottom_section}
+      >
         <div className={styles.bottom_section_left}>
-          <Link href="/">CareerHub-Connect</Link>
-          ©2023{" "}
+          <Link href="/">Career Connect Hub </Link>© 2023{" "}
         </div>
         <div className={styles.bottom_section_middle}>
           <Link href="/">Your privacy choices</Link>

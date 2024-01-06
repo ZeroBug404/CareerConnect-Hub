@@ -1,69 +1,15 @@
+/* eslint-disable @next/next/no-async-client-component */
 "use client";
 
-import { Button, Card, Col, Row, Typography, Tag } from "antd";
+import { IJobData } from "@/types";
+import { RiseOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Row, Flex } from "antd";
 import Search from "antd/es/input/Search";
-import Title from "antd/es/typography/Title";
 import Link from "next/link";
-import React, { useState } from "react";
-const { Text, Paragraph } = Typography;
+import { useEffect, useState } from "react";
 
-const JobFeed = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const jobData = [
-    {
-      _id: 1,
-      title: "Frontend Developer",
-      location: "VenU eLearning Solutions Smyrna",
-      type: "Remote Full-time",
-      contract: "Contract",
-    },
-    {
-      _id: 2,
-      title: "Backend Developer",
-      location: "Tech Innovations Inc. San Francisco",
-      type: "On-site",
-      contract: "Full-time",
-    },
-    {
-      _id: 3,
-      title: "React Developer",
-      location: "Awesome Tech Co. New York, NY",
-      type: "Remote Part-time",
-      contract: "Freelance",
-    },
-    {
-      _id: 4,
-      title: "UI/UX Designer",
-      location: "Creative Designs Ltd. Los Angeles",
-      type: "On-site",
-      contract: "Full-time",
-    },
-    {
-      _id: 5,
-      title: "Data Scientist",
-      location: "Data Insights Corp. Chicago",
-      type: "Remote",
-      contract: "Contract",
-    },
-    {
-      _id: 6,
-      title: "Mobile App Developer",
-      location: "Mobile Innovations Ltd. Seattle",
-      type: "On-site",
-      contract: "Full-time",
-    },
-  ];
-
-  const filteredJobs = jobData.filter((job) =>
-    job.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleSearch = (value: string) => {
-    setSearchTerm(value);
-    console.log("Search term:", value);
-  };
-
+const JobFeed = async () => {
+  const [data, setData] = useState([]);
   return (
     <div style={{ padding: "16px" }}>
       <div
@@ -80,7 +26,6 @@ const JobFeed = () => {
           placeholder="Search for jobs"
           enterButton="Search"
           size="large"
-          onSearch={handleSearch}
           style={{
             maxWidth: "500px",
             width: "100%",
@@ -94,40 +39,46 @@ const JobFeed = () => {
         }}
       >
         <h2>Job Feed</h2>
-        <Paragraph>
-          <Text strong>We are working on your personalized job feed.</Text>
-        </Paragraph>
-        <Paragraph>
-          In the meantime, run a search to find your next job
-        </Paragraph>
-        {/* <Button style={{ borderColor: '#1890ff', color: '#1890ff' }}>Find Job</Button> */}
+        <h4>We are working on your personalized job feed.</h4>
+        <p>In the meantime, run a search to find your next job</p>
       </div>
 
       <Row gutter={[16, 24]}>
-        {filteredJobs.map((job, index) => (
-          <Col xs={24} sm={12} md={8} lg={8} key={index}>
-            <Card
-              title={<Title level={4}>{job.title}</Title>}
-              bordered={false}
+        {data?.map((job: IJobData) => (
+          <Col xs={24} sm={12} md={8} lg={8} key={job?._id}>
+            <div
               style={{
-                width: "100%",
                 height: "100%",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
               }}
             >
-              <Text strong>Location: </Text>
-              <Text>{job.location}</Text>
-              <br />
-              <Text strong>Type: </Text>
-              <Text>{job.type}</Text>
-              <br />
-              <Text strong>Contract: </Text>
-              <Text>{job.contract}</Text>
-              <br />
-              <Button type="primary" style={{ marginTop: "16px" }}>
-                <Link href={`/jobDetails/${job._id}`}>Job Details</Link>
-              </Button>
-            </Card>
+              <Flex
+                style={{
+                  padding: "10px",
+                  color: "blue",
+                }}
+                wrap="wrap"
+                gap="small"
+              >
+                <RiseOutlined /> <p>Active Hiring</p>
+              </Flex>
+              <Card title={job?.title} bordered={false}>
+                <h4>{job?.company}</h4>
+                <br />
+                <Flex wrap="wrap" gap="small">
+                  <p>Location: {job?.location},</p>
+                  <p>JobType: {job?.jobType},</p>
+                  <p> Joining Date: {job?.joiningDate},</p>
+                  <p>CTC: {job?.salary},</p>
+                  <p>Experience: {job?.experienceLevel}</p>
+                </Flex>
+                <br />
+                <Flex wrap="wrap" gap="small" justify="end" align="center">
+                  <Link href={`/jobDetails/${job?._id}`}>View Details</Link>
+                  <Button type="primary">Apply Now</Button>
+                </Flex>
+              </Card>
+            </div>
           </Col>
         ))}
       </Row>

@@ -14,9 +14,14 @@
   padding: 1.5rem;
 }
 
-.bannerText {
+.bannerText1 {
   font-size: 1.2rem;
   margin-bottom: 1.8rem;
+}
+
+.bannerText2 {
+  font-size: 1.2rem;
+  margin-bottom: 3.8rem;
 }
 
 .bannerTitle {
@@ -26,15 +31,21 @@
 
 .bannerButton {
   background-color: #e0a961 !important;
+  color: black !important;
   width: 12rem !important;
   height: 3.5rem !important;
   font-weight: bold !important;
   border: none !important;
 }
 
+.bannerButton:hover {
+  background-color: #f0bb77 !important;
+}
+
 .bannerImage {
   width: 100%;
-  min-height: 38rem;
+  min-height: 38.2rem;
+  margin: -4px;
 }
 
 @media screen and (max-width: 768px) {
@@ -42,14 +53,20 @@
     font-size: 1rem;
     margin-bottom: 1.8rem;
   }
+  .bannerText2 {
+    width: 80%;
+    margin-bottom: 3.8rem;
+  }
+  .bannerImage {
+    max-height: 30.2rem;
+  }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .bannerTitle {
     font-size: 2rem;
   }
   .bannerImage {
-    width: 100%;
     min-height: 22rem;
   }
 }

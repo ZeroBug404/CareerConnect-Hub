@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* @import "antd/dist/antd.css"; */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap");
 * {
@@ -8,7 +12,7 @@
   scroll-behavior: smooth;
 }
 
-/* Header styles */
+/* ------------------ Header styles -------------------- */
 .custom-menu .ant-menu-item:hover {
   color: white !important;
 }
@@ -33,3 +37,4 @@
     justify-content: start;
   }
 }
+/* ------------------ Header styles end -------------------- */

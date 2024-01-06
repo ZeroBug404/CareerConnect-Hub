@@ -1,0 +1,137 @@
+.container {
+  background-color: #eeeeee;
+}
+
+.jobDetails {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 10px;
+  width: 100%;
+  margin: 1.4rem 0;
+}
+
+.jobHeaderCompany {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.jobHeaderTitle {
+  font-size: 1.2rem;
+  color: #2557a7;
+}
+.deadline {
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+.buttonContainer {
+  margin: 0.6rem;
+}
+
+.summaryContainer {
+  background-color: #eeeeee;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1.4rem 0;
+  border: 1px solid #b4b2b270;
+}
+.summaryHeader {
+  font-size: 1.1rem;
+  color: #b32d7d;
+}
+.summaryList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  list-style: none;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+.listItem {
+  font-weight: 550;
+}
+
+.ReusibleContainer {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1.4rem 0;
+  border: 1px solid #b4b2b270;
+}
+
+.responsibilityHeader {
+  font-size: 1.1rem;
+  color: #b32d7d;
+}
+.responsibilityText {
+  margin-top: 1.5rem;
+}
+
+.educationalHeader {
+  font-size: 1.1rem;
+  color: #b32d7d;
+}
+.educationalul {
+  margin-top: 0.7rem;
+  margin-left: 2.8rem;
+}
+.educationalList {
+  margin-bottom: 0.8rem;
+}
+
+.additionalHeader {
+  font-size: 1.1rem;
+  color: #b32d7d;
+  margin-top: 1.5rem;
+}
+
+.compensationList {
+  margin-top: 0.7rem;
+  margin-left: 2.8rem;
+}
+
+.reusableText {
+  margin-top: 0.6rem;
+}
+
+.applyProcedureText {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.companyInfoContainer {
+  background-color: #eeeeee;
+  padding: 15px;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 1.4rem;
+  border: 1px solid #b4b2b270;
+}
+
+.companyInfoHeader {
+  font-size: 1.1rem;
+  color: #b32d7d;
+}
+
+.companyName {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #2557a7;
+}
+
+.companyAddress {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.companyType {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .summaryList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+  }
+}
