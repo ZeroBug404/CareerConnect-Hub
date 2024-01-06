@@ -28,7 +28,6 @@ const CreateJob = () => {
       skills: [mSkills],
       benefits: [mBenefits],
       numberOfOpenings: mOpeningsData,
-      companyId: "6587f647a3d02b0cf0caa3aa",
     };
     message.loading("Publishing...");
 

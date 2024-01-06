@@ -78,7 +78,7 @@ const BlogPage = () => {
               </Button>
             </Link>
             <Button
-              onClick={() => deleteHandler(data?.id)}
+              onClick={() => deleteHandler(data)}
               type="primary"
               danger
             >
