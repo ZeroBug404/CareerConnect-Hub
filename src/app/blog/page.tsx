@@ -1,12 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import styles from "@/Styles/blog.module.css";
-import Footer from "@/components/ui/Footer";
-import NavBar from "@/components/ui/NavBar";
+
+
 import { useBlogsQuery } from "@/redux/api/blogApi";
 import { IBlogData } from "@/types";
 import { CalendarOutlined, UserOutlined } from "@ant-design/icons";
 import { Col, Row } from "antd";
+import React from "react";
+import NavBar from "../../components/ui/NavBar";
+import Footer from "../../components/ui/Footer";
 
 const Blog = () => {
   const { data } = useBlogsQuery({});
