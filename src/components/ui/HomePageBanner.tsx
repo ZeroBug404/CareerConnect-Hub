@@ -1,7 +1,6 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import styles from "@/Styles/HomePageBanner.module.css";
 import { Button, Col, Row } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
@@ -25,8 +24,8 @@ const HomePageBanner = () => {
           <p>CareerConnect Hub FOR EMPLOYERS</p>
           <h1
             style={{
-              fontSize: "30px",
-              padding: "20px 0",
+              fontSize: "40px",
+              padding: "30px 0",
             }}
           >
             Find Your Next Job with CareerConnect Hub
@@ -34,14 +33,20 @@ const HomePageBanner = () => {
           <p
             style={{
               fontSize: "18px",
-              paddingBottom: "20px",
+              paddingBottom: "30px",
             }}
           >
             No matter the skills, experience, or qualifications you’re looking
             for, you’ll find the right people on CareerConnect Hub’s matching
             and hiring platform.
           </p>
-          <Button type="primary" onClick={() => setOpen(true)}>
+          <Button onClick={() => setOpen(true)} style={{
+            padding: "0 30px",
+            fontSize: "18px",
+            background: "#1967d2",
+            color: "white",
+            border: "none"
+          }}>
             Post a Job
           </Button>
         </Col>
@@ -50,7 +55,7 @@ const HomePageBanner = () => {
             style={{
               width: "100%",
             }}
-            src="/assets/home1.png"
+            src="/assets/home2.png"
             alt="Banner Image"
           />
         </Col>
