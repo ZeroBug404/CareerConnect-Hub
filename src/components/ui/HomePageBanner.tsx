@@ -69,7 +69,7 @@ const HomePageBanner = () => {
       >
         <Col xs={24} sm={12} data-aos="zoom-in-right" data-aos-duration="3000">
           <p>CareerConnect Hub FOR EMPLOYERS</p>
-          <h1 className="lg:text-2xl font-bold text-xl py-5 ">
+          <h1 className="lg:text-4xl font-bold text-xl py-5 ">
             Find Your Next Job with CareerConnect Hub
           </h1>
           <p className="pb-5 lg:text-lg">
