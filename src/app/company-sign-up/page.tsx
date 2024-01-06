@@ -70,7 +70,14 @@ const AddCompany = () => {
           ]}
         />
         <Form submitHandler={onSubmit}>
-          <h2>Create company</h2>
+          <h2
+            style={{
+              color: "#1F2B6C",
+              textAlign: "center",
+            }}
+          >
+            Create company
+          </h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -374,7 +381,6 @@ const AddCompany = () => {
               >
                 <FormTextArea name="description" label="Description" rows={3} />
               </Col>
-              
             </Row>
           </div>
           <div style={{ margin: "10px 0" }}>

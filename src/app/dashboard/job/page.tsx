@@ -100,9 +100,9 @@ const JobPage = () => {
     <div>
       <h2
         style={{
-          padding: "15px",
           color: "#1F2B6C",
           textAlign: "center",
+          margin: "30px 0",
         }}
       >
         Job Details

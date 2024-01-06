@@ -60,9 +60,9 @@ const EditBlogPage = ({ params }: any) => {
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
           <h2
             style={{
-              padding: "15px",
               color: "#1F2B6C",
               textAlign: "center",
+              margin: "30px 0",
             }}
           >
             Update Blog

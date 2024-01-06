@@ -44,10 +44,9 @@ const UpdateCompany = ({ params }: any) => {
       <Form submitHandler={onSubmit}>
         <h2
           style={{
-            padding: "15px",
             color: "#1F2B6C",
             textAlign: "center",
-            marginBottom: "20px",
+            margin: "30px 0",
           }}
         >
           Update Company

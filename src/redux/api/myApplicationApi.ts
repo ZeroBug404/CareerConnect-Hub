@@ -3,6 +3,7 @@ import { baseApi } from "./baseApi";
 
 const MYAPPLICATION_URL = "/applied-job/applicant";
 
+
 export const myApplicationApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     job: build.query({

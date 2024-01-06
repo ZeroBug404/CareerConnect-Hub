@@ -1,7 +1,13 @@
+import { getFromLocalStorage } from "@/utils/local-storage";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
 const EVENTS_URL = "/events";
+
+const token = getFromLocalStorage("accessToken");
+const headers = {
+  Authorization: `${token}`
+}
 
 export const eventApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -19,6 +25,7 @@ export const eventApi = baseApi.injectEndpoints({
         url: EVENTS_URL,
         method: "POST",
         body: data,
+        headers: headers
       }),
       invalidatesTags: [tagTypes.event],
     }),
@@ -38,6 +45,7 @@ export const eventApi = baseApi.injectEndpoints({
         url: `${EVENTS_URL}/${data.id}`,
         method: "PATCH",
         data: data,
+        headers: headers
       }),
       invalidatesTags: [tagTypes.event],
     }),
@@ -47,6 +55,7 @@ export const eventApi = baseApi.injectEndpoints({
       query: (id) => ({
         url: `${EVENTS_URL}/${id}`,
         method: "DELETE",
+        headers: headers
       }),
       invalidatesTags: [tagTypes.event],
     }),

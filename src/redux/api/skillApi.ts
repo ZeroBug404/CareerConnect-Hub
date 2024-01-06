@@ -1,7 +1,13 @@
+import { getFromLocalStorage } from "@/utils/local-storage";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
 const SKILL_URL = "/skill";
+
+const token = getFromLocalStorage("accessToken");
+const headers = {
+  Authorization: `${token}`
+}
 
 export const skillApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -20,6 +26,7 @@ export const skillApi = baseApi.injectEndpoints({
               url: SKILL_URL,
               method: "POST",
               body: data,
+              headers: headers
           }),
           invalidatesTags: [tagTypes.skill],
       }),
@@ -37,6 +44,7 @@ export const skillApi = baseApi.injectEndpoints({
               url: `${SKILL_URL}/${data.id}`,
               method: "PATCH",
               data: data.body,
+              headers: headers
           }),
           invalidatesTags: [tagTypes.skill],
       }),
@@ -45,6 +53,7 @@ export const skillApi = baseApi.injectEndpoints({
           query: (id) => ({
               url: `${SKILL_URL}/${id}`,
               method: "DELETE",
+              headers: headers
           }),
           invalidatesTags: [tagTypes.skill],
       }),

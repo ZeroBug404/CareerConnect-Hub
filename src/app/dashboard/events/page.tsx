@@ -97,15 +97,15 @@ const EventsPage = () => {
 
   return (
     <div>
-        <h2
-          style={{
-            padding: "15px",
-            color: "#1F2B6C",
-            textAlign: "center",
-          }}
-        >
-          Event Details
-        </h2>
+      <h2
+        style={{
+          color: "#1F2B6C",
+          textAlign: "center",
+          margin: "30px 0",
+        }}
+      >
+        Event Details
+      </h2>
       <CareerTable
         loading={isLoading}
         columns={columns}
