@@ -25,6 +25,9 @@ const AddCompany = () => {
         website: companyData.website,
         logoUrl: companyData.logoUrl,
         size: companyData.size,
+        password: companyData.password,
+        numberOfEmployees: companyData.numberOfEmployees,
+        introducing: companyData.introducing,
         socialMedia: {
           twitter: companyData.twitter,
           linkedin: companyData.linkedin,
@@ -68,6 +71,122 @@ const AddCompany = () => {
         />
         <Form submitHandler={onSubmit}>
           <h2>Create company</h2>
+          <div
+            style={{
+              border: "1px solid #d9d9d9",
+              borderRadius: "5px",
+              padding: "15px",
+              margin: "10px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "18px",
+                marginBottom: "10px",
+              }}
+            >
+              Contact Information
+            </p>
+            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="email"
+                  type="text"
+                  label="Email"
+                  size="small"
+                />
+              </Col>
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="password"
+                  type="password"
+                  label="Password"
+                  size="small"
+                />
+              </Col>
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="phone"
+                  type="text"
+                  label="Phone"
+                  size="small"
+                />
+              </Col>
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="twitter"
+                  type="text"
+                  size="small"
+                  label="Twitter"
+                />
+              </Col>
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="linkedin"
+                  type="text"
+                  size="small"
+                  label="Linkedin"
+                />
+              </Col>
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="facebook"
+                  type="text"
+                  size="small"
+                  label="Facebook"
+                />
+              </Col>
+            </Row>
+          </div>
+
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -160,25 +279,6 @@ const AddCompany = () => {
                   options={sizes}
                 />
               </Col>
-            </Row>
-          </div>
-          <div
-            style={{
-              border: "1px solid #d9d9d9",
-              borderRadius: "5px",
-              padding: "15px",
-              margin: "10px 0",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "18px",
-                marginBottom: "10px",
-              }}
-            >
-              Contact Information
-            </p>
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               <Col
                 xs={24}
                 sm={12}
@@ -189,78 +289,15 @@ const AddCompany = () => {
                 }}
               >
                 <FormInput
-                  name="email"
+                  name="numberOfEmployees"
                   type="text"
-                  label="Email"
+                  label="Number Of Employees"
                   size="small"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="phone"
-                  type="text"
-                  label="Phone"
-                  size="small"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="twitter"
-                  type="text"
-                  size="small"
-                  label="Twitter"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="linkedin"
-                  type="text"
-                  size="small"
-                  label="Linkedin"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="facebook"
-                  type="text"
-                  size="small"
-                  label="Facebook"
                 />
               </Col>
             </Row>
           </div>
+
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -316,11 +353,28 @@ const AddCompany = () => {
                 md={8}
                 lg={8}
                 style={{
+                  margin: "5px 0",
+                }}
+              >
+                <FormInput
+                  name="introducing"
+                  type="text"
+                  size="small"
+                  label="Introducing"
+                />
+              </Col>
+              <Col
+                xs={24}
+                sm={12}
+                md={8}
+                lg={8}
+                style={{
                   margin: "10px 0",
                 }}
               >
                 <FormTextArea name="description" label="Description" rows={3} />
               </Col>
+              
             </Row>
           </div>
           <div style={{ margin: "10px 0" }}>

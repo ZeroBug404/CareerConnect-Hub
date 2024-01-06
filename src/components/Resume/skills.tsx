@@ -133,7 +133,7 @@ const Skills = () => {
             width={650}
             title={""}
           >
-            {/* Pass the selected ID to the UpdateExperienceModal */}
+            {/* Pass the selected ID */}
             <UpdateSkillModal id={selectedId} />
           </GlobalModal>
         </Col>

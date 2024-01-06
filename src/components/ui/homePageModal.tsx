@@ -11,7 +11,7 @@ const HomePageModal = () => {
   return (
     <div>
       <p style={{ fontSize: "1rem", marginTop: "1rem", marginBottom: ".5rem" }}>
-        Dont have an account?? <Link href="/companySignUp">Sign up</Link>
+        Dont have an account?? <Link href="/company-sign-up">Sign up</Link>
       </p>
       <p
         style={{

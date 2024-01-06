@@ -1,52 +1,95 @@
-.homeBlog {
-  padding: 0 20px;
-  margin: 2rem auto;
-  max-width: 90%;
-}
-
-.homeBlogCol {
-  padding: 1rem;
-}
-
-.homeBlogTitle {
-  font-size: 3rem;
-  margin-bottom: 30px;
+.title {
+  margin: 5px 0;
   text-align: center;
-  font-weight: 400;
+  font-size: 3rem;
 }
 
-.homeBlogCard {
+.CardContainer {
   width: 100%;
-  height: 32rem;
-  padding: 1rem;
-  margin: 20px;
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+
+.CardDesign {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.6rem;
+}
+
+.CardDesign:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cardImage {
+  width: 100%;
+  height: 20rem;
+  border-radius: 0.5rem;
+}
+
+.cardTextContainer {
+  padding: 1.5rem;
+  height: 15em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.cardText {
+  margin-top: 0.6rem;
+  font-size: 1.6rem;
+  line-height: 1.3;
 }
 
 @media screen and (max-width: 768px) {
-  .homeBlog {
-    padding: 0 1.2rem;
-    margin: 1rem auto;
+  .title {
+    margin: 5px 0;
+    text-align: center;
+    font-size: 2.1rem;
   }
-  .homeBlogTitle {
-    font-size: 2.3rem;
-  }
-  .homeBlogCard {
-    max-height: 35rem;
-    margin-bottom: 15px;
+  .CardContainer {
+    width: 95%;
+    margin: 2rem auto;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 2rem;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .homeBlog {
-    max-width: 100%;
-    padding: 0 1rem;
-    margin: 0.5rem auto;
-  }
-  .homeBlogTitle {
+  .title {
     font-size: 1.8rem;
+    line-height: 2.4rem;
   }
-  .homeBlogCard {
-    max-height: 25rem;
-    margin-bottom: 20px;
+
+  .CardContainer {
+    width: 92%;
+    margin: 2rem auto;
+    grid-gap: 1rem;
+  }
+
+  .cardImage {
+    width: 100%;
+    height: 16rem;
+    border-radius: 0.5rem;
+  }
+
+  .cardTextContainer {
+    height: 16em;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .cardText {
+    margin-top: 0.6rem;
+    font-size: 1.2rem;
+    line-height: 1.3;
   }
 }

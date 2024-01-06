@@ -5,19 +5,11 @@ import {
   useCompaniesQuery,
   useDeleteCompanyMutation,
 } from "@/redux/api/companyApi";
-import { DeleteOutlined } from "@ant-design/icons";
-import { Button, Switch, message } from "antd";
+import { DataType } from "@/types";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Button, message } from "antd";
+import Link from "next/link";
 import { useState } from "react";
-
-interface DataType {
-  index: number;
-  industry: string;
-  name: string;
-  email: string;
-  phone: string;
-  update: string;
-  delete: string;
-}
 
 const CompanyTable = () => {
   const query: Record<string, any> = {};
@@ -88,33 +80,32 @@ const CompanyTable = () => {
     },
     {
       title: "Status",
-      dataIndex: "id",
-      render: function (data: any) {
-        return (
-          <>
-            <Switch />
-          </>
-        );
-      },
+      dataIndex: "status",
+      key: "status",
     },
+
     {
       title: "Action",
       dataIndex: "id",
       render: function (data: any) {
         return (
           <>
-            {/* <Link href={`/dashboard/company/edit/${data}`}>
+            <Link href={`/dashboard/company/edit/${data}`}>
               <Button
                 style={{
                   margin: "0px 5px",
                 }}
-                type="primary"
                 onClick={() => console.log(data)}
+                type="primary"
               >
                 <EditOutlined />
               </Button>
-            </Link> */}
-            <Button type="primary" danger onClick={() => deleteHandler(data)}>
+            </Link>
+            <Button
+              type="primary"
+              danger
+              onClick={() => deleteHandler(data?.id)}
+            >
               <DeleteOutlined />
             </Button>
           </>
@@ -125,11 +116,15 @@ const CompanyTable = () => {
 
   return (
     <>
-      {/* <Link href="/dashboard/company/create">
-        <Button type="primary" style={{ margin: "10px 0" }}>
-          Add a Company?
-        </Button>
-      </Link> */}
+      <h2
+        style={{
+          padding: "15px",
+          color: "#1F2B6C",
+          textAlign: "center",
+        }}
+      >
+        Company Details
+      </h2>
       <CareerTable
         loading={isLoading}
         columns={columns}

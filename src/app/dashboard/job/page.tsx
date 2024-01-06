@@ -98,11 +98,15 @@ const JobPage = () => {
 
   return (
     <div>
-      <Link href="/dashboard/job/create">
-        <Button type="primary" style={{ margin: "10px 0" }}>
-          Publish a job?
-        </Button>
-      </Link>
+      <h2
+        style={{
+          padding: "15px",
+          color: "#1F2B6C",
+          textAlign: "center",
+        }}
+      >
+        Job Details
+      </h2>
       <CareerTable
         loading={isLoading}
         columns={columns}

@@ -1,18 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+
 import CareerTable from "@/components/ui/CareerTable";
 import { useDeleteFAQMutation, useFAQsQuery } from "@/redux/api/faqApi";
+import { IFaqData } from "@/types";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
-
-interface DataType {
-  index: number;
-  name: string;
-  update: string;
-  delete: string;
-}
 
 const FAQTable = () => {
   const query: Record<string, any> = {};
@@ -60,7 +55,7 @@ const FAQTable = () => {
       title: "",
       dataIndex: "index",
       key: "index",
-      render: (_: any, record: DataType) => record.index,
+      render: (_: any, record: IFaqData) => record.index,
     },
     {
       title: "Name",
@@ -68,25 +63,32 @@ const FAQTable = () => {
       key: "name",
     },
     {
-      title: "Update",
+      title: "Action",
       dataIndex: "id",
-      key: "update",
-      render: (data: any) => (
-        <Link href={`/dashboard/faq/edit/${data}`}>
-          <Button type="primary" onClick={() => console.log(data)}>
-            <EditOutlined />
-          </Button>
-        </Link>
-      ),
-    },
-    {
-      title: "Delete",
-      dataIndex: "id",
-      render: (data: any) => (
-        <Button type="primary" danger onClick={() => deleteHandler(data)}>
-          <DeleteOutlined />
-        </Button>
-      ),
+      render: function (data: any) {
+        return (
+          <>
+            <Link href={`/dashboard/faq/edit/${data}`}>
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                type="primary"
+                onClick={() => console.log(data)}
+              >
+                <EditOutlined />
+              </Button>
+            </Link>
+            <Button
+              type="primary"
+              danger
+              onClick={() => deleteHandler(data?.id)}
+            >
+              <DeleteOutlined />
+            </Button>
+          </>
+        );
+      },
     },
   ] as const;
 

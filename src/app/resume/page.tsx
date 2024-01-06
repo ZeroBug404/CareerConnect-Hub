@@ -10,10 +10,8 @@ import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import Footer from "@/components/ui/Footer";
 import NavBar from "@/components/ui/NavBar";
 import {
-  ArrowLeftOutlined,
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
-import Link from "next/link";
 
 const ResumePage = () => {
   return (

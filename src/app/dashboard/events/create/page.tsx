@@ -57,14 +57,6 @@ const CreateEventPage = () => {
 
   return (
     <>
-      <CareerBreadCrumb
-        items={[
-          {
-            label: "View Events",
-            link: "/dashboard/events",
-          },
-        ]}
-      />
       <div
         style={{
           padding: "20px",
@@ -73,8 +65,24 @@ const CreateEventPage = () => {
           width: "100%",
         }}
       >
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "View Events",
+              link: "/dashboard/events",
+            },
+          ]}
+        />
         <Form submitHandler={onSubmit}>
-          <h2>Publish a Event</h2>
+          <h2
+            style={{
+              padding: "15px",
+              color: "#1F2B6C",
+              textAlign: "center",
+            }}
+          >
+            Publish a Event
+          </h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -104,7 +112,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="event"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Name of Event"
                 />
               </Col>
@@ -120,7 +128,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="location"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Location"
                 />
               </Col>
@@ -136,7 +144,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="image"
                   type="text"
-                  size="large"
+                  size="small"
                   label="URL of Image"
                 />
               </Col>
@@ -171,7 +179,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="title"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Title"
                 />
               </Col>
@@ -187,7 +195,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="nameOfSpeaker"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Name of Speaker"
                 />
               </Col>
@@ -200,7 +208,7 @@ const CreateEventPage = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormInput name="bio" type="text" size="large" label="Bio" />
+                <FormInput name="bio" type="text" size="small" label="Bio" />
               </Col>
             </Row>
           </div>
@@ -233,7 +241,7 @@ const CreateEventPage = () => {
                 <FormInput
                   name="agenda"
                   type="text"
-                  size="large"
+                  size="small"
                   label="Agenda Name"
                 />
               </Col>
@@ -249,10 +257,11 @@ const CreateEventPage = () => {
                 <p>Time</p>
                 <TimePicker
                   // name="time"
-                  size="large"
+                  size="small"
                   style={{
                     width: "100%",
                     margin: "6px 0",
+                    border: "1px solid #159EEC",
                   }}
                   // defaultValue={dayjs("12:08", format)}
                   format={format}
@@ -304,12 +313,11 @@ const CreateEventPage = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="date" label="Date & Time" />
+                <FormDatePicker name="date" label="Date & Time" size="small" />
               </Col>
             </Row>
           </div>
-
-          <div style={{ margin: "10px 0" }}>
+          <div style={{ margin: "10px 0", textAlign: "left" }}>
             <Button type="primary" htmlType="submit" size="large">
               Add Event
             </Button>

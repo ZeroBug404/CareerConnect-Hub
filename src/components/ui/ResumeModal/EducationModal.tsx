@@ -6,28 +6,18 @@ import {
   educationYearOptions,
   performanceScale,
 } from "../../../constants/global";
-// import {
-//   educationYearOptions,
-//   performanceScale,
-// } from "@/components/constants/global";
 import { useAddEducationMutation } from "@/redux/api/educationApi";
-import { getUserInfo } from "@/services/auth.service";
+
 import { Button, message } from "antd";
+import { getUserInfo } from "@/services/auth.service";
 
 const EducationModal = () => {
   const [addEducation] = useAddEducationMutation();
 
-  const { email } = getUserInfo() as any;
-
   const onSubmit = async (educationData: any) => {
     message.loading("Adding...");
     try {
-      const educationDataWithEmail = {
-        ...educationData,
-        userEmail: email,
-      };
-      
-      await addEducation(educationDataWithEmail);
+      await addEducation(educationData);
       message.success("Education added successfully");
     } catch (err: any) {
       console.error(err.message);

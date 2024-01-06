@@ -43,14 +43,6 @@ const CreateJob = () => {
 
   return (
     <>
-      <CareerBreadCrumb
-        items={[
-          {
-            label: "View Jobs",
-            link: "/dashboard/job",
-          },
-        ]}
-      />
       <div
         style={{
           padding: "20px",
@@ -59,8 +51,24 @@ const CreateJob = () => {
           width: "100%",
         }}
       >
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "View Jobs",
+              link: "/dashboard/job",
+            },
+          ]}
+        />
         <Form submitHandler={onSubmit}>
-          <h2>Publish a job</h2>
+          <h2
+            style={{
+              padding: "15px",
+              color: "#1F2B6C",
+              textAlign: "center",
+            }}
+          >
+            Publish a job
+          </h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -376,6 +384,7 @@ const CreateJob = () => {
                   name="joiningDate"
                   type="date"
                   label="Joining Date"
+                  size="small"
                 />
               </Col>
               <Col
@@ -387,7 +396,7 @@ const CreateJob = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormInput name="deadline" type="date" label="Deadline" />
+                <FormInput name="deadline" type="date" label="Deadline" size="small"/>
               </Col>
             </Row>
           </div>

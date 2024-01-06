@@ -5,19 +5,20 @@ import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
 import { useAddBlogMutation } from "@/redux/api/blogApi";
+import { IBlogData } from "@/types";
 import { Button, Col, Row, message } from "antd";
 import { useRouter } from "next/navigation";
 
 const CreateBlog = () => {
   const [addBlog] = useAddBlogMutation();
-  const router = useRouter()
+  const router = useRouter();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: IBlogData) => {
     message.loading("Adding...");
     try {
       await addBlog(data);
       message.success("Blog added successfully");
-      router.push('/dashboard/blog')
+      router.push("/dashboard/blog");
     } catch (err: any) {
       console.error(err.message);
       message.error(err.message);
@@ -26,14 +27,6 @@ const CreateBlog = () => {
 
   return (
     <>
-      <CareerBreadCrumb
-        items={[
-          {
-            label: "View Blog",
-            link: "/dashboard/blog",
-          },
-        ]}
-      />
       <div
         style={{
           padding: "20px",
@@ -42,8 +35,24 @@ const CreateBlog = () => {
           width: "100%",
         }}
       >
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "View Blog",
+              link: "/dashboard/blog",
+            },
+          ]}
+        />
         <Form submitHandler={onSubmit}>
-          <h2>Publish a blog</h2>
+          <h2
+            style={{
+              padding: "15px",
+              color: "#1F2B6C",
+              textAlign: "center",
+            }}
+          >
+            Publish a blog
+          </h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
@@ -109,22 +118,6 @@ const CreateBlog = () => {
                   label="Publish Date"
                 />
               </Col>
-              {/* <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="views"
-                  type="number"
-                  size="small"
-                  label="Views"
-                />
-              </Col>
               <Col
                 xs={24}
                 sm={12}
@@ -135,26 +128,10 @@ const CreateBlog = () => {
                 }}
               >
                 <FormInput
-                  name="likes"
-                  type="number"
-                  size="small"
-                  label="Likes"
-                />
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormInput
-                  name="commentText"
+                  name="img"
                   type="text"
                   size="small"
-                  label="Comment Text"
+                  label="Image Link"
                 />
               </Col>
               <Col
@@ -166,27 +143,7 @@ const CreateBlog = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormInput
-                  name="commentDate"
-                  type="date"
-                  size="small"
-                  label="Comment Date"
-                />
-              </Col> */}
-              <Col
-                xs={24}
-                sm={12}
-                md={8}
-                lg={8}
-                style={{
-                  margin: "5px 0",
-                }}
-              >
-                <FormTextArea
-                  name="content"
-                  label="Content"
-                  rows={4}
-                />
+                <FormTextArea name="content" label="Content" rows={4} />
               </Col>
             </Row>
           </div>

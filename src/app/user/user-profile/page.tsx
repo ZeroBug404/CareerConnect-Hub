@@ -1,11 +1,36 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import styles from "@/Styles/UserProfile.module.css";
-import userImage from "@/assets/user-img.jpg";
+import { useEducationQuery } from "@/redux/api/educationApi";
+import { usePortfolioQuery } from "@/redux/api/portfolioApi";
+import { useProjectQuery } from "@/redux/api/projectApi";
+import { useSkillQuery } from "@/redux/api/skillApi";
+import { useTrainingQuery } from "@/redux/api/trainingApi";
+import { useUserProfileQuery } from "@/redux/api/userApi";
+import { useWorkExperienceQuery } from "@/redux/api/workExperienceApi";
+import { getUserInfo, getUserToken } from "@/services/auth.service";
 import { Progress } from "antd";
 import Image from "next/image";
 
-const page = () => {
+const UserProfile = () => {
+  const { email } = getUserInfo() as any;
+  const authToken = getUserToken() as any;
+
+  const { data: UserProfileData, isLoading: UserProfileIsLoading } =
+    useUserProfileQuery(authToken);
+
+  const { data: EducationData, isLoading: EducationIsLoading } =
+    useEducationQuery(email);
+  const { data: ProjectData, isLoading: ProjectIsLoading } =
+    useProjectQuery(email);
+  const { data: PortfolioData, isLoading: PortfolioIsLoading } =
+    usePortfolioQuery(email);
+  const { data: TrainingData, isLoading: TrainingIsLoading } =
+    useTrainingQuery(email);
+  const { data: SkillData, isLoading: SkillIsLoading } = useSkillQuery(email);
+  const { data: ExperienceData, isLoading: ExperienceIsLoading } =
+    useWorkExperienceQuery(email);
+
   return (
     <div className={styles.main_body}>
       <div className={styles.top_section}>
@@ -37,30 +62,39 @@ const page = () => {
         <div className={styles.profile_section_container}>
           <div className={styles.profile_section_info_pic}>
             <div>
-              <p className={styles.profile_section_info_Name}>User Name</p>
+              <p className={styles.profile_section_info_Name}>
+                {UserProfileData?.data?.name?.firstName}{" "}
+                {UserProfileData?.data?.name?.lastName}
+              </p>
               <p className={styles.profile_section_info_address}>
                 Detail Address
               </p>
-              <p className={styles.profile_section_info_contact}>
-                0123456789, 0134567890
-              </p>
-              <p className={styles.profile_section_info_email}>
-                user@gmail.com
-              </p>
-              <p className={styles.profile_section_info_fb}>Facebook Links</p>
-              <p className={styles.profile_section_info_linkedin}>
+              {UserProfileData?.data?.phoneNumber && (
+                <p className={styles.profile_section_info_contact}>
+                  {UserProfileData?.data?.phoneNumber}
+                </p>
+              )}
+              {UserProfileData?.data?.email && (
+                <p className={styles.profile_section_info_email}>
+                  {UserProfileData?.data?.email}
+                </p>
+              )}
+              {/* <p className={styles.profile_section_info_fb}>Facebook Links</p> */}
+              {/* <p className={styles.profile_section_info_linkedin}>
                 Linkedin Links
-              </p>
-              <p className={styles.profile_section_info_github}>Github Links</p>
+              </p> */}
+              <p className={styles.profile_section_info_github}>{PortfolioData?.data[0]?.gitHub}</p>
             </div>
             <div>
-              <Image
-                src={userImage}
-                alt={"User Image"}
-                className=""
-                width={124}
-                height={135}
-              />
+              {UserProfileData?.data?.profileImg && (
+                <Image
+                  src={UserProfileData?.data?.profileImg}
+                  alt={"User Image"}
+                  className=""
+                  width={124}
+                  height={135}
+                />
+              )}
             </div>
           </div>
           <div className={styles.profile_section_objective}>
@@ -93,46 +127,49 @@ const page = () => {
             <h3 className={styles.profile_section_title_header}>
               Employment History:
             </h3>
-            <p className={styles.profile_section_Employment_History_body}>
-              <p className={styles.profile_section_head}>
-                Total Year of Experience:{" "}
-                <span className={styles.profile_section_head_value}>
-                  2.1 yrs{" "}
-                </span>
-              </p>
-            </p>
-            <div>
-              <p className={styles.profile_section_Employment_History_body}>
-                <p className={styles.profile_section_head}>
-                  1. Executive (2.1 yrs)
+            {ExperienceData?.data?.map((data: any, key: any) => (
+              <>
+                <p className={styles.profile_section_Employment_History_body}>
+                  <p className={styles.profile_section_head}>
+                    Total Year of Experience:{" "}
+                    <span className={styles.profile_section_head_value}>
+                      2.1 yrs{" "}
+                    </span>
+                  </p>
                 </p>
-                <p className={styles.profile_section_head_value}>
-                  (11 Dec 2021 - Continuing)
-                </p>
-                <p
-                  className={styles.profile_section_head}
-                  style={{ marginTop: "20px" }}
-                >
-                  SaRa Lifestyle Ltd.
-                </p>
-                <p className={styles.profile_section_head_value}>
-                  Area of Expertise:
-                </p>
-                <p className={styles.profile_section_head_value}>
-                  HTML5 & CSS3 (1 yr), NextJs (1 yr), ReactJS (1 yr){" "}
-                </p>
-                <p
-                  className={styles.profile_section_head_value}
-                  style={{ marginTop: "20px" }}
-                >
-                  Duties/Responsibilities:{" "}
-                </p>
-                <p className={styles.profile_section_head_value}>
-                  Front-End development of both Admin and customer panel of the
-                  SaRa Lifestyle Marketplace website.{" "}
-                </p>
-              </p>
-            </div>
+                <div>
+                  <p className={styles.profile_section_Employment_History_body}>
+                    <p className={styles.profile_section_head}>
+                      {key + 1}. {data?.profile} (2.1 yrs)
+                    </p>
+                    <p className={styles.profile_section_head_value}>
+                      ({data?.startDate} - {data?.endDate})
+                    </p>
+                    <p
+                      className={styles.profile_section_head}
+                      style={{ marginTop: "20px" }}
+                    >
+                      {data?.organization}
+                    </p>
+                    <p className={styles.profile_section_head_value}>
+                      Area of Expertise:
+                    </p>
+                    <p className={styles.profile_section_head_value}>
+                      {data?.description}{" "}
+                    </p>
+                    <p
+                      className={styles.profile_section_head_value}
+                      style={{ marginTop: "20px" }}
+                    >
+                      Duties/Responsibilities:{" "}
+                    </p>
+                    <p className={styles.profile_section_head_value}>
+                      {data?.responsibility}{" "}
+                    </p>
+                  </p>
+                </div>
+              </>
+            ))}
           </div>
           <div className={styles.profile_section_Academic_Qualification}>
             <h3 className={styles.profile_section_title_header}>
@@ -153,34 +190,19 @@ const page = () => {
                   <th style={{ width: "13%" }}>Result</th>
                   <th style={{ width: "12%" }}>Pass.Year</th>
                 </tr>
-                <tr>
-                  <td>Master of Science (MSc)</td>
-                  <td>Computer Science</td>
-                  <td>Jahangirnagar University</td>
-                  <td>Enrolled</td>
-                  <td>2022</td>
-                </tr>
-                <tr>
-                  <td>Bachelor of Science (BSc) </td>
-                  <td>Computer Science & Engineering </td>
-                  <td>University of Barishal</td>
-                  <td>CGPA:3.39 out of 4 </td>
-                  <td>2017</td>
-                </tr>
-                <tr>
-                  <td>HSC</td>
-                  <td>Science</td>
-                  <td>Government Syed Hatem Ali College, Barisal </td>
-                  <td>CGPA:4.7 out of 5 </td>
-                  <td>2012</td>
-                </tr>
-                <tr>
-                  <td>SSC</td>
-                  <td>Science</td>
-                  <td>Barisal Zilla School, Barisal </td>
-                  <td>CGPA:5 out of 5 </td>
-                  <td>2010</td>
-                </tr>
+                {EducationData?.data.map((data: any, key: any) => (
+                  <>
+                    <tr>
+                      <td>{data?.degree}</td>
+                      <td>Computer Science</td>
+                      <td>{data?.college}</td>
+                      <td>
+                        {data?.performanceScale}:{data?.cgpa}{" "}
+                      </td>
+                      <td>{data?.endYear}</td>
+                    </tr>
+                  </>
+                ))}
               </table>
             </div>
           </div>
@@ -203,27 +225,22 @@ const page = () => {
                   <th style={{ width: "10%" }}>Year</th>
                   <th style={{ width: "10%" }}>Duration</th>
                 </tr>
-                <tr>
-                  <td>
-                    Advanced Mobile Game Development and Mobile Game Graphics
-                    Design organized by ICT division{" "}
-                  </td>
-                  <td></td>
-                  <td>University of Barisal</td>
-                  <td>Bangladesh</td>
-                  <td>Barisal</td>
-                  <td>2016</td>
-                  <td>2016</td>
-                </tr>
-                <tr>
-                  <td>Mobile Application Development</td>
-                  <td></td>
-                  <td>University of Barisal</td>
-                  <td>Bangladesh</td>
-                  <td>Barisal</td>
-                  <td>2014</td>
-                  <td>2014</td>
-                </tr>
+
+                {TrainingData?.data.map((data: any, key: any) => (
+                  <>
+                    <tr>
+                      <td>{data?.title} </td>
+                      <td></td>
+                      <td>{data?.organization}</td>
+                      <td>Bangladesh</td>
+                      <td>{data?.location}</td>
+                      <td>{data?.endDate}</td>
+                      <td>
+                        {data?.startDate}-{data?.endDate}
+                      </td>
+                    </tr>
+                  </>
+                ))}
               </table>
             </div>
           </div>
@@ -299,12 +316,14 @@ const page = () => {
                 <tr>
                   <td>
                     <ul style={{ paddingLeft: "1vw" }}>
-                      <li>JavaScript ES6</li>
-                      <li>Python</li>
-                      <li>ReactJS</li>
-                      <li>HTML5 & CSS3</li>
-                      <li>Firebase</li>
-                      <li>NextJs</li>
+                      {SkillData?.data[0]?.skills?.map(
+                        (data: any, key: any) => (
+                          <>
+                            {console.log("dt", data)}
+                            <li>{data}</li>
+                          </>
+                        )
+                      )}
                     </ul>
                   </td>
                   <td>
@@ -380,66 +399,112 @@ const page = () => {
             >
               <table className={styles.profile_section_Personal_Details_table}>
                 <tr>
-                  <td style={{ width: "22%" }}>Father's Name</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Father's Name
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Mr. Father </td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Mr. Father{" "}
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Mother's Name </td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Mother's Name{" "}
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Mrs. Mother</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Mrs. Mother
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Date of Birth</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Date of Birth
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>1 Jan 1996</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    1 Jan 1996
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Gender</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Gender
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Male</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Male
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Height (Meter)</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Height (Meter)
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>1.75</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    1.75
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Weight (Kg)</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Weight (Kg)
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>78</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    78
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Marital Status </td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Marital Status{" "}
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Married</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Married
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Nationality</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Nationality
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Bangladeshi</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Bangladeshi
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Religion</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Religion
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Islam</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Islam
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Permanent Address</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Permanent Address
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>
+                  <td className={styles.profile_section_table_value_width}>
                     Kuchiamora, Bheramara, Bheramara, Kushtia 7040{" "}
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Current Location</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Current Location
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Dhaka</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Dhaka
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Blood Group</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Blood Group
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>B+</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    B+
+                  </td>
                 </tr>
               </table>
             </div>
@@ -451,59 +516,97 @@ const page = () => {
             <div className={styles.profile_section_Reference_table_container}>
               <table className={styles.profile_section_Reference_table}>
                 <tr>
-                  <td style={{ width: "22%" }}>Name</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Name
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Mr. Reference </td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Mr. Reference{" "}
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Organization</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Organization
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>University Of Barisal </td>
+                  <td className={styles.profile_section_table_value_width}>
+                    University Of Barisal{" "}
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Designation</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Designation
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Lecturer</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Lecturer
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Address</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Address
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}></td>
+                  <td className={styles.profile_section_table_value_width}></td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Phone (Off.) </td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Phone (Off.){" "}
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}></td>
+                  <td className={styles.profile_section_table_value_width}></td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Phone (Res.) </td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Phone (Res.){" "}
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}></td>
+                  <td className={styles.profile_section_table_value_width}></td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Primary Mobile No</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Primary Mobile No
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>+880123456789</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    +880123456789
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Primary Email</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Primary Email
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>user@gmail.com</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    user@gmail.com
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Relation</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Relation
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Academic</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Academic
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Current Location</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Current Location
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>Dhaka</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    Dhaka
+                  </td>
                 </tr>
                 <tr>
-                  <td style={{ width: "22%" }}>Blood Group</td>
+                  <td className={styles.profile_section_table_name_width}>
+                    Blood Group
+                  </td>
                   <td style={{ width: "2%" }}>:</td>
-                  <td style={{ width: "76%" }}>B+</td>
+                  <td className={styles.profile_section_table_value_width}>
+                    B+
+                  </td>
                 </tr>
               </table>
             </div>
@@ -514,4 +617,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default UserProfile;

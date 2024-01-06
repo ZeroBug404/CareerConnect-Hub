@@ -5,7 +5,7 @@ import NavBar from "@/components/ui/NavBar";
 const JobList = () => {
   return (
     <>
-    <NavBar />
+      <NavBar />
       <JobListMain />
       <Footer />
     </>

@@ -60,14 +60,6 @@ const BlogPage = () => {
       title: "PublishDate",
       dataIndex: "publishDate",
     },
-    // {
-    //   title: "Views",
-    //   dataIndex: "views",
-    // },
-    // {
-    //   title: "Likes",
-    //   dataIndex: "likes",
-    // },
     {
       title: "Action",
       dataIndex: "id",
@@ -85,7 +77,11 @@ const BlogPage = () => {
                 <EditOutlined />
               </Button>
             </Link>
-            <Button onClick={() => deleteHandler(data)} type="primary" danger>
+            <Button
+              onClick={() => deleteHandler(data?.id)}
+              type="primary"
+              danger
+            >
               <DeleteOutlined />
             </Button>
           </>
@@ -96,11 +92,15 @@ const BlogPage = () => {
 
   return (
     <div>
-      <Link href="/dashboard/blog/create">
-        <Button type="primary" style={{ margin: "10px 0" }}>
-          Publish a blog?
-        </Button>
-      </Link>
+      <h2
+        style={{
+          padding: "15px",
+          color: "#1F2B6C",
+          textAlign: "center",
+        }}
+      >
+        Blog Details
+      </h2>
       <CareerTable
         loading={isLoading}
         columns={columns}

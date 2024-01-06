@@ -1,11 +1,13 @@
-import Footer from "@/components/ui/Footer";
-import NavBar from "@/components/ui/NavBar";
+
 import Providers from "@/lib/Providers";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto, Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Roboto({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Career Connect Hub",
