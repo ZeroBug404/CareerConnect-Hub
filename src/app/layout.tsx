@@ -1,7 +1,7 @@
-
 import Providers from "@/lib/Providers";
 import type { Metadata } from "next";
-import { Roboto, Work_Sans } from "next/font/google";
+import { Roboto } from "next/font/google";
+import { AOSProvider } from "./AOSProvider";
 import "./globals.css";
 
 const inter = Roboto({
@@ -23,9 +23,11 @@ export default function RootLayout({
     <Providers>
       <html lang="en">
         <body className={inter.className}>
-          {/* <NavBar /> */}
-          {children}
-          {/* <Footer /> */}
+          <AOSProvider>
+            {/* <NavBar /> */}
+            {children}
+            {/* <Footer /> */}
+          </AOSProvider>
         </body>
       </html>
     </Providers>

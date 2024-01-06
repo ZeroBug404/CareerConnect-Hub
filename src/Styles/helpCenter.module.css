@@ -1,52 +1,49 @@
-.helpCenter_main {
+.container {
+  width: 100%;
+  padding: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 11vw;
-  margin-right: 11vw;
-  margin-bottom: 2vh;
 }
 
-.helpCenter_left {
-  padding-right: 7vw;
+.textContent {
+  width: 35%;
 }
 
-.helpCenter_left h2 {
-  font-size: 28px;
-  font-weight: 600;
+.textContent p {
+  font-size: 1.2rem;
+  margin: 1.8rem 0;
+  line-height: 1.5rem;
+  color: #696666;
+  letter-spacing: 1px;
 }
-.helpCenter_left p {
-  margin-top: 10px;
-  font-size: 20px;
+
+.textContent button {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #1967d2;
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 2px;
 }
-.helpCenter_left_link {
-  display: flex;
-  align-items: center;
-  color: #2557a4;
-}
-.helpCenter_left_link span {
-  padding-right: 5px;
-}
-.helpCenter_left_link span:hover {
- text-decoration: underline;
- color: #2557a4;
+
+.image {
+  width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width: 768px) {
-  .helpCenter_main {
-    flex-direction: column;
-    
+  .container {
+    flex-direction: column-reverse;
+    padding: 0;
   }
-  .helpCenter_right {
-    padding-left: 10px;
-    padding-right: 10px;
+
+  .textContent {
+    width: 80%;
+    margin: 2rem auto;
   }
 }
+
 @media screen and (max-width: 480px) {
-  .helpCenter_main {
-    flex-direction: column;
-  }
-  .helpCenter_right {
-    width: 100vw;
-  }
 }
