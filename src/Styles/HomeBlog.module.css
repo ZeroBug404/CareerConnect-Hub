@@ -1,95 +1,71 @@
-.title {
-  margin: 5px 0;
-  text-align: center;
-  font-size: 3rem;
-}
-
 .CardContainer {
   width: 100%;
-  margin: 4rem auto;
+  margin: 2rem auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
 }
 
 .CardDesign {
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   border-radius: 0.6rem;
-}
-
-.CardDesign:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 0.5rem;
+  background-color: white;
 }
 
 .cardImage {
   width: 100%;
-  height: 20rem;
-  border-radius: 0.5rem;
+  height: 16rem;
+  border-radius: 0.6rem;
+  opacity: 1;
+  transition: 0.5s ease;
+}
+
+.cardImage:hover {
+  opacity: 0.8;
 }
 
 .cardTextContainer {
-  padding: 1.5rem;
-  height: 15em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 1rem;
 }
 
 .cardTitle {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: bold;
+  margin: 1rem 0;
+  color: rgba(0, 0, 0, 0.719);
+}
+.cardTitle:hover {
+  color: #1967d2;
 }
 
 .cardText {
   margin-top: 0.6rem;
-  font-size: 1.6rem;
-  line-height: 1.3;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #696666;
+}
+
+.small {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding: 0.5rem 0;
+  color: #696666;
 }
 
 @media screen and (max-width: 768px) {
-  .title {
-    margin: 5px 0;
-    text-align: center;
-    font-size: 2.1rem;
-  }
   .CardContainer {
-    width: 95%;
-    margin: 2rem auto;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 2rem;
+    margin: 1rem auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .title {
-    font-size: 1.8rem;
-    line-height: 2.4rem;
-  }
-
   .CardContainer {
-    width: 92%;
-    margin: 2rem auto;
-    grid-gap: 1rem;
-  }
-
-  .cardImage {
-    width: 100%;
-    height: 16rem;
-    border-radius: 0.5rem;
-  }
-
-  .cardTextContainer {
-    height: 16em;
-  }
-
-  .cardTitle {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-
-  .cardText {
-    margin-top: 0.6rem;
-    font-size: 1.2rem;
-    line-height: 1.3;
+    margin: 0;
+    padding: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+    /* grid-gap: 1rem; */
   }
 }
