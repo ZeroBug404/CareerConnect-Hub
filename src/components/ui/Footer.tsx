@@ -159,16 +159,16 @@ const Footer = () => {
           </p>
           <div className="flex justify-center gap-2 text-2xl">
             <Link href="">
-              <FacebookFilled className="border-2 rounded-full p-3 hover:bg-sky-700 transition duration-300" />
+              <FacebookFilled className="border-2 rounded-full p-3 hover:bg-[#4096FF] transition duration-300" />
             </Link>
             <Link href="">
-              <LinkedinFilled className="border-2 rounded-full p-3 hover:bg-sky-700 transition duration-300" />
+              <LinkedinFilled className="border-2 rounded-full p-3 hover:bg-[#4096FF] transition duration-300" />
             </Link>
             <Link href="">
-              <TwitterSquareFilled className="border-2 rounded-full p-3 hover:bg-sky-700 transition duration-300" />
+              <TwitterSquareFilled className="border-2 rounded-full p-3 hover:bg-[#4096FF] transition duration-300" />
             </Link>
             <Link href="">
-              <YoutubeFilled className="border-2 rounded-full p-3 hover:bg-sky-700 transition duration-300" />
+              <YoutubeFilled className="border-2 rounded-full p-3 hover:bg-[#4096FF] transition duration-300" />
             </Link>
           </div>
         </div>
