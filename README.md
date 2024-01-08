@@ -14,6 +14,58 @@
 ## Project Goal
 Revolutionize the job and internship search experience, connecting talented individuals with meaningful opportunities. Create a dynamic and user-friendly platform simplifying the hiring process for employers and empowering job seekers to find the right career path.
 
+## Live Link
+[Career Connect Hub](https://language-learning-frontend-zerobug404.vercel.app/)
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [Live Link](#live-link)
+- [Backend Repository](#backend-repository)
+
+## Installation
+
+1. Clone the repository.
+    ```bash
+    git clone https://github.com/ZeroBug404/CareerConnect-Hub.git careerConnect-hub
+
+    cd careerConnect-hub
+    ```
+
+2. Install dependencies.
+    ```bash
+    npm install
+    ```
+
+
+## Usage
+
+1. Start the development server.
+    ```bash
+    npm run dev
+    ```
+
+2. Open your browser and go to [http://localhost:3000](http://localhost:3000)
+
+## Configuration
+
+- **DATABASE_URL:** Your MongoDB database connection URL.
+- Add any other important configuration details.
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Submit a pull request.
+
+## Backend Repository
+
+Backend repository: [Career Connect Hub](https://github.com/RafiulAlam98/CareerConnect-Hub-Api)
+
 ## Project Features
 
 ### For Job Seekers:
@@ -24,7 +76,7 @@ Revolutionize the job and internship search experience, connecting talented indi
 - **Search and Apply for Jobs:**
   Users can search for jobs based on location, type, industry, and keywords, applying directly through the platform.
 
-- **Upload Resumes:**
+- **Create Resume:**
   Job seekers can upload resumes, facilitating employers in reviewing qualifications.
 
 - **Application Tracking:**

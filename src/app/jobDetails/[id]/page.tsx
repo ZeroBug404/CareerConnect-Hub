@@ -1,3 +1,5 @@
+import Footer from "@/components/ui/Footer";
+import NavBar from "@/components/ui/NavBar";
 import { RiseOutlined } from "@ant-design/icons";
 import { Button, Card, Flex, List } from "antd";
 import Link from "next/link";
@@ -12,7 +14,9 @@ const JobDetails = async ({ params }: any) => {
   const data = await res.json();
 
   return (
-    <Flex>
+    <>
+    <NavBar />
+      <Flex>
       <div
         style={{
           width: "100%",
@@ -28,14 +32,14 @@ const JobDetails = async ({ params }: any) => {
             color: "blue",
           }}
         >
-          <Flex wrap="wrap" gap="small">
-            <RiseOutlined /> <p>Active Hiring</p>
+          <Flex wrap="wrap" gap="small" justify="space-between">
+            <Flex wrap="wrap" gap="small">
+              <RiseOutlined /> <p>Active Hiring</p>
+            </Flex>
+            <Link href="/job-list">Previous Page</Link>
           </Flex>
         </div>
-        <Card
-          title={data?.data?.title}
-          bordered={false}
-        >
+        <Card title={data?.data?.title} bordered={false}>
           <h3>{data?.data?.company}</h3>
           <br />
           <Flex wrap="wrap" gap="small">
@@ -91,6 +95,8 @@ const JobDetails = async ({ params }: any) => {
         </Card>
       </div>
     </Flex>
+    <Footer />
+    </>
   );
 };
 

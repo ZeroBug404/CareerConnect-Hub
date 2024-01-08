@@ -16,17 +16,37 @@ const CareerServiceSkill = () => {
           xl={16}
           className={styles.headerSecondCol}
         >
-          <p className={styles.headerText1}>Career Services</p>
-          <p className={styles.headerTitle}>
+          <p
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+            className={styles.headerText1}
+          >
+            Career Services
+          </p>
+          <p
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+            className={styles.headerTitle}
+          >
             Build the skills to get a better job
           </p>
-          <p className={styles.headerText2}>
+          <p
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+            className={styles.headerText2}
+          >
             Get career guidance and improve at resume writing, interviewing, and
             pay negotiation.
           </p>
         </Col>
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <img
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
             src="/assets/career-service-banner.svg"
             alt="Banner Image"
             className={styles.headerImage}

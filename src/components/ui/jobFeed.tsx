@@ -10,15 +10,6 @@ import { useEffect, useState } from "react";
 
 const JobFeed = async () => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://career-connect-hub-api.vercel.app/api/v1/jobs")
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
-      });
-  }, []);
-
   return (
     <div style={{ padding: "16px" }}>
       <div
@@ -90,7 +81,7 @@ const JobFeed = async () => {
             </div>
           </Col>
         ))}
-      </Row> 
+      </Row>
     </div>
   );
 };

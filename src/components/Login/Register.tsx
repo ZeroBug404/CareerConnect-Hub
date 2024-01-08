@@ -1,19 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-
-// import { storeUserInfo } from "@/services/auth.service";
+import styles from "@/components/Login/login.module.css";
 import { Button, Col, Row, message } from "antd";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
-
 import { useState } from "react";
-import logo from "../../assets/1-removebg-preview.png";
-
 import { useUserSignupMutation } from "@/redux/api/authApi";
+
 type FormValues = {
   firstName: string;
   lastName: string;
@@ -37,8 +33,8 @@ const RegisterPage = () => {
           firstName: data.firstName,
           lastName: data.lastName,
         },
-        phoneNumber: data.contactNo,
       };
+      console.log(data);
 
       const res = await userSignup(registerData);
 
@@ -56,6 +52,7 @@ const RegisterPage = () => {
       console.error(err.message);
     }
   };
+
   return (
     <Row
       justify="center"
@@ -63,116 +60,115 @@ const RegisterPage = () => {
       style={{
         minHeight: "100vh",
         flexDirection: "column",
+        margin: "2.4rem 0",
       }}
     >
-      {/* <Col sm={12} md={16} lg={10}>
-        <Image src={loginImage} width={500} alt="login image" />
-      </Col> */}
-      <Image src={logo} width={260} height={120} alt="login image" />
+      <h4 className={styles.heading}>Sign-up and apply for free</h4>
+      <p className={styles.headingText}>
+        create account and find your best job
+      </p>
       <Col
         sm={22}
-        md={8}
-        lg={12}
+        md={14}
+        lg={8}
         style={{
           backgroundColor: "white",
-          padding: "20px 40px",
+          padding: "30px 40px",
           borderRadius: "10px",
-          boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.1)",
           width: "100%",
         }}
+        className={styles.colDesign}
       >
-        <h1
-          style={{
-            margin: "15px 0px",
-          }}
-        >
-          Ready to take the next step?
-        </h1>
-        <p
-          style={{
-            fontSize: "1.2rem",
-            color: "#666",
-            marginBottom: "1rem",
-          }}
-        >
-          Create an account or sign in.
-        </p>
         <div>
           <Form submitHandler={onSubmit}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: "10px",
-              }}
-            >
-              <div style={{ width: "100%" }}>
-                <h3 style={{ color: "gray", fontSize: "14px" }}>First Name</h3>
-                <FormInput name="firstName" type="text" size="large" />
-              </div>
-              <div style={{ width: "100%" }}>
-                <h3 style={{ color: "gray", fontSize: "14px" }}>Last Name</h3>
-                <FormInput name="lastName" type="text" size="large" />
-              </div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: "10px",
-                margin: "15px 0px",
-              }}
-            >
-              <div style={{ width: "100%" }}>
-                <h3 style={{ color: "gray", fontSize: "14px" }}>Email</h3>
-                <FormInput name="email" type="text" size="large" />
-              </div>
-              <div style={{ width: "100%" }}>
-                <h3 style={{ color: "gray", fontSize: "14px" }}>Contact No</h3>
-                <FormInput name="contactNo" type="text" size="large" />
-              </div>
+            <div style={{ width: "100%" }}>
+              <h3
+                style={{ color: "gray", fontSize: "14px", marginBottom: "3px" }}
+              >
+                Email
+              </h3>
+              <FormInput name="email" type="text" size="large" />
             </div>
             <div
               style={{
                 margin: "15px 0px",
               }}
             >
-              <h3 style={{ color: "gray", fontSize: "14px" }}>Password</h3>
+              <h3
+                style={{
+                  color: "gray",
+                  fontSize: "14px",
+                  marginBottom: "3px",
+                }}
+              >
+                Phone{" "}
+              </h3>
+              <FormInput name="contactNo" type="text" size="large" />
+            </div>
+
+            <div
+              style={{
+                margin: "15px 0px",
+              }}
+            >
+              <h3
+                style={{
+                  color: "gray",
+                  fontSize: "14px",
+                  marginBottom: "10px",
+                }}
+              >
+                Password
+              </h3>
               <FormInput name="password" type="password" size="large" />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
+                gap: "10px",
               }}
             >
-              <div
-                style={{
-                  // marginTop: "1rem",
-                  fontSize: "18px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <p>
-                  Already have an account!{" "}
-                  <Link href={"/login"}>
-                    <span>login</span>
-                  </Link>
-                </p>
+              <div style={{ width: "100%" }}>
+                <h3
+                  style={{
+                    color: "gray",
+                    fontSize: "14px",
+                    marginBottom: "3px",
+                  }}
+                >
+                  First Name
+                </h3>
+                <FormInput name="firstName" type="text" size="large" />
               </div>
+              <div style={{ width: "100%" }}>
+                <h3
+                  style={{
+                    color: "gray",
+                    fontSize: "14px",
+                    marginBottom: "3px",
+                  }}
+                >
+                  Last Name
+                </h3>
+                <FormInput name="lastName" type="text" size="large" />
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                margin: "1rem 0",
+              }}
+            >
               <Button
                 type="primary"
                 htmlType="submit"
                 size="large"
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundColor: "#f68c29",
-                  fontSize: "1.2rem",
-                  width: "50%",
+                  backgroundColor: "#00A6E5",
+
+                  width: "100%",
                   transition: "transform 0.3s ease-in-out",
                   transform: `scale(${scale})`,
                 }}
@@ -181,6 +177,22 @@ const RegisterPage = () => {
               >
                 Register
               </Button>
+            </div>
+            <div
+              style={{
+                fontSize: "18px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: ".8rem 0",
+              }}
+            >
+              <p>
+                Already have an account!{" "}
+                <Link href={"/login"}>
+                  <span>login</span>
+                </Link>
+              </p>
             </div>
           </Form>
         </div>

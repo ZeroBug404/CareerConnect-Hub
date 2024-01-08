@@ -1,44 +1,47 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Form from "@/components/Forms/Form";
-import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import {
-  experienceLevelOptions,
-  jobTypeOptions,
-} from "@/components/contants/global";
 
 import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
+import { experienceLevelOptions, jobTypeOptions } from "@/constants/global";
 import { useAddJobMutation } from "@/redux/api/jobApi";
 import { Button, Col, Row, message } from "antd";
+import { useRouter } from "next/navigation";
 
 const CreateJob = () => {
   const [addJob] = useAddJobMutation();
+  const router = useRouter();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (jobData: any) => {
+    const mRequirements = jobData.requirements;
+    const mSkills = jobData.skills;
+    const mBenefits = jobData.benefits;
+    const mSalary = parseInt(jobData.salary);
+    const mOpeningsData = jobData.numberOfOpenings.toString();
+    const options = {
+      ...jobData,
+      requirements: [mRequirements],
+      salary: mSalary,
+      skills: [mSkills],
+      benefits: [mBenefits],
+      numberOfOpenings: mOpeningsData,
+    };
     message.loading("Publishing...");
+
     try {
-      console.log(data);
-      await addJob(data);
-      message.success("Jobs published successfully");
+      await addJob(options);
+      message.success("Job published successfully");
+      router.push("/dashboard/job");
     } catch (err: any) {
-      console.error(err.message);
       message.error(err.message);
     }
   };
+
   return (
     <>
-      <CareerBreadCrumb
-        items={[
-          {
-            label: "View Jobs",
-            link: "/dashboard/job",
-          },
-        ]}
-      />
       <div
         style={{
           padding: "20px",
@@ -47,14 +50,29 @@ const CreateJob = () => {
           width: "100%",
         }}
       >
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "View Jobs",
+              link: "/dashboard/job",
+            },
+          ]}
+        />
         <Form submitHandler={onSubmit}>
-          <h2>Publish a job</h2>
+          <h2
+            style={{
+              color: "#1F2B6C",
+              textAlign: "center",
+            }}
+          >
+            Publish a job
+          </h2>
           <div
             style={{
               border: "1px solid #d9d9d9",
               borderRadius: "5px",
               padding: "15px",
-              marginBottom: "10px",
+              margin: "10px 0",
             }}
           >
             <p
@@ -72,7 +90,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -88,7 +106,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -104,7 +122,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -120,7 +138,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -155,7 +173,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -171,7 +189,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormSelectField
@@ -187,7 +205,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormSelectField
@@ -203,7 +221,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -219,7 +237,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -235,7 +253,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -251,7 +269,7 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormInput
@@ -286,7 +304,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -301,7 +319,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -316,7 +334,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -331,7 +349,7 @@ const CreateJob = () => {
                 md={8}
                 lg={6}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
                 <FormTextArea
@@ -357,10 +375,15 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="joiningDate" label="Joining Date" />
+                <FormInput
+                  name="joiningDate"
+                  type="date"
+                  label="Joining Date"
+                  size="small"
+                />
               </Col>
               <Col
                 xs={24}
@@ -368,10 +391,15 @@ const CreateJob = () => {
                 md={8}
                 lg={8}
                 style={{
-                  margin: "10px 0",
+                  margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="deadline" label="Deadline" />
+                <FormInput
+                  name="deadline"
+                  type="date"
+                  label="Deadline"
+                  size="small"
+                />
               </Col>
             </Row>
           </div>

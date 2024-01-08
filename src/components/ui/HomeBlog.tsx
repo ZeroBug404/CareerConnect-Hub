@@ -1,82 +1,97 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 "use client";
 
 import styles from "@/Styles/HomeBlog.module.css";
-import { Card, Col, Image, Row } from "antd";
+import { useBlogsQuery } from "@/redux/api/blogApi";
+import { IBlogData } from "@/types";
+import { CalendarOutlined, UserOutlined } from "@ant-design/icons";
+import { Col, Row } from "antd";
 import Link from "next/link";
 
-const blogData = [
-  {
-    id_: "1",
-    img: "/assets/blog-1.webp",
-    title: "Guide",
-    color: "#FDF8FA",
-    desc: "Onboarding Guide: Setting Your Job Up for Success on CareerConnect Hub",
-  },
-  {
-    id_: "2",
-    img: "/assets/blog-2.webp",
-    title: "Article",
-    color: "#E6F5F1",
-    desc: "What is an Includes Workplace ",
-  },
-  {
-    id_: "3",
-    img: "/assets/blog-3.webp",
-    title: "Guide",
-    color: "#F2F1FE",
-    desc: "Divercity And Includes Training",
-  },
-  {
-    id_: "4",
-    img: "/assets/blog-4.webp",
-    title: "Article",
-    color: "#FDF8FA",
-    desc: "The CareerConnect Hub Guide To Workplace Allyship",
-  },
-];
-
 const HomeBlog = () => {
+  const { data } = useBlogsQuery({});
+  const blogData = data?.data;
+  console.log(blogData);
+
   return (
-    <div className={styles.homeBlog}>
-      <h1 className={styles.homeBlogTitle}>
-        Hiring resources for inclusivity and allyship
-      </h1>
-      <Row>
-        {blogData?.map((blog) => (
-          <Col
-            className={styles.homeBlogCol}
-            key={blog?.id_}
-            xs={24}
-            sm={24}
-            md={24}
-            lg={12}
-            xl={12}
+    <Row
+      justify="center"
+      align="middle"
+      style={{
+        backgroundColor: "#ECEDF2",
+        padding: "3em 0",
+      }}
+    >
+      <Col
+        sm={23}
+        md={23}
+        lg={23}
+        style={{
+          borderRadius: ".5rem",
+          margin: "1rem 0",
+        }}
+      >
+        <div
+          style={{
+            padding: "1.5rem 0",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
           >
-            <Link href="/">
-              <Card
-                className={styles.homeBlogCard}
-                style={{
-                  background: `${blog?.color}`,
-                }}
-              >
-                <Image width={"100%"} src={blog?.img} />
-                <h2
-                  style={{
-                    fontWeight: "500",
-                    marginBottom: "20px",
-                    fontSize: "1.2rem",
-                  }}
-                >
-                  {blog?.title}
-                </h2>
-                <p style={{ fontSize: "1.3rem" }}>{blog?.desc}</p>
-              </Card>
-            </Link>
-          </Col>
-        ))}
-      </Row>
-    </div>
+            Recent News Blogs
+          </h1>
+          <p
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+            style={{
+              padding: "1rem 0",
+            }}
+          >
+            Fresh job related news content posted each day.
+          </p>
+        </div>
+        <div className={styles.CardContainer}>
+          {blogData?.slice(0, 3).map((blog: IBlogData) => (
+            <div
+              data-aos="zoom-in"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="1000"
+              key={blog?._id}
+              className={styles.CardDesign}
+            >
+              <div>
+                <img src={blog?.img} alt="Image" className={styles.cardImage} />
+              </div>
+              <div className={styles.cardTextContainer}>
+                <div className={styles.small}>
+                  <p>
+                    <CalendarOutlined />{" "}
+                    <span style={{ marginLeft: ".4rem" }}>
+                      {blog?.publishDate}
+                    </span>
+                  </p>
+                  <p>
+                    <UserOutlined />
+                    <span style={{ marginLeft: ".4rem" }}>{blog?.author}</span>
+                  </p>
+                </div>
+                <p className={styles.cardTitle}>{blog?.title}</p>
+                <p className={styles.cardText}>
+                  {blog?.content?.slice(0, 143)}
+                </p>
+                <Link href="/">Read more</Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Col>
+    </Row>
   );
 };
 

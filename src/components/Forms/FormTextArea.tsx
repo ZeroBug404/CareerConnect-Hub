@@ -1,3 +1,5 @@
+"use client"
+
 import { Input } from "antd";
 import { Controller, useFormContext } from "react-hook-form";
 
@@ -5,6 +7,7 @@ type TextAreaProps = {
   name: string;
   label?: string;
   rows?: number;
+  cols?: number;
   value?: string;
   placeholder?: string;
 };
@@ -13,6 +16,7 @@ const FormTextArea = ({
   name,
   label,
   rows,
+  cols,
   value,
   placeholder,
 }: TextAreaProps) => {
@@ -25,8 +29,9 @@ const FormTextArea = ({
         control={control}
         render={({ field }) => (
           <Input.TextArea
-            style={{ margin: ".3rem 0" }}
+            style={{ margin: ".3rem 0", border: "1px solid #159EEC" }}
             rows={rows}
+            cols={cols}
             placeholder={placeholder}
             {...field}
             defaultValue={value}

@@ -1,7 +1,6 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import styles from "@/Styles/HomePageBanner.module.css";
 import { Button, Col, Row } from "antd";
 import { useState } from "react";
 import GlobalModal from "../Shared/GlobalModal";
@@ -11,52 +10,67 @@ const HomePageBanner = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={styles.bannerHeading}>
-      <Row className={styles.bannerRow}>
-        <Col
-          xs={24}
-          sm={24}
-          md={24}
-          lg={12}
-          xl={12}
-          className={styles.bannerFirstCol}
-        >
-          <p className={styles.bannerText1} style={{ color: "#93aaec" }}>
-            CareerConnect Hub FOR EMPLOYERS
-          </p>
-          <h1 className={styles.bannerTitle}>
+    <>
+      <Row
+        justify="center"
+        align="middle"
+        style={{
+          padding: "0 20px",
+          color: "white",
+          backgroundColor: "#123770",
+        }}
+      >
+        <Col xs={24} sm={12} data-aos="zoom-in-right" data-aos-duration="1000">
+          <p>CareerConnect Hub FOR EMPLOYERS</p>
+          <h1
+            style={{
+              fontSize: "40px",
+              padding: "30px 0",
+            }}
+          >
             Find Your Next Job with CareerConnect Hub
           </h1>
-          <p className={styles.bannerText2}>
+          <p
+            style={{
+              fontSize: "18px",
+              paddingBottom: "30px",
+            }}
+          >
             No matter the skills, experience, or qualifications you’re looking
             for, you’ll find the right people on CareerConnect Hub’s matching
             and hiring platform.
           </p>
-          <Button onClick={() => setOpen(true)} className={styles.bannerButton}>
+          <Button onClick={() => setOpen(true)} style={{
+            padding: "0 30px",
+            fontSize: "18px",
+            background: "#1967d2",
+            color: "white",
+            border: "none"
+          }}>
             Post a Job
           </Button>
         </Col>
-        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+        <Col xs={24} sm={12} data-aos="zoom-in-left" data-aos-duration="1000">
           <img
-            src="/assets/hero-banner.webp"
+            style={{
+              width: "100%",
+            }}
+            src="/assets/home2.png"
             alt="Banner Image"
-            className={styles.bannerImage}
           />
         </Col>
+        <GlobalModal
+          open={open}
+          setOpen={setOpen}
+          width={600}
+          title={"Let's create your account"}
+        >
+          <div className="">
+            <HomePageModal></HomePageModal>
+          </div>
+        </GlobalModal>
       </Row>
-
-      <GlobalModal
-        open={open}
-        setOpen={setOpen}
-        width={600}
-        title={"Let's create your account"}
-      >
-        {" "}
-        <div className="">
-          <HomePageModal></HomePageModal>
-        </div>
-      </GlobalModal>
-    </div>
+    </>
   );
 };
 

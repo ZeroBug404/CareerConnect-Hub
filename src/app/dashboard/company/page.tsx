@@ -1,33 +1,57 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Button, Table, Tag } from "antd";
-import type { ColumnsType } from "antd/es/table";
+import CareerTable from "@/components/ui/CareerTable";
+import {
+  useCompaniesQuery,
+  useDeleteCompanyMutation,
+} from "@/redux/api/companyApi";
+import { DataType } from "@/types";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Button, message } from "antd";
 import Link from "next/link";
-
-interface DataType {
-  index: number;
-  name: string;
-  email: string;
-  phone: string;
-  industry: string;
-  update: string;
-  delete: string;
-}
-
-const data: DataType[] = [
-  {
-    index: 1,
-    name: "Nature's Bounty Farms",
-    email: "info@naturesbountyfarms.com",
-    phone: "888-777-6666",
-    industry: "Agriculture",
-    update: "Update",
-    delete: "Delete",
-  },
-];
+import { useState } from "react";
 
 const CompanyTable = () => {
-  const columns: ColumnsType<DataType> = [
+  const query: Record<string, any> = {};
+  const [page, setPage] = useState<number>(1);
+  const [size, setSize] = useState<number>(10);
+  const [sortBy, setSortBy] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("");
+
+  query["limit"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
+
+  const { data, isLoading } = useCompaniesQuery({ ...query });
+  const companyData = data?.data;
+  const [deleteCompany] = useDeleteCompanyMutation();
+
+  const onPaginationChange = (page: number, pageSize: number) => {
+    console.log("Page:", page, "PageSize:", pageSize);
+    setPage(page);
+    setSize(pageSize);
+  };
+  const onTableChange = (pagination: any, filter: any, sorter: any) => {
+    const { order, field } = sorter;
+    // console.log(order, field);
+    setSortBy(field as string);
+    setSortOrder(order === "ascend" ? "asc" : "desc");
+  };
+
+  const deleteHandler = async (id: string) => {
+    message.loading("Deleting.....");
+    try {
+      const res = await deleteCompany(id);
+      if (res) {
+        message.success("Company Deleted successfully");
+      }
+    } catch (err: any) {
+      message.error(err.message);
+    }
+  };
+
+  const columns = [
     {
       title: "",
       dataIndex: "index",
@@ -40,54 +64,76 @@ const CompanyTable = () => {
       key: "name",
     },
     {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-      // responsive: ["lg"],
-    },
-    {
-      title: "Phone",
-      dataIndex: "phone",
-      key: "phone",
-      // responsive: ["lg"],
-    },
-    {
       title: "Industry",
       dataIndex: "industry",
       key: "industry",
-      // responsive: ["lg"],
     },
     {
-      title: "Update",
-      dataIndex: "update",
-      key: "update",
-      render: (text: string) => (
-        <Link href="/dashboard/company/update-company">
-          <Tag color="blue">{text}</Tag>
-        </Link>
-      ),
+      title: "Email",
+      dataIndex: ["contact", "email"],
+      key: "email",
     },
     {
-      title: "Delete",
-      dataIndex: "delete",
-      key: "delete",
-      render: (text: string) => <Tag color="red">{text}</Tag>,
+      title: "Phone",
+      dataIndex: ["contact", "phone"],
+      key: "phone",
     },
-  ] as const;
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+    },
+
+    {
+      title: "Action",
+      dataIndex: "id",
+      render: function (data: any) {
+        return (
+          <>
+            <Link href={`/dashboard/company/edit/${data}`}>
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                onClick={() => console.log(data)}
+                type="primary"
+              >
+                <EditOutlined />
+              </Button>
+            </Link>
+            <Button
+              type="primary"
+              danger
+              onClick={() => deleteHandler(data)}
+            >
+              <DeleteOutlined />
+            </Button>
+          </>
+        );
+      },
+    },
+  ];
 
   return (
     <>
-      <Link href="/dashboard/company/create">
-        <Button type="primary" style={{ marginBottom: 16 }}>
-          Add Company
-        </Button>
-      </Link>
-      <Table
-        scroll={{ x: 1000 }}
+      <h2
+        style={{
+          color: "#1F2B6C",
+          textAlign: "center",
+          margin: "30px 0",
+        }}
+      >
+        Company Details
+      </h2>
+      <CareerTable
+        loading={isLoading}
         columns={columns}
-        dataSource={data}
-        pagination={false}
-        rowKey={(record) => record.index}
+        dataSource={companyData}
+        showSizeChanger={true}
+        showPagination={true}
+        pageSize={size}
+        onPaginationChange={onPaginationChange}
+        onTableChange={onTableChange}
       />
     </>
   );

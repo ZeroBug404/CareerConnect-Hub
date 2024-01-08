@@ -1,6 +1,7 @@
 "use client";
 
-import blueLogo from "@/assets/logo-blue1.png";
+import blueLogo from "@/assets/1-removebg-preview.png";
+import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import {
   MenuOutlined,
   QuestionCircleOutlined,
@@ -18,51 +19,58 @@ import {
 } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [role, setRole] = useState(null);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    // Fetch user role on mount
+    const { role } = getUserInfo() as any;
+    setRole(role);
+  }, []);
+
+  const handleLogout = (accessToken: string) => {
+    removeUserInfo(accessToken);
+    return router.push("/login");
+  };
+
+  // console.log(role);
 
   const items: MenuProps["items"] = [
-    
+    // {
+    //   key: "0",
+    //   label: (
+    //     <div
+    //       style={{
+    //         // fontSize: "1.2rem",
+    //         width: "100%",
+    //         display: "flex",
+    //         justifyContent: "center",
+    //         alignItems: "center",
+    //       }}
+    //     >
+
+    //     </div>
+    //   ),
+    // },
     {
-      key: "0",
+      key: "1",
       label: (
-        <div
-          style={{
-            // fontSize: "1.2rem",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <Link href={`/dashboard`}>
           <Button
-            // onClick={logOut}
-            type="text"
-            // size="large"
-            danger
+            type="primary"
+            size="large"
             style={{
               fontSize: "1.2rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-            }}
-          >
-            LogOut
-          </Button>
-        </div>
-      ),
-    },
-    {
-      key: "1",
-      label: (
-        <Link href={`/`}>
-          <Button
-            type="text"
-            danger
-            style={{
-              fontSize: "1.2rem",
             }}
           >
             Dashboard
@@ -104,12 +112,15 @@ const NavBar = () => {
           width: "100%",
         }}
       >
-        <Image
-          src={blueLogo}
-          alt="Logo"
-          width={100}
-          style={{ marginRight: "10px", height: "30px" }}
-        />
+        <Link href="/">
+          {" "}
+          <Image
+            src={blueLogo}
+            alt="Logo"
+            width={200}
+            style={{ marginRight: "10px", height: "80px" }}
+          />
+        </Link>
         <NavMenu />
         <div
           style={{
@@ -119,7 +130,7 @@ const NavBar = () => {
           }}
         >
           <Link
-            href="/register"
+            href="/career-services"
             style={{
               color: "white",
               fontSize: "0.9rem",
@@ -149,19 +160,47 @@ const NavBar = () => {
               margin: "0 1.5rem",
             }}
           />
-          <button
-            style={{
-              backgroundColor: "#2557a7",
-              color: "white",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              padding: "0.6rem 1rem",
-              borderRadius: "5px",
-              border: "none",
-            }}
-          >
-            Login
-          </button>
+
+          {role ? (
+            <Button
+              onClick={() => handleLogout("accessToken")}
+              size="large"
+              type="primary"
+              danger
+              style={{
+                fontSize: "1rem",
+                fontWeight: "bold",
+                borderRadius: "5px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Log out
+            </Button>
+          ) : (
+            <Link
+              href={"/login"}
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              <button
+                style={{
+                  backgroundColor: "#2557a7",
+                  color: "white",
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                  padding: "0.6rem 1rem",
+                  borderRadius: "5px",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Login
+              </button>
+            </Link>
+          )}
+
           <Divider
             type="vertical"
             style={{
@@ -171,7 +210,7 @@ const NavBar = () => {
             }}
           />
           <Link
-            href="/register"
+            href="/job-list"
             style={{
               color: "white",
               fontSize: "0.9rem",
@@ -185,16 +224,18 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <Space size={16} wrap>
-          <Dropdown menu={{ items }}>
-            <Space wrap size={16}>
-              <Avatar
-                style={{ backgroundColor: "#87d068" }}
-                icon={<UserOutlined />}
-              />
-            </Space>
-          </Dropdown>
-        </Space>
+        {role && (
+          <Space size={16} wrap>
+            <Dropdown menu={{ items }}>
+              <Space wrap size={16}>
+                <Avatar
+                  style={{ backgroundColor: "#87d068" }}
+                  icon={<UserOutlined />}
+                />
+              </Space>
+            </Dropdown>
+          </Space>
+        )}
       </div>
       <Drawer
         // placement="left"
@@ -234,7 +275,7 @@ const NavMenu = ({ isInline = false }) => {
           {
             label: (
               <Link
-                href="#"
+                href="/"
                 // target="_blank"
                 rel="noopener noreferrer"
               >
@@ -246,7 +287,7 @@ const NavMenu = ({ isInline = false }) => {
           {
             label: (
               <Link
-                href="#"
+                href="/contact"
                 // target="_blank"
                 rel="noopener noreferrer"
               >
@@ -258,7 +299,7 @@ const NavMenu = ({ isInline = false }) => {
           {
             label: (
               <Link
-                href="#"
+                href="/blog"
                 // target="_blank"
                 rel="noopener noreferrer"
               >

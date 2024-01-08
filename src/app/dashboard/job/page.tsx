@@ -5,7 +5,7 @@ import { useDeleteJobMutation, useJobsQuery } from "@/redux/api/jobApi";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const JobPage = () => {
   const query: Record<string, any> = {};
@@ -20,8 +20,9 @@ const JobPage = () => {
   query["sortOrder"] = sortOrder;
 
   const { data, isLoading } = useJobsQuery({ ...query });
-  const jobData = data?.data;
+  const jobData = data?.data?.data;
   const [deleteJob] = useDeleteJobMutation();
+  // console.log("jobData", jobData);
 
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
@@ -97,9 +98,15 @@ const JobPage = () => {
 
   return (
     <div>
-      <Link href="/dashboard/job/create">
-        <Button type="primary">Publish a job?</Button>
-      </Link>
+      <h2
+        style={{
+          color: "#1F2B6C",
+          textAlign: "center",
+          margin: "30px 0",
+        }}
+      >
+        Job Details
+      </h2>
       <CareerTable
         loading={isLoading}
         columns={columns}

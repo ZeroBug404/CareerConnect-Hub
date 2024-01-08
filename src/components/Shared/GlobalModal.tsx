@@ -1,7 +1,7 @@
 "use client";
 
 import { Modal } from "antd";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 interface GlobalModalProps {
   open: boolean;

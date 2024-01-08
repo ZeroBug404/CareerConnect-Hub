@@ -1,30 +1,35 @@
-import AdditionalDetails from "@/components/Resume/additionalDetails";
+"use client";
 import Education from "@/components/Resume/education";
-import JobResponsibilities from "@/components/Resume/jobResponsibilities";
 import PersonalInfo from "@/components/Resume/personalInfo";
 import Portfolio from "@/components/Resume/portfolio";
 import Projects from "@/components/Resume/projects";
 import Skills from "@/components/Resume/skills";
 import Training from "@/components/Resume/training";
 import WorkExperience from "@/components/Resume/workExperience";
+import CareerBreadCrumb from "@/components/ui/CareerBreadCrumb";
+import Footer from "@/components/ui/Footer";
+import NavBar from "@/components/ui/NavBar";
 import {
-  ArrowLeftOutlined,
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
-import Link from "next/link";
 
 const ResumePage = () => {
   return (
     <div>
+      <NavBar />
       <div
         style={{
           margin: "32px",
-          color: "blue"
         }}
       >
-        <Link href="/">
-          <ArrowLeftOutlined /> Back
-        </Link>
+        <CareerBreadCrumb
+          items={[
+            {
+              label: "Back",
+              link: "/",
+            },
+          ]}
+        />
       </div>
       <div
         style={{
@@ -56,13 +61,12 @@ const ResumePage = () => {
         <PersonalInfo />
         <Education />
         <WorkExperience />
-        <JobResponsibilities />
         <Training />
         <Projects />
         <Skills />
         <Portfolio />
-        <AdditionalDetails />
       </div>
+      <Footer />
     </div>
   );
 };
