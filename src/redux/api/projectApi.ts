@@ -1,7 +1,13 @@
+import { getFromLocalStorage } from "@/utils/local-storage";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
 const PROJECT_URL = "/project";
+
+const token = getFromLocalStorage("accessToken");
+const headers = {
+  Authorization: `${token}`
+}
 
 export const projectApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -19,6 +25,7 @@ export const projectApi = baseApi.injectEndpoints({
         url: PROJECT_URL,
         method: "POST",
         body: data,
+        headers: headers
       }),
       invalidatesTags: [tagTypes.project],
     }),
@@ -38,6 +45,7 @@ export const projectApi = baseApi.injectEndpoints({
         url: `${PROJECT_URL}/${data.id}`,
         method: "PATCH",
         data: data,
+        headers: headers
       }),
       invalidatesTags: [tagTypes.project],
     }),
@@ -47,6 +55,7 @@ export const projectApi = baseApi.injectEndpoints({
       query: (id) => ({
         url: `${PROJECT_URL}/${id}`,
         method: "DELETE",
+        headers: headers
       }),
       invalidatesTags: [tagTypes.project],
     }),

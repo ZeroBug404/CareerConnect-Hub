@@ -104,7 +104,7 @@ const CompanyTable = () => {
             <Button
               type="primary"
               danger
-              onClick={() => deleteHandler(data?.id)}
+              onClick={() => deleteHandler(data)}
             >
               <DeleteOutlined />
             </Button>
@@ -118,9 +118,9 @@ const CompanyTable = () => {
     <>
       <h2
         style={{
-          padding: "15px",
           color: "#1F2B6C",
           textAlign: "center",
+          margin: "30px 0",
         }}
       >
         Company Details

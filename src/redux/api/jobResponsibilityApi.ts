@@ -1,7 +1,13 @@
+import { getFromLocalStorage } from "@/utils/local-storage";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
 const JOB_RESPONSIBILITY_URL = "/responsibility";
+
+const token = getFromLocalStorage("accessToken");
+const headers = {
+  Authorization: `${token}`
+}
 
 export const jobResponsibilityApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
@@ -20,6 +26,7 @@ export const jobResponsibilityApi = baseApi.injectEndpoints({
                 url: JOB_RESPONSIBILITY_URL,
                 method: "POST",
                 body: data,
+                headers: headers
             }),
             invalidatesTags: [tagTypes.jobResponsibility],
         }),
@@ -37,6 +44,7 @@ export const jobResponsibilityApi = baseApi.injectEndpoints({
                 url: `${JOB_RESPONSIBILITY_URL}/${data.id}`,
                 method: "PATCH",
                 data: data.body,
+                headers: headers
             }),
             invalidatesTags: [tagTypes.jobResponsibility],
         }),
@@ -45,6 +53,7 @@ export const jobResponsibilityApi = baseApi.injectEndpoints({
             query: (id) => ({
                 url: `${JOB_RESPONSIBILITY_URL}/${id}`,
                 method: "DELETE",
+                headers: headers
             }),
             invalidatesTags: [tagTypes.jobResponsibility],
         }),

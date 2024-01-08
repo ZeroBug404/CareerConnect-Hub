@@ -28,7 +28,6 @@ const CreateJob = () => {
       skills: [mSkills],
       benefits: [mBenefits],
       numberOfOpenings: mOpeningsData,
-      companyId: "6587f647a3d02b0cf0caa3aa",
     };
     message.loading("Publishing...");
 
@@ -62,7 +61,6 @@ const CreateJob = () => {
         <Form submitHandler={onSubmit}>
           <h2
             style={{
-              padding: "15px",
               color: "#1F2B6C",
               textAlign: "center",
             }}
@@ -396,7 +394,12 @@ const CreateJob = () => {
                   margin: "5px 0",
                 }}
               >
-                <FormInput name="deadline" type="date" label="Deadline" size="small"/>
+                <FormInput
+                  name="deadline"
+                  type="date"
+                  label="Deadline"
+                  size="small"
+                />
               </Col>
             </Row>
           </div>

@@ -117,9 +117,9 @@ const UpdateEventPage = ({ params }: any) => {
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
           <h2
             style={{
-              padding: "15px",
               color: "#1F2B6C",
               textAlign: "center",
+              margin: "30px 0",
             }}
           >
             Update Event
@@ -269,8 +269,7 @@ const UpdateEventPage = ({ params }: any) => {
             >
               Agenda Information
             </p>
-            <Row
-              gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               <Col
                 xs={24}
                 sm={12}
@@ -303,7 +302,7 @@ const UpdateEventPage = ({ params }: any) => {
                   style={{
                     width: "100%",
                     margin: "5px 0",
-                    border: "1px solid #159EEC"
+                    border: "1px solid #159EEC",
                   }}
                   defaultValue={createdTime}
                   format={format}
@@ -355,7 +354,7 @@ const UpdateEventPage = ({ params }: any) => {
                   margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="date" label="Date & Time"  size="small"/>
+                <FormDatePicker name="date" label="Date & Time" size="small" />
               </Col>
             </Row>
           </div>

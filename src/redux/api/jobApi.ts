@@ -1,7 +1,13 @@
+import { getFromLocalStorage } from "@/utils/local-storage";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
 const JOB_URL = "/jobs";
+
+const token = getFromLocalStorage("accessToken");
+const headers = {
+  Authorization: `${token}`
+}
 
 export const jobApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -20,6 +26,7 @@ export const jobApi = baseApi.injectEndpoints({
         url: JOB_URL,
         method: "POST",
         body: data,
+        headers: headers
       }),
       invalidatesTags: [tagTypes.jobs],
     }),
@@ -38,6 +45,7 @@ export const jobApi = baseApi.injectEndpoints({
         url: `${JOB_URL}/${data.id}`,
         method: "PATCH",
         data: data.body,
+        headers: headers
       }),
       invalidatesTags: [tagTypes.jobs],
     }),
@@ -46,6 +54,7 @@ export const jobApi = baseApi.injectEndpoints({
       query: (id) => ({
         url: `${JOB_URL}/${id}`,
         method: "DELETE",
+        headers: headers
       }),
       invalidatesTags: [tagTypes.jobs],
     }),

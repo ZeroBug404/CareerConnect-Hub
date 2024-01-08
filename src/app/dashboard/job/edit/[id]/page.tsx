@@ -76,9 +76,9 @@ const EditJobPage = ({ params }: any) => {
         <Form submitHandler={onSubmit} defaultValues={defaultValues}>
           <h2
             style={{
-              padding: "15px",
               color: "#1F2B6C",
               textAlign: "center",
+              margin: "30px 0",
             }}
           >
             Update Job
@@ -394,7 +394,11 @@ const EditJobPage = ({ params }: any) => {
                   margin: "5px 0",
                 }}
               >
-                <FormDatePicker name="joiningDate" label="Joining Date" size="small"/>
+                <FormDatePicker
+                  name="joiningDate"
+                  label="Joining Date"
+                  size="small"
+                />
               </Col>
               <Col
                 xs={24}

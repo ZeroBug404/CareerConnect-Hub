@@ -46,7 +46,6 @@ const CreateBlog = () => {
         <Form submitHandler={onSubmit}>
           <h2
             style={{
-              padding: "15px",
               color: "#1F2B6C",
               textAlign: "center",
             }}
