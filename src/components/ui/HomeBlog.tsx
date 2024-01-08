@@ -12,7 +12,6 @@ import Link from "next/link";
 const HomeBlog = () => {
   const { data } = useBlogsQuery({});
   const blogData = data?.data;
-  console.log(blogData);
 
   return (
     <Row
